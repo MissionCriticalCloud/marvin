@@ -35,7 +35,8 @@ setup(
         "nose >= 1.3.3",
         "ddt >= 0.4.0",
         "pyvmomi >= 5.5.0",
-        "netaddr >= 0.7.14"
+        "netaddr >= 0.7.14",
+        "pyyaml  >= 3.11"
     ],
     py_modules=[
         'marvin.marvinPlugin'
