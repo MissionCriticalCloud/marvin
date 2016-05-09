@@ -2,3 +2,10 @@
 .idea/
 **/*.iml
 
+# Marvin Logs
+**/runinfo.txt
+**/failed_plus_exceptions.txt
+
+# Python binaries
+**/*.pyc
+
