@@ -9,3 +9,5 @@
 # Python binaries
 **/*.pyc
 
+Marvin.egg-info/
+dist/
