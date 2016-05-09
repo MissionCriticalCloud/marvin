@@ -2,11 +2,20 @@
 """
 
 # Import Local Modules
+import hashlib
+import itertools
+import random
+import re
+from netaddr import IPAddress
+
+from lib.utils import (validateList,
+                       xsplit,
+                       get_process_status,
+                       random_gen,
+                       format_volume_to_ext3)
 from marvin.cloudstackAPI import (listConfigurations,
                                   listPhysicalNetworks,
                                   listRegions,
-                                  addNetworkServiceProvider,
-                                  updateNetworkServiceProvider,
                                   listDomains,
                                   listZones,
                                   listPods,
@@ -41,18 +50,12 @@ from marvin.cloudstackAPI import (listConfigurations,
                                   listNetworkOfferings,
                                   listResourceLimits,
                                   listVPCOfferings)
-from marvin.sshClient import SshClient
 from marvin.codes import (PASS, FAILED, ISOLATED_NETWORK, VPC_NETWORK,
                           BASIC_ZONE, FAIL, NAT_RULE, STATIC_NAT_RULE,
                           RESOURCE_PRIMARY_STORAGE, RESOURCE_SECONDARY_STORAGE,
                           RESOURCE_CPU, RESOURCE_MEMORY, PUBLIC_TRAFFIC,
                           GUEST_TRAFFIC, MANAGEMENT_TRAFFIC, STORAGE_TRAFFIC,
                           VMWAREDVS)
-from marvin.lib.utils import (validateList,
-                              xsplit,
-                              get_process_status,
-                              random_gen,
-                              format_volume_to_ext3)
 from marvin.lib.base import (PhysicalNetwork,
                              PublicIPAddress,
                              NetworkOffering,
@@ -69,17 +72,11 @@ from marvin.lib.base import (PhysicalNetwork,
                              Host,
                              Resources,
                              Configurations,
-                             Router,
                              PublicIpRange,
                              StorageNetworkIpRange,
                              TrafficType)
 from marvin.lib.vcenter import Vcenter
-from netaddr import IPAddress
-import random
-import re
-import itertools
-import random
-import hashlib
+from marvin.sshClient import SshClient
 
 # Import System modules
 import time
@@ -91,7 +88,7 @@ def is_config_suitable(apiclient, name, value):
     @return: true if value is set, else false
     """
     configs = Configurations.list(apiclient, name=name)
-    assert(
+    assert (
         configs is not None and isinstance(
             configs,
             list) and len(
@@ -206,6 +203,7 @@ def get_zone(apiclient, zone_name=None, zone_id=None):
     '''
     return cmd_out[0]
 
+
 def get_physical_networks(apiclient, zoneid):
     '''
      @name : get_physical_networks
@@ -217,6 +215,7 @@ def get_physical_networks(apiclient, zoneid):
     cmd.zoneid = zoneid
     physical_networks = apiclient.listPhysicalNetworks(cmd)
     return physical_networks
+
 
 def get_pod(apiclient, zone_id=None, pod_id=None, pod_name=None):
     '''
@@ -242,6 +241,7 @@ def get_pod(apiclient, zone_id=None, pod_id=None, pod_name=None):
     if validateList(cmd_out)[0] != PASS:
         return FAILED
     return cmd_out[0]
+
 
 def get_template(
         apiclient, zone_id=None, ostype_desc=None, template_filter="featured", template_type='BUILTIN',
@@ -289,7 +289,6 @@ def get_template(
     return list_templatesout[0]
 
 
-
 def get_windows_template(
         apiclient, zone_id=None, ostype_desc=None, template_filter="featured", template_type='USER',
         template_id=None, template_name=None, account=None, domain_id=None, project_id=None,
@@ -320,16 +319,15 @@ def get_windows_template(
     if account is not None:
         cmd.account = account
 
-
     '''
     Get the Templates pertaining to the inputs provided
     '''
     list_templatesout = apiclient.listTemplates(cmd)
-    #print("template result is %s"%(list_templatesout))
+    # print("template result is %s"%(list_templatesout))
     if list_templatesout is None:
         return FAILED
-    if validateList(list_templatesout[0]) == FAIL :
-            return FAILED
+    if validateList(list_templatesout[0]) == FAIL:
+        return FAILED
 
     for template in list_templatesout:
         if template.isready and template.templatetype == "USER" and template.ostypename == ostype_desc:
@@ -339,7 +337,6 @@ def get_windows_template(
     '''
 
     return FAILED
-
 
 
 def download_systemplates_sec_storage(server, services):
@@ -533,8 +530,8 @@ def list_os_types(apiclient, **kwargs):
     cmd = listOsTypes.listOsTypesCmd()
     [setattr(cmd, k, v) for k, v in kwargs.items()]
     if 'account' in kwargs.keys() and 'domainid' in kwargs.keys():
-        cmd.listall=True
-    return(apiclient.listOsTypes(cmd))
+        cmd.listall = True
+    return (apiclient.listOsTypes(cmd))
 
 
 def list_routers(apiclient, **kwargs):
@@ -543,8 +540,8 @@ def list_routers(apiclient, **kwargs):
     cmd = listRouters.listRoutersCmd()
     [setattr(cmd, k, v) for k, v in kwargs.items()]
     if 'account' in kwargs.keys() and 'domainid' in kwargs.keys():
-        cmd.listall=True
-    return(apiclient.listRouters(cmd))
+        cmd.listall = True
+    return (apiclient.listRouters(cmd))
 
 
 def list_zones(apiclient, **kwargs):
@@ -553,8 +550,8 @@ def list_zones(apiclient, **kwargs):
     cmd = listZones.listZonesCmd()
     [setattr(cmd, k, v) for k, v in kwargs.items()]
     if 'account' in kwargs.keys() and 'domainid' in kwargs.keys():
-        cmd.listall=True
-    return(apiclient.listZones(cmd))
+        cmd.listall = True
+    return (apiclient.listZones(cmd))
 
 
 def list_networks(apiclient, **kwargs):
@@ -563,8 +560,8 @@ def list_networks(apiclient, **kwargs):
     cmd = listNetworks.listNetworksCmd()
     [setattr(cmd, k, v) for k, v in kwargs.items()]
     if 'account' in kwargs.keys() and 'domainid' in kwargs.keys():
-        cmd.listall=True
-    return(apiclient.listNetworks(cmd))
+        cmd.listall = True
+    return (apiclient.listNetworks(cmd))
 
 
 def list_clusters(apiclient, **kwargs):
@@ -573,8 +570,8 @@ def list_clusters(apiclient, **kwargs):
     cmd = listClusters.listClustersCmd()
     [setattr(cmd, k, v) for k, v in kwargs.items()]
     if 'account' in kwargs.keys() and 'domainid' in kwargs.keys():
-        cmd.listall=True
-    return(apiclient.listClusters(cmd))
+        cmd.listall = True
+    return (apiclient.listClusters(cmd))
 
 
 def list_ssvms(apiclient, **kwargs):
@@ -583,8 +580,8 @@ def list_ssvms(apiclient, **kwargs):
     cmd = listSystemVms.listSystemVmsCmd()
     [setattr(cmd, k, v) for k, v in kwargs.items()]
     if 'account' in kwargs.keys() and 'domainid' in kwargs.keys():
-        cmd.listall=True
-    return(apiclient.listSystemVms(cmd))
+        cmd.listall = True
+    return (apiclient.listSystemVms(cmd))
 
 
 def list_storage_pools(apiclient, **kwargs):
@@ -593,8 +590,8 @@ def list_storage_pools(apiclient, **kwargs):
     cmd = listStoragePools.listStoragePoolsCmd()
     [setattr(cmd, k, v) for k, v in kwargs.items()]
     if 'account' in kwargs.keys() and 'domainid' in kwargs.keys():
-        cmd.listall=True
-    return(apiclient.listStoragePools(cmd))
+        cmd.listall = True
+    return (apiclient.listStoragePools(cmd))
 
 
 def list_virtual_machines(apiclient, **kwargs):
@@ -603,8 +600,8 @@ def list_virtual_machines(apiclient, **kwargs):
     cmd = listVirtualMachines.listVirtualMachinesCmd()
     [setattr(cmd, k, v) for k, v in kwargs.items()]
     if 'account' in kwargs.keys() and 'domainid' in kwargs.keys():
-        cmd.listall=True
-    return(apiclient.listVirtualMachines(cmd))
+        cmd.listall = True
+    return (apiclient.listVirtualMachines(cmd))
 
 
 def list_hosts(apiclient, **kwargs):
@@ -613,8 +610,8 @@ def list_hosts(apiclient, **kwargs):
     cmd = listHosts.listHostsCmd()
     [setattr(cmd, k, v) for k, v in kwargs.items()]
     if 'account' in kwargs.keys() and 'domainid' in kwargs.keys():
-        cmd.listall=True
-    return(apiclient.listHosts(cmd))
+        cmd.listall = True
+    return (apiclient.listHosts(cmd))
 
 
 def list_configurations(apiclient, **kwargs):
@@ -623,8 +620,8 @@ def list_configurations(apiclient, **kwargs):
     cmd = listConfigurations.listConfigurationsCmd()
     [setattr(cmd, k, v) for k, v in kwargs.items()]
     if 'account' in kwargs.keys() and 'domainid' in kwargs.keys():
-        cmd.listall=True
-    return(apiclient.listConfigurations(cmd))
+        cmd.listall = True
+    return (apiclient.listConfigurations(cmd))
 
 
 def list_publicIP(apiclient, **kwargs):
@@ -633,8 +630,8 @@ def list_publicIP(apiclient, **kwargs):
     cmd = listPublicIpAddresses.listPublicIpAddressesCmd()
     [setattr(cmd, k, v) for k, v in kwargs.items()]
     if 'account' in kwargs.keys() and 'domainid' in kwargs.keys():
-        cmd.listall=True
-    return(apiclient.listPublicIpAddresses(cmd))
+        cmd.listall = True
+    return (apiclient.listPublicIpAddresses(cmd))
 
 
 def list_nat_rules(apiclient, **kwargs):
@@ -643,8 +640,8 @@ def list_nat_rules(apiclient, **kwargs):
     cmd = listPortForwardingRules.listPortForwardingRulesCmd()
     [setattr(cmd, k, v) for k, v in kwargs.items()]
     if 'account' in kwargs.keys() and 'domainid' in kwargs.keys():
-        cmd.listall=True
-    return(apiclient.listPortForwardingRules(cmd))
+        cmd.listall = True
+    return (apiclient.listPortForwardingRules(cmd))
 
 
 def list_lb_rules(apiclient, **kwargs):
@@ -653,8 +650,8 @@ def list_lb_rules(apiclient, **kwargs):
     cmd = listLoadBalancerRules.listLoadBalancerRulesCmd()
     [setattr(cmd, k, v) for k, v in kwargs.items()]
     if 'account' in kwargs.keys() and 'domainid' in kwargs.keys():
-        cmd.listall=True
-    return(apiclient.listLoadBalancerRules(cmd))
+        cmd.listall = True
+    return (apiclient.listLoadBalancerRules(cmd))
 
 
 def list_lb_instances(apiclient, **kwargs):
@@ -663,8 +660,8 @@ def list_lb_instances(apiclient, **kwargs):
     cmd = listLoadBalancerRuleInstances.listLoadBalancerRuleInstancesCmd()
     [setattr(cmd, k, v) for k, v in kwargs.items()]
     if 'account' in kwargs.keys() and 'domainid' in kwargs.keys():
-        cmd.listall=True
-    return(apiclient.listLoadBalancerRuleInstances(cmd))
+        cmd.listall = True
+    return (apiclient.listLoadBalancerRuleInstances(cmd))
 
 
 def list_firewall_rules(apiclient, **kwargs):
@@ -673,8 +670,8 @@ def list_firewall_rules(apiclient, **kwargs):
     cmd = listFirewallRules.listFirewallRulesCmd()
     [setattr(cmd, k, v) for k, v in kwargs.items()]
     if 'account' in kwargs.keys() and 'domainid' in kwargs.keys():
-        cmd.listall=True
-    return(apiclient.listFirewallRules(cmd))
+        cmd.listall = True
+    return (apiclient.listFirewallRules(cmd))
 
 
 def list_volumes(apiclient, **kwargs):
@@ -683,8 +680,8 @@ def list_volumes(apiclient, **kwargs):
     cmd = listVolumes.listVolumesCmd()
     [setattr(cmd, k, v) for k, v in kwargs.items()]
     if 'account' in kwargs.keys() and 'domainid' in kwargs.keys():
-        cmd.listall=True
-    return(apiclient.listVolumes(cmd))
+        cmd.listall = True
+    return (apiclient.listVolumes(cmd))
 
 
 def list_isos(apiclient, **kwargs):
@@ -693,8 +690,8 @@ def list_isos(apiclient, **kwargs):
     cmd = listIsos.listIsosCmd()
     [setattr(cmd, k, v) for k, v in kwargs.items()]
     if 'account' in kwargs.keys() and 'domainid' in kwargs.keys():
-        cmd.listall=True
-    return(apiclient.listIsos(cmd))
+        cmd.listall = True
+    return (apiclient.listIsos(cmd))
 
 
 def list_snapshots(apiclient, **kwargs):
@@ -703,8 +700,8 @@ def list_snapshots(apiclient, **kwargs):
     cmd = listSnapshots.listSnapshotsCmd()
     [setattr(cmd, k, v) for k, v in kwargs.items()]
     if 'account' in kwargs.keys() and 'domainid' in kwargs.keys():
-        cmd.listall=True
-    return(apiclient.listSnapshots(cmd))
+        cmd.listall = True
+    return (apiclient.listSnapshots(cmd))
 
 
 def list_templates(apiclient, **kwargs):
@@ -713,8 +710,8 @@ def list_templates(apiclient, **kwargs):
     cmd = listTemplates.listTemplatesCmd()
     [setattr(cmd, k, v) for k, v in kwargs.items()]
     if 'account' in kwargs.keys() and 'domainid' in kwargs.keys():
-        cmd.listall=True
-    return(apiclient.listTemplates(cmd))
+        cmd.listall = True
+    return (apiclient.listTemplates(cmd))
 
 
 def list_domains(apiclient, **kwargs):
@@ -723,8 +720,8 @@ def list_domains(apiclient, **kwargs):
     cmd = listDomains.listDomainsCmd()
     [setattr(cmd, k, v) for k, v in kwargs.items()]
     if 'account' in kwargs.keys() and 'domainid' in kwargs.keys():
-        cmd.listall=True
-    return(apiclient.listDomains(cmd))
+        cmd.listall = True
+    return (apiclient.listDomains(cmd))
 
 
 def list_accounts(apiclient, **kwargs):
@@ -734,8 +731,8 @@ def list_accounts(apiclient, **kwargs):
     cmd = listAccounts.listAccountsCmd()
     [setattr(cmd, k, v) for k, v in kwargs.items()]
     if 'account' in kwargs.keys() and 'domainid' in kwargs.keys():
-        cmd.listall=True
-    return(apiclient.listAccounts(cmd))
+        cmd.listall = True
+    return (apiclient.listAccounts(cmd))
 
 
 def list_users(apiclient, **kwargs):
@@ -745,8 +742,8 @@ def list_users(apiclient, **kwargs):
     cmd = listUsers.listUsersCmd()
     [setattr(cmd, k, v) for k, v in kwargs.items()]
     if 'account' in kwargs.keys() and 'domainid' in kwargs.keys():
-        cmd.listall=True
-    return(apiclient.listUsers(cmd))
+        cmd.listall = True
+    return (apiclient.listUsers(cmd))
 
 
 def list_snapshot_policy(apiclient, **kwargs):
@@ -755,8 +752,8 @@ def list_snapshot_policy(apiclient, **kwargs):
     cmd = listSnapshotPolicies.listSnapshotPoliciesCmd()
     [setattr(cmd, k, v) for k, v in kwargs.items()]
     if 'account' in kwargs.keys() and 'domainid' in kwargs.keys():
-        cmd.listall=True
-    return(apiclient.listSnapshotPolicies(cmd))
+        cmd.listall = True
+    return (apiclient.listSnapshotPolicies(cmd))
 
 
 def list_events(apiclient, **kwargs):
@@ -765,8 +762,8 @@ def list_events(apiclient, **kwargs):
     cmd = listEvents.listEventsCmd()
     [setattr(cmd, k, v) for k, v in kwargs.items()]
     if 'account' in kwargs.keys() and 'domainid' in kwargs.keys():
-        cmd.listall=True
-    return(apiclient.listEvents(cmd))
+        cmd.listall = True
+    return (apiclient.listEvents(cmd))
 
 
 def list_disk_offering(apiclient, **kwargs):
@@ -775,8 +772,8 @@ def list_disk_offering(apiclient, **kwargs):
     cmd = listDiskOfferings.listDiskOfferingsCmd()
     [setattr(cmd, k, v) for k, v in kwargs.items()]
     if 'account' in kwargs.keys() and 'domainid' in kwargs.keys():
-        cmd.listall=True
-    return(apiclient.listDiskOfferings(cmd))
+        cmd.listall = True
+    return (apiclient.listDiskOfferings(cmd))
 
 
 def list_service_offering(apiclient, **kwargs):
@@ -785,8 +782,8 @@ def list_service_offering(apiclient, **kwargs):
     cmd = listServiceOfferings.listServiceOfferingsCmd()
     [setattr(cmd, k, v) for k, v in kwargs.items()]
     if 'account' in kwargs.keys() and 'domainid' in kwargs.keys():
-        cmd.listall=True
-    return(apiclient.listServiceOfferings(cmd))
+        cmd.listall = True
+    return (apiclient.listServiceOfferings(cmd))
 
 
 def list_vlan_ipranges(apiclient, **kwargs):
@@ -795,8 +792,8 @@ def list_vlan_ipranges(apiclient, **kwargs):
     cmd = listVlanIpRanges.listVlanIpRangesCmd()
     [setattr(cmd, k, v) for k, v in kwargs.items()]
     if 'account' in kwargs.keys() and 'domainid' in kwargs.keys():
-        cmd.listall=True
-    return(apiclient.listVlanIpRanges(cmd))
+        cmd.listall = True
+    return (apiclient.listVlanIpRanges(cmd))
 
 
 def list_usage_records(apiclient, **kwargs):
@@ -805,8 +802,8 @@ def list_usage_records(apiclient, **kwargs):
     cmd = listUsageRecords.listUsageRecordsCmd()
     [setattr(cmd, k, v) for k, v in kwargs.items()]
     if 'account' in kwargs.keys() and 'domainid' in kwargs.keys():
-        cmd.listall=True
-    return(apiclient.listUsageRecords(cmd))
+        cmd.listall = True
+    return (apiclient.listUsageRecords(cmd))
 
 
 def list_nw_service_prividers(apiclient, **kwargs):
@@ -815,8 +812,8 @@ def list_nw_service_prividers(apiclient, **kwargs):
     cmd = listNetworkServiceProviders.listNetworkServiceProvidersCmd()
     [setattr(cmd, k, v) for k, v in kwargs.items()]
     if 'account' in kwargs.keys() and 'domainid' in kwargs.keys():
-        cmd.listall=True
-    return(apiclient.listNetworkServiceProviders(cmd))
+        cmd.listall = True
+    return (apiclient.listNetworkServiceProviders(cmd))
 
 
 def list_virtual_router_elements(apiclient, **kwargs):
@@ -825,8 +822,8 @@ def list_virtual_router_elements(apiclient, **kwargs):
     cmd = listVirtualRouterElements.listVirtualRouterElementsCmd()
     [setattr(cmd, k, v) for k, v in kwargs.items()]
     if 'account' in kwargs.keys() and 'domainid' in kwargs.keys():
-        cmd.listall=True
-    return(apiclient.listVirtualRouterElements(cmd))
+        cmd.listall = True
+    return (apiclient.listVirtualRouterElements(cmd))
 
 
 def list_network_offerings(apiclient, **kwargs):
@@ -835,8 +832,8 @@ def list_network_offerings(apiclient, **kwargs):
     cmd = listNetworkOfferings.listNetworkOfferingsCmd()
     [setattr(cmd, k, v) for k, v in kwargs.items()]
     if 'account' in kwargs.keys() and 'domainid' in kwargs.keys():
-        cmd.listall=True
-    return(apiclient.listNetworkOfferings(cmd))
+        cmd.listall = True
+    return (apiclient.listNetworkOfferings(cmd))
 
 
 def list_resource_limits(apiclient, **kwargs):
@@ -845,8 +842,8 @@ def list_resource_limits(apiclient, **kwargs):
     cmd = listResourceLimits.listResourceLimitsCmd()
     [setattr(cmd, k, v) for k, v in kwargs.items()]
     if 'account' in kwargs.keys() and 'domainid' in kwargs.keys():
-        cmd.listall=True
-    return(apiclient.listResourceLimits(cmd))
+        cmd.listall = True
+    return (apiclient.listResourceLimits(cmd))
 
 
 def list_vpc_offerings(apiclient, **kwargs):
@@ -855,8 +852,8 @@ def list_vpc_offerings(apiclient, **kwargs):
     cmd = listVPCOfferings.listVPCOfferingsCmd()
     [setattr(cmd, k, v) for k, v in kwargs.items()]
     if 'account' in kwargs.keys() and 'domainid' in kwargs.keys():
-        cmd.listall=True
-    return(apiclient.listVPCOfferings(cmd))
+        cmd.listall = True
+    return (apiclient.listVPCOfferings(cmd))
 
 
 def update_resource_count(apiclient, domainid, accountid=None,
@@ -884,20 +881,21 @@ def update_resource_count(apiclient, domainid, accountid=None,
                           )
     return
 
+
 def findSuitableHostForMigration(apiclient, vmid):
     """Returns a suitable host for VM migration"""
     suitableHost = None
     try:
         hosts = Host.listForMigration(apiclient, virtualmachineid=vmid,
-                )
+                                      )
     except Exception as e:
         raise Exception("Exception while getting hosts list suitable for migration: %s" % e)
 
     suitablehosts = []
     if isinstance(hosts, list) and len(hosts) > 0:
-        suitablehosts = [host for host in hosts if (str(host.resourcestate).lower() == "enabled"\
-                and str(host.state).lower() == "up")]
-        if len(suitablehosts)>0:
+        suitablehosts = [host for host in hosts if (str(host.resourcestate).lower() == "enabled" \
+                                                    and str(host.state).lower() == "up")]
+        if len(suitablehosts) > 0:
             suitableHost = suitablehosts[0]
 
     return suitableHost
@@ -921,7 +919,6 @@ def get_resource_type(resource_id):
               }
 
     return lookup[resource_id]
-
 
 
 def get_free_vlan(apiclient, zoneid):
@@ -1063,6 +1060,7 @@ def setNonContiguousVlanIds(apiclient, zoneid):
 
     return physical_network, vlan
 
+
 def isIpInDesiredState(apiclient, ipaddressid, state):
     """ Check if the given IP is in the correct state (given)
     and return True/False accordingly"""
@@ -1085,9 +1083,10 @@ def isIpInDesiredState(apiclient, ipaddressid, state):
         exceptionMessage = e
         return [exceptionOccured, ipInDesiredState, e]
     if not ipInDesiredState:
-        exceptionMessage = "Ip should be in %s state, it is in %s" %\
-                            (state, portableips[0].state)
+        exceptionMessage = "Ip should be in %s state, it is in %s" % \
+                           (state, portableips[0].state)
     return [False, ipInDesiredState, exceptionMessage]
+
 
 def setSharedNetworkParams(networkServices, range=20):
     """Fill up the services dictionary for shared network using random subnet"""
@@ -1096,13 +1095,14 @@ def setSharedNetworkParams(networkServices, range=20):
     # and endip as "x"
     # Set the subnet number of shared networks randomly prior to execution
     # of each test case to avoid overlapping of ip addresses
-    shared_network_subnet_number = random.randrange(1,254)
+    shared_network_subnet_number = random.randrange(1, 254)
 
-    networkServices["gateway"] = "172.16."+str(shared_network_subnet_number)+".1"
-    networkServices["startip"] = "172.16."+str(shared_network_subnet_number)+".2"
-    networkServices["endip"] = "172.16."+str(shared_network_subnet_number)+"."+str(range+1)
+    networkServices["gateway"] = "172.16." + str(shared_network_subnet_number) + ".1"
+    networkServices["startip"] = "172.16." + str(shared_network_subnet_number) + ".2"
+    networkServices["endip"] = "172.16." + str(shared_network_subnet_number) + "." + str(range + 1)
     networkServices["netmask"] = "255.255.255.0"
     return networkServices
+
 
 def createEnabledNetworkOffering(apiclient, networkServices):
     """Create and enable network offering according to the type
@@ -1130,15 +1130,17 @@ def createEnabledNetworkOffering(apiclient, networkServices):
         return resultSet
     return [PASS, network_offering, None]
 
+
 def shouldTestBeSkipped(networkType, zoneType):
     """Decide which test to skip, according to type of network and zone type"""
 
     # If network type is isolated or vpc and zone type is basic, then test should be skipped
     skipIt = False
     if ((networkType.lower() == str(ISOLATED_NETWORK).lower() or networkType.lower() == str(VPC_NETWORK).lower())
-            and (zoneType.lower() == BASIC_ZONE)):
+        and (zoneType.lower() == BASIC_ZONE)):
         skipIt = True
     return skipIt
+
 
 def verifyNetworkState(apiclient, networkid, state, listall=True):
     """List networks and check if the network state matches the given state"""
@@ -1157,13 +1159,14 @@ def verifyNetworkState(apiclient, networkid, state, listall=True):
             retriesCount -= 1
             time.sleep(60)
         if not isNetworkInDesiredState:
-            exceptionMessage = "Network state should be %s, it is %s" %\
-                                (state, networks[0].state)
+            exceptionMessage = "Network state should be %s, it is %s" % \
+                               (state, networks[0].state)
     except Exception as e:
         exceptionOccured = True
         exceptionMessage = e
         return [exceptionOccured, isNetworkInDesiredState, exceptionMessage]
     return [exceptionOccured, isNetworkInDesiredState, exceptionMessage]
+
 
 def verifyComputeOfferingCreation(apiclient, computeofferingid):
     """List Compute offerings by ID and verify that the offering exists"""
@@ -1174,10 +1177,11 @@ def verifyComputeOfferingCreation(apiclient, computeofferingid):
     try:
         serviceOfferings = apiclient.listServiceOfferings(cmd)
     except Exception:
-       return FAIL
+        return FAIL
     if not (isinstance(serviceOfferings, list) and len(serviceOfferings) > 0):
-       return FAIL
+        return FAIL
     return PASS
+
 
 def createNetworkRulesForVM(apiclient, virtualmachine, ruletype,
                             account, networkruledata):
@@ -1186,29 +1190,30 @@ def createNetworkRulesForVM(apiclient, virtualmachine, ruletype,
 
     try:
         public_ip = PublicIPAddress.create(
-                apiclient,accountid=account.name,
-                zoneid=virtualmachine.zoneid,domainid=account.domainid,
-                networkid=virtualmachine.nic[0].networkid)
+            apiclient, accountid=account.name,
+            zoneid=virtualmachine.zoneid, domainid=account.domainid,
+            networkid=virtualmachine.nic[0].networkid)
 
         FireWallRule.create(
-            apiclient,ipaddressid=public_ip.ipaddress.id,
+            apiclient, ipaddressid=public_ip.ipaddress.id,
             protocol='TCP', cidrlist=[networkruledata["fwrule"]["cidr"]],
             startport=networkruledata["fwrule"]["startport"],
             endport=networkruledata["fwrule"]["endport"]
-            )
+        )
 
         if ruletype == NAT_RULE:
             # Create NAT rule
             NATRule.create(apiclient, virtualmachine,
-                                 networkruledata["natrule"],ipaddressid=public_ip.ipaddress.id,
-                                 networkid=virtualmachine.nic[0].networkid)
+                           networkruledata["natrule"], ipaddressid=public_ip.ipaddress.id,
+                           networkid=virtualmachine.nic[0].networkid)
         elif ruletype == STATIC_NAT_RULE:
             # Enable Static NAT for VM
-            StaticNATRule.enable(apiclient,public_ip.ipaddress.id,
-                                     virtualmachine.id, networkid=virtualmachine.nic[0].networkid)
+            StaticNATRule.enable(apiclient, public_ip.ipaddress.id,
+                                 virtualmachine.id, networkid=virtualmachine.nic[0].networkid)
     except Exception as e:
         [FAIL, e]
     return [PASS, public_ip]
+
 
 def getPortableIpRangeServices(config):
     """ Reads config values related to portable ip and fills up
@@ -1250,25 +1255,26 @@ def uploadVolume(apiclient, zoneid, account, services):
     try:
         # Upload the volume
         volume = Volume.upload(apiclient, services["volume"],
-                                   zoneid=zoneid, account=account.name,
-                                   domainid=account.domainid, url=services["url"])
+                               zoneid=zoneid, account=account.name,
+                               domainid=account.domainid, url=services["url"])
 
         volume.wait_for_upload(apiclient)
 
         # Check List Volume response for newly created volume
         volumes = Volume.list(apiclient, id=volume.id,
-                                  zoneid=zoneid, listall=True)
+                              zoneid=zoneid, listall=True)
         validationresult = validateList(volumes)
-        assert validationresult[0] == PASS,\
-                            "volumes list validation failed: %s" % validationresult[2]
-        assert str(volumes[0].state).lower() == "uploaded",\
-                    "Volume state should be 'uploaded' but it is %s" % volumes[0].state
+        assert validationresult[0] == PASS, \
+            "volumes list validation failed: %s" % validationresult[2]
+        assert str(volumes[0].state).lower() == "uploaded", \
+            "Volume state should be 'uploaded' but it is %s" % volumes[0].state
     except Exception as e:
         return [FAIL, e]
     return [PASS, volume]
 
+
 def matchResourceCount(apiclient, expectedCount, resourceType,
-                              accountid=None, projectid=None):
+                       accountid=None, projectid=None):
     """Match the resource count of account/project with the expected
     resource count"""
     try:
@@ -1278,8 +1284,8 @@ def matchResourceCount(apiclient, expectedCount, resourceType,
         elif projectid:
             resourceholderlist = Project.list(apiclient, id=projectid, listall=True)
         validationresult = validateList(resourceholderlist)
-        assert validationresult[0] == PASS,\
-               "accounts list validation failed"
+        assert validationresult[0] == PASS, \
+            "accounts list validation failed"
         if resourceType == RESOURCE_PRIMARY_STORAGE:
             resourceCount = resourceholderlist[0].primarystoragetotal
         elif resourceType == RESOURCE_SECONDARY_STORAGE:
@@ -1288,12 +1294,13 @@ def matchResourceCount(apiclient, expectedCount, resourceType,
             resourceCount = resourceholderlist[0].cputotal
         elif resourceType == RESOURCE_MEMORY:
             resourceCount = resourceholderlist[0].memorytotal
-        assert str(resourceCount) == str(expectedCount),\
-                "Resource count %s should match with the expected resource count %s" %\
-                (resourceCount, expectedCount)
+        assert str(resourceCount) == str(expectedCount), \
+            "Resource count %s should match with the expected resource count %s" % \
+            (resourceCount, expectedCount)
     except Exception as e:
         return [FAIL, e]
     return [PASS, None]
+
 
 def createSnapshotFromVirtualMachineVolume(apiclient, account, vmid):
     """Create snapshot from volume"""
@@ -1302,23 +1309,24 @@ def createSnapshotFromVirtualMachineVolume(apiclient, account, vmid):
         volumes = Volume.list(apiclient, account=account.name,
                               domainid=account.domainid, virtualmachineid=vmid)
         validationresult = validateList(volumes)
-        assert validateList(volumes)[0] == PASS,\
-                            "List volumes should return a valid response"
+        assert validateList(volumes)[0] == PASS, \
+            "List volumes should return a valid response"
         snapshot = Snapshot.create(apiclient, volume_id=volumes[0].id,
                                    account=account.name, domainid=account.domainid)
         snapshots = Snapshot.list(apiclient, id=snapshot.id,
-                                      listall=True)
+                                  listall=True)
         validationresult = validateList(snapshots)
-        assert validationresult[0] == PASS,\
-               "List snapshot should return a valid list"
+        assert validationresult[0] == PASS, \
+            "List snapshot should return a valid list"
     except Exception as e:
-       return[FAIL, e]
+        return [FAIL, e]
     return [PASS, snapshot]
+
 
 def isVmExpunged(apiclient, vmid, projectid=None, timeout=600):
     """Verify if VM is expunged or not"""
-    vmExpunged= False
-    while timeout>=0:
+    vmExpunged = False
+    while timeout >= 0:
         try:
             vms = VirtualMachine.list(apiclient, id=vmid, projectid=projectid)
             if vms is None:
@@ -1329,8 +1337,9 @@ def isVmExpunged(apiclient, vmid, projectid=None, timeout=600):
         except Exception:
             vmExpunged = True
             break
-     #end while
+            # end while
     return vmExpunged
+
 
 def isDomainResourceCountEqualToExpectedCount(apiclient, domainid, expectedcount,
                                               resourcetype):
@@ -1348,10 +1357,11 @@ def isDomainResourceCountEqualToExpectedCount(apiclient, domainid, expectedcount
         isExceptionOccured = True
         return [isExceptionOccured, reasonForException, isResourceCountEqual]
 
-    resourcecount = (response[0].resourcecount / (1024**3))
+    resourcecount = (response[0].resourcecount / (1024 ** 3))
     if resourcecount == expectedcount:
         isResourceCountEqual = True
     return [isExceptionOccured, reasonForException, isResourceCountEqual]
+
 
 def isNetworkDeleted(apiclient, networkid, timeout=600):
     """ List the network and check that the list is empty or not"""
@@ -1363,7 +1373,7 @@ def isNetworkDeleted(apiclient, networkid, timeout=600):
             break
         timeout -= 60
         time.sleep(60)
-    #end while
+    # end while
     return networkDeleted
 
 
@@ -1371,7 +1381,6 @@ def createChecksum(service=None,
                    virtual_machine=None,
                    disk=None,
                    disk_type=None):
-
     """ Calculate the MD5 checksum of the disk by writing \
         data on the disk where disk_type is either root disk or data disk
     @return: returns the calculated checksum"""
@@ -1390,7 +1399,7 @@ def createChecksum(service=None,
         )
     except Exception:
         raise Exception("SSH access failed for server with IP address: %s" %
-                    virtual_machine.ssh_ip)
+                        virtual_machine.ssh_ip)
 
     # Format partition using ext3
 
@@ -1446,7 +1455,7 @@ def compareChecksum(
         original_checksum=None,
         disk_type=None,
         virt_machine=None
-        ):
+):
     """
     Create md5 checksum of the data present on the disk and compare
     it with the given checksum
@@ -1464,7 +1473,7 @@ def compareChecksum(
         )
     except Exception:
         raise Exception("SSH access failed for server with IP address: %s" %
-                    virt_machine.ssh_ip)
+                        virt_machine.ssh_ip)
 
     # Mount datadiskdevice_1 because this is the first data disk of the new
     # virtual machine
@@ -1522,18 +1531,18 @@ def isIpRangeInUse(api_client, publicIpRange):
     for vm in vmList:
         for nic in vm.nic:
             publicIpAddresses = PublicIPAddress.list(api_client,
-                                                 associatednetworkid=nic.networkid,
-                                                 listall=True)
+                                                     associatednetworkid=nic.networkid,
+                                                     listall=True)
             if validateList(publicIpAddresses)[0] == PASS:
                 for ipaddress in publicIpAddresses:
-                    if IPAddress(publicIpRange.startip) <=\
-                        IPAddress(ipaddress.ipaddress) <=\
-                        IPAddress(publicIpRange.endip):
+                    if IPAddress(publicIpRange.startip) <= \
+                            IPAddress(ipaddress.ipaddress) <= \
+                            IPAddress(publicIpRange.endip):
                         return True
     return False
 
-def verifyGuestTrafficPortGroups(api_client, config, setup_zone):
 
+def verifyGuestTrafficPortGroups(api_client, config, setup_zone):
     """ This function matches the given zone with
     the zone in config file used to deploy the setup and
     retrieves the corresponding vcenter details and forms
@@ -1542,25 +1551,26 @@ def verifyGuestTrafficPortGroups(api_client, config, setup_zone):
 
     try:
         zoneDetailsInConfig = [zone for zone in config.zones
-                if zone.name == setup_zone.name][0]
+                               if zone.name == setup_zone.name][0]
         vcenterusername = zoneDetailsInConfig.vmwaredc.username
         vcenterpassword = zoneDetailsInConfig.vmwaredc.password
         vcenterip = zoneDetailsInConfig.vmwaredc.vcenter
         vcenterObj = Vcenter(
-                vcenterip,
-                vcenterusername,
-                vcenterpassword)
+            vcenterip,
+            vcenterusername,
+            vcenterpassword)
         response = verifyVCenterPortGroups(
-                api_client,
-                vcenterObj,
-                traffic_types_to_validate=[
-                    GUEST_TRAFFIC],
-                zoneid=setup_zone.id,
-                switchTypes=[VMWAREDVS])
+            api_client,
+            vcenterObj,
+            traffic_types_to_validate=[
+                GUEST_TRAFFIC],
+            zoneid=setup_zone.id,
+            switchTypes=[VMWAREDVS])
         assert response[0] == PASS, response[1]
     except Exception as e:
         return [FAIL, e]
     return [PASS, None]
+
 
 def analyzeTrafficType(trafficTypes, trafficTypeToFilter, switchTypes=None):
     """ Analyze traffic types for given type and return
@@ -1643,14 +1653,14 @@ def getExpectedPortGroupNames(
                     ipRangeInUse = isIpRangeInUse(api_client, publicIpRange)
                     if ipRangeInUse:
                         expectedDVPortGroupName = "cloud" + "." + \
-                                    PUBLIC_TRAFFIC + "." + vlanId + "." + \
-                                    network_rate + "." + "1" + "-" + \
-                                    switch_name
+                                                  PUBLIC_TRAFFIC + "." + vlanId + "." + \
+                                                  network_rate + "." + "1" + "-" + \
+                                                  switch_name
                         expectedDVPortGroupNames.append(
-                                    expectedDVPortGroupName)
+                            expectedDVPortGroupName)
 
                     expectedDVPortGroupName = "cloud" + "." + PUBLIC_TRAFFIC + "." + \
-                            vlanId + "." + "0" + "." + "1" + "-" + switch_name
+                                              vlanId + "." + "0" + "." + "1" + "-" + switch_name
                     expectedDVPortGroupNames.append(expectedDVPortGroupName)
 
         if traffic_type == GUEST_TRAFFIC:
@@ -1667,8 +1677,8 @@ def getExpectedPortGroupNames(
                     if len(networkVlan) > 0:
                         vlanId = networkVlan[0]
                         expectedDVPortGroupName = "cloud" + "." + GUEST_TRAFFIC + "." + \
-                            vlanId + "." + network_rate + "." + "1" + "-" + \
-                            switch_name
+                                                  vlanId + "." + network_rate + "." + "1" + "-" + \
+                                                  switch_name
                         expectedDVPortGroupNames.append(
                             expectedDVPortGroupName)
 
@@ -1688,8 +1698,8 @@ def getExpectedPortGroupNames(
                     else:
                         vlanId = "untagged"
                     expectedDVPortGroupName = "cloud" + "." + STORAGE_TRAFFIC + \
-                        "." + vlanId + "." + "0" + "." + "1" + "-" + \
-                        switch_name
+                                              "." + vlanId + "." + "0" + "." + "1" + "-" + \
+                                              switch_name
                     expectedDVPortGroupNames.append(
                         expectedDVPortGroupName)
 
@@ -1697,7 +1707,7 @@ def getExpectedPortGroupNames(
                 response = analyzeTrafficType(
                     traffic_types, MANAGEMENT_TRAFFIC)
                 assert response[0] == PASS, response[1]
-                filteredList, switchName, vlanSpecified =\
+                filteredList, switchName, vlanSpecified = \
                     response[1], response[2], response[3]
 
                 if not filteredList:
@@ -1716,7 +1726,7 @@ def getExpectedPortGroupNames(
                 else:
                     vlanId = "untagged"
                 expectedDVPortGroupName = "cloud" + "." + STORAGE_TRAFFIC + \
-                    "." + vlanId + "." + "0" + "." + "1" + "-" + switchName
+                                          "." + vlanId + "." + "0" + "." + "1" + "-" + switchName
                 expectedDVPortGroupNames.append(expectedDVPortGroupName)
 
         if traffic_type == MANAGEMENT_TRAFFIC:
@@ -1724,7 +1734,7 @@ def getExpectedPortGroupNames(
             if specified_vlan:
                 vlanId = specified_vlan
             expectedDVPortGroupName = "cloud" + "." + "private" + "." + \
-                vlanId + "." + "0" + "." + "1" + "-" + switch_name
+                                      vlanId + "." + "0" + "." + "1" + "-" + switch_name
             expectedDVPortGroupNames.append(expectedDVPortGroupName)
 
     except Exception as e:
@@ -1738,7 +1748,6 @@ def verifyVCenterPortGroups(
         zoneid,
         traffic_types_to_validate,
         switchTypes):
-
     """ Generate expected port groups for given traffic types and
         verify they are present in the vcenter
 
@@ -1766,9 +1775,9 @@ def verifyVCenterPortGroups(
         networkRate = config[0].value
         switchDict = {}
         physicalNetworks = PhysicalNetwork.list(
-                api_client,
-                zoneid=zoneid
-            )
+            api_client,
+            zoneid=zoneid
+        )
 
         # If there are no physical networks in zone, return as PASS
         # as there are no validations to make
@@ -1777,35 +1786,35 @@ def verifyVCenterPortGroups(
 
         for physicalNetwork in physicalNetworks:
             trafficTypes = TrafficType.list(
-                    api_client,
-                    physicalnetworkid=physicalNetwork.id)
+                api_client,
+                physicalnetworkid=physicalNetwork.id)
 
             for trafficType in traffic_types_to_validate:
                 response = analyzeTrafficType(
-                        trafficTypes, trafficType, switchTypes)
+                    trafficTypes, trafficType, switchTypes)
                 assert response[0] == PASS, response[1]
-                filteredList, switchName, vlanSpecified=\
-                        response[1], response[2], response[3]
+                filteredList, switchName, vlanSpecified = \
+                    response[1], response[2], response[3]
 
                 if not filteredList:
                     continue
 
                 if switchName not in switchDict:
                     dvswitches = vcenter_conn.get_dvswitches(
-                            name=switchName)
+                        name=switchName)
                     switchDict[switchName] = dvswitches[0][
-                            'dvswitch']['portgroupNameList']
+                        'dvswitch']['portgroupNameList']
 
                 response = getExpectedPortGroupNames(
-                        api_client,
-                        physicalNetwork,
-                        networkRate,
-                        switchName,
-                        trafficTypes,
-                        switchDict,
-                        vcenter_conn,
-                        vlanSpecified,
-                        trafficType)
+                    api_client,
+                    physicalNetwork,
+                    networkRate,
+                    switchName,
+                    trafficTypes,
+                    switchDict,
+                    vcenter_conn,
+                    vlanSpecified,
+                    trafficType)
                 assert response[0] == PASS, response[1]
                 dvPortGroups = response[1]
                 expectedDVPortGroupNames.extend(dvPortGroups)
@@ -1813,8 +1822,8 @@ def verifyVCenterPortGroups(
         vcenterPortGroups = list(itertools.chain(*(switchDict.values())))
 
         for expectedDVPortGroupName in expectedDVPortGroupNames:
-            assert expectedDVPortGroupName in vcenterPortGroups,\
-                "Port group %s not present in VCenter DataCenter" %\
+            assert expectedDVPortGroupName in vcenterPortGroups, \
+                "Port group %s not present in VCenter DataCenter" % \
                 expectedDVPortGroupName
 
     except Exception as e:
@@ -1823,7 +1832,6 @@ def verifyVCenterPortGroups(
 
 
 def get_hypervisor_type(apiclient):
-
     """Return the hypervisor type of the hosts in setup"""
 
     cmd = listHosts.listHostsCmd()
@@ -1848,18 +1856,17 @@ def is_snapshot_on_nfs(apiclient, dbconn, config, zoneid, snapshotid):
     """
     # snapshot extension to be appended to the snapshot path obtained from db
     snapshot_extensions = {"vmware": ".ovf",
-                            "kvm": "",
-                            "xenserver": ".vhd",
-                            "simulator":""}
+                           "kvm": "",
+                           "xenserver": ".vhd",
+                           "simulator": ""}
 
     qresultset = dbconn.execute(
-                        "select id from snapshots where uuid = '%s';" \
-                        % str(snapshotid)
-                        )
+        "select id from snapshots where uuid = '%s';" \
+        % str(snapshotid)
+    )
     if len(qresultset) == 0:
         raise Exception(
             "No snapshot found in cloudstack with id %s" % snapshotid)
-
 
     snapshotid = qresultset[0][0]
     qresultset = dbconn.execute(
@@ -1869,11 +1876,11 @@ def is_snapshot_on_nfs(apiclient, dbconn, config, zoneid, snapshotid):
     assert isinstance(qresultset, list), "Invalid db query response for snapshot %s" % snapshotid
 
     if len(qresultset) == 0:
-        #Snapshot does not exist
+        # Snapshot does not exist
         return False
 
     from base import ImageStore
-    #pass store_id to get the exact storage pool where snapshot is stored
+    # pass store_id to get the exact storage pool where snapshot is stored
     secondaryStores = ImageStore.list(apiclient, zoneid=zoneid, id=int(qresultset[0][1]))
 
     assert isinstance(secondaryStores, list), "Not a valid response for listImageStores"
@@ -1906,9 +1913,9 @@ def is_snapshot_on_nfs(apiclient, dbconn, config, zoneid, snapshotid):
             passwd
         )
 
-        pathSeparator = "" #used to form host:dir format
+        pathSeparator = ""  # used to form host:dir format
         if not host.endswith(':'):
-            pathSeparator= ":"
+            pathSeparator = ":"
 
         cmds = [
 
@@ -1929,14 +1936,14 @@ def is_snapshot_on_nfs(apiclient, dbconn, config, zoneid, snapshotid):
 
         # Unmount the Sec Storage
         cmds = [
-                "cd",
-                "umount /mnt/tmp",
-            ]
+            "cd",
+            "umount /mnt/tmp",
+        ]
         for c in cmds:
             ssh_client.execute(c)
     except Exception as e:
         raise Exception("SSH failed for management server: %s - %s" %
-                      (config.mgtSvr[0].mgtSvrIp, e))
+                        (config.mgtSvr[0].mgtSvrIp, e))
     return 'snapshot exists' in result
 
 
@@ -1960,5 +1967,5 @@ def verifyRouterState(apiclient, routerid, allowedstates):
         return [FAIL, listvalidationresult[2]]
     if routers[0].state.lower() not in allowedstates:
         return [FAIL, "state of the router should be in %s but is %s" %
-            (allowedstates, routers[0].state)]
+                (allowedstates, routers[0].state)]
     return [PASS, None]

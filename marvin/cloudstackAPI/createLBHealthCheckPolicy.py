@@ -1,8 +1,11 @@
 """Creates a load balancer health check policy"""
 from baseCmd import *
 from baseResponse import *
-class createLBHealthCheckPolicyCmd (baseCmd):
+
+
+class createLBHealthCheckPolicyCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the load balancer rule"""
@@ -30,10 +33,12 @@ class createLBHealthCheckPolicyCmd (baseCmd):
         """Number of consecutive health check failures before declaring an instance unhealthy"""
         self.unhealthythreshold = None
         self.typeInfo['unhealthythreshold'] = 'integer'
-        self.required = ["lbruleid",]
+        self.required = ["lbruleid", ]
 
-class createLBHealthCheckPolicyResponse (baseResponse):
+
+class createLBHealthCheckPolicyResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the account of the HealthCheck policy"""
         self.account = None
@@ -52,6 +57,7 @@ class createLBHealthCheckPolicyResponse (baseResponse):
         self.typeInfo['zoneid'] = 'string'
         """the list of healthcheckpolicies"""
         self.healthcheckpolicy = []
+
 
 class healthcheckpolicy:
     def __init__(self):
@@ -73,4 +79,3 @@ class healthcheckpolicy:
         self.state = None
         """"Number of consecutive health check failures before declaring an instance unhealthy."""
         self.unhealthcheckthresshold = None
-

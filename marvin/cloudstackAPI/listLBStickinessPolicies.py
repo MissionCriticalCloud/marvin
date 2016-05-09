@@ -1,8 +1,11 @@
 """Lists load balancer stickiness policies."""
 from baseCmd import *
 from baseResponse import *
-class listLBStickinessPoliciesCmd (baseCmd):
+
+
+class listLBStickinessPoliciesCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by display flag; only ROOT admin is eligible to pass this parameter"""
@@ -25,8 +28,10 @@ class listLBStickinessPoliciesCmd (baseCmd):
         self.typeInfo['pagesize'] = 'integer'
         self.required = []
 
-class listLBStickinessPoliciesResponse (baseResponse):
+
+class listLBStickinessPoliciesResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the account of the Stickiness policy"""
         self.account = None
@@ -55,6 +60,7 @@ class listLBStickinessPoliciesResponse (baseResponse):
         """the list of stickinesspolicies"""
         self.stickinesspolicy = []
 
+
 class stickinesspolicy:
     def __init__(self):
         """"the LB Stickiness policy ID"""
@@ -71,4 +77,3 @@ class stickinesspolicy:
         self.params = None
         """"the state of the policy"""
         self.state = None
-

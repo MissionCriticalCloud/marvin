@@ -1,8 +1,11 @@
 """Lists load balancers"""
 from baseCmd import *
 from baseResponse import *
-class listLoadBalancersCmd (baseCmd):
+
+
+class listLoadBalancersCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -55,8 +58,10 @@ class listLoadBalancersCmd (baseCmd):
         self.typeInfo['tags'] = 'map'
         self.required = []
 
-class listLoadBalancersResponse (baseResponse):
+
+class listLoadBalancersResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the Load Balancer ID"""
         self.id = None
@@ -104,6 +109,7 @@ class listLoadBalancersResponse (baseResponse):
         """the list of resource tags associated with the Load Balancer"""
         self.tags = []
 
+
 class loadbalancerinstance:
     def __init__(self):
         """"the instance ID"""
@@ -115,6 +121,7 @@ class loadbalancerinstance:
         """"the state of the instance"""
         self.state = None
 
+
 class loadbalancerrule:
     def __init__(self):
         """"instance port of the load balancer rule"""
@@ -123,6 +130,7 @@ class loadbalancerrule:
         self.sourceport = None
         """"the state of the load balancer rule"""
         self.state = None
+
 
 class tags:
     def __init__(self):
@@ -146,4 +154,3 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

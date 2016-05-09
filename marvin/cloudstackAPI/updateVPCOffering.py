@@ -1,8 +1,11 @@
 """Updates VPC offering"""
 from baseCmd import *
 from baseResponse import *
-class updateVPCOfferingCmd (baseCmd):
+
+
+class updateVPCOfferingCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the id of the VPC offering"""
@@ -18,10 +21,12 @@ class updateVPCOfferingCmd (baseCmd):
         """update state for the VPC offering; supported states - Enabled/Disabled"""
         self.state = None
         self.typeInfo['state'] = 'string'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class updateVPCOfferingResponse (baseResponse):
+
+class updateVPCOfferingResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the vpc offering"""
         self.id = None
@@ -50,6 +55,7 @@ class updateVPCOfferingResponse (baseResponse):
         """the list of supported services"""
         self.service = []
 
+
 class capability:
     def __init__(self):
         """"can this service capability value can be choosable while creatine network offerings"""
@@ -58,6 +64,7 @@ class capability:
         self.name = None
         """"the capability value"""
         self.value = None
+
 
 class provider:
     def __init__(self):
@@ -75,6 +82,7 @@ class provider:
         self.servicelist = None
         """"state of the network provider"""
         self.state = None
+
 
 class service:
     def __init__(self):
@@ -104,4 +112,3 @@ class service:
         self.servicelist = None
         """"state of the network provider"""
         self.state = None
-

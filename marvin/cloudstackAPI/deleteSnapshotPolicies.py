@@ -1,8 +1,11 @@
 """Deletes snapshot policies for the account."""
 from baseCmd import *
 from baseResponse import *
-class deleteSnapshotPoliciesCmd (baseCmd):
+
+
+class deleteSnapshotPoliciesCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the Id of the snapshot policy"""
@@ -13,8 +16,10 @@ class deleteSnapshotPoliciesCmd (baseCmd):
         self.typeInfo['ids'] = 'list'
         self.required = []
 
-class deleteSnapshotPoliciesResponse (baseResponse):
+
+class deleteSnapshotPoliciesResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """any text associated with the success or failure"""
         self.displaytext = None
@@ -22,4 +27,3 @@ class deleteSnapshotPoliciesResponse (baseResponse):
         """true if operation is executed successfully"""
         self.success = None
         self.typeInfo['success'] = 'boolean'
-

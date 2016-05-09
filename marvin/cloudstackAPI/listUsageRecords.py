@@ -1,8 +1,11 @@
 """Lists usage records for accounts"""
 from baseCmd import *
 from baseResponse import *
-class listUsageRecordsCmd (baseCmd):
+
+
+class listUsageRecordsCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """End date range for usage record query (use format "yyyy-MM-dd" or the new format "yyyy-MM-dd HH:mm:ss", e.g. startDate=2015-01-01 or startdate=2015-01-01 10:30:00)."""
@@ -40,10 +43,12 @@ class listUsageRecordsCmd (baseCmd):
         """List usage records for the specified usage UUID. Can be used only together with TYPE parameter."""
         self.usageid = None
         self.typeInfo['usageid'] = 'string'
-        self.required = ["enddate","startdate",]
+        self.required = ["enddate", "startdate", ]
 
-class listUsageRecordsResponse (baseResponse):
+
+class listUsageRecordsResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the user account name"""
         self.account = None
@@ -129,4 +134,3 @@ class listUsageRecordsResponse (baseResponse):
         """the zone ID"""
         self.zoneid = None
         self.typeInfo['zoneid'] = 'string'
-

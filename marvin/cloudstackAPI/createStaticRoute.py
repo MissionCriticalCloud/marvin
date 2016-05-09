@@ -1,8 +1,11 @@
 """Creates a static route"""
 from baseCmd import *
 from baseResponse import *
-class createStaticRouteCmd (baseCmd):
+
+
+class createStaticRouteCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """static route cidr"""
@@ -13,10 +16,12 @@ class createStaticRouteCmd (baseCmd):
         """Required"""
         self.gatewayid = None
         self.typeInfo['gatewayid'] = 'uuid'
-        self.required = ["cidr","gatewayid",]
+        self.required = ["cidr", "gatewayid", ]
 
-class createStaticRouteResponse (baseResponse):
+
+class createStaticRouteResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of static route"""
         self.id = None
@@ -51,6 +56,7 @@ class createStaticRouteResponse (baseResponse):
         """the list of resource tags associated with static route"""
         self.tags = []
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -73,4 +79,3 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

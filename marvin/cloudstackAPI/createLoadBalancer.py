@@ -1,8 +1,11 @@
 """Creates a load balancer"""
 from baseCmd import *
 from baseResponse import *
-class createLoadBalancerCmd (baseCmd):
+
+
+class createLoadBalancerCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """load balancer algorithm (source, roundrobin, leastconn)"""
@@ -42,10 +45,13 @@ class createLoadBalancerCmd (baseCmd):
         """the source IP address the network traffic will be load balanced from"""
         self.sourceipaddress = None
         self.typeInfo['sourceipaddress'] = 'string'
-        self.required = ["algorithm","instanceport","name","networkid","scheme","sourceipaddressnetworkid","sourceport",]
+        self.required = ["algorithm", "instanceport", "name", "networkid", "scheme", "sourceipaddressnetworkid",
+                         "sourceport", ]
 
-class createLoadBalancerResponse (baseResponse):
+
+class createLoadBalancerResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the Load Balancer ID"""
         self.id = None
@@ -93,6 +99,7 @@ class createLoadBalancerResponse (baseResponse):
         """the list of resource tags associated with the Load Balancer"""
         self.tags = []
 
+
 class loadbalancerinstance:
     def __init__(self):
         """"the instance ID"""
@@ -104,6 +111,7 @@ class loadbalancerinstance:
         """"the state of the instance"""
         self.state = None
 
+
 class loadbalancerrule:
     def __init__(self):
         """"instance port of the load balancer rule"""
@@ -112,6 +120,7 @@ class loadbalancerrule:
         self.sourceport = None
         """"the state of the load balancer rule"""
         self.state = None
+
 
 class tags:
     def __init__(self):
@@ -135,4 +144,3 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

@@ -1,8 +1,11 @@
 """Lists project invitations and provides detailed information for listed invitations"""
 from baseCmd import *
 from baseResponse import *
-class listProjectInvitationsCmd (baseCmd):
+
+
+class listProjectInvitationsCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -40,8 +43,10 @@ class listProjectInvitationsCmd (baseCmd):
         self.typeInfo['state'] = 'string'
         self.required = []
 
-class listProjectInvitationsResponse (baseResponse):
+
+class listProjectInvitationsResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the invitation"""
         self.id = None
@@ -67,4 +72,3 @@ class listProjectInvitationsResponse (baseResponse):
         """the invitation state"""
         self.state = None
         self.typeInfo['state'] = 'string'
-

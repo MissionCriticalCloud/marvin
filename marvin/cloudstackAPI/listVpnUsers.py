@@ -1,8 +1,11 @@
 """Lists vpn users"""
 from baseCmd import *
 from baseResponse import *
-class listVpnUsersCmd (baseCmd):
+
+
+class listVpnUsersCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -37,8 +40,10 @@ class listVpnUsersCmd (baseCmd):
         self.typeInfo['username'] = 'string'
         self.required = []
 
-class listVpnUsersResponse (baseResponse):
+
+class listVpnUsersResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the vpn userID"""
         self.id = None
@@ -64,4 +69,3 @@ class listVpnUsersResponse (baseResponse):
         """the username of the vpn user"""
         self.username = None
         self.typeInfo['username'] = 'string'
-

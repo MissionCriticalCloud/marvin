@@ -1,8 +1,11 @@
 """List traffic monitor Hosts."""
 from baseCmd import *
 from baseResponse import *
-class listTrafficMonitorsCmd (baseCmd):
+
+
+class listTrafficMonitorsCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """zone Id"""
@@ -18,10 +21,12 @@ class listTrafficMonitorsCmd (baseCmd):
         """"""
         self.pagesize = None
         self.typeInfo['pagesize'] = 'integer'
-        self.required = ["zoneid",]
+        self.required = ["zoneid", ]
 
-class listTrafficMonitorsResponse (baseResponse):
+
+class listTrafficMonitorsResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the external firewall"""
         self.id = None
@@ -38,4 +43,3 @@ class listTrafficMonitorsResponse (baseResponse):
         """the zone ID of the external firewall"""
         self.zoneid = None
         self.typeInfo['zoneid'] = 'string'
-

@@ -1,8 +1,11 @@
 """Creates a load balancer rule"""
 from baseCmd import *
 from baseResponse import *
-class createLoadBalancerRuleCmd (baseCmd):
+
+
+class createLoadBalancerRuleCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """load balancer algorithm (source, roundrobin, leastconn)"""
@@ -51,10 +54,12 @@ class createLoadBalancerRuleCmd (baseCmd):
         """zone where the load balancer is going to be created. This parameter is required when LB service provider is ElasticLoadBalancerVm"""
         self.zoneid = None
         self.typeInfo['zoneid'] = 'uuid'
-        self.required = ["algorithm","name","privateport","publicport",]
+        self.required = ["algorithm", "name", "privateport", "publicport", ]
 
-class createLoadBalancerRuleResponse (baseResponse):
+
+class createLoadBalancerRuleResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the load balancer rule ID"""
         self.id = None
@@ -116,6 +121,7 @@ class createLoadBalancerRuleResponse (baseResponse):
         """the list of resource tags associated with load balancer"""
         self.tags = []
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -138,4 +144,3 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

@@ -1,8 +1,11 @@
 """Updates a region"""
 from baseCmd import *
 from baseResponse import *
-class updateRegionCmd (baseCmd):
+
+
+class updateRegionCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """Id of region to update"""
@@ -15,10 +18,12 @@ class updateRegionCmd (baseCmd):
         """updates region with this name"""
         self.name = None
         self.typeInfo['name'] = 'string'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class updateRegionResponse (baseResponse):
+
+class updateRegionResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the region"""
         self.id = None
@@ -35,4 +40,3 @@ class updateRegionResponse (baseResponse):
         """true if security groups support is enabled, false otherwise"""
         self.portableipserviceenabled = None
         self.typeInfo['portableipserviceenabled'] = 'boolean'
-

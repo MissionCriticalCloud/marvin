@@ -1,8 +1,11 @@
 """Creates a storage pool."""
 from baseCmd import *
 from baseResponse import *
-class createStoragePoolCmd (baseCmd):
+
+
+class createStoragePoolCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the name for the storage pool"""
@@ -47,10 +50,12 @@ class createStoragePoolCmd (baseCmd):
         """the tags for the storage pool"""
         self.tags = None
         self.typeInfo['tags'] = 'string'
-        self.required = ["name","url","zoneid",]
+        self.required = ["name", "url", "zoneid", ]
 
-class createStoragePoolResponse (baseResponse):
+
+class createStoragePoolResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the storage pool"""
         self.id = None
@@ -127,4 +132,3 @@ class createStoragePoolResponse (baseResponse):
         """the current status of the latest async job acting on this object"""
         self.jobstatus = None
         self.typeInfo['jobstatus'] = ''
-

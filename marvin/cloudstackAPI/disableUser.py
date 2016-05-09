@@ -1,18 +1,23 @@
 """Disables a user account"""
 from baseCmd import *
 from baseResponse import *
-class disableUserCmd (baseCmd):
+
+
+class disableUserCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """Disables user by user ID."""
         """Required"""
         self.id = None
         self.typeInfo['id'] = 'uuid'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class disableUserResponse (baseResponse):
+
+class disableUserResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the user ID"""
         self.id = None
@@ -65,4 +70,3 @@ class disableUserResponse (baseResponse):
         """the user name"""
         self.username = None
         self.typeInfo['username'] = 'string'
-

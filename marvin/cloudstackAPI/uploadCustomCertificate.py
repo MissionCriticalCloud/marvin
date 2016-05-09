@@ -1,8 +1,11 @@
 """Uploads a custom certificate for the console proxy VMs to use for SSL. Can be used to upload a single certificate signed by a known CA. Can also be used, through multiple calls, to upload a chain of certificates from CA to the custom certificate itself."""
 from baseCmd import *
 from baseResponse import *
-class uploadCustomCertificateCmd (baseCmd):
+
+
+class uploadCustomCertificateCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """The certificate to be uploaded."""
@@ -22,12 +25,13 @@ class uploadCustomCertificateCmd (baseCmd):
         """The private key for the attached certificate."""
         self.privatekey = None
         self.typeInfo['privatekey'] = 'string'
-        self.required = ["certificate","domainsuffix",]
+        self.required = ["certificate", "domainsuffix", ]
 
-class uploadCustomCertificateResponse (baseResponse):
+
+class uploadCustomCertificateResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """message of the certificate upload operation"""
         self.message = None
         self.typeInfo['message'] = 'string'
-

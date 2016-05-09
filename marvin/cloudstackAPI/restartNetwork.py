@@ -1,8 +1,11 @@
 """Restarts the network; includes 1) restarting network elements - virtual routers, DHCP servers 2) reapplying all public IPs 3) reapplying loadBalancing/portForwarding rules"""
 from baseCmd import *
 from baseResponse import *
-class restartNetworkCmd (baseCmd):
+
+
+class restartNetworkCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """The ID of the network to restart."""
@@ -12,10 +15,12 @@ class restartNetworkCmd (baseCmd):
         """If cleanup old network elements"""
         self.cleanup = None
         self.typeInfo['cleanup'] = 'boolean'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class restartNetworkResponse (baseResponse):
+
+class restartNetworkResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """public IP address id"""
         self.id = None
@@ -113,6 +118,7 @@ class restartNetworkResponse (baseResponse):
         self.jobstatus = None
         self.typeInfo['jobstatus'] = ''
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -135,4 +141,3 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

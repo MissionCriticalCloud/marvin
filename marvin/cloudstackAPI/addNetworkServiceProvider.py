@@ -1,8 +1,11 @@
 """Adds a network serviceProvider to a physical network"""
 from baseCmd import *
 from baseResponse import *
-class addNetworkServiceProviderCmd (baseCmd):
+
+
+class addNetworkServiceProviderCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the name for the physical network service provider"""
@@ -19,10 +22,12 @@ class addNetworkServiceProviderCmd (baseCmd):
         """the list of services to be enabled for this physical network service provider"""
         self.servicelist = []
         self.typeInfo['servicelist'] = 'list'
-        self.required = ["name","physicalnetworkid",]
+        self.required = ["name", "physicalnetworkid", ]
 
-class addNetworkServiceProviderResponse (baseResponse):
+
+class addNetworkServiceProviderResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """uuid of the network provider"""
         self.id = None
@@ -45,4 +50,3 @@ class addNetworkServiceProviderResponse (baseResponse):
         """state of the network provider"""
         self.state = None
         self.typeInfo['state'] = 'string'
-

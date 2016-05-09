@@ -1,8 +1,11 @@
 """Updates the volume."""
 from baseCmd import *
 from baseResponse import *
-class updateVolumeCmd (baseCmd):
+
+
+class updateVolumeCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """The chain info of the volume"""
@@ -28,8 +31,10 @@ class updateVolumeCmd (baseCmd):
         self.typeInfo['storageid'] = 'uuid'
         self.required = []
 
-class updateVolumeResponse (baseResponse):
+
+class updateVolumeResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """ID of the disk volume"""
         self.id = None
@@ -190,6 +195,7 @@ class updateVolumeResponse (baseResponse):
         self.jobstatus = None
         self.typeInfo['jobstatus'] = ''
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -212,4 +218,3 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

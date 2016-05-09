@@ -1,8 +1,11 @@
 """Restore a VM to original template/ISO or new template/ISO"""
 from baseCmd import *
 from baseResponse import *
-class restoreVirtualMachineCmd (baseCmd):
+
+
+class restoreVirtualMachineCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """Virtual Machine ID"""
@@ -12,10 +15,12 @@ class restoreVirtualMachineCmd (baseCmd):
         """an optional template Id to restore vm from the new template. This can be an ISO id in case of restore vm deployed using ISO"""
         self.templateid = None
         self.typeInfo['templateid'] = 'uuid'
-        self.required = ["virtualmachineid",]
+        self.required = ["virtualmachineid", ]
 
-class restoreVirtualMachineResponse (baseResponse):
+
+class restoreVirtualMachineResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the virtual machine"""
         self.id = None
@@ -200,6 +205,7 @@ class restoreVirtualMachineResponse (baseResponse):
         self.jobstatus = None
         self.typeInfo['jobstatus'] = ''
 
+
 class affinitygroup:
     def __init__(self):
         """"the ID of the affinity group"""
@@ -222,6 +228,7 @@ class affinitygroup:
         self.type = None
         """"virtual machine IDs associated with this affinity group"""
         self.virtualmachineIds = None
+
 
 class nic:
     def __init__(self):
@@ -262,6 +269,7 @@ class nic:
         """"Id of the vm to which the nic belongs"""
         self.virtualmachineid = None
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -284,6 +292,7 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
+
 
 class egressrule:
     def __init__(self):
@@ -328,28 +337,6 @@ class egressrule:
         """"tag value"""
         self.value = None
 
-class tags:
-    def __init__(self):
-        """"the account associated with the tag"""
-        self.account = None
-        """"customer associated with the tag"""
-        self.customer = None
-        """"the domain associated with the tag"""
-        self.domain = None
-        """"the ID of the domain associated with the tag"""
-        self.domainid = None
-        """"tag key name"""
-        self.key = None
-        """"the project name where tag belongs to"""
-        self.project = None
-        """"the project id the tag belongs to"""
-        self.projectid = None
-        """"id of the resource"""
-        self.resourceid = None
-        """"resource type"""
-        self.resourcetype = None
-        """"tag value"""
-        self.value = None
 
 class tags:
     def __init__(self):
@@ -373,6 +360,31 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
+
+
+class tags:
+    def __init__(self):
+        """"the account associated with the tag"""
+        self.account = None
+        """"customer associated with the tag"""
+        self.customer = None
+        """"the domain associated with the tag"""
+        self.domain = None
+        """"the ID of the domain associated with the tag"""
+        self.domainid = None
+        """"tag key name"""
+        self.key = None
+        """"the project name where tag belongs to"""
+        self.project = None
+        """"the project id the tag belongs to"""
+        self.projectid = None
+        """"id of the resource"""
+        self.resourceid = None
+        """"resource type"""
+        self.resourcetype = None
+        """"tag value"""
+        self.value = None
+
 
 class ingressrule:
     def __init__(self):
@@ -417,28 +429,6 @@ class ingressrule:
         """"tag value"""
         self.value = None
 
-class tags:
-    def __init__(self):
-        """"the account associated with the tag"""
-        self.account = None
-        """"customer associated with the tag"""
-        self.customer = None
-        """"the domain associated with the tag"""
-        self.domain = None
-        """"the ID of the domain associated with the tag"""
-        self.domainid = None
-        """"tag key name"""
-        self.key = None
-        """"the project name where tag belongs to"""
-        self.project = None
-        """"the project id the tag belongs to"""
-        self.projectid = None
-        """"id of the resource"""
-        self.resourceid = None
-        """"resource type"""
-        self.resourcetype = None
-        """"tag value"""
-        self.value = None
 
 class tags:
     def __init__(self):
@@ -462,6 +452,31 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
+
+
+class tags:
+    def __init__(self):
+        """"the account associated with the tag"""
+        self.account = None
+        """"customer associated with the tag"""
+        self.customer = None
+        """"the domain associated with the tag"""
+        self.domain = None
+        """"the ID of the domain associated with the tag"""
+        self.domainid = None
+        """"tag key name"""
+        self.key = None
+        """"the project name where tag belongs to"""
+        self.project = None
+        """"the project id the tag belongs to"""
+        self.projectid = None
+        """"id of the resource"""
+        self.resourceid = None
+        """"resource type"""
+        self.resourcetype = None
+        """"tag value"""
+        self.value = None
+
 
 class securitygroup:
     def __init__(self):
@@ -596,6 +611,7 @@ class securitygroup:
         """"the current status of the latest async job acting on this object"""
         self.jobstatus = None
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -618,4 +634,3 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

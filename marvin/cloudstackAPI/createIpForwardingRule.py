@@ -1,8 +1,11 @@
 """Creates an IP forwarding rule"""
 from baseCmd import *
 from baseResponse import *
-class createIpForwardingRuleCmd (baseCmd):
+
+
+class createIpForwardingRuleCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the public IP address ID of the forwarding rule, already associated via associateIp"""
@@ -26,10 +29,12 @@ class createIpForwardingRuleCmd (baseCmd):
         """if true, firewall rule for source/end public port is automatically created; if false - firewall rule has to be created explicitly. Has value true by default"""
         self.openfirewall = None
         self.typeInfo['openfirewall'] = 'boolean'
-        self.required = ["ipaddressid","protocol","startport",]
+        self.required = ["ipaddressid", "protocol", "startport", ]
 
-class createIpForwardingRuleResponse (baseResponse):
+
+class createIpForwardingRuleResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the port forwarding rule"""
         self.id = None
@@ -82,6 +87,7 @@ class createIpForwardingRuleResponse (baseResponse):
         """the list of resource tags associated with the rule"""
         self.tags = []
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -104,4 +110,3 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

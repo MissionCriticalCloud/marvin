@@ -1,18 +1,23 @@
 """Find user account by API key"""
 from baseCmd import *
 from baseResponse import *
-class getUserCmd (baseCmd):
+
+
+class getUserCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """API key of the user"""
         """Required"""
         self.userapikey = None
         self.typeInfo['userapikey'] = 'string'
-        self.required = ["userapikey",]
+        self.required = ["userapikey", ]
 
-class getUserResponse (baseResponse):
+
+class getUserResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the user ID"""
         self.id = None
@@ -65,4 +70,3 @@ class getUserResponse (baseResponse):
         """the user name"""
         self.username = None
         self.typeInfo['username'] = 'string'
-

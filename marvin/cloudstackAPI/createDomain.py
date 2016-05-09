@@ -1,8 +1,11 @@
 """Creates a domain"""
 from baseCmd import *
 from baseResponse import *
-class createDomainCmd (baseCmd):
+
+
+class createDomainCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """creates domain with this name"""
@@ -18,10 +21,12 @@ class createDomainCmd (baseCmd):
         """assigns new domain a parent domain by domain ID of the parent.  If no parent domain is specied, the ROOT domain is assumed."""
         self.parentdomainid = None
         self.typeInfo['parentdomainid'] = 'uuid'
-        self.required = ["name",]
+        self.required = ["name", ]
 
-class createDomainResponse (baseResponse):
+
+class createDomainResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the domain"""
         self.id = None
@@ -158,4 +163,3 @@ class createDomainResponse (baseResponse):
         """the total number of vpcs owned by domain"""
         self.vpctotal = None
         self.typeInfo['vpctotal'] = 'long'
-

@@ -1,20 +1,20 @@
-from pyVmomi import vim, vmodl
-from pyVim import connect
 import atexit
 import ssl
+from pyVim import connect
+from pyVmomi import vim
+
 if hasattr(ssl, '_create_unverified_context'):
     ssl._create_default_https_context = ssl._create_unverified_context
 
 
 class Vcenter():
-
     def __init__(self, host, user, pwd):
         """
         create a service_instance object
         """
         self.service_instance = connect.SmartConnect(host=host,
-                                                    user=user,
-                                                    pwd=pwd)
+                                                     user=user,
+                                                     pwd=pwd)
         atexit.register(connect.Disconnect, self.service_instance)
 
     @staticmethod
@@ -55,7 +55,6 @@ class Vcenter():
             i += 1
         parsed_dc_details['raw'] = obj
         return parsed_dc_details
-
 
     @staticmethod
     def _parse_dvportgroup(obj):
@@ -140,7 +139,6 @@ class Vcenter():
         data_centers = self._get_obj([vim.Datacenter], name)
         return data_centers
 
-
     def get_dvportgroups(self, name=None):
         """
         :param name:
@@ -148,7 +146,6 @@ class Vcenter():
         """
         dv_portgroups = self._get_obj([vim.dvs.DistributedVirtualPortgroup], name)
         return dv_portgroups
-
 
     def get_vms(self, name=None):
         """
@@ -169,7 +166,6 @@ class Vcenter():
 
 if __name__ == '__main__':
     vc_object = Vcenter("10.x.x.x", "username", "password")
-
 
     print '###get one dc########'
     print(vc_object.get_datacenters(name='testDC'))

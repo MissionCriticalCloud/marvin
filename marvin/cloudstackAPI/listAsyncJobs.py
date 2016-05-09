@@ -1,8 +1,11 @@
 """Lists all pending asynchronous jobs for the account."""
 from baseCmd import *
 from baseResponse import *
-class listAsyncJobsCmd (baseCmd):
+
+
+class listAsyncJobsCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -31,8 +34,10 @@ class listAsyncJobsCmd (baseCmd):
         self.typeInfo['startdate'] = 'tzdate'
         self.required = []
 
-class listAsyncJobsResponse (baseResponse):
+
+class listAsyncJobsResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the account that executed the async command"""
         self.accountid = None
@@ -70,4 +75,3 @@ class listAsyncJobsResponse (baseResponse):
         """the ID of the async job"""
         self.jobid = None
         self.typeInfo['jobid'] = ''
-

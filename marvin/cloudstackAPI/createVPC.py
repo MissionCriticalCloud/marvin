@@ -1,8 +1,11 @@
 """Creates a VPC"""
 from baseCmd import *
 from baseResponse import *
-class createVPCCmd (baseCmd):
+
+
+class createVPCCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the cidr of the VPC. All VPC guest networks' cidrs should be within this CIDR"""
@@ -43,10 +46,12 @@ class createVPCCmd (baseCmd):
         """If set to false, the VPC won't start (VPC VR will not get allocated) until its first network gets implemented. True by default."""
         self.start = None
         self.typeInfo['start'] = 'boolean'
-        self.required = ["cidr","displaytext","name","vpcofferingid","zoneid",]
+        self.required = ["cidr", "displaytext", "name", "vpcofferingid", "zoneid", ]
 
-class createVPCResponse (baseResponse):
+
+class createVPCResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the VPC"""
         self.id = None
@@ -115,6 +120,7 @@ class createVPCResponse (baseResponse):
         """the list of resource tags associated with the project"""
         self.tags = []
 
+
 class capability:
     def __init__(self):
         """"can this service capability value can be choosable while creatine network offerings"""
@@ -123,6 +129,7 @@ class capability:
         self.name = None
         """"the capability value"""
         self.value = None
+
 
 class provider:
     def __init__(self):
@@ -140,6 +147,7 @@ class provider:
         self.servicelist = None
         """"state of the network provider"""
         self.state = None
+
 
 class service:
     def __init__(self):
@@ -170,6 +178,7 @@ class service:
         """"state of the network provider"""
         self.state = None
 
+
 class capability:
     def __init__(self):
         """"can this service capability value can be choosable while creatine network offerings"""
@@ -178,6 +187,7 @@ class capability:
         self.name = None
         """"the capability value"""
         self.value = None
+
 
 class provider:
     def __init__(self):
@@ -195,6 +205,7 @@ class provider:
         self.servicelist = None
         """"state of the network provider"""
         self.state = None
+
 
 class tags:
     def __init__(self):
@@ -218,6 +229,7 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
+
 
 class network:
     def __init__(self):
@@ -364,6 +376,7 @@ class network:
         """"tag value"""
         self.value = None
 
+
 class capability:
     def __init__(self):
         """"can this service capability value can be choosable while creatine network offerings"""
@@ -372,6 +385,7 @@ class capability:
         self.name = None
         """"the capability value"""
         self.value = None
+
 
 class provider:
     def __init__(self):
@@ -389,6 +403,7 @@ class provider:
         self.servicelist = None
         """"state of the network provider"""
         self.state = None
+
 
 class service:
     def __init__(self):
@@ -419,6 +434,7 @@ class service:
         """"state of the network provider"""
         self.state = None
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -441,4 +457,3 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

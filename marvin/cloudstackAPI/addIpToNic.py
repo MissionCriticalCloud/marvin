@@ -1,8 +1,11 @@
 """Assigns secondary IP to NIC"""
 from baseCmd import *
 from baseResponse import *
-class addIpToNicCmd (baseCmd):
+
+
+class addIpToNicCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the nic to which you want to assign private IP"""
@@ -12,10 +15,12 @@ class addIpToNicCmd (baseCmd):
         """Secondary IP Address"""
         self.ipaddress = None
         self.typeInfo['ipaddress'] = 'string'
-        self.required = ["nicid",]
+        self.required = ["nicid", ]
 
-class addIpToNicResponse (baseResponse):
+
+class addIpToNicResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the secondary private IP addr"""
         self.id = None
@@ -32,4 +37,3 @@ class addIpToNicResponse (baseResponse):
         """the ID of the vm"""
         self.virtualmachineid = None
         self.typeInfo['virtualmachineid'] = 'string'
-

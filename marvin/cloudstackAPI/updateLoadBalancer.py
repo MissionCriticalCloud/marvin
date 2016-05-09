@@ -1,8 +1,11 @@
 """Updates a load balancer"""
 from baseCmd import *
 from baseResponse import *
-class updateLoadBalancerCmd (baseCmd):
+
+
+class updateLoadBalancerCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the load balancer"""
@@ -15,10 +18,12 @@ class updateLoadBalancerCmd (baseCmd):
         """an optional field, whether to the display the rule to the end user or not"""
         self.fordisplay = None
         self.typeInfo['fordisplay'] = 'boolean'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class updateLoadBalancerResponse (baseResponse):
+
+class updateLoadBalancerResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the Load Balancer ID"""
         self.id = None
@@ -66,6 +71,7 @@ class updateLoadBalancerResponse (baseResponse):
         """the list of resource tags associated with the Load Balancer"""
         self.tags = []
 
+
 class loadbalancerinstance:
     def __init__(self):
         """"the instance ID"""
@@ -77,6 +83,7 @@ class loadbalancerinstance:
         """"the state of the instance"""
         self.state = None
 
+
 class loadbalancerrule:
     def __init__(self):
         """"instance port of the load balancer rule"""
@@ -85,6 +92,7 @@ class loadbalancerrule:
         self.sourceport = None
         """"the state of the load balancer rule"""
         self.state = None
+
 
 class tags:
     def __init__(self):
@@ -108,4 +116,3 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

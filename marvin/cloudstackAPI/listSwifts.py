@@ -1,8 +1,11 @@
 """List Swift."""
 from baseCmd import *
 from baseResponse import *
-class listSwiftsCmd (baseCmd):
+
+
+class listSwiftsCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the id of the swift"""
@@ -19,8 +22,10 @@ class listSwiftsCmd (baseCmd):
         self.typeInfo['pagesize'] = 'integer'
         self.required = []
 
-class listSwiftsResponse (baseResponse):
+
+class listSwiftsResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the image store"""
         self.id = None
@@ -49,4 +54,3 @@ class listSwiftsResponse (baseResponse):
         """the Zone name of the image store"""
         self.zonename = None
         self.typeInfo['zonename'] = 'string'
-

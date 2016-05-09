@@ -1,8 +1,11 @@
 """Updates a disk offering."""
 from baseCmd import *
 from baseResponse import *
-class updateDiskOfferingCmd (baseCmd):
+
+
+class updateDiskOfferingCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """ID of the disk offering"""
@@ -21,10 +24,12 @@ class updateDiskOfferingCmd (baseCmd):
         """sort key of the disk offering, integer"""
         self.sortkey = None
         self.typeInfo['sortkey'] = 'integer'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class updateDiskOfferingResponse (baseResponse):
+
+class updateDiskOfferingResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """unique ID of the disk offering"""
         self.id = None
@@ -89,4 +94,3 @@ class updateDiskOfferingResponse (baseResponse):
         """the tags for the disk offering"""
         self.tags = None
         self.typeInfo['tags'] = 'string'
-

@@ -1,8 +1,11 @@
 """Lists affinity groups"""
 from baseCmd import *
 from baseResponse import *
-class listAffinityGroupsCmd (baseCmd):
+
+
+class listAffinityGroupsCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -43,8 +46,10 @@ class listAffinityGroupsCmd (baseCmd):
         self.typeInfo['virtualmachineid'] = 'uuid'
         self.required = []
 
-class listAffinityGroupsResponse (baseResponse):
+
+class listAffinityGroupsResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the affinity group"""
         self.id = None
@@ -76,4 +81,3 @@ class listAffinityGroupsResponse (baseResponse):
         """virtual machine IDs associated with this affinity group"""
         self.virtualmachineIds = None
         self.typeInfo['virtualmachineIds'] = 'list'
-

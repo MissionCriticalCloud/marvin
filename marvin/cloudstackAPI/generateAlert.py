@@ -1,8 +1,11 @@
 """Generates an alert"""
 from baseCmd import *
 from baseResponse import *
-class generateAlertCmd (baseCmd):
+
+
+class generateAlertCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """Alert description"""
@@ -23,10 +26,12 @@ class generateAlertCmd (baseCmd):
         """Zone id for which alert is generated"""
         self.zoneid = None
         self.typeInfo['zoneid'] = 'uuid'
-        self.required = ["description","name","type",]
+        self.required = ["description", "name", "type", ]
 
-class generateAlertResponse (baseResponse):
+
+class generateAlertResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """any text associated with the success or failure"""
         self.displaytext = None
@@ -34,4 +39,3 @@ class generateAlertResponse (baseResponse):
         """true if operation is executed successfully"""
         self.success = None
         self.typeInfo['success'] = 'boolean'
-

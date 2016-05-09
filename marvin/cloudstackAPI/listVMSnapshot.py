@@ -1,8 +1,11 @@
 """List virtual machine snapshot by conditions"""
 from baseCmd import *
 from baseResponse import *
-class listVMSnapshotCmd (baseCmd):
+
+
+class listVMSnapshotCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -46,8 +49,10 @@ class listVMSnapshotCmd (baseCmd):
         self.typeInfo['vmsnapshotid'] = 'uuid'
         self.required = []
 
-class listVMSnapshotResponse (baseResponse):
+
+class listVMSnapshotResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the vm snapshot"""
         self.id = None
@@ -100,4 +105,3 @@ class listVMSnapshotResponse (baseResponse):
         """the Zone ID of the vm snapshot"""
         self.zoneid = None
         self.typeInfo['zoneid'] = 'string'
-

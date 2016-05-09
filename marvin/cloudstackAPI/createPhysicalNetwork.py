@@ -1,8 +1,11 @@
 """Creates a physical network"""
 from baseCmd import *
 from baseResponse import *
-class createPhysicalNetworkCmd (baseCmd):
+
+
+class createPhysicalNetworkCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the name of the physical network"""
@@ -31,10 +34,12 @@ class createPhysicalNetworkCmd (baseCmd):
         """the VLAN for the physical network"""
         self.vlan = None
         self.typeInfo['vlan'] = 'string'
-        self.required = ["name","zoneid",]
+        self.required = ["name", "zoneid", ]
 
-class createPhysicalNetworkResponse (baseResponse):
+
+class createPhysicalNetworkResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the uuid of the physical network"""
         self.id = None
@@ -66,4 +71,3 @@ class createPhysicalNetworkResponse (baseResponse):
         """zone id of the physical network"""
         self.zoneid = None
         self.typeInfo['zoneid'] = 'string'
-

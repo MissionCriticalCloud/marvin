@@ -1,8 +1,11 @@
 """Updates remote access vpn"""
 from baseCmd import *
 from baseResponse import *
-class updateRemoteAccessVpnCmd (baseCmd):
+
+
+class updateRemoteAccessVpnCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """id of the remote access vpn"""
@@ -15,10 +18,12 @@ class updateRemoteAccessVpnCmd (baseCmd):
         """an optional field, whether to the display the vpn to the end user or not"""
         self.fordisplay = None
         self.typeInfo['fordisplay'] = 'boolean'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class updateRemoteAccessVpnResponse (baseResponse):
+
+class updateRemoteAccessVpnResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the remote access vpn"""
         self.id = None
@@ -56,4 +61,3 @@ class updateRemoteAccessVpnResponse (baseResponse):
         """the state of the rule"""
         self.state = None
         self.typeInfo['state'] = 'string'
-

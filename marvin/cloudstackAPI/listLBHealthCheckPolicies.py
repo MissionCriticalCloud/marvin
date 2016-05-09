@@ -1,8 +1,11 @@
 """Lists load balancer health check policies."""
 from baseCmd import *
 from baseResponse import *
-class listLBHealthCheckPoliciesCmd (baseCmd):
+
+
+class listLBHealthCheckPoliciesCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by display flag; only ROOT admin is eligible to pass this parameter"""
@@ -25,8 +28,10 @@ class listLBHealthCheckPoliciesCmd (baseCmd):
         self.typeInfo['pagesize'] = 'integer'
         self.required = []
 
-class listLBHealthCheckPoliciesResponse (baseResponse):
+
+class listLBHealthCheckPoliciesResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the account of the HealthCheck policy"""
         self.account = None
@@ -45,6 +50,7 @@ class listLBHealthCheckPoliciesResponse (baseResponse):
         self.typeInfo['zoneid'] = 'string'
         """the list of healthcheckpolicies"""
         self.healthcheckpolicy = []
+
 
 class healthcheckpolicy:
     def __init__(self):
@@ -66,4 +72,3 @@ class healthcheckpolicy:
         self.state = None
         """"Number of consecutive health check failures before declaring an instance unhealthy."""
         self.unhealthcheckthresshold = None
-

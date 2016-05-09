@@ -1,8 +1,11 @@
 """Migrate volume"""
 from baseCmd import *
 from baseResponse import *
-class migrateVolumeCmd (baseCmd):
+
+
+class migrateVolumeCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """destination storage pool ID to migrate the volume to"""
@@ -16,10 +19,12 @@ class migrateVolumeCmd (baseCmd):
         """if the volume should be live migrated when it is attached to a running vm"""
         self.livemigrate = None
         self.typeInfo['livemigrate'] = 'boolean'
-        self.required = ["storageid","volumeid",]
+        self.required = ["storageid", "volumeid", ]
 
-class migrateVolumeResponse (baseResponse):
+
+class migrateVolumeResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """ID of the disk volume"""
         self.id = None
@@ -180,6 +185,7 @@ class migrateVolumeResponse (baseResponse):
         self.jobstatus = None
         self.typeInfo['jobstatus'] = ''
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -202,4 +208,3 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

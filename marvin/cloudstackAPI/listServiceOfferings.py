@@ -1,8 +1,11 @@
 """Lists all available service offerings."""
 from baseCmd import *
 from baseResponse import *
-class listServiceOfferingsCmd (baseCmd):
+
+
+class listServiceOfferingsCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list only resources belonging to the domain specified"""
@@ -40,8 +43,10 @@ class listServiceOfferingsCmd (baseCmd):
         self.typeInfo['virtualmachineid'] = 'uuid'
         self.required = []
 
-class listServiceOfferingsResponse (baseResponse):
+
+class listServiceOfferingsResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the service offering"""
         self.id = None
@@ -136,4 +141,3 @@ class listServiceOfferingsResponse (baseResponse):
         """the tags for the service offering"""
         self.tags = None
         self.typeInfo['tags'] = 'string'
-

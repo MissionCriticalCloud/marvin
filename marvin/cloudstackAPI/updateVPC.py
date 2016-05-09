@@ -1,8 +1,11 @@
 """Updates a VPC"""
 from baseCmd import *
 from baseResponse import *
-class updateVPCCmd (baseCmd):
+
+
+class updateVPCCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the id of the VPC"""
@@ -21,10 +24,12 @@ class updateVPCCmd (baseCmd):
         """the name of the VPC"""
         self.name = None
         self.typeInfo['name'] = 'string'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class updateVPCResponse (baseResponse):
+
+class updateVPCResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the VPC"""
         self.id = None
@@ -93,6 +98,7 @@ class updateVPCResponse (baseResponse):
         """the list of resource tags associated with the project"""
         self.tags = []
 
+
 class capability:
     def __init__(self):
         """"can this service capability value can be choosable while creatine network offerings"""
@@ -101,6 +107,7 @@ class capability:
         self.name = None
         """"the capability value"""
         self.value = None
+
 
 class provider:
     def __init__(self):
@@ -118,6 +125,7 @@ class provider:
         self.servicelist = None
         """"state of the network provider"""
         self.state = None
+
 
 class service:
     def __init__(self):
@@ -148,6 +156,7 @@ class service:
         """"state of the network provider"""
         self.state = None
 
+
 class capability:
     def __init__(self):
         """"can this service capability value can be choosable while creatine network offerings"""
@@ -156,6 +165,7 @@ class capability:
         self.name = None
         """"the capability value"""
         self.value = None
+
 
 class provider:
     def __init__(self):
@@ -173,6 +183,7 @@ class provider:
         self.servicelist = None
         """"state of the network provider"""
         self.state = None
+
 
 class tags:
     def __init__(self):
@@ -196,6 +207,7 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
+
 
 class network:
     def __init__(self):
@@ -342,6 +354,7 @@ class network:
         """"tag value"""
         self.value = None
 
+
 class capability:
     def __init__(self):
         """"can this service capability value can be choosable while creatine network offerings"""
@@ -350,6 +363,7 @@ class capability:
         self.name = None
         """"the capability value"""
         self.value = None
+
 
 class provider:
     def __init__(self):
@@ -367,6 +381,7 @@ class provider:
         self.servicelist = None
         """"state of the network provider"""
         self.state = None
+
 
 class service:
     def __init__(self):
@@ -397,6 +412,7 @@ class service:
         """"state of the network provider"""
         self.state = None
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -419,4 +435,3 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

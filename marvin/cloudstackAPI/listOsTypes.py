@@ -1,8 +1,11 @@
 """Lists all supported OS types for this cloud."""
 from baseCmd import *
 from baseResponse import *
-class listOsTypesCmd (baseCmd):
+
+
+class listOsTypesCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list os by description"""
@@ -25,8 +28,10 @@ class listOsTypesCmd (baseCmd):
         self.typeInfo['pagesize'] = 'integer'
         self.required = []
 
-class listOsTypesResponse (baseResponse):
+
+class listOsTypesResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the OS type"""
         self.id = None
@@ -40,4 +45,3 @@ class listOsTypesResponse (baseResponse):
         """the ID of the OS category"""
         self.oscategoryid = None
         self.typeInfo['oscategoryid'] = 'string'
-

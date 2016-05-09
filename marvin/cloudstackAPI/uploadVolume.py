@@ -1,8 +1,11 @@
 """Uploads a data disk."""
 from baseCmd import *
 from baseResponse import *
-class uploadVolumeCmd (baseCmd):
+
+
+class uploadVolumeCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the format for the volume. Possible values include QCOW2, OVA, and VHD."""
@@ -39,10 +42,12 @@ class uploadVolumeCmd (baseCmd):
         """Upload volume for the project"""
         self.projectid = None
         self.typeInfo['projectid'] = 'uuid'
-        self.required = ["format","name","url","zoneid",]
+        self.required = ["format", "name", "url", "zoneid", ]
 
-class uploadVolumeResponse (baseResponse):
+
+class uploadVolumeResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """ID of the disk volume"""
         self.id = None
@@ -203,6 +208,7 @@ class uploadVolumeResponse (baseResponse):
         self.jobstatus = None
         self.typeInfo['jobstatus'] = ''
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -225,4 +231,3 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

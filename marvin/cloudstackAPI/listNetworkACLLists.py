@@ -1,8 +1,11 @@
 """Lists all network ACLs"""
 from baseCmd import *
 from baseResponse import *
-class listNetworkACLListsCmd (baseCmd):
+
+
+class listNetworkACLListsCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -46,8 +49,10 @@ class listNetworkACLListsCmd (baseCmd):
         self.typeInfo['vpcid'] = 'uuid'
         self.required = []
 
-class listNetworkACLListsResponse (baseResponse):
+
+class listNetworkACLListsResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the ACL"""
         self.id = None
@@ -64,4 +69,3 @@ class listNetworkACLListsResponse (baseResponse):
         """Id of the VPC this ACL is associated with"""
         self.vpcid = None
         self.typeInfo['vpcid'] = 'string'
-

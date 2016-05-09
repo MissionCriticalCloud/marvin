@@ -1,8 +1,11 @@
 """Creates site to site vpn local gateway"""
 from baseCmd import *
 from baseResponse import *
-class createVpnGatewayCmd (baseCmd):
+
+
+class createVpnGatewayCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """public ip address id of the vpn gateway"""
@@ -12,10 +15,12 @@ class createVpnGatewayCmd (baseCmd):
         """an optional field, whether to the display the vpn to the end user or not"""
         self.fordisplay = None
         self.typeInfo['fordisplay'] = 'boolean'
-        self.required = ["vpcid",]
+        self.required = ["vpcid", ]
 
-class createVpnGatewayResponse (baseResponse):
+
+class createVpnGatewayResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the vpn gateway ID"""
         self.id = None
@@ -47,4 +52,3 @@ class createVpnGatewayResponse (baseResponse):
         """the vpc id of this gateway"""
         self.vpcid = None
         self.typeInfo['vpcid'] = 'string'
-

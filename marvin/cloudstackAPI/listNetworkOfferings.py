@@ -1,8 +1,11 @@
 """Lists all available network offerings."""
 from baseCmd import *
 from baseResponse import *
-class listNetworkOfferingsCmd (baseCmd):
+
+
+class listNetworkOfferingsCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the availability of network offering. Default value is required"""
@@ -67,8 +70,10 @@ class listNetworkOfferingsCmd (baseCmd):
         self.typeInfo['zoneid'] = 'uuid'
         self.required = []
 
-class listNetworkOfferingsResponse (baseResponse):
+
+class listNetworkOfferingsResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the network offering"""
         self.id = None
@@ -136,6 +141,7 @@ class listNetworkOfferingsResponse (baseResponse):
         """the list of supported services"""
         self.service = []
 
+
 class capability:
     def __init__(self):
         """"can this service capability value can be choosable while creatine network offerings"""
@@ -144,6 +150,7 @@ class capability:
         self.name = None
         """"the capability value"""
         self.value = None
+
 
 class provider:
     def __init__(self):
@@ -161,6 +168,7 @@ class provider:
         self.servicelist = None
         """"state of the network provider"""
         self.state = None
+
 
 class service:
     def __init__(self):
@@ -190,4 +198,3 @@ class service:
         self.servicelist = None
         """"state of the network provider"""
         self.state = None
-

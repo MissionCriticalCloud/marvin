@@ -1,8 +1,11 @@
 """Updates a network offering."""
 from baseCmd import *
 from baseResponse import *
-class updateNetworkOfferingCmd (baseCmd):
+
+
+class updateNetworkOfferingCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the availability of network offering. Default value is Required for Guest Virtual network offering; Optional for Guest Direct network offering"""
@@ -31,8 +34,10 @@ class updateNetworkOfferingCmd (baseCmd):
         self.typeInfo['state'] = 'string'
         self.required = []
 
-class updateNetworkOfferingResponse (baseResponse):
+
+class updateNetworkOfferingResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the network offering"""
         self.id = None
@@ -100,6 +105,7 @@ class updateNetworkOfferingResponse (baseResponse):
         """the list of supported services"""
         self.service = []
 
+
 class capability:
     def __init__(self):
         """"can this service capability value can be choosable while creatine network offerings"""
@@ -108,6 +114,7 @@ class capability:
         self.name = None
         """"the capability value"""
         self.value = None
+
 
 class provider:
     def __init__(self):
@@ -125,6 +132,7 @@ class provider:
         self.servicelist = None
         """"state of the network provider"""
         self.state = None
+
 
 class service:
     def __init__(self):
@@ -154,4 +162,3 @@ class service:
         self.servicelist = None
         """"state of the network provider"""
         self.state = None
-

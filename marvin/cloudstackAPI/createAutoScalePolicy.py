@@ -1,8 +1,11 @@
 """Creates an autoscale policy for a provision or deprovision action, the action is taken when the all the conditions evaluates to true for the specified duration. The policy is in effect once it is attached to a autscale vm group."""
 from baseCmd import *
 from baseResponse import *
-class createAutoScalePolicyCmd (baseCmd):
+
+
+class createAutoScalePolicyCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the action to be executed if all the conditions evaluate to true for the specified duration."""
@@ -20,10 +23,12 @@ class createAutoScalePolicyCmd (baseCmd):
         """the cool down period for which the policy should not be evaluated after the action has been taken"""
         self.quiettime = None
         self.typeInfo['quiettime'] = 'integer'
-        self.required = ["action","conditionids","duration",]
+        self.required = ["action", "conditionids", "duration", ]
 
-class createAutoScalePolicyResponse (baseResponse):
+
+class createAutoScalePolicyResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the autoscale policy ID"""
         self.id = None
@@ -55,4 +60,3 @@ class createAutoScalePolicyResponse (baseResponse):
         """the cool down period for which the policy should not be evaluated after the action has been taken"""
         self.quiettime = None
         self.typeInfo['quiettime'] = 'integer'
-

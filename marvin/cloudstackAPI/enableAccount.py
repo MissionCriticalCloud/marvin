@@ -1,8 +1,11 @@
 """Enables an account"""
 from baseCmd import *
 from baseResponse import *
-class enableAccountCmd (baseCmd):
+
+
+class enableAccountCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """Enables specified account."""
@@ -16,8 +19,10 @@ class enableAccountCmd (baseCmd):
         self.typeInfo['id'] = 'uuid'
         self.required = []
 
-class enableAccountResponse (baseResponse):
+
+class enableAccountResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the account"""
         self.id = None
@@ -178,6 +183,7 @@ class enableAccountResponse (baseResponse):
         """the list of users associated with account"""
         self.user = []
 
+
 class user:
     def __init__(self):
         """"the user ID"""
@@ -214,4 +220,3 @@ class user:
         self.timezone = None
         """"the user name"""
         self.username = None
-

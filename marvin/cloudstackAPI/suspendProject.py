@@ -1,18 +1,23 @@
 """Suspends a project"""
 from baseCmd import *
 from baseResponse import *
-class suspendProjectCmd (baseCmd):
+
+
+class suspendProjectCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """id of the project to be suspended"""
         """Required"""
         self.id = None
         self.typeInfo['id'] = 'uuid'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class suspendProjectResponse (baseResponse):
+
+class suspendProjectResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the project"""
         self.id = None
@@ -143,6 +148,7 @@ class suspendProjectResponse (baseResponse):
         """the list of resource tags associated with vm"""
         self.tags = []
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -165,4 +171,3 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

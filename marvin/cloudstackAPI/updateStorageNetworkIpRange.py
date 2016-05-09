@@ -1,8 +1,11 @@
 """Update a Storage network IP range, only allowed when no IPs in this range have been allocated."""
 from baseCmd import *
 from baseResponse import *
-class updateStorageNetworkIpRangeCmd (baseCmd):
+
+
+class updateStorageNetworkIpRangeCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """UUID of storage network ip range"""
@@ -21,10 +24,12 @@ class updateStorageNetworkIpRangeCmd (baseCmd):
         """Optional. the vlan the ip range sits on"""
         self.vlan = None
         self.typeInfo['vlan'] = 'integer'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class updateStorageNetworkIpRangeResponse (baseResponse):
+
+class updateStorageNetworkIpRangeResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the uuid of storage network IP range."""
         self.id = None
@@ -53,4 +58,3 @@ class updateStorageNetworkIpRangeResponse (baseResponse):
         """the Zone uuid of the storage network IP range"""
         self.zoneid = None
         self.typeInfo['zoneid'] = 'string'
-

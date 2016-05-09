@@ -1,8 +1,11 @@
 """Updates an existing cluster"""
 from baseCmd import *
 from baseResponse import *
-class updateClusterCmd (baseCmd):
+
+
+class updateClusterCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the ID of the Cluster"""
@@ -24,10 +27,12 @@ class updateClusterCmd (baseCmd):
         """whether this cluster is managed by cloudstack"""
         self.managedstate = None
         self.typeInfo['managedstate'] = 'string'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class updateClusterResponse (baseResponse):
+
+class updateClusterResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the cluster ID"""
         self.id = None
@@ -71,6 +76,7 @@ class updateClusterResponse (baseResponse):
         """the capacity of the Cluster"""
         self.capacity = []
 
+
 class capacity:
     def __init__(self):
         """"the total capacity available"""
@@ -93,4 +99,3 @@ class capacity:
         self.zoneid = None
         """"the Zone name"""
         self.zonename = None
-

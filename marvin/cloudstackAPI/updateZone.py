@@ -1,8 +1,11 @@
 """Updates a Zone."""
 from baseCmd import *
 from baseResponse import *
-class updateZoneCmd (baseCmd):
+
+
+class updateZoneCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the ID of the Zone"""
@@ -54,10 +57,12 @@ class updateZoneCmd (baseCmd):
         """the name of the Zone"""
         self.name = None
         self.typeInfo['name'] = 'string'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class updateZoneResponse (baseResponse):
+
+class updateZoneResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """Zone id"""
         self.id = None
@@ -127,6 +132,7 @@ class updateZoneResponse (baseResponse):
         """the list of resource tags associated with zone."""
         self.tags = []
 
+
 class capacity:
     def __init__(self):
         """"the total capacity available"""
@@ -150,6 +156,7 @@ class capacity:
         """"the Zone name"""
         self.zonename = None
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -172,4 +179,3 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

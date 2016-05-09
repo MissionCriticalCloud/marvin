@@ -1,8 +1,11 @@
 """Extracts a template"""
 from baseCmd import *
 from baseResponse import *
-class extractTemplateCmd (baseCmd):
+
+
+class extractTemplateCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the template"""
@@ -19,10 +22,12 @@ class extractTemplateCmd (baseCmd):
         """the ID of the zone where the ISO is originally located"""
         self.zoneid = None
         self.typeInfo['zoneid'] = 'uuid'
-        self.required = ["id","mode",]
+        self.required = ["id", "mode", ]
 
-class extractTemplateResponse (baseResponse):
+
+class extractTemplateResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of extracted object"""
         self.id = None
@@ -63,4 +68,3 @@ class extractTemplateResponse (baseResponse):
         """zone name the object was extracted from"""
         self.zonename = None
         self.typeInfo['zonename'] = 'string'
-

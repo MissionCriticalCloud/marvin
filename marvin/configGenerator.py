@@ -1,14 +1,14 @@
 import json
 import os
 from optparse import OptionParser
+
 import jsonHelper
-from marvin.codes import *
+from config.test_data import test_data
 from marvin.cloudstackException import printException
-from marvin.config.test_data import test_data
+from marvin.codes import *
 
 
 class managementServer(object):
-
     def __init__(self):
         self.mgtSvrIp = None
         self.port = 8096
@@ -20,7 +20,6 @@ class managementServer(object):
 
 
 class dbServer(object):
-
     def __init__(self):
         self.dbSvr = None
         self.port = 3306
@@ -30,20 +29,17 @@ class dbServer(object):
 
 
 class configuration(object):
-
     def __init__(self):
         self.name = None
         self.value = None
 
 
 class logger(object):
-
     def __init__(self):
         self.LogFolderPath = None
 
 
 class cloudstackConfiguration(object):
-
     def __init__(self):
         self.zones = []
         self.mgtSvr = []
@@ -54,7 +50,6 @@ class cloudstackConfiguration(object):
 
 
 class zone(object):
-
     def __init__(self):
         self.dns1 = None
         self.internaldns1 = None
@@ -75,20 +70,18 @@ class zone(object):
 
 
 class trafficType(object):
-
     def __init__(self, typ, labeldict=None):
         self.typ = typ  # Guest/Management/Public
         if labeldict:
             self.xen = labeldict['xen'] if 'xen' in labeldict.keys() else None
             self.kvm = labeldict['kvm'] if 'kvm' in labeldict.keys() else None
-            self.vmware = labeldict['vmware']\
+            self.vmware = labeldict['vmware'] \
                 if 'vmware' in labeldict.keys() else None
-            self.simulator = labeldict['simulator']\
+            self.simulator = labeldict['simulator'] \
                 if 'simulator' in labeldict.keys() else None
 
 
 class pod(object):
-
     def __init__(self):
         self.gateway = None
         self.name = None
@@ -103,7 +96,6 @@ class pod(object):
 
 
 class VmwareDc(object):
-
     def __init__(self):
         self.zoneid = None
         self.name = None
@@ -113,7 +105,6 @@ class VmwareDc(object):
 
 
 class cluster(object):
-
     def __init__(self):
         self.clustername = None
         self.clustertype = None
@@ -128,7 +119,6 @@ class cluster(object):
 
 
 class host(object):
-
     def __init__(self):
         self.hypervisor = None
         self.password = None
@@ -143,7 +133,6 @@ class host(object):
 
 
 class physicalNetwork(object):
-
     def __init__(self):
         self.name = None
         self.tags = []
@@ -158,7 +147,6 @@ class physicalNetwork(object):
 
 
 class provider(object):
-
     def __init__(self, name=None):
         self.name = name
         self.state = None
@@ -169,7 +157,6 @@ class provider(object):
 
 
 class network(object):
-
     def __init__(self):
         self.displaytext = None
         self.name = None
@@ -182,7 +169,6 @@ class network(object):
 
 
 class iprange(object):
-
     def __init__(self):
         '''tagged/untagged'''
         self.gateway = None
@@ -196,7 +182,6 @@ class iprange(object):
 
 
 class primaryStorage(object):
-
     def __init__(self):
         self.name = None
         self.url = None
@@ -204,7 +189,6 @@ class primaryStorage(object):
 
 
 class secondaryStorage(object):
-
     def __init__(self):
         self.url = None
         self.provider = None
@@ -212,7 +196,6 @@ class secondaryStorage(object):
 
 
 class cacheStorage(object):
-
     def __init__(self):
         self.url = None
         self.provider = None
@@ -220,7 +203,6 @@ class cacheStorage(object):
 
 
 class s3(object):
-
     def __init__(self):
         self.accesskey = None
         self.secretkey = None
@@ -233,7 +215,6 @@ class s3(object):
 
 
 class srx(object):
-
     def __init__(self, hostname=None, username='root', password='admin'):
         self.hostname = hostname
         self.username = username
@@ -257,7 +238,6 @@ class srx(object):
 
 
 class bigip(object):
-
     def __init__(self, hostname=None, username='root', password='default'):
         self.hostname = hostname
         self.username = username
@@ -279,7 +259,6 @@ class bigip(object):
 
 
 class ConfigManager(object):
-
     '''
     @Name: ConfigManager
     @Desc: 1. It provides the basic configuration facilities to marvin.
@@ -469,7 +448,7 @@ def descSetupInBasicMode():
                 for m in range(2):
                     primary = primaryStorage()
                     primary.name = "primary" + \
-                        str(l) + str(i) + str(j) + str(m)
+                                   str(l) + str(i) + str(j) + str(m)
                     primary.url = "nfs://localhost/path%s" % (str(l) + str(i) +
                                                               str(j) + str(m))
                     c.primaryStorages.append(primary)
@@ -509,6 +488,7 @@ def descSetupInBasicMode():
         zs.globalConfig.append(cfg)
 
     return zs
+
 
 def descSetupInAdvancedMode():
     '''sample code to generate setup configuration file'''
@@ -574,7 +554,7 @@ def descSetupInAdvancedMode():
                 for m in range(2):
                     primary = primaryStorage()
                     primary.name = "primary" + \
-                        str(l) + str(i) + str(j) + str(m)
+                                   str(l) + str(i) + str(j) + str(m)
                     # primary.url = "nfs://localhost/path%s/size=%d" %
                     #    (str(l) + str(i) + str(j) + str(m), size)
                     primary.url = "nfs://localhost/path%s" % (str(l) + str(i)
@@ -626,6 +606,7 @@ def descSetupInAdvancedMode():
         zs.globalConfig.append(cfg)
 
     return zs
+
 
 '''sample code to generate setup configuration file'''
 
@@ -689,9 +670,9 @@ def descSetupInAdvancedsgMode():
                 for m in range(2):
                     primary = primaryStorage()
                     primary.name = "primary" + \
-                        str(l) + str(i) + str(j) + str(m)
+                                   str(l) + str(i) + str(j) + str(m)
                     primary.url = "nfs://localhost/path%s" % \
-                        (str(l) + str(i) + str(j) + str(m))
+                                  (str(l) + str(i) + str(j) + str(m))
                     c.primaryStorages.append(primary)
 
                 p.clusters.append(c)
@@ -763,6 +744,7 @@ def getSetupConfig(file):
         return jsonHelper.jsonLoader(config)
     except Exception as e:
         printException(e)
+
 
 if __name__ == "__main__":
     parser = OptionParser()

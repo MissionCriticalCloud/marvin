@@ -1,8 +1,11 @@
 """Marks a default zone for this account"""
 from baseCmd import *
 from baseResponse import *
-class markDefaultZoneForAccountCmd (baseCmd):
+
+
+class markDefaultZoneForAccountCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """Name of the account that is to be marked."""
@@ -17,10 +20,12 @@ class markDefaultZoneForAccountCmd (baseCmd):
         """Required"""
         self.zoneid = None
         self.typeInfo['zoneid'] = 'uuid'
-        self.required = ["account","domainid","zoneid",]
+        self.required = ["account", "domainid", "zoneid", ]
 
-class markDefaultZoneForAccountResponse (baseResponse):
+
+class markDefaultZoneForAccountResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the account"""
         self.id = None
@@ -181,6 +186,7 @@ class markDefaultZoneForAccountResponse (baseResponse):
         """the list of users associated with account"""
         self.user = []
 
+
 class user:
     def __init__(self):
         """"the user ID"""
@@ -217,4 +223,3 @@ class user:
         self.timezone = None
         """"the user name"""
         self.username = None
-

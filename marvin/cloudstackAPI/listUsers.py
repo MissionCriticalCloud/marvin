@@ -1,8 +1,11 @@
 """Lists user accounts"""
 from baseCmd import *
 from baseResponse import *
-class listUsersCmd (baseCmd):
+
+
+class listUsersCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -40,8 +43,10 @@ class listUsersCmd (baseCmd):
         self.typeInfo['username'] = 'string'
         self.required = []
 
-class listUsersResponse (baseResponse):
+
+class listUsersResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the user ID"""
         self.id = None
@@ -94,4 +99,3 @@ class listUsersResponse (baseResponse):
         """the user name"""
         self.username = None
         self.typeInfo['username'] = 'string'
-

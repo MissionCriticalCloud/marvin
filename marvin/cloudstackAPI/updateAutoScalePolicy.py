@@ -1,8 +1,11 @@
 """Updates an existing autoscale policy."""
 from baseCmd import *
 from baseResponse import *
-class updateAutoScalePolicyCmd (baseCmd):
+
+
+class updateAutoScalePolicyCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the autoscale policy"""
@@ -18,10 +21,12 @@ class updateAutoScalePolicyCmd (baseCmd):
         """the cool down period for which the policy should not be evaluated after the action has been taken"""
         self.quiettime = None
         self.typeInfo['quiettime'] = 'integer'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class updateAutoScalePolicyResponse (baseResponse):
+
+class updateAutoScalePolicyResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the autoscale policy ID"""
         self.id = None
@@ -53,4 +58,3 @@ class updateAutoScalePolicyResponse (baseResponse):
         """the cool down period for which the policy should not be evaluated after the action has been taken"""
         self.quiettime = None
         self.typeInfo['quiettime'] = 'integer'
-

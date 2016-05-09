@@ -1,8 +1,11 @@
 """Updates a hypervisor capabilities."""
 from baseCmd import *
 from baseResponse import *
-class updateHypervisorCapabilitiesCmd (baseCmd):
+
+
+class updateHypervisorCapabilitiesCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """ID of the hypervisor capability"""
@@ -16,8 +19,10 @@ class updateHypervisorCapabilitiesCmd (baseCmd):
         self.typeInfo['securitygroupenabled'] = 'boolean'
         self.required = []
 
-class updateHypervisorCapabilitiesResponse (baseResponse):
+
+class updateHypervisorCapabilitiesResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the hypervisor capabilities row"""
         self.id = None
@@ -43,4 +48,3 @@ class updateHypervisorCapabilitiesResponse (baseResponse):
         """true if storage motion is supported"""
         self.storagemotionenabled = None
         self.typeInfo['storagemotionenabled'] = 'boolean'
-

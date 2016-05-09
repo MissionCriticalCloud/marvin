@@ -1,8 +1,11 @@
 """update global load balancer rules."""
 from baseCmd import *
 from baseResponse import *
-class updateGlobalLoadBalancerRuleCmd (baseCmd):
+
+
+class updateGlobalLoadBalancerRuleCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the global load balancer rule"""
@@ -18,10 +21,12 @@ class updateGlobalLoadBalancerRuleCmd (baseCmd):
         """session sticky method (sourceip) if not specified defaults to sourceip"""
         self.gslbstickysessionmethodname = None
         self.typeInfo['gslbstickysessionmethodname'] = 'string'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class updateGlobalLoadBalancerRuleResponse (baseResponse):
+
+class updateGlobalLoadBalancerRuleResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """global load balancer rule ID"""
         self.id = None
@@ -65,6 +70,7 @@ class updateGlobalLoadBalancerRuleResponse (baseResponse):
         """List of load balancer rules that are part of GSLB rule"""
         self.loadbalancerrule = []
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -87,6 +93,7 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
+
 
 class loadbalancerrule:
     def __init__(self):
@@ -150,4 +157,3 @@ class loadbalancerrule:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

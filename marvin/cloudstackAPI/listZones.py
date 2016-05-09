@@ -1,8 +1,11 @@
 """Lists zones"""
 from baseCmd import *
 from baseResponse import *
-class listZonesCmd (baseCmd):
+
+
+class listZonesCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """true if you want to retrieve all available Zones. False if you only want to return the Zones from which you have at least one VM. Default is false."""
@@ -37,8 +40,10 @@ class listZonesCmd (baseCmd):
         self.typeInfo['tags'] = 'map'
         self.required = []
 
-class listZonesResponse (baseResponse):
+
+class listZonesResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """Zone id"""
         self.id = None
@@ -108,6 +113,7 @@ class listZonesResponse (baseResponse):
         """the list of resource tags associated with zone."""
         self.tags = []
 
+
 class capacity:
     def __init__(self):
         """"the total capacity available"""
@@ -131,6 +137,7 @@ class capacity:
         """"the Zone name"""
         self.zonename = None
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -153,4 +160,3 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

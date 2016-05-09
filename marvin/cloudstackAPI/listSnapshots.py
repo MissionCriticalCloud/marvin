@@ -1,8 +1,11 @@
 """Lists all available snapshots for the account."""
 from baseCmd import *
 from baseResponse import *
-class listSnapshotsCmd (baseCmd):
+
+
+class listSnapshotsCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -52,8 +55,10 @@ class listSnapshotsCmd (baseCmd):
         self.typeInfo['zoneid'] = 'uuid'
         self.required = []
 
-class listSnapshotsResponse (baseResponse):
+
+class listSnapshotsResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """ID of the snapshot"""
         self.id = None
@@ -115,6 +120,7 @@ class listSnapshotsResponse (baseResponse):
         self.jobstatus = None
         self.typeInfo['jobstatus'] = ''
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -137,4 +143,3 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

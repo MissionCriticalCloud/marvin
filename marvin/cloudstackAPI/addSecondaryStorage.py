@@ -1,8 +1,11 @@
 """Adds secondary storage."""
 from baseCmd import *
 from baseResponse import *
-class addSecondaryStorageCmd (baseCmd):
+
+
+class addSecondaryStorageCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the URL for the secondary storage"""
@@ -12,10 +15,12 @@ class addSecondaryStorageCmd (baseCmd):
         """the Zone ID for the secondary storage"""
         self.zoneid = None
         self.typeInfo['zoneid'] = 'uuid'
-        self.required = ["url",]
+        self.required = ["url", ]
 
-class addSecondaryStorageResponse (baseResponse):
+
+class addSecondaryStorageResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the image store"""
         self.id = None
@@ -44,4 +49,3 @@ class addSecondaryStorageResponse (baseResponse):
         """the Zone name of the image store"""
         self.zonename = None
         self.typeInfo['zonename'] = 'string'
-

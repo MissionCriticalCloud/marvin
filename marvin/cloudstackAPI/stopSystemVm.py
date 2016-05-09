@@ -1,8 +1,11 @@
 """Stops a system VM."""
 from baseCmd import *
 from baseResponse import *
-class stopSystemVmCmd (baseCmd):
+
+
+class stopSystemVmCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """The ID of the system virtual machine"""
@@ -12,10 +15,12 @@ class stopSystemVmCmd (baseCmd):
         """Force stop the VM.  The caller knows the VM is stopped."""
         self.forced = None
         self.typeInfo['forced'] = 'boolean'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class stopSystemVmResponse (baseResponse):
+
+class stopSystemVmResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the system VM"""
         self.id = None
@@ -101,4 +106,3 @@ class stopSystemVmResponse (baseResponse):
         """the Zone name for the system VM"""
         self.zonename = None
         self.typeInfo['zonename'] = 'string'
-

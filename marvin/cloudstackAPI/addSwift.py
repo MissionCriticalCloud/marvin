@@ -1,8 +1,11 @@
 """Adds Swift."""
 from baseCmd import *
 from baseResponse import *
-class addSwiftCmd (baseCmd):
+
+
+class addSwiftCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the URL for swift"""
@@ -18,10 +21,12 @@ class addSwiftCmd (baseCmd):
         """the username for swift"""
         self.username = None
         self.typeInfo['username'] = 'string'
-        self.required = ["url",]
+        self.required = ["url", ]
 
-class addSwiftResponse (baseResponse):
+
+class addSwiftResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the image store"""
         self.id = None
@@ -50,4 +55,3 @@ class addSwiftResponse (baseResponse):
         """the Zone name of the image store"""
         self.zonename = None
         self.typeInfo['zonename'] = 'string'
-

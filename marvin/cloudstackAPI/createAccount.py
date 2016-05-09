@@ -1,8 +1,11 @@
 """Creates an account"""
 from baseCmd import *
 from baseResponse import *
-class createAccountCmd (baseCmd):
+
+
+class createAccountCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """Type of the account.  Specify 0 for user, 1 for root admin, and 2 for domain admin"""
@@ -50,10 +53,12 @@ class createAccountCmd (baseCmd):
         """User UUID, required for adding account from external provisioning system"""
         self.userid = None
         self.typeInfo['userid'] = 'string'
-        self.required = ["accounttype","email","firstname","lastname","password","username",]
+        self.required = ["accounttype", "email", "firstname", "lastname", "password", "username", ]
 
-class createAccountResponse (baseResponse):
+
+class createAccountResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the account"""
         self.id = None
@@ -214,6 +219,7 @@ class createAccountResponse (baseResponse):
         """the list of users associated with account"""
         self.user = []
 
+
 class user:
     def __init__(self):
         """"the user ID"""
@@ -250,4 +256,3 @@ class user:
         self.timezone = None
         """"the user name"""
         self.username = None
-

@@ -1,8 +1,11 @@
 """Lists host tags"""
 from baseCmd import *
 from baseResponse import *
-class listHostTagsCmd (baseCmd):
+
+
+class listHostTagsCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """List by keyword"""
@@ -16,8 +19,10 @@ class listHostTagsCmd (baseCmd):
         self.typeInfo['pagesize'] = 'integer'
         self.required = []
 
-class listHostTagsResponse (baseResponse):
+
+class listHostTagsResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the host tag"""
         self.id = None
@@ -28,4 +33,3 @@ class listHostTagsResponse (baseResponse):
         """the name of the host tag"""
         self.name = None
         self.typeInfo['name'] = 'string'
-

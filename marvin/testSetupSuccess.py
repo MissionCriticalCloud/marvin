@@ -1,22 +1,23 @@
-from marvin.cloudstackTestCase import cloudstackTestCase
+from time import sleep as delay
+
+from lib import Vcenter
+from lib import verifyVCenterPortGroups
 from marvin.cloudstackAPI import listSystemVms, listZones, listTemplates
-from marvin.lib.vcenter import Vcenter
-from marvin.lib.common import verifyVCenterPortGroups
+from marvin.cloudstackTestCase import cloudstackTestCase
 from marvin.codes import (PUBLIC_TRAFFIC,
                           MANAGEMENT_TRAFFIC,
                           STORAGE_TRAFFIC,
                           PASS,
                           VMWAREDVS)
-from time import sleep as delay
 
 
 class TestSetupSuccess(cloudstackTestCase):
-
     """
     Test to verify if the cloudstack is ready to launch tests upon
     1. Verify that system VMs are up and running in all zones
     2. Verify that built-in templates are Ready in all zones
     """
+
     @classmethod
     def setUpClass(cls):
         testClient = super(TestSetupSuccess, cls).getClsTestClient()

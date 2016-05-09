@@ -1,8 +1,11 @@
 """Lists all available virtual router elements."""
 from baseCmd import *
 from baseResponse import *
-class listVirtualRouterElementsCmd (baseCmd):
+
+
+class listVirtualRouterElementsCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list network offerings by enabled state"""
@@ -25,8 +28,10 @@ class listVirtualRouterElementsCmd (baseCmd):
         self.typeInfo['pagesize'] = 'integer'
         self.required = []
 
-class listVirtualRouterElementsResponse (baseResponse):
+
+class listVirtualRouterElementsResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the router"""
         self.id = None
@@ -52,4 +57,3 @@ class listVirtualRouterElementsResponse (baseResponse):
         """the project id of the ipaddress"""
         self.projectid = None
         self.typeInfo['projectid'] = 'string'
-

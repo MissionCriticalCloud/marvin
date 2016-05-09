@@ -1,8 +1,11 @@
 """Resizes a volume"""
 from baseCmd import *
 from baseResponse import *
-class resizeVolumeCmd (baseCmd):
+
+
+class resizeVolumeCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the disk volume"""
@@ -24,10 +27,12 @@ class resizeVolumeCmd (baseCmd):
         """New volume size in GB"""
         self.size = None
         self.typeInfo['size'] = 'long'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class resizeVolumeResponse (baseResponse):
+
+class resizeVolumeResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """ID of the disk volume"""
         self.id = None
@@ -188,6 +193,7 @@ class resizeVolumeResponse (baseResponse):
         self.jobstatus = None
         self.typeInfo['jobstatus'] = ''
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -210,4 +216,3 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

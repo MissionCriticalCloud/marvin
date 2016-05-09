@@ -1,8 +1,11 @@
 """list the vm nics  IP to NIC"""
 from baseCmd import *
 from baseResponse import *
-class listNicsCmd (baseCmd):
+
+
+class listNicsCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the ID of the vm"""
@@ -27,10 +30,12 @@ class listNicsCmd (baseCmd):
         """"""
         self.pagesize = None
         self.typeInfo['pagesize'] = 'integer'
-        self.required = ["virtualmachineid",]
+        self.required = ["virtualmachineid", ]
 
-class listNicsResponse (baseResponse):
+
+class listNicsResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the nic"""
         self.id = None
@@ -86,4 +91,3 @@ class listNicsResponse (baseResponse):
         """Id of the vm to which the nic belongs"""
         self.virtualmachineid = None
         self.typeInfo['virtualmachineid'] = 'string'
-

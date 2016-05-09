@@ -1,8 +1,11 @@
 """Lists implementors of implementor of a network traffic type or implementors of all network traffic types"""
 from baseCmd import *
 from baseResponse import *
-class listTrafficTypeImplementorsCmd (baseCmd):
+
+
+class listTrafficTypeImplementorsCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """List by keyword"""
@@ -19,8 +22,10 @@ class listTrafficTypeImplementorsCmd (baseCmd):
         self.typeInfo['traffictype'] = 'string'
         self.required = []
 
-class listTrafficTypeImplementorsResponse (baseResponse):
+
+class listTrafficTypeImplementorsResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """network traffic type"""
         self.traffictype = None
@@ -28,4 +33,3 @@ class listTrafficTypeImplementorsResponse (baseResponse):
         """implementor of network traffic type"""
         self.traffictypeimplementor = None
         self.typeInfo['traffictypeimplementor'] = 'string'
-

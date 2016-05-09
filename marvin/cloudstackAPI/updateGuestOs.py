@@ -1,8 +1,11 @@
 """Updates the information about Guest OS"""
 from baseCmd import *
 from baseResponse import *
-class updateGuestOsCmd (baseCmd):
+
+
+class updateGuestOsCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """UUID of the Guest OS"""
@@ -13,10 +16,12 @@ class updateGuestOsCmd (baseCmd):
         """Required"""
         self.osdisplayname = None
         self.typeInfo['osdisplayname'] = 'string'
-        self.required = ["id","osdisplayname",]
+        self.required = ["id", "osdisplayname", ]
 
-class updateGuestOsResponse (baseResponse):
+
+class updateGuestOsResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the OS type"""
         self.id = None
@@ -30,4 +35,3 @@ class updateGuestOsResponse (baseResponse):
         """the ID of the OS category"""
         self.oscategoryid = None
         self.typeInfo['oscategoryid'] = 'string'
-

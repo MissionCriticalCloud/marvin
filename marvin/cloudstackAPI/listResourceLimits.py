@@ -1,8 +1,11 @@
 """Lists resource limits."""
 from baseCmd import *
 from baseResponse import *
-class listResourceLimitsCmd (baseCmd):
+
+
+class listResourceLimitsCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -37,8 +40,10 @@ class listResourceLimitsCmd (baseCmd):
         self.typeInfo['resourcetype'] = 'integer'
         self.required = []
 
-class listResourceLimitsResponse (baseResponse):
+
+class listResourceLimitsResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the account of the resource limit"""
         self.account = None
@@ -61,4 +66,3 @@ class listResourceLimitsResponse (baseResponse):
         """resource type. Values include 0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11. See the resourceType parameter for more information on these values."""
         self.resourcetype = None
         self.typeInfo['resourcetype'] = 'string'
-

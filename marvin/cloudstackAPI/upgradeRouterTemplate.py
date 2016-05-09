@@ -1,8 +1,11 @@
 """Upgrades router to use newer template"""
 from baseCmd import *
 from baseResponse import *
-class upgradeRouterTemplateCmd (baseCmd):
+
+
+class upgradeRouterTemplateCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """upgrades all routers owned by the specified account"""
@@ -25,8 +28,10 @@ class upgradeRouterTemplateCmd (baseCmd):
         self.typeInfo['zoneid'] = 'uuid'
         self.required = []
 
-class upgradeRouterTemplateResponse (baseResponse):
+
+class upgradeRouterTemplateResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the UUID of the latest async job acting on this object"""
         self.jobid = None
@@ -34,4 +39,3 @@ class upgradeRouterTemplateResponse (baseResponse):
         """the current status of the latest async job acting on this object"""
         self.jobstatus = None
         self.typeInfo['jobstatus'] = 'integer'
-

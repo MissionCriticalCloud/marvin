@@ -5,19 +5,19 @@ import logging
 import logging.config
 import os
 import yaml
+
 import marvin
 
-class MarvinLog:
 
+class MarvinLog:
     def __init__(self, logger_name=__name__):
         self.__loggerName = logger_name
         self.__logger = None
         self.__logFolderDir = None
         self.__setup_logging()
 
-
-
     ''' code is courtesy of http://victorlin.me/posts/2012/08/26/good-logging-practice-in-python '''
+
     def __setup_logging(self, default_path='marvin_logging.yaml', default_level=logging.INFO, env_key='LOG_CFG'):
         path = default_path
         value = os.getenv(env_key, None)
@@ -46,7 +46,6 @@ class MarvinLog:
         with open(path, 'rt') as f:
             config = yaml.safe_load(f.read())
         return config
-
 
     def getLogger(self):
         return self.__logger

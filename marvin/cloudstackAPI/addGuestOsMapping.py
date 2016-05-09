@@ -1,8 +1,11 @@
 """Adds a guest OS name to hypervisor OS name mapping"""
 from baseCmd import *
 from baseResponse import *
-class addGuestOsMappingCmd (baseCmd):
+
+
+class addGuestOsMappingCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """Hypervisor type. One of : XenServer, KVM"""
@@ -23,10 +26,12 @@ class addGuestOsMappingCmd (baseCmd):
         """UUID of Guest OS type. Either the UUID or Display Name must be passed"""
         self.ostypeid = None
         self.typeInfo['ostypeid'] = 'uuid'
-        self.required = ["hypervisor","hypervisorversion","osnameforhypervisor",]
+        self.required = ["hypervisor", "hypervisorversion", "osnameforhypervisor", ]
 
-class addGuestOsMappingResponse (baseResponse):
+
+class addGuestOsMappingResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the Guest OS mapping"""
         self.id = None
@@ -49,4 +54,3 @@ class addGuestOsMappingResponse (baseResponse):
         """the ID of the Guest OS type"""
         self.ostypeid = None
         self.typeInfo['ostypeid'] = 'string'
-

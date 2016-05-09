@@ -1,8 +1,11 @@
 """Adds a new host."""
 from baseCmd import *
 from baseResponse import *
-class addHostCmd (baseCmd):
+
+
+class addHostCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """hypervisor type of the host"""
@@ -41,10 +44,12 @@ class addHostCmd (baseCmd):
         """list of tags to be added to the host"""
         self.hosttags = []
         self.typeInfo['hosttags'] = 'list'
-        self.required = ["hypervisor","password","podid","url","username","zoneid",]
+        self.required = ["hypervisor", "password", "podid", "url", "username", "zoneid", ]
 
-class addHostResponse (baseResponse):
+
+class addHostResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the host"""
         self.id = None
@@ -190,6 +195,7 @@ class addHostResponse (baseResponse):
         self.jobstatus = None
         self.typeInfo['jobstatus'] = ''
 
+
 class vgpu:
     def __init__(self):
         """"Maximum vgpu can be created with this vgpu type on the given gpu group"""
@@ -208,6 +214,7 @@ class vgpu:
         self.vgputype = None
         """"Video RAM for this vGPU type"""
         self.videoram = None
+
 
 class gpugroup:
     def __init__(self):
@@ -231,4 +238,3 @@ class gpugroup:
         self.vgputype = None
         """"Video RAM for this vGPU type"""
         self.videoram = None
-

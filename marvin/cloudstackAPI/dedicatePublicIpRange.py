@@ -1,8 +1,11 @@
 """Dedicates a Public IP range to an account"""
 from baseCmd import *
 from baseResponse import *
-class dedicatePublicIpRangeCmd (baseCmd):
+
+
+class dedicatePublicIpRangeCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the id of the VLAN IP range"""
@@ -19,10 +22,12 @@ class dedicatePublicIpRangeCmd (baseCmd):
         """project who will own the VLAN"""
         self.projectid = None
         self.typeInfo['projectid'] = 'uuid'
-        self.required = ["id","domainid",]
+        self.required = ["id", "domainid", ]
 
-class dedicatePublicIpRangeResponse (baseResponse):
+
+class dedicatePublicIpRangeResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the VLAN IP range"""
         self.id = None
@@ -90,4 +95,3 @@ class dedicatePublicIpRangeResponse (baseResponse):
         """the Zone ID of the VLAN IP range"""
         self.zoneid = None
         self.typeInfo['zoneid'] = 'string'
-

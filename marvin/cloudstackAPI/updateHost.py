@@ -1,8 +1,11 @@
 """Updates a host."""
 from baseCmd import *
 from baseResponse import *
-class updateHostCmd (baseCmd):
+
+
+class updateHostCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the ID of the host to update"""
@@ -21,10 +24,12 @@ class updateHostCmd (baseCmd):
         """the new uri for the secondary storage: nfs://host/path"""
         self.url = None
         self.typeInfo['url'] = 'string'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class updateHostResponse (baseResponse):
+
+class updateHostResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the host"""
         self.id = None
@@ -170,6 +175,7 @@ class updateHostResponse (baseResponse):
         self.jobstatus = None
         self.typeInfo['jobstatus'] = ''
 
+
 class vgpu:
     def __init__(self):
         """"Maximum vgpu can be created with this vgpu type on the given gpu group"""
@@ -188,6 +194,7 @@ class vgpu:
         self.vgputype = None
         """"Video RAM for this vGPU type"""
         self.videoram = None
+
 
 class gpugroup:
     def __init__(self):
@@ -211,4 +218,3 @@ class gpugroup:
         self.vgputype = None
         """"Video RAM for this vGPU type"""
         self.videoram = None
-

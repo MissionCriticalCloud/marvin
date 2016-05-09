@@ -1,8 +1,11 @@
 """Adds a Region"""
 from baseCmd import *
 from baseResponse import *
-class addRegionCmd (baseCmd):
+
+
+class addRegionCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """Id of the Region"""
@@ -17,10 +20,12 @@ class addRegionCmd (baseCmd):
         """Required"""
         self.name = None
         self.typeInfo['name'] = 'string'
-        self.required = ["id","endpoint","name",]
+        self.required = ["id", "endpoint", "name", ]
 
-class addRegionResponse (baseResponse):
+
+class addRegionResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the region"""
         self.id = None
@@ -37,4 +42,3 @@ class addRegionResponse (baseResponse):
         """true if security groups support is enabled, false otherwise"""
         self.portableipserviceenabled = None
         self.typeInfo['portableipserviceenabled'] = 'boolean'
-

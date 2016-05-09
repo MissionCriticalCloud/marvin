@@ -1,14 +1,19 @@
 """Lists capabilities"""
 from baseCmd import *
 from baseResponse import *
-class listCapabilitiesCmd (baseCmd):
+
+
+class listCapabilitiesCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         self.required = []
 
-class listCapabilitiesResponse (baseResponse):
+
+class listCapabilitiesResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """true if regular user is allowed to create projects"""
         self.allowusercreateprojects = None
@@ -52,4 +57,3 @@ class listCapabilitiesResponse (baseResponse):
         """true if user and domain admins can set templates to be shared, false otherwise"""
         self.userpublictemplateenabled = None
         self.typeInfo['userpublictemplateenabled'] = 'boolean'
-

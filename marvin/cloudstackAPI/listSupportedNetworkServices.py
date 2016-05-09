@@ -1,8 +1,11 @@
 """Lists all network services provided by CloudStack or for the given Provider."""
 from baseCmd import *
 from baseResponse import *
-class listSupportedNetworkServicesCmd (baseCmd):
+
+
+class listSupportedNetworkServicesCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """List by keyword"""
@@ -22,8 +25,10 @@ class listSupportedNetworkServicesCmd (baseCmd):
         self.typeInfo['service'] = 'string'
         self.required = []
 
-class listSupportedNetworkServicesResponse (baseResponse):
+
+class listSupportedNetworkServicesResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the service name"""
         self.name = None
@@ -33,6 +38,7 @@ class listSupportedNetworkServicesResponse (baseResponse):
         """the service provider name"""
         self.provider = []
 
+
 class capability:
     def __init__(self):
         """"can this service capability value can be choosable while creatine network offerings"""
@@ -41,6 +47,7 @@ class capability:
         self.name = None
         """"the capability value"""
         self.value = None
+
 
 class provider:
     def __init__(self):
@@ -58,4 +65,3 @@ class provider:
         self.servicelist = None
         """"state of the network provider"""
         self.state = None
-

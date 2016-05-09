@@ -1,18 +1,23 @@
 """Reconnects a host."""
 from baseCmd import *
 from baseResponse import *
-class reconnectHostCmd (baseCmd):
+
+
+class reconnectHostCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the host ID"""
         """Required"""
         self.id = None
         self.typeInfo['id'] = 'uuid'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class reconnectHostResponse (baseResponse):
+
+class reconnectHostResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the host"""
         self.id = None
@@ -158,6 +163,7 @@ class reconnectHostResponse (baseResponse):
         self.jobstatus = None
         self.typeInfo['jobstatus'] = ''
 
+
 class vgpu:
     def __init__(self):
         """"Maximum vgpu can be created with this vgpu type on the given gpu group"""
@@ -176,6 +182,7 @@ class vgpu:
         self.vgputype = None
         """"Video RAM for this vGPU type"""
         self.videoram = None
+
 
 class gpugroup:
     def __init__(self):
@@ -199,4 +206,3 @@ class gpugroup:
         self.vgputype = None
         """"Video RAM for this vGPU type"""
         self.videoram = None
-

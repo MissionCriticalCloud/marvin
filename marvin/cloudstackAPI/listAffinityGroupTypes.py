@@ -1,8 +1,11 @@
 """Lists affinity group types available"""
 from baseCmd import *
 from baseResponse import *
-class listAffinityGroupTypesCmd (baseCmd):
+
+
+class listAffinityGroupTypesCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """List by keyword"""
@@ -16,10 +19,11 @@ class listAffinityGroupTypesCmd (baseCmd):
         self.typeInfo['pagesize'] = 'integer'
         self.required = []
 
-class listAffinityGroupTypesResponse (baseResponse):
+
+class listAffinityGroupTypesResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the type of the affinity group"""
         self.type = None
         self.typeInfo['type'] = 'string'
-

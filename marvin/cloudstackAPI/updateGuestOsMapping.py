@@ -1,8 +1,11 @@
 """Updates the information about Guest OS to Hypervisor specific name mapping"""
 from baseCmd import *
 from baseResponse import *
-class updateGuestOsMappingCmd (baseCmd):
+
+
+class updateGuestOsMappingCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """UUID of the Guest OS to hypervisor name Mapping"""
@@ -13,10 +16,12 @@ class updateGuestOsMappingCmd (baseCmd):
         """Required"""
         self.osnameforhypervisor = None
         self.typeInfo['osnameforhypervisor'] = 'string'
-        self.required = ["id","osnameforhypervisor",]
+        self.required = ["id", "osnameforhypervisor", ]
 
-class updateGuestOsMappingResponse (baseResponse):
+
+class updateGuestOsMappingResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the Guest OS mapping"""
         self.id = None
@@ -39,4 +44,3 @@ class updateGuestOsMappingResponse (baseResponse):
         """the ID of the Guest OS type"""
         self.ostypeid = None
         self.typeInfo['ostypeid'] = 'string'
-

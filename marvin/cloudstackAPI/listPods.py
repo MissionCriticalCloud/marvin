@@ -1,8 +1,11 @@
 """Lists all Pods."""
 from baseCmd import *
 from baseResponse import *
-class listPodsCmd (baseCmd):
+
+
+class listPodsCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list pods by allocation state"""
@@ -31,8 +34,10 @@ class listPodsCmd (baseCmd):
         self.typeInfo['zoneid'] = 'uuid'
         self.required = []
 
-class listPodsResponse (baseResponse):
+
+class listPodsResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the Pod"""
         self.id = None
@@ -64,6 +69,7 @@ class listPodsResponse (baseResponse):
         """the capacity of the Pod"""
         self.capacity = []
 
+
 class capacity:
     def __init__(self):
         """"the total capacity available"""
@@ -86,4 +92,3 @@ class capacity:
         self.zoneid = None
         """"the Zone name"""
         self.zonename = None
-

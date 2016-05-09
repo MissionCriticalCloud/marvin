@@ -1,8 +1,11 @@
 """Lists all children domains belonging to a specified domain"""
 from baseCmd import *
 from baseResponse import *
-class listDomainChildrenCmd (baseCmd):
+
+
+class listDomainChildrenCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list children domain by parent domain ID."""
@@ -28,8 +31,10 @@ class listDomainChildrenCmd (baseCmd):
         self.typeInfo['pagesize'] = 'integer'
         self.required = []
 
-class listDomainChildrenResponse (baseResponse):
+
+class listDomainChildrenResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the domain"""
         self.id = None
@@ -166,4 +171,3 @@ class listDomainChildrenResponse (baseResponse):
         """the total number of vpcs owned by domain"""
         self.vpctotal = None
         self.typeInfo['vpctotal'] = 'long'
-

@@ -1,8 +1,11 @@
 """Adds Traffic Monitor Host for Direct Network Usage"""
 from baseCmd import *
 from baseResponse import *
-class addTrafficMonitorCmd (baseCmd):
+
+
+class addTrafficMonitorCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """URL of the traffic monitor Host"""
@@ -19,10 +22,12 @@ class addTrafficMonitorCmd (baseCmd):
         """Traffic going into the listed zones will be metered"""
         self.includezones = None
         self.typeInfo['includezones'] = 'string'
-        self.required = ["url","zoneid",]
+        self.required = ["url", "zoneid", ]
 
-class addTrafficMonitorResponse (baseResponse):
+
+class addTrafficMonitorResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the external firewall"""
         self.id = None
@@ -39,4 +44,3 @@ class addTrafficMonitorResponse (baseResponse):
         """the zone ID of the external firewall"""
         self.zoneid = None
         self.typeInfo['zoneid'] = 'string'
-

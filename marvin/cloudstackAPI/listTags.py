@@ -1,8 +1,11 @@
 """List resource tag(s)"""
 from baseCmd import *
 from baseResponse import *
-class listTagsCmd (baseCmd):
+
+
+class listTagsCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -46,8 +49,10 @@ class listTagsCmd (baseCmd):
         self.typeInfo['value'] = 'string'
         self.required = []
 
-class listTagsResponse (baseResponse):
+
+class listTagsResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the account associated with the tag"""
         self.account = None
@@ -79,4 +84,3 @@ class listTagsResponse (baseResponse):
         """tag value"""
         self.value = None
         self.typeInfo['value'] = 'string'
-

@@ -1,8 +1,11 @@
 """Lists network serviceproviders for a given physical network."""
 from baseCmd import *
 from baseResponse import *
-class listNetworkServiceProvidersCmd (baseCmd):
+
+
+class listNetworkServiceProvidersCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """List by keyword"""
@@ -25,8 +28,10 @@ class listNetworkServiceProvidersCmd (baseCmd):
         self.typeInfo['state'] = 'string'
         self.required = []
 
-class listNetworkServiceProvidersResponse (baseResponse):
+
+class listNetworkServiceProvidersResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """uuid of the network provider"""
         self.id = None
@@ -49,4 +54,3 @@ class listNetworkServiceProvidersResponse (baseResponse):
         """state of the network provider"""
         self.state = None
         self.typeInfo['state'] = 'string'
-

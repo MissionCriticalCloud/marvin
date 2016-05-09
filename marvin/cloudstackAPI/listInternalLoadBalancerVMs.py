@@ -1,8 +1,11 @@
 """List internal LB VMs."""
 from baseCmd import *
 from baseResponse import *
-class listInternalLoadBalancerVMsCmd (baseCmd):
+
+
+class listInternalLoadBalancerVMsCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -58,8 +61,10 @@ class listInternalLoadBalancerVMsCmd (baseCmd):
         self.typeInfo['zoneid'] = 'uuid'
         self.required = []
 
-class listInternalLoadBalancerVMsResponse (baseResponse):
+
+class listInternalLoadBalancerVMsResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the router"""
         self.id = None
@@ -199,6 +204,7 @@ class listInternalLoadBalancerVMsResponse (baseResponse):
         """the list of nics associated with the router"""
         self.nic = []
 
+
 class nic:
     def __init__(self):
         """"the ID of the nic"""
@@ -237,4 +243,3 @@ class nic:
         self.type = None
         """"Id of the vm to which the nic belongs"""
         self.virtualmachineid = None
-

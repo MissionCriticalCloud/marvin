@@ -1,8 +1,11 @@
 """List routers."""
 from baseCmd import *
 from baseResponse import *
-class listRoutersCmd (baseCmd):
+
+
+class listRoutersCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -64,8 +67,10 @@ class listRoutersCmd (baseCmd):
         self.typeInfo['zoneid'] = 'uuid'
         self.required = []
 
-class listRoutersResponse (baseResponse):
+
+class listRoutersResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the router"""
         self.id = None
@@ -205,6 +210,7 @@ class listRoutersResponse (baseResponse):
         """the list of nics associated with the router"""
         self.nic = []
 
+
 class nic:
     def __init__(self):
         """"the ID of the nic"""
@@ -243,4 +249,3 @@ class nic:
         self.type = None
         """"Id of the vm to which the nic belongs"""
         self.virtualmachineid = None
-

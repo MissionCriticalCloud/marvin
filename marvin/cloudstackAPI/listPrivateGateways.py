@@ -1,8 +1,11 @@
 """List private gateways"""
 from baseCmd import *
 from baseResponse import *
-class listPrivateGatewaysCmd (baseCmd):
+
+
+class listPrivateGatewaysCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -46,8 +49,10 @@ class listPrivateGatewaysCmd (baseCmd):
         self.typeInfo['vpcid'] = 'uuid'
         self.required = []
 
-class listPrivateGatewaysResponse (baseResponse):
+
+class listPrivateGatewaysResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the private gateway"""
         self.id = None
@@ -100,4 +105,3 @@ class listPrivateGatewaysResponse (baseResponse):
         """the name of the zone the private gateway belongs to"""
         self.zonename = None
         self.typeInfo['zonename'] = 'string'
-

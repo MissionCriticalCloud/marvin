@@ -1,8 +1,11 @@
 """Updates a physical network"""
 from baseCmd import *
 from baseResponse import *
-class updatePhysicalNetworkCmd (baseCmd):
+
+
+class updatePhysicalNetworkCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """physical network id"""
@@ -21,10 +24,12 @@ class updatePhysicalNetworkCmd (baseCmd):
         """the VLAN for the physical network"""
         self.vlan = None
         self.typeInfo['vlan'] = 'string'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class updatePhysicalNetworkResponse (baseResponse):
+
+class updatePhysicalNetworkResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the uuid of the physical network"""
         self.id = None
@@ -56,4 +61,3 @@ class updatePhysicalNetworkResponse (baseResponse):
         """zone id of the physical network"""
         self.zoneid = None
         self.typeInfo['zoneid'] = 'string'
-

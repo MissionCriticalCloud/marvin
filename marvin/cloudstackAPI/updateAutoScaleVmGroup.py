@@ -1,8 +1,11 @@
 """Updates an existing autoscale vm group."""
 from baseCmd import *
 from baseResponse import *
-class updateAutoScaleVmGroupCmd (baseCmd):
+
+
+class updateAutoScaleVmGroupCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the autoscale group"""
@@ -30,10 +33,12 @@ class updateAutoScaleVmGroupCmd (baseCmd):
         """list of scaleup autoscale policies"""
         self.scaleuppolicyids = []
         self.typeInfo['scaleuppolicyids'] = 'list'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class updateAutoScaleVmGroupResponse (baseResponse):
+
+class updateAutoScaleVmGroupResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the autoscale vm group ID"""
         self.id = None
@@ -80,4 +85,3 @@ class updateAutoScaleVmGroupResponse (baseResponse):
         """the autoscale profile that contains information about the vms in the vm group."""
         self.vmprofileid = None
         self.typeInfo['vmprofileid'] = 'string'
-

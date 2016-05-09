@@ -1,8 +1,11 @@
 """List resource detail(s)"""
 from baseCmd import *
 from baseResponse import *
-class listResourceDetailsCmd (baseCmd):
+
+
+class listResourceDetailsCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list by resource type"""
@@ -45,10 +48,12 @@ class listResourceDetailsCmd (baseCmd):
         """list by key, value. Needs to be passed only along with key"""
         self.value = None
         self.typeInfo['value'] = 'string'
-        self.required = ["resourcetype",]
+        self.required = ["resourcetype", ]
 
-class listResourceDetailsResponse (baseResponse):
+
+class listResourceDetailsResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the account associated with the tag"""
         self.account = None
@@ -80,4 +85,3 @@ class listResourceDetailsResponse (baseResponse):
         """tag value"""
         self.value = None
         self.typeInfo['value'] = 'string'
-

@@ -1,8 +1,11 @@
 """Lists Regions"""
 from baseCmd import *
 from baseResponse import *
-class listRegionsCmd (baseCmd):
+
+
+class listRegionsCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """List Region by region ID."""
@@ -22,8 +25,10 @@ class listRegionsCmd (baseCmd):
         self.typeInfo['pagesize'] = 'integer'
         self.required = []
 
-class listRegionsResponse (baseResponse):
+
+class listRegionsResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the region"""
         self.id = None
@@ -40,4 +45,3 @@ class listRegionsResponse (baseResponse):
         """true if security groups support is enabled, false otherwise"""
         self.portableipserviceenabled = None
         self.typeInfo['portableipserviceenabled'] = 'boolean'
-

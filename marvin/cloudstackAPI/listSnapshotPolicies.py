@@ -1,8 +1,11 @@
 """Lists snapshot policies."""
 from baseCmd import *
 from baseResponse import *
-class listSnapshotPoliciesCmd (baseCmd):
+
+
+class listSnapshotPoliciesCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by display flag; only ROOT admin is eligible to pass this parameter"""
@@ -25,8 +28,10 @@ class listSnapshotPoliciesCmd (baseCmd):
         self.typeInfo['volumeid'] = 'uuid'
         self.required = []
 
-class listSnapshotPoliciesResponse (baseResponse):
+
+class listSnapshotPoliciesResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the snapshot policy"""
         self.id = None
@@ -49,4 +54,3 @@ class listSnapshotPoliciesResponse (baseResponse):
         """the ID of the disk volume"""
         self.volumeid = None
         self.typeInfo['volumeid'] = 'string'
-

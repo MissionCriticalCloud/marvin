@@ -1,8 +1,11 @@
 """Updates a Pod."""
 from baseCmd import *
 from baseResponse import *
-class updatePodCmd (baseCmd):
+
+
+class updatePodCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the ID of the Pod"""
@@ -27,10 +30,12 @@ class updatePodCmd (baseCmd):
         """the starting IP address for the Pod"""
         self.startip = None
         self.typeInfo['startip'] = 'string'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class updatePodResponse (baseResponse):
+
+class updatePodResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the Pod"""
         self.id = None
@@ -62,6 +67,7 @@ class updatePodResponse (baseResponse):
         """the capacity of the Pod"""
         self.capacity = []
 
+
 class capacity:
     def __init__(self):
         """"the total capacity available"""
@@ -84,4 +90,3 @@ class capacity:
         self.zoneid = None
         """"the Zone name"""
         self.zonename = None
-

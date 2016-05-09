@@ -1,8 +1,11 @@
 """Lists domains and provides detailed information for listed domains"""
 from baseCmd import *
 from baseResponse import *
-class listDomainsCmd (baseCmd):
+
+
+class listDomainsCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """List domain by domain ID."""
@@ -28,8 +31,10 @@ class listDomainsCmd (baseCmd):
         self.typeInfo['pagesize'] = 'integer'
         self.required = []
 
-class listDomainsResponse (baseResponse):
+
+class listDomainsResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the domain"""
         self.id = None
@@ -166,4 +171,3 @@ class listDomainsResponse (baseResponse):
         """the total number of vpcs owned by domain"""
         self.vpctotal = None
         self.typeInfo['vpctotal'] = 'long'
-

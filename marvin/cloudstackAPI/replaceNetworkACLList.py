@@ -1,8 +1,11 @@
 """Replaces ACL associated with a network or private gateway"""
 from baseCmd import *
 from baseResponse import *
-class replaceNetworkACLListCmd (baseCmd):
+
+
+class replaceNetworkACLListCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the network ACL"""
@@ -15,10 +18,12 @@ class replaceNetworkACLListCmd (baseCmd):
         """the ID of the network"""
         self.networkid = None
         self.typeInfo['networkid'] = 'uuid'
-        self.required = ["aclid",]
+        self.required = ["aclid", ]
 
-class replaceNetworkACLListResponse (baseResponse):
+
+class replaceNetworkACLListResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """any text associated with the success or failure"""
         self.displaytext = None
@@ -26,4 +31,3 @@ class replaceNetworkACLListResponse (baseResponse):
         """true if operation is executed successfully"""
         self.success = None
         self.typeInfo['success'] = 'boolean'
-

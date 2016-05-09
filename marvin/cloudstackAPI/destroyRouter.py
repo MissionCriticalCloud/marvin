@@ -1,18 +1,23 @@
 """Destroys a router."""
 from baseCmd import *
 from baseResponse import *
-class destroyRouterCmd (baseCmd):
+
+
+class destroyRouterCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the router"""
         """Required"""
         self.id = None
         self.typeInfo['id'] = 'uuid'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class destroyRouterResponse (baseResponse):
+
+class destroyRouterResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the router"""
         self.id = None
@@ -152,6 +157,7 @@ class destroyRouterResponse (baseResponse):
         """the list of nics associated with the router"""
         self.nic = []
 
+
 class nic:
     def __init__(self):
         """"the ID of the nic"""
@@ -190,4 +196,3 @@ class nic:
         self.type = None
         """"Id of the vm to which the nic belongs"""
         self.virtualmachineid = None
-

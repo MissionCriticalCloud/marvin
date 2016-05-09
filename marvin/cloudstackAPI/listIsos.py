@@ -1,8 +1,11 @@
 """Lists all available ISO files."""
 from baseCmd import *
 from baseResponse import *
-class listIsosCmd (baseCmd):
+
+
+class listIsosCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -61,8 +64,10 @@ class listIsosCmd (baseCmd):
         self.typeInfo['zoneid'] = 'uuid'
         self.required = []
 
-class listIsosResponse (baseResponse):
+
+class listIsosResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the template ID"""
         self.id = None
@@ -178,6 +183,7 @@ class listIsosResponse (baseResponse):
         self.jobstatus = None
         self.typeInfo['jobstatus'] = ''
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -200,4 +206,3 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

@@ -1,8 +1,11 @@
 """Updates a network"""
 from baseCmd import *
 from baseResponse import *
-class updateNetworkCmd (baseCmd):
+
+
+class updateNetworkCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the network"""
@@ -33,10 +36,12 @@ class updateNetworkCmd (baseCmd):
         """network offering ID"""
         self.networkofferingid = None
         self.typeInfo['networkofferingid'] = 'uuid'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class updateNetworkResponse (baseResponse):
+
+class updateNetworkResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the network"""
         self.id = None
@@ -181,6 +186,7 @@ class updateNetworkResponse (baseResponse):
         """the list of resource tags associated with network"""
         self.tags = []
 
+
 class capability:
     def __init__(self):
         """"can this service capability value can be choosable while creatine network offerings"""
@@ -189,6 +195,7 @@ class capability:
         self.name = None
         """"the capability value"""
         self.value = None
+
 
 class provider:
     def __init__(self):
@@ -206,6 +213,7 @@ class provider:
         self.servicelist = None
         """"state of the network provider"""
         self.state = None
+
 
 class service:
     def __init__(self):
@@ -236,6 +244,7 @@ class service:
         """"state of the network provider"""
         self.state = None
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -258,4 +267,3 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

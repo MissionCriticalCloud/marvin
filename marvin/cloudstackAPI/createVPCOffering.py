@@ -1,8 +1,11 @@
 """Creates VPC offering"""
 from baseCmd import *
 from baseResponse import *
-class createVPCOfferingCmd (baseCmd):
+
+
+class createVPCOfferingCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the display text of the vpc offering"""
@@ -26,10 +29,12 @@ class createVPCOfferingCmd (baseCmd):
         """provider to service mapping. If not specified, the provider for the service will be mapped to the default provider on the physical network"""
         self.serviceproviderlist = []
         self.typeInfo['serviceproviderlist'] = 'map'
-        self.required = ["displaytext","name","supportedservices",]
+        self.required = ["displaytext", "name", "supportedservices", ]
 
-class createVPCOfferingResponse (baseResponse):
+
+class createVPCOfferingResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the vpc offering"""
         self.id = None
@@ -58,6 +63,7 @@ class createVPCOfferingResponse (baseResponse):
         """the list of supported services"""
         self.service = []
 
+
 class capability:
     def __init__(self):
         """"can this service capability value can be choosable while creatine network offerings"""
@@ -66,6 +72,7 @@ class capability:
         self.name = None
         """"the capability value"""
         self.value = None
+
 
 class provider:
     def __init__(self):
@@ -83,6 +90,7 @@ class provider:
         self.servicelist = None
         """"state of the network provider"""
         self.state = None
+
 
 class service:
     def __init__(self):
@@ -112,4 +120,3 @@ class service:
         self.servicelist = None
         """"state of the network provider"""
         self.state = None
-

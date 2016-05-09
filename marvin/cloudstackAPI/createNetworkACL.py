@@ -1,8 +1,11 @@
 """Creates a ACL rule in the given network (the network has to belong to VPC)"""
 from baseCmd import *
 from baseResponse import *
-class createNetworkACLCmd (baseCmd):
+
+
+class createNetworkACLCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the protocol for the ACL rule. Valid values are TCP/UDP/ICMP/ALL or valid protocol number"""
@@ -42,10 +45,12 @@ class createNetworkACLCmd (baseCmd):
         """the traffic type for the ACL,can be ingress or egress, defaulted to ingress if not specified"""
         self.traffictype = None
         self.typeInfo['traffictype'] = 'string'
-        self.required = ["protocol",]
+        self.required = ["protocol", ]
 
-class createNetworkACLResponse (baseResponse):
+
+class createNetworkACLResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the ACL Item"""
         self.id = None
@@ -89,6 +94,7 @@ class createNetworkACLResponse (baseResponse):
         """the list of resource tags associated with the network ACLs"""
         self.tags = []
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -111,4 +117,3 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

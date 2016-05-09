@@ -1,8 +1,11 @@
 """Creates a project"""
 from baseCmd import *
 from baseResponse import *
-class createProjectCmd (baseCmd):
+
+
+class createProjectCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """display text of the project"""
@@ -19,10 +22,12 @@ class createProjectCmd (baseCmd):
         """domain ID of the account owning a project"""
         self.domainid = None
         self.typeInfo['domainid'] = 'uuid'
-        self.required = ["displaytext","name",]
+        self.required = ["displaytext", "name", ]
 
-class createProjectResponse (baseResponse):
+
+class createProjectResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the project"""
         self.id = None
@@ -153,6 +158,7 @@ class createProjectResponse (baseResponse):
         """the list of resource tags associated with vm"""
         self.tags = []
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -175,4 +181,3 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

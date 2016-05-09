@@ -1,8 +1,11 @@
 """Lists all VLAN IP ranges."""
 from baseCmd import *
 from baseResponse import *
-class listVlanIpRangesCmd (baseCmd):
+
+
+class listVlanIpRangesCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the account with which the VLAN IP range is associated. Must be used with the domainId parameter."""
@@ -46,8 +49,10 @@ class listVlanIpRangesCmd (baseCmd):
         self.typeInfo['zoneid'] = 'uuid'
         self.required = []
 
-class listVlanIpRangesResponse (baseResponse):
+
+class listVlanIpRangesResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the VLAN IP range"""
         self.id = None
@@ -115,4 +120,3 @@ class listVlanIpRangesResponse (baseResponse):
         """the Zone ID of the VLAN IP range"""
         self.zoneid = None
         self.typeInfo['zoneid'] = 'string'
-

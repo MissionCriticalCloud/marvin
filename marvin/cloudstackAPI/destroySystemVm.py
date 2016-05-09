@@ -1,18 +1,23 @@
 """Destroyes a system virtual machine."""
 from baseCmd import *
 from baseResponse import *
-class destroySystemVmCmd (baseCmd):
+
+
+class destroySystemVmCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """The ID of the system virtual machine"""
         """Required"""
         self.id = None
         self.typeInfo['id'] = 'uuid'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class destroySystemVmResponse (baseResponse):
+
+class destroySystemVmResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the system VM"""
         self.id = None
@@ -98,4 +103,3 @@ class destroySystemVmResponse (baseResponse):
         """the Zone name for the system VM"""
         self.zonename = None
         self.typeInfo['zonename'] = 'string'
-

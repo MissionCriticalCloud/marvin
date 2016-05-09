@@ -1,8 +1,11 @@
 """Adds account to a project"""
 from baseCmd import *
 from baseResponse import *
-class addAccountToProjectCmd (baseCmd):
+
+
+class addAccountToProjectCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """ID of the project to add the account to"""
@@ -15,10 +18,12 @@ class addAccountToProjectCmd (baseCmd):
         """email to which invitation to the project is going to be sent"""
         self.email = None
         self.typeInfo['email'] = 'string'
-        self.required = ["projectid",]
+        self.required = ["projectid", ]
 
-class addAccountToProjectResponse (baseResponse):
+
+class addAccountToProjectResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """any text associated with the success or failure"""
         self.displaytext = None
@@ -26,4 +31,3 @@ class addAccountToProjectResponse (baseResponse):
         """true if operation is executed successfully"""
         self.success = None
         self.typeInfo['success'] = 'boolean'
-

@@ -1,8 +1,11 @@
 """Assigns a certificate to a load balancer rule"""
 from baseCmd import *
 from baseResponse import *
-class assignCertToLoadBalancerCmd (baseCmd):
+
+
+class assignCertToLoadBalancerCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the certificate"""
@@ -13,10 +16,12 @@ class assignCertToLoadBalancerCmd (baseCmd):
         """Required"""
         self.lbruleid = None
         self.typeInfo['lbruleid'] = 'uuid'
-        self.required = ["certid","lbruleid",]
+        self.required = ["certid", "lbruleid", ]
 
-class assignCertToLoadBalancerResponse (baseResponse):
+
+class assignCertToLoadBalancerResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """any text associated with the success or failure"""
         self.displaytext = None
@@ -24,4 +29,3 @@ class assignCertToLoadBalancerResponse (baseResponse):
         """true if operation is executed successfully"""
         self.success = None
         self.typeInfo['success'] = 'boolean'
-

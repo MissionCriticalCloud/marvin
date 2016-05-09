@@ -1,8 +1,11 @@
 """Updates an ISO file."""
 from baseCmd import *
 from baseResponse import *
-class updateIsoCmd (baseCmd):
+
+
+class updateIsoCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the ID of the image file"""
@@ -42,10 +45,12 @@ class updateIsoCmd (baseCmd):
         """sort key of the template, integer"""
         self.sortkey = None
         self.typeInfo['sortkey'] = 'integer'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class updateIsoResponse (baseResponse):
+
+class updateIsoResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the template ID"""
         self.id = None
@@ -161,6 +166,7 @@ class updateIsoResponse (baseResponse):
         self.jobstatus = None
         self.typeInfo['jobstatus'] = ''
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -183,4 +189,3 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

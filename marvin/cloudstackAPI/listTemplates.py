@@ -1,8 +1,11 @@
 """List all public, private, and privileged templates."""
 from baseCmd import *
 from baseResponse import *
-class listTemplatesCmd (baseCmd):
+
+
+class listTemplatesCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """possible values are "featured", "self", "selfexecutable","sharedexecutable","executable", and "community". * featured : templates that have been marked as featured and public. * self : templates that have been registered or created by the calling user. * selfexecutable : same as self, but only returns templates that can be used to deploy a new VM. * sharedexecutable : templates ready to be deployed that have been granted to the calling user by another user. * executable : templates that are owned by the calling user, or public templates, that can be used to deploy a VM. * community : templates that have been marked as public but not featured. * all : all templates (only usable by admins)."""
@@ -51,10 +54,12 @@ class listTemplatesCmd (baseCmd):
         """list templates by zoneId"""
         self.zoneid = None
         self.typeInfo['zoneid'] = 'uuid'
-        self.required = ["templatefilter",]
+        self.required = ["templatefilter", ]
 
-class listTemplatesResponse (baseResponse):
+
+class listTemplatesResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the template ID"""
         self.id = None
@@ -170,6 +175,7 @@ class listTemplatesResponse (baseResponse):
         self.jobstatus = None
         self.typeInfo['jobstatus'] = ''
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -192,4 +198,3 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

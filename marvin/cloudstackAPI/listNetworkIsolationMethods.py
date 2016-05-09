@@ -1,8 +1,11 @@
 """Lists supported methods of network isolation"""
 from baseCmd import *
 from baseResponse import *
-class listNetworkIsolationMethodsCmd (baseCmd):
+
+
+class listNetworkIsolationMethodsCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """List by keyword"""
@@ -16,10 +19,11 @@ class listNetworkIsolationMethodsCmd (baseCmd):
         self.typeInfo['pagesize'] = 'integer'
         self.required = []
 
-class listNetworkIsolationMethodsResponse (baseResponse):
+
+class listNetworkIsolationMethodsResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """Network isolation method name"""
         self.name = None
         self.typeInfo['name'] = 'string'
-

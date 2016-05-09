@@ -1,8 +1,11 @@
 """Updates a storage pool."""
 from baseCmd import *
 from baseResponse import *
-class updateStoragePoolCmd (baseCmd):
+
+
+class updateStoragePoolCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the Id of the storage pool"""
@@ -21,10 +24,12 @@ class updateStoragePoolCmd (baseCmd):
         """comma-separated list of tags for the storage pool"""
         self.tags = []
         self.typeInfo['tags'] = 'list'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class updateStoragePoolResponse (baseResponse):
+
+class updateStoragePoolResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the storage pool"""
         self.id = None
@@ -101,4 +106,3 @@ class updateStoragePoolResponse (baseResponse):
         """the current status of the latest async job acting on this object"""
         self.jobstatus = None
         self.typeInfo['jobstatus'] = ''
-

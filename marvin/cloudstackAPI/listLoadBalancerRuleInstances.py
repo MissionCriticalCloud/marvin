@@ -1,8 +1,11 @@
 """List all virtual machine instances that are assigned to a load balancer rule."""
 from baseCmd import *
 from baseResponse import *
-class listLoadBalancerRuleInstancesCmd (baseCmd):
+
+
+class listLoadBalancerRuleInstancesCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the ID of the load balancer rule"""
@@ -24,10 +27,12 @@ class listLoadBalancerRuleInstancesCmd (baseCmd):
         """"""
         self.pagesize = None
         self.typeInfo['pagesize'] = 'integer'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class listLoadBalancerRuleInstancesResponse (baseResponse):
+
+class listLoadBalancerRuleInstancesResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """IP addresses of the vm set of lb rule"""
         self.lbvmipaddresses = None
@@ -35,4 +40,3 @@ class listLoadBalancerRuleInstancesResponse (baseResponse):
         """the user vm set for lb rule"""
         self.loadbalancerruleinstance = None
         self.typeInfo['loadbalancerruleinstance'] = 'uservmresponse'
-

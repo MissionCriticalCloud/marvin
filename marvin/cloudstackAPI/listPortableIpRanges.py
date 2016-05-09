@@ -1,8 +1,11 @@
 """list portable IP ranges"""
 from baseCmd import *
 from baseResponse import *
-class listPortableIpRangesCmd (baseCmd):
+
+
+class listPortableIpRangesCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """Id of the portable ip range"""
@@ -22,8 +25,10 @@ class listPortableIpRangesCmd (baseCmd):
         self.typeInfo['regionid'] = 'integer'
         self.required = []
 
-class listPortableIpRangesResponse (baseResponse):
+
+class listPortableIpRangesResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """portable IP range ID"""
         self.id = None
@@ -49,6 +54,7 @@ class listPortableIpRangesResponse (baseResponse):
         """List of portable IP and association with zone/network/vpc details that are part of GSLB rule"""
         self.portableipaddress = []
 
+
 class portableipaddress:
     def __init__(self):
         """"the account ID the portable IP address is associated with"""
@@ -71,4 +77,3 @@ class portableipaddress:
         self.vpcid = None
         """"the ID of the zone the public IP address belongs to"""
         self.zoneid = None
-

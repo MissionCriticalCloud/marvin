@@ -1,8 +1,11 @@
 """Removes detail for the Resource."""
 from baseCmd import *
 from baseResponse import *
-class removeResourceDetailCmd (baseCmd):
+
+
+class removeResourceDetailCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """Delete details for resource id"""
@@ -16,10 +19,12 @@ class removeResourceDetailCmd (baseCmd):
         """Delete details matching key/value pairs"""
         self.key = None
         self.typeInfo['key'] = 'string'
-        self.required = ["resourceid","resourcetype",]
+        self.required = ["resourceid", "resourcetype", ]
 
-class removeResourceDetailResponse (baseResponse):
+
+class removeResourceDetailResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """any text associated with the success or failure"""
         self.displaytext = None
@@ -27,4 +32,3 @@ class removeResourceDetailResponse (baseResponse):
         """true if operation is executed successfully"""
         self.success = None
         self.typeInfo['success'] = 'boolean'
-

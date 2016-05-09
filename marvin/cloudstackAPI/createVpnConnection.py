@@ -1,8 +1,11 @@
 """Create site to site vpn connection"""
 from baseCmd import *
 from baseResponse import *
-class createVpnConnectionCmd (baseCmd):
+
+
+class createVpnConnectionCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """id of the customer gateway"""
@@ -19,10 +22,12 @@ class createVpnConnectionCmd (baseCmd):
         """connection is passive or not"""
         self.passive = None
         self.typeInfo['passive'] = 'boolean'
-        self.required = ["s2scustomergatewayid","s2svpngatewayid",]
+        self.required = ["s2scustomergatewayid", "s2svpngatewayid", ]
 
-class createVpnConnectionResponse (baseResponse):
+
+class createVpnConnectionResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the connection ID"""
         self.id = None
@@ -93,4 +98,3 @@ class createVpnConnectionResponse (baseResponse):
         """State of vpn connection"""
         self.state = None
         self.typeInfo['state'] = 'string'
-

@@ -1,8 +1,11 @@
 """Deletes affinity group"""
 from baseCmd import *
 from baseResponse import *
-class deleteAffinityGroupCmd (baseCmd):
+
+
+class deleteAffinityGroupCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the account of the affinity group. Must be specified with domain ID"""
@@ -22,8 +25,10 @@ class deleteAffinityGroupCmd (baseCmd):
         self.typeInfo['projectid'] = 'uuid'
         self.required = []
 
-class deleteAffinityGroupResponse (baseResponse):
+
+class deleteAffinityGroupResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """any text associated with the success or failure"""
         self.displaytext = None
@@ -31,4 +36,3 @@ class deleteAffinityGroupResponse (baseResponse):
         """true if operation is executed successfully"""
         self.success = None
         self.typeInfo['success'] = 'boolean'
-

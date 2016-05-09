@@ -1,8 +1,11 @@
 """Lists all available networks."""
 from baseCmd import *
 from baseResponse import *
-class listNetworksCmd (baseCmd):
+
+
+class listNetworksCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -76,8 +79,10 @@ class listNetworksCmd (baseCmd):
         self.typeInfo['zoneid'] = 'uuid'
         self.required = []
 
-class listNetworksResponse (baseResponse):
+
+class listNetworksResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the network"""
         self.id = None
@@ -222,6 +227,7 @@ class listNetworksResponse (baseResponse):
         """the list of resource tags associated with network"""
         self.tags = []
 
+
 class capability:
     def __init__(self):
         """"can this service capability value can be choosable while creatine network offerings"""
@@ -230,6 +236,7 @@ class capability:
         self.name = None
         """"the capability value"""
         self.value = None
+
 
 class provider:
     def __init__(self):
@@ -247,6 +254,7 @@ class provider:
         self.servicelist = None
         """"state of the network provider"""
         self.state = None
+
 
 class service:
     def __init__(self):
@@ -277,6 +285,7 @@ class service:
         """"state of the network provider"""
         self.state = None
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -299,4 +308,3 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

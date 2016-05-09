@@ -1,8 +1,11 @@
 """Creates a l2tp/ipsec remote access vpn"""
 from baseCmd import *
 from baseResponse import *
-class createRemoteAccessVpnCmd (baseCmd):
+
+
+class createRemoteAccessVpnCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """public ip address id of the vpn server"""
@@ -24,10 +27,12 @@ class createRemoteAccessVpnCmd (baseCmd):
         """if true, firewall rule for source/end public port is automatically created; if false - firewall rule has to be created explicitely. Has value true by default"""
         self.openfirewall = None
         self.typeInfo['openfirewall'] = 'boolean'
-        self.required = ["publicipid",]
+        self.required = ["publicipid", ]
 
-class createRemoteAccessVpnResponse (baseResponse):
+
+class createRemoteAccessVpnResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the remote access vpn"""
         self.id = None
@@ -65,4 +70,3 @@ class createRemoteAccessVpnResponse (baseResponse):
         """the state of the rule"""
         self.state = None
         self.typeInfo['state'] = 'string'
-

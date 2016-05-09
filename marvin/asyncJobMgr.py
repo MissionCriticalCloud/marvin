@@ -1,22 +1,21 @@
-import threading
-from marvin import cloudstackException
-import time
 import Queue
 import copy
-import sys
-import jsonHelper
 import datetime
+import sys
+import threading
+import time
+
+import jsonHelper
+from marvin import cloudstackException
 
 
 class job(object):
-
     def __init__(self):
         self.id = None
         self.cmd = None
 
 
 class jobStatus(object):
-
     def __init__(self):
         self.result = None
         self.status = None
@@ -32,7 +31,6 @@ class jobStatus(object):
 
 
 class workThread(threading.Thread):
-
     def __init__(self, in_queue, outqueue, apiClient, db=None, lock=None):
         threading.Thread.__init__(self)
         self.inqueue = in_queue
@@ -70,7 +68,7 @@ class workThread(threading.Thread):
                 result = self.connection.marvin_request(cmd)
                 jobstatus.result = result
                 jobstatus.endTime = datetime.datetime.now()
-                jobstatus.duration =\
+                jobstatus.duration = \
                     time.mktime(jobstatus.endTime.timetuple()) - time.mktime(
                         jobstatus.startTime.timetuple())
             else:
@@ -81,9 +79,9 @@ class workThread(threading.Thread):
                     jobId = result.jobid
                     jobstatus.jobId = jobId
                     try:
-                        responseName =\
+                        responseName = \
                             cmd.__class__.__name__.replace("Cmd", "Response")
-                        jobstatus.responsecls =\
+                        jobstatus.responsecls = \
                             jsonHelper.getclassFromName(cmd, responseName)
                     except:
                         pass
@@ -112,7 +110,6 @@ class workThread(threading.Thread):
 
 
 class jobThread(threading.Thread):
-
     def __init__(self, inqueue, interval):
         threading.Thread.__init__(self)
         self.inqueue = inqueue
@@ -131,14 +128,12 @@ class jobThread(threading.Thread):
 
 
 class outputDict(object):
-
     def __init__(self):
         self.lock = threading.Condition()
         self.dict = {}
 
 
 class asyncJobMgr(object):
-
     def __init__(self, apiClient, db):
         self.inqueue = Queue.Queue()
         self.output = outputDict()

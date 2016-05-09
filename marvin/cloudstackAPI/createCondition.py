@@ -1,8 +1,11 @@
 """Creates a condition"""
 from baseCmd import *
 from baseResponse import *
-class createConditionCmd (baseCmd):
+
+
+class createConditionCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """ID of the Counter."""
@@ -23,10 +26,12 @@ class createConditionCmd (baseCmd):
         """the domain ID of the account."""
         self.domainid = None
         self.typeInfo['domainid'] = 'uuid'
-        self.required = ["counterid","relationaloperator","threshold",]
+        self.required = ["counterid", "relationaloperator", "threshold", ]
 
-class createConditionResponse (baseResponse):
+
+class createConditionResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the Condition"""
         self.id = None
@@ -58,4 +63,3 @@ class createConditionResponse (baseResponse):
         """zone id of counter"""
         self.zoneid = None
         self.typeInfo['zoneid'] = 'string'
-

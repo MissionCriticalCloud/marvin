@@ -1,18 +1,23 @@
 """Creates a VLAN IP range."""
 from baseCmd import *
 from baseResponse import *
-class deleteVlanIpRangeCmd (baseCmd):
+
+
+class deleteVlanIpRangeCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the id of the VLAN IP range"""
         """Required"""
         self.id = None
         self.typeInfo['id'] = 'uuid'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class deleteVlanIpRangeResponse (baseResponse):
+
+class deleteVlanIpRangeResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """any text associated with the success or failure"""
         self.displaytext = None
@@ -20,4 +25,3 @@ class deleteVlanIpRangeResponse (baseResponse):
         """true if operation is executed successfully"""
         self.success = None
         self.typeInfo['success'] = 'boolean'
-

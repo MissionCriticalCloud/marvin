@@ -1,8 +1,11 @@
 """Stops a router."""
 from baseCmd import *
 from baseResponse import *
-class stopRouterCmd (baseCmd):
+
+
+class stopRouterCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the router"""
@@ -12,10 +15,12 @@ class stopRouterCmd (baseCmd):
         """Force stop the VM. The caller knows the VM is stopped."""
         self.forced = None
         self.typeInfo['forced'] = 'boolean'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class stopRouterResponse (baseResponse):
+
+class stopRouterResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the router"""
         self.id = None
@@ -155,6 +160,7 @@ class stopRouterResponse (baseResponse):
         """the list of nics associated with the router"""
         self.nic = []
 
+
 class nic:
     def __init__(self):
         """"the ID of the nic"""
@@ -193,4 +199,3 @@ class nic:
         self.type = None
         """"Id of the vm to which the nic belongs"""
         self.virtualmachineid = None
-

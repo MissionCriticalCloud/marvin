@@ -1,8 +1,11 @@
 """Lists autoscale vm profiles."""
 from baseCmd import *
 from baseResponse import *
-class listAutoScaleVmProfilesCmd (baseCmd):
+
+
+class listAutoScaleVmProfilesCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -49,8 +52,10 @@ class listAutoScaleVmProfilesCmd (baseCmd):
         self.typeInfo['zoneid'] = 'uuid'
         self.required = []
 
-class listAutoScaleVmProfilesResponse (baseResponse):
+
+class listAutoScaleVmProfilesResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the autoscale vm profile ID"""
         self.id = None
@@ -91,4 +96,3 @@ class listAutoScaleVmProfilesResponse (baseResponse):
         """the availability zone to be used while deploying a virtual machine"""
         self.zoneid = None
         self.typeInfo['zoneid'] = 'string'
-

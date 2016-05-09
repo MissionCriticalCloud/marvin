@@ -1,18 +1,23 @@
 """Releases host reservation."""
 from baseCmd import *
 from baseResponse import *
-class releaseHostReservationCmd (baseCmd):
+
+
+class releaseHostReservationCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the host ID"""
         """Required"""
         self.id = None
         self.typeInfo['id'] = 'uuid'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class releaseHostReservationResponse (baseResponse):
+
+class releaseHostReservationResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """any text associated with the success or failure"""
         self.displaytext = None
@@ -20,4 +25,3 @@ class releaseHostReservationResponse (baseResponse):
         """true if operation is executed successfully"""
         self.success = None
         self.typeInfo['success'] = 'boolean'
-

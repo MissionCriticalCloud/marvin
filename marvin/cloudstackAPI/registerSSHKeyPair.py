@@ -1,8 +1,11 @@
 """Register a public key in a keypair under a certain name"""
 from baseCmd import *
 from baseResponse import *
-class registerSSHKeyPairCmd (baseCmd):
+
+
+class registerSSHKeyPairCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """Name of the keypair"""
@@ -22,10 +25,12 @@ class registerSSHKeyPairCmd (baseCmd):
         """an optional project for the ssh key"""
         self.projectid = None
         self.typeInfo['projectid'] = 'uuid'
-        self.required = ["name","publickey",]
+        self.required = ["name", "publickey", ]
 
-class registerSSHKeyPairResponse (baseResponse):
+
+class registerSSHKeyPairResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the owner of the keypair"""
         self.account = None
@@ -42,4 +47,3 @@ class registerSSHKeyPairResponse (baseResponse):
         """Name of the keypair"""
         self.name = None
         self.typeInfo['name'] = 'string'
-

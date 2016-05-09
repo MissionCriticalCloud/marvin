@@ -1,8 +1,11 @@
 """Lists security groups"""
 from baseCmd import *
 from baseResponse import *
-class listSecurityGroupsCmd (baseCmd):
+
+
+class listSecurityGroupsCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -43,8 +46,10 @@ class listSecurityGroupsCmd (baseCmd):
         self.typeInfo['virtualmachineid'] = 'uuid'
         self.required = []
 
-class listSecurityGroupsResponse (baseResponse):
+
+class listSecurityGroupsResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the security group"""
         self.id = None
@@ -89,6 +94,7 @@ class listSecurityGroupsResponse (baseResponse):
         self.jobstatus = None
         self.typeInfo['jobstatus'] = ''
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -111,6 +117,7 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
+
 
 class egressrule:
     def __init__(self):
@@ -155,6 +162,7 @@ class egressrule:
         """"tag value"""
         self.value = None
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -177,6 +185,7 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
+
 
 class ingressrule:
     def __init__(self):
@@ -221,6 +230,7 @@ class ingressrule:
         """"tag value"""
         self.value = None
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -243,4 +253,3 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

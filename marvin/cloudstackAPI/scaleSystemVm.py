@@ -1,8 +1,11 @@
 """Scale the service offering for a system vm (console proxy or secondary storage). The system vm must be in a "Stopped" state for this command to take effect."""
 from baseCmd import *
 from baseResponse import *
-class scaleSystemVmCmd (baseCmd):
+
+
+class scaleSystemVmCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """The ID of the system vm"""
@@ -16,10 +19,12 @@ class scaleSystemVmCmd (baseCmd):
         """name value pairs of custom parameters for cpu, memory and cpunumber. example details[i].name=value"""
         self.details = []
         self.typeInfo['details'] = 'map'
-        self.required = ["id","serviceofferingid",]
+        self.required = ["id", "serviceofferingid", ]
 
-class scaleSystemVmResponse (baseResponse):
+
+class scaleSystemVmResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the system VM"""
         self.id = None
@@ -105,4 +110,3 @@ class scaleSystemVmResponse (baseResponse):
         """the Zone name for the system VM"""
         self.zonename = None
         self.typeInfo['zonename'] = 'string'
-

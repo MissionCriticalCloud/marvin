@@ -1,8 +1,11 @@
 """Attaches a disk volume to a virtual machine."""
 from baseCmd import *
 from baseResponse import *
-class attachVolumeCmd (baseCmd):
+
+
+class attachVolumeCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the disk volume"""
@@ -16,10 +19,12 @@ class attachVolumeCmd (baseCmd):
         """the ID of the device to map the volume to within the guest OS. If no deviceId is passed in, the next available deviceId will be chosen. Possible values for a Linux OS are:* 0 - /dev/xvda* 1 - /dev/xvdb* 2 - /dev/xvdc* 4 - /dev/xvde* 5 - /dev/xvdf* 6 - /dev/xvdg* 7 - /dev/xvdh* 8 - /dev/xvdi* 9 - /dev/xvdj"""
         self.deviceid = None
         self.typeInfo['deviceid'] = 'long'
-        self.required = ["id","virtualmachineid",]
+        self.required = ["id", "virtualmachineid", ]
 
-class attachVolumeResponse (baseResponse):
+
+class attachVolumeResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """ID of the disk volume"""
         self.id = None
@@ -180,6 +185,7 @@ class attachVolumeResponse (baseResponse):
         self.jobstatus = None
         self.typeInfo['jobstatus'] = ''
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -202,4 +208,3 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

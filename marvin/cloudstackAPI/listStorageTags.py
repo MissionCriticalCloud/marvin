@@ -1,8 +1,11 @@
 """Lists storage tags"""
 from baseCmd import *
 from baseResponse import *
-class listStorageTagsCmd (baseCmd):
+
+
+class listStorageTagsCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """List by keyword"""
@@ -16,8 +19,10 @@ class listStorageTagsCmd (baseCmd):
         self.typeInfo['pagesize'] = 'integer'
         self.required = []
 
-class listStorageTagsResponse (baseResponse):
+
+class listStorageTagsResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the storage tag"""
         self.id = None
@@ -28,4 +33,3 @@ class listStorageTagsResponse (baseResponse):
         """the pool ID of the storage tag"""
         self.poolid = None
         self.typeInfo['poolid'] = 'long'
-

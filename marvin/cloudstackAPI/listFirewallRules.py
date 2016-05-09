@@ -1,8 +1,11 @@
 """Lists all firewall rules for an IP address."""
 from baseCmd import *
 from baseResponse import *
-class listFirewallRulesCmd (baseCmd):
+
+
+class listFirewallRulesCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -46,8 +49,10 @@ class listFirewallRulesCmd (baseCmd):
         self.typeInfo['tags'] = 'map'
         self.required = []
 
-class listFirewallRulesResponse (baseResponse):
+
+class listFirewallRulesResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the firewall rule"""
         self.id = None
@@ -88,6 +93,7 @@ class listFirewallRulesResponse (baseResponse):
         """the list of resource tags associated with the rule"""
         self.tags = []
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -110,4 +116,3 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

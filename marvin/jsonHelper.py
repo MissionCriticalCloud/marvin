@@ -1,11 +1,10 @@
-import cloudstackException
-import json
 import inspect
-from cloudstackAPI import *
+
+import cloudstackException
+from marvin.cloudstackAPI import *
 
 
 class jsonLoader(object):
-
     '''The recursive class for building and representing objects with.'''
 
     def __init__(self, obj):
@@ -37,7 +36,6 @@ class jsonLoader(object):
 
 
 class jsonDump(object):
-
     @staticmethod
     def __serialize(obj):
         """Recursively walk object's hierarchy."""
@@ -141,6 +139,7 @@ def getResultObj(returnObj, responsecls=None):
                 return getattr(result, key)
     else:
         return finalizeResultObj(result, responseName, responsecls)
+
 
 if __name__ == "__main__":
 

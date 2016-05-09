@@ -1,8 +1,11 @@
 """A command to list events."""
 from baseCmd import *
 from baseResponse import *
-class listEventsCmd (baseCmd):
+
+
+class listEventsCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -52,8 +55,10 @@ class listEventsCmd (baseCmd):
         self.typeInfo['type'] = 'string'
         self.required = []
 
-class listEventsResponse (baseResponse):
+
+class listEventsResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the event"""
         self.id = None
@@ -94,4 +99,3 @@ class listEventsResponse (baseResponse):
         """the name of the user who performed the action (can be different from the account if an admin is performing an action for a user, e.g. starting/stopping a user's virtual machine)"""
         self.username = None
         self.typeInfo['username'] = 'string'
-

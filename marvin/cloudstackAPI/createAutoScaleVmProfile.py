@@ -1,8 +1,11 @@
 """Creates a profile that contains information about the virtual machine which will be provisioned automatically by autoscale feature."""
 from baseCmd import *
 from baseResponse import *
-class createAutoScaleVmProfileCmd (baseCmd):
+
+
+class createAutoScaleVmProfileCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the service offering of the auto deployed virtual machine"""
@@ -32,10 +35,12 @@ class createAutoScaleVmProfileCmd (baseCmd):
         """parameters other than zoneId/serviceOfferringId/templateId of the auto deployed virtual machine"""
         self.otherdeployparams = None
         self.typeInfo['otherdeployparams'] = 'string'
-        self.required = ["serviceofferingid","templateid","zoneid",]
+        self.required = ["serviceofferingid", "templateid", "zoneid", ]
 
-class createAutoScaleVmProfileResponse (baseResponse):
+
+class createAutoScaleVmProfileResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the autoscale vm profile ID"""
         self.id = None
@@ -76,4 +81,3 @@ class createAutoScaleVmProfileResponse (baseResponse):
         """the availability zone to be used while deploying a virtual machine"""
         self.zoneid = None
         self.typeInfo['zoneid'] = 'string'
-

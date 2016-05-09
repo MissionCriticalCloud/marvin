@@ -1,8 +1,11 @@
 """Attempts Migration of a system virtual machine to the host specified."""
 from baseCmd import *
 from baseResponse import *
-class migrateSystemVmCmd (baseCmd):
+
+
+class migrateSystemVmCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """destination Host ID to migrate VM to"""
@@ -13,10 +16,12 @@ class migrateSystemVmCmd (baseCmd):
         """Required"""
         self.virtualmachineid = None
         self.typeInfo['virtualmachineid'] = 'uuid'
-        self.required = ["hostid","virtualmachineid",]
+        self.required = ["hostid", "virtualmachineid", ]
 
-class migrateSystemVmResponse (baseResponse):
+
+class migrateSystemVmResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the system VM"""
         self.id = None
@@ -102,4 +107,3 @@ class migrateSystemVmResponse (baseResponse):
         """the Zone name for the system VM"""
         self.zonename = None
         self.typeInfo['zonename'] = 'string'
-

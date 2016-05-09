@@ -1,8 +1,11 @@
 """Creates a Storage network IP range."""
 from baseCmd import *
 from baseResponse import *
-class createStorageNetworkIpRangeCmd (baseCmd):
+
+
+class createStorageNetworkIpRangeCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the gateway for storage network"""
@@ -27,10 +30,12 @@ class createStorageNetworkIpRangeCmd (baseCmd):
         """Optional. The vlan the ip range sits on, default to Null when it is not specificed which means you network is not on any Vlan."""
         self.vlan = None
         self.typeInfo['vlan'] = 'integer'
-        self.required = ["gateway","netmask","podid","startip",]
+        self.required = ["gateway", "netmask", "podid", "startip", ]
 
-class createStorageNetworkIpRangeResponse (baseResponse):
+
+class createStorageNetworkIpRangeResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the uuid of storage network IP range."""
         self.id = None
@@ -59,4 +64,3 @@ class createStorageNetworkIpRangeResponse (baseResponse):
         """the Zone uuid of the storage network IP range"""
         self.zoneid = None
         self.typeInfo['zoneid'] = 'string'
-

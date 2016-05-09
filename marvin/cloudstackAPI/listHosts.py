@@ -1,8 +1,11 @@
 """Lists hosts."""
 from baseCmd import *
 from baseResponse import *
-class listHostsCmd (baseCmd):
+
+
+class listHostsCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """lists hosts existing in particular cluster"""
@@ -52,8 +55,10 @@ class listHostsCmd (baseCmd):
         self.typeInfo['zoneid'] = 'uuid'
         self.required = []
 
-class listHostsResponse (baseResponse):
+
+class listHostsResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the host"""
         self.id = None
@@ -199,6 +204,7 @@ class listHostsResponse (baseResponse):
         self.jobstatus = None
         self.typeInfo['jobstatus'] = ''
 
+
 class vgpu:
     def __init__(self):
         """"Maximum vgpu can be created with this vgpu type on the given gpu group"""
@@ -217,6 +223,7 @@ class vgpu:
         self.vgputype = None
         """"Video RAM for this vGPU type"""
         self.videoram = None
+
 
 class gpugroup:
     def __init__(self):
@@ -240,4 +247,3 @@ class gpugroup:
         self.vgputype = None
         """"Video RAM for this vGPU type"""
         self.videoram = None
-

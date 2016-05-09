@@ -1,8 +1,11 @@
 """Lists storage pools available for migration of a volume."""
 from baseCmd import *
 from baseResponse import *
-class findStoragePoolsForMigrationCmd (baseCmd):
+
+
+class findStoragePoolsForMigrationCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the ID of the volume"""
@@ -18,10 +21,12 @@ class findStoragePoolsForMigrationCmd (baseCmd):
         """"""
         self.pagesize = None
         self.typeInfo['pagesize'] = 'integer'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class findStoragePoolsForMigrationResponse (baseResponse):
+
+class findStoragePoolsForMigrationResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the storage pool"""
         self.id = None
@@ -98,4 +103,3 @@ class findStoragePoolsForMigrationResponse (baseResponse):
         """the current status of the latest async job acting on this object"""
         self.jobstatus = None
         self.typeInfo['jobstatus'] = ''
-

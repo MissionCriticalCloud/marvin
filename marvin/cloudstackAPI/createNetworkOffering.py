@@ -1,8 +1,11 @@
 """Creates a network offering."""
 from baseCmd import *
 from baseResponse import *
-class createNetworkOfferingCmd (baseCmd):
+
+
+class createNetworkOfferingCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the display text of the network offering"""
@@ -67,10 +70,12 @@ class createNetworkOfferingCmd (baseCmd):
         """the tags for the network offering."""
         self.tags = None
         self.typeInfo['tags'] = 'string'
-        self.required = ["displaytext","guestiptype","name","supportedservices","traffictype",]
+        self.required = ["displaytext", "guestiptype", "name", "supportedservices", "traffictype", ]
 
-class createNetworkOfferingResponse (baseResponse):
+
+class createNetworkOfferingResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the network offering"""
         self.id = None
@@ -138,6 +143,7 @@ class createNetworkOfferingResponse (baseResponse):
         """the list of supported services"""
         self.service = []
 
+
 class capability:
     def __init__(self):
         """"can this service capability value can be choosable while creatine network offerings"""
@@ -146,6 +152,7 @@ class capability:
         self.name = None
         """"the capability value"""
         self.value = None
+
 
 class provider:
     def __init__(self):
@@ -163,6 +170,7 @@ class provider:
         self.servicelist = None
         """"state of the network provider"""
         self.state = None
+
 
 class service:
     def __init__(self):
@@ -192,4 +200,3 @@ class service:
         self.servicelist = None
         """"state of the network provider"""
         self.state = None
-

@@ -1,8 +1,11 @@
 """Stops an Internal LB vm."""
 from baseCmd import *
 from baseResponse import *
-class stopInternalLoadBalancerVMCmd (baseCmd):
+
+
+class stopInternalLoadBalancerVMCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the internal lb vm"""
@@ -12,10 +15,12 @@ class stopInternalLoadBalancerVMCmd (baseCmd):
         """Force stop the VM. The caller knows the VM is stopped."""
         self.forced = None
         self.typeInfo['forced'] = 'boolean'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class stopInternalLoadBalancerVMResponse (baseResponse):
+
+class stopInternalLoadBalancerVMResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the router"""
         self.id = None
@@ -155,6 +160,7 @@ class stopInternalLoadBalancerVMResponse (baseResponse):
         """the list of nics associated with the router"""
         self.nic = []
 
+
 class nic:
     def __init__(self):
         """"the ID of the nic"""
@@ -193,4 +199,3 @@ class nic:
         self.type = None
         """"Id of the vm to which the nic belongs"""
         self.virtualmachineid = None
-

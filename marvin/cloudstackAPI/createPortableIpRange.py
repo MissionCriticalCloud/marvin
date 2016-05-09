@@ -1,8 +1,11 @@
 """adds a range of portable public IP's to a region"""
 from baseCmd import *
 from baseResponse import *
-class createPortableIpRangeCmd (baseCmd):
+
+
+class createPortableIpRangeCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ending IP address in the portable IP range"""
@@ -28,10 +31,12 @@ class createPortableIpRangeCmd (baseCmd):
         """VLAN id, if not specified defaulted to untagged"""
         self.vlan = None
         self.typeInfo['vlan'] = 'string'
-        self.required = ["endip","gateway","netmask","regionid","startip",]
+        self.required = ["endip", "gateway", "netmask", "regionid", "startip", ]
 
-class createPortableIpRangeResponse (baseResponse):
+
+class createPortableIpRangeResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """portable IP range ID"""
         self.id = None
@@ -57,6 +62,7 @@ class createPortableIpRangeResponse (baseResponse):
         """List of portable IP and association with zone/network/vpc details that are part of GSLB rule"""
         self.portableipaddress = []
 
+
 class portableipaddress:
     def __init__(self):
         """"the account ID the portable IP address is associated with"""
@@ -79,4 +85,3 @@ class portableipaddress:
         self.vpcid = None
         """"the ID of the zone the public IP address belongs to"""
         self.zoneid = None
-

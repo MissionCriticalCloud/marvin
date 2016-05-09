@@ -1,8 +1,11 @@
 """Creates a disk volume from a disk offering. This disk volume must still be attached to a virtual machine to make use of it."""
 from baseCmd import *
 from baseResponse import *
-class createVolumeCmd (baseCmd):
+
+
+class createVolumeCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the account associated with the disk volume. Must be used with the domainId parameter."""
@@ -46,8 +49,10 @@ class createVolumeCmd (baseCmd):
         self.typeInfo['zoneid'] = 'uuid'
         self.required = []
 
-class createVolumeResponse (baseResponse):
+
+class createVolumeResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """ID of the disk volume"""
         self.id = None
@@ -208,6 +213,7 @@ class createVolumeResponse (baseResponse):
         self.jobstatus = None
         self.typeInfo['jobstatus'] = ''
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -230,4 +236,3 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

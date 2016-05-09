@@ -1,8 +1,11 @@
 """Adds backup image store."""
 from baseCmd import *
 from baseResponse import *
-class addImageStoreCmd (baseCmd):
+
+
+class addImageStoreCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the image store provider name"""
@@ -21,10 +24,12 @@ class addImageStoreCmd (baseCmd):
         """the Zone ID for the image store"""
         self.zoneid = None
         self.typeInfo['zoneid'] = 'uuid'
-        self.required = ["provider",]
+        self.required = ["provider", ]
 
-class addImageStoreResponse (baseResponse):
+
+class addImageStoreResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the image store"""
         self.id = None
@@ -53,4 +58,3 @@ class addImageStoreResponse (baseResponse):
         """the Zone name of the image store"""
         self.zonename = None
         self.typeInfo['zonename'] = 'string'
-

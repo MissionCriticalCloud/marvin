@@ -1,18 +1,23 @@
 """Disables an AutoScale Vm Group"""
 from baseCmd import *
 from baseResponse import *
-class disableAutoScaleVmGroupCmd (baseCmd):
+
+
+class disableAutoScaleVmGroupCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the autoscale group"""
         """Required"""
         self.id = None
         self.typeInfo['id'] = 'uuid'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class disableAutoScaleVmGroupResponse (baseResponse):
+
+class disableAutoScaleVmGroupResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the autoscale vm group ID"""
         self.id = None
@@ -59,4 +64,3 @@ class disableAutoScaleVmGroupResponse (baseResponse):
         """the autoscale profile that contains information about the vms in the vm group."""
         self.vmprofileid = None
         self.typeInfo['vmprofileid'] = 'string'
-

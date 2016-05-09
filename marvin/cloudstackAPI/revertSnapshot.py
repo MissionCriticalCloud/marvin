@@ -1,18 +1,23 @@
 """revert a volume snapshot."""
 from baseCmd import *
 from baseResponse import *
-class revertSnapshotCmd (baseCmd):
+
+
+class revertSnapshotCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """The ID of the snapshot"""
         """Required"""
         self.id = None
         self.typeInfo['id'] = 'uuid'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class revertSnapshotResponse (baseResponse):
+
+class revertSnapshotResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """ID of the snapshot"""
         self.id = None
@@ -74,6 +79,7 @@ class revertSnapshotResponse (baseResponse):
         self.jobstatus = None
         self.typeInfo['jobstatus'] = ''
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -96,4 +102,3 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

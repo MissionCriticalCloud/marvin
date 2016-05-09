@@ -1,8 +1,11 @@
 """Lists all available OS mappings for given hypervisor"""
 from baseCmd import *
 from baseResponse import *
-class listGuestOsMappingCmd (baseCmd):
+
+
+class listGuestOsMappingCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list Guest OS mapping by hypervisor"""
@@ -28,8 +31,10 @@ class listGuestOsMappingCmd (baseCmd):
         self.typeInfo['pagesize'] = 'integer'
         self.required = []
 
-class listGuestOsMappingResponse (baseResponse):
+
+class listGuestOsMappingResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the Guest OS mapping"""
         self.id = None
@@ -52,4 +57,3 @@ class listGuestOsMappingResponse (baseResponse):
         """the ID of the Guest OS type"""
         self.ostypeid = None
         self.typeInfo['ostypeid'] = 'string'
-

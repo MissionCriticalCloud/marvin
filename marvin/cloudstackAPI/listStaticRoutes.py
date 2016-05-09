@@ -1,8 +1,11 @@
 """Lists all static routes"""
 from baseCmd import *
 from baseResponse import *
-class listStaticRoutesCmd (baseCmd):
+
+
+class listStaticRoutesCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -43,8 +46,10 @@ class listStaticRoutesCmd (baseCmd):
         self.typeInfo['vpcid'] = 'uuid'
         self.required = []
 
-class listStaticRoutesResponse (baseResponse):
+
+class listStaticRoutesResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of static route"""
         self.id = None
@@ -79,6 +84,7 @@ class listStaticRoutesResponse (baseResponse):
         """the list of resource tags associated with static route"""
         self.tags = []
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -101,4 +107,3 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

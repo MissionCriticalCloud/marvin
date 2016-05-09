@@ -1,8 +1,11 @@
 """Updates a port forwarding rule. Only the private port and the virtual machine can be updated."""
 from baseCmd import *
 from baseResponse import *
-class updatePortForwardingRuleCmd (baseCmd):
+
+
+class updatePortForwardingRuleCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the port forwarding rule"""
@@ -24,10 +27,12 @@ class updatePortForwardingRuleCmd (baseCmd):
         """VM guest nic Secondary ip address for the port forwarding rule"""
         self.vmguestip = None
         self.typeInfo['vmguestip'] = 'string'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class updatePortForwardingRuleResponse (baseResponse):
+
+class updatePortForwardingRuleResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the port forwarding rule"""
         self.id = None
@@ -80,6 +85,7 @@ class updatePortForwardingRuleResponse (baseResponse):
         """the list of resource tags associated with the rule"""
         self.tags = []
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -102,4 +108,3 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

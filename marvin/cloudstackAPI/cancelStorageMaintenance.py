@@ -1,18 +1,23 @@
 """Cancels maintenance for primary storage"""
 from baseCmd import *
 from baseResponse import *
-class cancelStorageMaintenanceCmd (baseCmd):
+
+
+class cancelStorageMaintenanceCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the primary storage ID"""
         """Required"""
         self.id = None
         self.typeInfo['id'] = 'uuid'
-        self.required = ["id",]
+        self.required = ["id", ]
 
-class cancelStorageMaintenanceResponse (baseResponse):
+
+class cancelStorageMaintenanceResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the storage pool"""
         self.id = None
@@ -89,4 +94,3 @@ class cancelStorageMaintenanceResponse (baseResponse):
         """the current status of the latest async job acting on this object"""
         self.jobstatus = None
         self.typeInfo['jobstatus'] = ''
-

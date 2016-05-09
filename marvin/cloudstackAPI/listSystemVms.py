@@ -1,8 +1,11 @@
 """List system virtual machines."""
 from baseCmd import *
 from baseResponse import *
-class listSystemVmsCmd (baseCmd):
+
+
+class listSystemVmsCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the host ID of the system VM"""
@@ -40,8 +43,10 @@ class listSystemVmsCmd (baseCmd):
         self.typeInfo['zoneid'] = 'uuid'
         self.required = []
 
-class listSystemVmsResponse (baseResponse):
+
+class listSystemVmsResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the system VM"""
         self.id = None
@@ -127,4 +132,3 @@ class listSystemVmsResponse (baseResponse):
         """the Zone name for the system VM"""
         self.zonename = None
         self.typeInfo['zonename'] = 'string'
-

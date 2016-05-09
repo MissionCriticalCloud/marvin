@@ -1,8 +1,11 @@
 """Lists autoscale policies."""
 from baseCmd import *
 from baseResponse import *
-class listAutoScalePoliciesCmd (baseCmd):
+
+
+class listAutoScalePoliciesCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -40,8 +43,10 @@ class listAutoScalePoliciesCmd (baseCmd):
         self.typeInfo['vmgroupid'] = 'uuid'
         self.required = []
 
-class listAutoScalePoliciesResponse (baseResponse):
+
+class listAutoScalePoliciesResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the autoscale policy ID"""
         self.id = None
@@ -73,4 +78,3 @@ class listAutoScalePoliciesResponse (baseResponse):
         """the cool down period for which the policy should not be evaluated after the action has been taken"""
         self.quiettime = None
         self.typeInfo['quiettime'] = 'integer'
-

@@ -1,8 +1,11 @@
 """Add a new guest OS type"""
 from baseCmd import *
 from baseResponse import *
-class addGuestOsCmd (baseCmd):
+
+
+class addGuestOsCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """ID of Guest OS category"""
@@ -16,10 +19,12 @@ class addGuestOsCmd (baseCmd):
         """Optional name for Guest OS"""
         self.name = None
         self.typeInfo['name'] = 'string'
-        self.required = ["oscategoryid","osdisplayname",]
+        self.required = ["oscategoryid", "osdisplayname", ]
 
-class addGuestOsResponse (baseResponse):
+
+class addGuestOsResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the OS type"""
         self.id = None
@@ -33,4 +38,3 @@ class addGuestOsResponse (baseResponse):
         """the ID of the OS category"""
         self.oscategoryid = None
         self.typeInfo['oscategoryid'] = 'string'
-

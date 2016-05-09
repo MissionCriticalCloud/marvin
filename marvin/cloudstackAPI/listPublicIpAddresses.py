@@ -1,8 +1,11 @@
 """Lists all public ip addresses"""
 from baseCmd import *
 from baseResponse import *
-class listPublicIpAddressesCmd (baseCmd):
+
+
+class listPublicIpAddressesCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -76,8 +79,10 @@ class listPublicIpAddressesCmd (baseCmd):
         self.typeInfo['zoneid'] = 'uuid'
         self.required = []
 
-class listPublicIpAddressesResponse (baseResponse):
+
+class listPublicIpAddressesResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """public IP address id"""
         self.id = None
@@ -175,6 +180,7 @@ class listPublicIpAddressesResponse (baseResponse):
         self.jobstatus = None
         self.typeInfo['jobstatus'] = ''
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -197,4 +203,3 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

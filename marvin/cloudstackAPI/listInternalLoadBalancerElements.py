@@ -1,8 +1,11 @@
 """Lists all available Internal Load Balancer elements."""
 from baseCmd import *
 from baseResponse import *
-class listInternalLoadBalancerElementsCmd (baseCmd):
+
+
+class listInternalLoadBalancerElementsCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list internal load balancer elements by enabled state"""
@@ -25,8 +28,10 @@ class listInternalLoadBalancerElementsCmd (baseCmd):
         self.typeInfo['pagesize'] = 'integer'
         self.required = []
 
-class listInternalLoadBalancerElementsResponse (baseResponse):
+
+class listInternalLoadBalancerElementsResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the internal load balancer element"""
         self.id = None
@@ -37,4 +42,3 @@ class listInternalLoadBalancerElementsResponse (baseResponse):
         """the physical network service provider id of the element"""
         self.nspid = None
         self.typeInfo['nspid'] = 'string'
-

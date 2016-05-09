@@ -1,8 +1,11 @@
 """Detaches a disk volume from a virtual machine."""
 from baseCmd import *
 from baseResponse import *
-class detachVolumeCmd (baseCmd):
+
+
+class detachVolumeCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the device ID on the virtual machine where volume is detached from"""
@@ -16,8 +19,10 @@ class detachVolumeCmd (baseCmd):
         self.typeInfo['virtualmachineid'] = 'uuid'
         self.required = []
 
-class detachVolumeResponse (baseResponse):
+
+class detachVolumeResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """ID of the disk volume"""
         self.id = None
@@ -178,6 +183,7 @@ class detachVolumeResponse (baseResponse):
         self.jobstatus = None
         self.typeInfo['jobstatus'] = ''
 
+
 class tags:
     def __init__(self):
         """"the account associated with the tag"""
@@ -200,4 +206,3 @@ class tags:
         self.resourcetype = None
         """"tag value"""
         self.value = None
-

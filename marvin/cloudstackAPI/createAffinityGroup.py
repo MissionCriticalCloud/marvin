@@ -1,8 +1,11 @@
 """Creates an affinity/anti-affinity group"""
 from baseCmd import *
 from baseResponse import *
-class createAffinityGroupCmd (baseCmd):
+
+
+class createAffinityGroupCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """name of the affinity group"""
@@ -25,10 +28,12 @@ class createAffinityGroupCmd (baseCmd):
         """create affinity group for project"""
         self.projectid = None
         self.typeInfo['projectid'] = 'uuid'
-        self.required = ["name","type",]
+        self.required = ["name", "type", ]
 
-class createAffinityGroupResponse (baseResponse):
+
+class createAffinityGroupResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the affinity group"""
         self.id = None
@@ -60,4 +65,3 @@ class createAffinityGroupResponse (baseResponse):
         """virtual machine IDs associated with this affinity group"""
         self.virtualmachineIds = None
         self.typeInfo['virtualmachineIds'] = 'list'
-

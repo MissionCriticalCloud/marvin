@@ -1,8 +1,11 @@
 """Creates a new Pod."""
 from baseCmd import *
 from baseResponse import *
-class createPodCmd (baseCmd):
+
+
+class createPodCmd(baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the gateway for the Pod"""
@@ -31,10 +34,12 @@ class createPodCmd (baseCmd):
         """the ending IP address for the Pod"""
         self.endip = None
         self.typeInfo['endip'] = 'string'
-        self.required = ["gateway","name","netmask","startip","zoneid",]
+        self.required = ["gateway", "name", "netmask", "startip", "zoneid", ]
 
-class createPodResponse (baseResponse):
+
+class createPodResponse(baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the Pod"""
         self.id = None
@@ -66,6 +71,7 @@ class createPodResponse (baseResponse):
         """the capacity of the Pod"""
         self.capacity = []
 
+
 class capacity:
     def __init__(self):
         """"the total capacity available"""
@@ -88,4 +94,3 @@ class capacity:
         self.zoneid = None
         """"the Zone name"""
         self.zonename = None
-
