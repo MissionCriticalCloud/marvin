@@ -1,20 +1,3 @@
-# Licensed to the Apache Software Foundation (ASF) under one
-# or more contributor license agreements.  See the NOTICE file
-# distributed with this work for additional information
-# regarding copyright ownership.  The ASF licenses this file
-# to you under the Apache License, Version 2.0 (the
-# "License"); you may not use this file except in compliance
-# with the License.  You may obtain a copy of the License at
-#
-#   http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing,
-# software distributed under the License is distributed on an
-# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-# KIND, either express or implied.  See the License for the
-# specific language governing permissions and limitations
-# under the License.
-
 import xml.dom.minidom
 import json
 from optparse import OptionParser
@@ -62,26 +45,6 @@ class CodeGenerator(object):
         self.required = []
         self.subclass = []
         self.outputFolder = outputFolder
-        lic = """\
-          # Licensed to the Apache Software Foundation (ASF) under one
-          # or more contributor license agreements.  See the NOTICE file
-          # distributed with this work for additional information
-          # regarding copyright ownership.  The ASF licenses this file
-          # to you under the Apache License, Version 2.0 (the
-          # "License"); you may not use this file except in compliance
-          # with the License.  You may obtain a copy of the License at
-          #
-          #   http://www.apache.org/licenses/LICENSE-2.0
-          #
-          # Unless required by applicable law or agreed to in writing,
-          # software distributed under the License is distributed on an
-          # "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-          # KIND, either express or implied.  See the License for the
-          # specific language governing permissions and limitations
-          # under the License.
-
-          """
-        self.license = dedent(lic)
 
     def addAttribute(self, attr, pro):
         value = pro.value
@@ -118,9 +81,7 @@ class CodeGenerator(object):
 
         self.cmd = cmd
         self.cmdsName.append(self.cmd.name)
-        self.code = self.license
-        self.code += self.newline
-        self.code += '"""%s"""\n' % self.cmd.desc
+        self.code = '"""%s"""\n' % self.cmd.desc
         self.code += 'from baseCmd import *\n'
         self.code += 'from baseResponse import *\n'
         self.code += "class %sCmd (baseCmd):\n" % self.cmd.name
@@ -246,28 +207,25 @@ class CodeGenerator(object):
 
         fp = open(self.outputFolder + '/cloudstackAPI/cloudstackAPIClient.py',
                   'w')
-        fp.write(self.license)
         for item in [header, imports, body]:
             fp.write(item)
         fp.close()
 
         '''generate __init__.py'''
-        initCmdsList = self.license + initCmdsList + '"cloudstackAPIClient"]'
+        initCmdsList += '"cloudstackAPIClient"]'
         fp = open(self.outputFolder + '/cloudstackAPI/__init__.py', 'w')
         fp.write(initCmdsList)
         fp.close()
 
         fp = open(self.outputFolder + '/cloudstackAPI/baseCmd.py', 'w')
-        basecmd = self.license
-        basecmd += '"""Base Command"""\n'
+        basecmd = '"""Base Command"""\n'
         basecmd += 'class baseCmd(object):\n'
         basecmd += self.space + 'pass\n'
         fp.write(basecmd)
         fp.close()
 
         fp = open(self.outputFolder + '/cloudstackAPI/baseResponse.py', 'w')
-        basecmd = self.license
-        basecmd += '"""Base class for response"""\n'
+        basecmd = '"""Base class for response"""\n'
         basecmd += 'class baseResponse(object):\n'
         basecmd += self.space + 'pass\n'
         fp.write(basecmd)
