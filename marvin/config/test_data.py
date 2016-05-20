@@ -100,7 +100,7 @@ test_data = {
             "cpuspeed": 100,
             "memory": 512,
         },
-       "large": {
+        "large": {
             "name": "LargeInstance",
             "displaytext": "LargeInstance",
             "cpunumber": 1,
@@ -126,20 +126,20 @@ test_data = {
         },
     },
     "service_offering_h1": {
-            "name": "Tagged h1 Small Instance",
-            "displaytext": "Tagged h1 Small Instance",
-            "cpunumber": 1,
-            "cpuspeed": 100,
-            "memory": 256,
-            "hosttags": "h1"
+        "name": "Tagged h1 Small Instance",
+        "displaytext": "Tagged h1 Small Instance",
+        "cpunumber": 1,
+        "cpuspeed": 100,
+        "memory": 256,
+        "hosttags": "h1"
     },
     "service_offering_h2": {
-            "name": "Tagged h2 Small Instance",
-            "displaytext": "Tagged h2 Small Instance",
-            "cpunumber": 1,
-            "cpuspeed": 100,
-            "memory": 256,
-            "hosttags": "h2"
+        "name": "Tagged h2 Small Instance",
+        "displaytext": "Tagged h2 Small Instance",
+        "cpunumber": 1,
+        "cpuspeed": 100,
+        "memory": 256,
+        "hosttags": "h2"
     },
     "disk_offering": {
         "name": "Disk offering",
@@ -242,32 +242,32 @@ test_data = {
         }
     },
     "network_offering_vlan": {
-    "name": 'Test Network offering',
-    "displaytext": 'Test Network offering',
-    "guestiptype": 'Isolated',
-    "supportedservices": 'Dhcp,Dns,SourceNat,PortForwarding',
-    "traffictype": 'GUEST',
-    "specifyvlan": 'False',
-    "availability": 'Optional',
-    "serviceProviderList": {
-    "Dhcp": 'VirtualRouter',
-    "Dns": 'VirtualRouter',
-    "SourceNat": 'VirtualRouter',
-    "PortForwarding": 'VirtualRouter',
-    },
+        "name": 'Test Network offering',
+        "displaytext": 'Test Network offering',
+        "guestiptype": 'Isolated',
+        "supportedservices": 'Dhcp,Dns,SourceNat,PortForwarding',
+        "traffictype": 'GUEST',
+        "specifyvlan": 'False',
+        "availability": 'Optional',
+        "serviceProviderList": {
+            "Dhcp": 'VirtualRouter',
+            "Dns": 'VirtualRouter',
+            "SourceNat": 'VirtualRouter',
+            "PortForwarding": 'VirtualRouter',
+        },
     },
     "network_offering_without_sourcenat": {
-    "name": 'Test Network offering',
-    "displaytext": 'Test Network offering',
-    "guestiptype": 'Isolated',
-    "supportedservices": 'Dhcp,Dns,UserData',
-    "traffictype": 'GUEST',
-    "availability": 'Optional',
-    "serviceProviderList": {
-    "Dhcp": 'VirtualRouter',
-    "Dns": 'VirtualRouter',
-    "UserData": 'VirtualRouter',
-    },
+        "name": 'Test Network offering',
+        "displaytext": 'Test Network offering',
+        "guestiptype": 'Isolated',
+        "supportedservices": 'Dhcp,Dns,UserData',
+        "traffictype": 'GUEST',
+        "availability": 'Optional',
+        "serviceProviderList": {
+            "Dhcp": 'VirtualRouter',
+            "Dns": 'VirtualRouter',
+            "UserData": 'VirtualRouter',
+        },
     },
     "isolated_network": {
         "name": "Isolated Network",
@@ -397,10 +397,10 @@ test_data = {
         "cidr": "10.0.0.1/24"
     },
     "vpc_network_domain": {
-    "name": "TestVPC",
-    "displaytext": "TestVPC",
-    "cidr": '10.0.0.1/24',
-    "network_domain": "TestVPC"
+        "name": "TestVPC",
+        "displaytext": "TestVPC",
+        "cidr": '10.0.0.1/24',
+        "network_domain": "TestVPC"
     },
     "clusters": {
         0: {
@@ -607,11 +607,11 @@ test_data = {
         "protocol": "TCP"
     },
     "network_acl_rule": {
-    "protocol": "TCP",
-    "traffictype": "ingress",
-    "cidrlist": "0.0.0.0/0",
-    "startport": "1",
-    "endport": "1"
+        "protocol": "TCP",
+        "traffictype": "ingress",
+        "cidrlist": "0.0.0.0/0",
+        "startport": "1",
+        "endport": "1"
     },
     "network_offering_internal_lb": {
         "name": "Network offering for internal lb service",
@@ -641,7 +641,7 @@ test_data = {
         "publicport": 22,
         "protocol": "TCP"
     },
-   "egress_80": {
+    "egress_80": {
         "startport": 80,
         "endport": 80,
         "protocol": "TCP",
@@ -843,29 +843,29 @@ test_data = {
     },
     "volume": {"diskname": "Test Volume",
                "size": 1
-    },
+               },
     "volume_write_path": {
         "diskname": "APP Data Volume",
-        "size": 1,   # in GBs
-        "xenserver": {"rootdiskdevice":"/dev/xvda",
-                     "datadiskdevice_1": '/dev/xvdb',
-                    "datadiskdevice_2": '/dev/xvdc',   # Data Disk
-                    },
-        "kvm":       {"rootdiskdevice": "/dev/vda",
-                    "datadiskdevice_1": "/dev/vdb",
-                    "datadiskdevice_2": "/dev/vdc"
-                    },
-        "vmware":    {"rootdiskdevice": "/dev/hda",
-                    "datadiskdevice_1": "/dev/hdb",
-                    "datadiskdevice_2": "/dev/hdc"
-                    }
+        "size": 1,  # in GBs
+        "xenserver": {"rootdiskdevice": "/dev/xvda",
+                      "datadiskdevice_1": '/dev/xvdb',
+                      "datadiskdevice_2": '/dev/xvdc',  # Data Disk
+                      },
+        "kvm": {"rootdiskdevice": "/dev/vda",
+                "datadiskdevice_1": "/dev/vdb",
+                "datadiskdevice_2": "/dev/vdc"
+                },
+        "vmware": {"rootdiskdevice": "/dev/hda",
+                   "datadiskdevice_1": "/dev/hdb",
+                   "datadiskdevice_2": "/dev/hdc"
+                   }
     },
     "data_write_paths": {
-                "mount_dir": "/mnt/tmp",
-                "sub_dir": "test",
-                "sub_lvl_dir1": "test1",
-                "sub_lvl_dir2": "test2",
-                "random_data": "random.data",
+        "mount_dir": "/mnt/tmp",
+        "sub_dir": "test",
+        "sub_lvl_dir1": "test1",
+        "sub_lvl_dir2": "test2",
+        "random_data": "random.data",
     },
     "custom_volume": {
         "customdisksize": 1,
@@ -987,15 +987,15 @@ test_data = {
             "hypervisor": "XenServer"
         },
         "RHEL 7 (64-bit)": {
-                              "displaytext": "RHEL7 (64-bit)",
-                              "name": "RHEL 7 Insta1",
-                              "passwordenabled": False,
-                              "url": "http://people.apache.org/~sanjeev/RHEL764bitwithtools.vhd",
-                              "format": "VHD" ,
-                              "ostype": "RHEL 7 (64-bit)",
-                              "ispublic": "true",
-                              "hypervisor": "XenServer"
-                              },
+            "displaytext": "RHEL7 (64-bit)",
+            "name": "RHEL 7 Insta1",
+            "passwordenabled": False,
+            "url": "http://people.apache.org/~sanjeev/RHEL764bitwithtools.vhd",
+            "format": "VHD",
+            "ostype": "RHEL 7 (64-bit)",
+            "ispublic": "true",
+            "hypervisor": "XenServer"
+        },
         "clusters": {
             "clustername": "Xen Cluster Vgpu",
             "clustertype": "CloudManaged",
@@ -1107,7 +1107,7 @@ test_data = {
         "nongpu_host_ip": "10.102.192.57"
     },
     "acl": {
-        #data for domains and accounts
+        # data for domains and accounts
         "domain1": {
             "name": "D1",
         },
@@ -1232,7 +1232,7 @@ test_data = {
             "username": "testROOT",
             "password": "password",
         },
-        #data reqd for virtual machine creation
+        # data reqd for virtual machine creation
         "vmD1": {
             "name": "d1",
             "displayname": "d1",
@@ -1291,7 +1291,7 @@ test_data = {
             "displayname": "root",
         },
 
-        #data reqd for Network creation
+        # data reqd for Network creation
         "network_all": {
             "name": "SharedNetwork-All",
             "displaytext": "SharedNetwork-All",
@@ -1349,11 +1349,11 @@ test_data = {
             "name": "Primary iSCSI"
         },
         "host": {
-                 "publicport": 22,
-                 "username": "root",
-                 "password": "password",
+            "publicport": 22,
+            "username": "root",
+            "password": "password",
         },
-       "ldap_account": {
+        "ldap_account": {
             "email": "",
             "firstname": "",
             "lastname": "",
@@ -1371,8 +1371,8 @@ test_data = {
             "ldapPassword": ""
         },
         "systemVmDelay": 120,
-	"setUsageConfigurationThroughTestCase": False,
-	"vmware_cluster" : {
+        "setUsageConfigurationThroughTestCase": False,
+        "vmware_cluster": {
             "hypervisor": 'VMware',
             "clustertype": 'ExternalManaged',
             "username": '',
@@ -1382,7 +1382,7 @@ test_data = {
             "startip": "10.223.1.2",
             "endip": "10.223.1.100",
         },
-        #small service offering
+        # small service offering
         "service_offering": {
             "small": {
                 "name": "Small Instance",
@@ -1396,8 +1396,8 @@ test_data = {
     },
     "test_34_DeployVM_in_SecondSGNetwork": {
         "zone": "advsg",
-        "config": "D:\ACS-Repo\setup\dev\\advancedsg.cfg",  #Absolute path to cfg file
-        #For sample configuration please refer to <ACS repo>/setup/dev/advancedsg.cfg
+        "config": "D:\ACS-Repo\setup\dev\\advancedsg.cfg",  # Absolute path to cfg file
+        # For sample configuration please refer to <ACS repo>/setup/dev/advancedsg.cfg
         "template": "CentOS 5.3(64-bit) no GUI (Simulator)",
         "dbSvr": {
             "dbSvr": "10.146.0.133",
@@ -1425,87 +1425,87 @@ test_data = {
         ]
     },
 
-"interop":
-    {
-     "VHD":
-     {
-                              "displaytext": "Windows 8 (64-bit)",
-                              "name": "win8withpvxen",
-                              "passwordenabled": False,
-                              "url": "http://people.apache.org/~sanjeev/79211594-1d4a-4dee-ae6c-c5c315ded2be.vhd",
-                              "format": "VHD" ,
-                              "ostype": "Windows 8 (64-bit)",
-                              "ispublic": "true",
-                              "hypervisor": "XenServer"
+    "interop":
+        {
+            "VHD":
+                {
+                    "displaytext": "Windows 8 (64-bit)",
+                    "name": "win8withpvxen",
+                    "passwordenabled": False,
+                    "url": "http://people.apache.org/~sanjeev/79211594-1d4a-4dee-ae6c-c5c315ded2be.vhd",
+                    "format": "VHD",
+                    "ostype": "Windows 8 (64-bit)",
+                    "ispublic": "true",
+                    "hypervisor": "XenServer"
 
-     },
-     "OVA":
-     {
-                              "displaytext": "Windows 8 (64-bit)",
-                              "name": "win8withpvvmware",
-                              "passwordenabled": False,
-                              "url": "http://pleaseupdateURL/",
-                              "format": "OVA" ,
-                              "ostype": "Windows 8 (64-bit)",
-                              "ispublic": "true",
-                              "hypervisor": "VMware"
-                              },
-    "template": {
-        "displaytext": "windowsxdtemplate",
-        "name": "windowsxdtemplate",
-        "passwordenabled": False,
-        "ostype": "Windows 8 (64-bit)"
+                },
+            "OVA":
+                {
+                    "displaytext": "Windows 8 (64-bit)",
+                    "name": "win8withpvvmware",
+                    "passwordenabled": False,
+                    "url": "http://pleaseupdateURL/",
+                    "format": "OVA",
+                    "ostype": "Windows 8 (64-bit)",
+                    "ispublic": "true",
+                    "hypervisor": "VMware"
+                },
+            "template": {
+                "displaytext": "windowsxdtemplate",
+                "name": "windowsxdtemplate",
+                "passwordenabled": False,
+                "ostype": "Windows 8 (64-bit)"
+            },
+        },
+
+    "browser_upload_volume": {
+        "VHD": {
+            "diskname": "XenUploadVol",
+            "url": "http://people.apache.org/~sanjeev/rajani-thin-volume.vhd",
+            "checksum": "09b08b6abb1b903fca7711d3ac8d6598",
+        },
+        "OVA": {
+            "diskname": "VMwareUploadVol",
+            "url": "http://people.apache.org/~sanjeev/CentOS5.5(64bit)-vmware-autoscale.ova",
+            "checksum": "da997b697feaa2f1f6e0d4785b0cece2",
+        },
+        "QCOW2": {
+            "diskname": "KVMUploadVol",
+            "url": "http://people.apache.org/~sanjeev/rajani-thin-volume.qcow2",
+            "checksum": "02de0576dd3a61ab59c03fd795fc86ac",
+        },
+        'browser_resized_disk_offering': {
+            "displaytext": "Resizeddisk",
+            "name": "Resizeddisk",
+            "disksize": 3,
+        }
     },
-},
-
-    "browser_upload_volume":{
-          "VHD": {
-        "diskname": "XenUploadVol",
-        "url": "http://people.apache.org/~sanjeev/rajani-thin-volume.vhd",
-        "checksum": "09b08b6abb1b903fca7711d3ac8d6598",
-                },
-          "OVA": {
-        "diskname": "VMwareUploadVol",
-        "url": "http://people.apache.org/~sanjeev/CentOS5.5(64bit)-vmware-autoscale.ova",
-        "checksum": "da997b697feaa2f1f6e0d4785b0cece2",
-                },
-          "QCOW2": {
-        "diskname": "KVMUploadVol",
-        "url": "http://people.apache.org/~sanjeev/rajani-thin-volume.qcow2",
-        "checksum": "02de0576dd3a61ab59c03fd795fc86ac",
-                },
-    'browser_resized_disk_offering': {
-        "displaytext": "Resizeddisk",
-        "name": "Resizeddisk",
-        "disksize": 3,
-    }
-},
     "browser_upload_template": {
-          "VHD": {
-        "templatename": "XenUploadtemplate",
-        "displaytext": "XenUploadtemplate",
-        "url": "http://people.apache.org/~sanjeev/centos56-x86_64.vhd.bz2",
-        "hypervisor":"XenServer",
-        "checksum": "09b08b6abb1b903fca7711d3ac8d6598",
-        "ostypeid":"74affaea-c658-11e4-ad38-a6d1374244b4"
-                },
-          "OVA": {
-        "templatename": "VMwareUploadtemplate",
-        "displaytext": "VMwareUploadtemplate",
-        "url": "http://people.apache.org/~sanjeev/CentOS5.3-x86_64.ova",
-        "checksum": "02de0576dd3a61ab59c03fd795fc86ac",
-        "hypervisor":"VMware",
-        "ostypeid":"74affaea-c658-11e4-ad38-a6d1374244b4"
-                },
-          "QCOW2": {
-        "templatename": "KVMUploadtemplate",
-        "displaytext": "VMwareUploadtemplate",
-        "url": "http://people.apache.org/~sanjeev/eec2209b-9875-3c8d-92be-c001bd8a0faf.qcow2.bz2",
-        "checksum": "da997b697feaa2f1f6e0d4785b0cece2",
-        "hypervisor":"KVM",
-        "ostypeid":"2e02e376-cdf3-11e4-beb3-8aa6272b57ef"
-                },
-                              },
+        "VHD": {
+            "templatename": "XenUploadtemplate",
+            "displaytext": "XenUploadtemplate",
+            "url": "http://people.apache.org/~sanjeev/centos56-x86_64.vhd.bz2",
+            "hypervisor": "XenServer",
+            "checksum": "09b08b6abb1b903fca7711d3ac8d6598",
+            "ostypeid": "74affaea-c658-11e4-ad38-a6d1374244b4"
+        },
+        "OVA": {
+            "templatename": "VMwareUploadtemplate",
+            "displaytext": "VMwareUploadtemplate",
+            "url": "http://people.apache.org/~sanjeev/CentOS5.3-x86_64.ova",
+            "checksum": "02de0576dd3a61ab59c03fd795fc86ac",
+            "hypervisor": "VMware",
+            "ostypeid": "74affaea-c658-11e4-ad38-a6d1374244b4"
+        },
+        "QCOW2": {
+            "templatename": "KVMUploadtemplate",
+            "displaytext": "VMwareUploadtemplate",
+            "url": "http://people.apache.org/~sanjeev/eec2209b-9875-3c8d-92be-c001bd8a0faf.qcow2.bz2",
+            "checksum": "da997b697feaa2f1f6e0d4785b0cece2",
+            "hypervisor": "KVM",
+            "ostypeid": "2e02e376-cdf3-11e4-beb3-8aa6272b57ef"
+        },
+    },
     "configurableData":
         {
             "portableIpRange": {
@@ -1566,33 +1566,33 @@ test_data = {
                     "url": "http://people.apache.org/~sanjeev/CentOS-6.3-x86_64-bin-DVD1.iso",
                     "ostype": 'CentOS 6.3 (64-bit)',
                     "mode": 'HTTP_DOWNLOAD'
-        },
-     "setHostConfigurationForIngressRule": False,
-     "restartManagementServerThroughTestCase": False,
-     "vmxnet3template": {
-            "displaytext": "VMXNET3 Template",
-            "name": "VMXNET3 template",
-            "ostype": "CentOS 5.6 (64-bit)",
-            "isfeatured": True,
-            "ispublic": False,
-            "isextractable": True,
-            "mode": "HTTP_DOWNLOAD",
-            "templatefilter": "self",
-            "url": "http://people.apache.org/~sanjeev/systemvm64template-2014-09-30-4.3-vmware.ova",
-            "hypervisor": "vmware",
-            "format": "OVA",
-            "nicadapter": "vmxnet3",
+                },
+            "setHostConfigurationForIngressRule": False,
+            "restartManagementServerThroughTestCase": False,
+            "vmxnet3template": {
+                "displaytext": "VMXNET3 Template",
+                "name": "VMXNET3 template",
+                "ostype": "CentOS 5.6 (64-bit)",
+                "isfeatured": True,
+                "ispublic": False,
+                "isextractable": True,
+                "mode": "HTTP_DOWNLOAD",
+                "templatefilter": "self",
+                "url": "http://people.apache.org/~sanjeev/systemvm64template-2014-09-30-4.3-vmware.ova",
+                "hypervisor": "vmware",
+                "format": "OVA",
+                "nicadapter": "vmxnet3",
                 "kvm": {
-                        "url": ""
-                    },
-                    "vmware": {
-                        "url": ""
-                    },
-                    "xenserver": {
-                        "url": ""
-                    },
-                    "ostype": 'CentOS 5.3 (64-bit)',
-                    "mode": 'HTTP_DOWNLOAD'
-                }
+                    "url": ""
+                },
+                "vmware": {
+                    "url": ""
+                },
+                "xenserver": {
+                    "url": ""
+                },
+                "ostype": 'CentOS 5.3 (64-bit)',
+                "mode": 'HTTP_DOWNLOAD'
+            }
         }
 }

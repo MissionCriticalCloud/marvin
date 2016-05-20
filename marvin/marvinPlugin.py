@@ -1,20 +1,20 @@
-from sys import stdout, exit
-import time
-import os
 import nose.core
+import os
+import time
 from nose.plugins.base import Plugin
+from sys import stdout, exit
+
 from cloudstackTestCase import cloudstackTestCase
-from marvinInit import MarvinInit
-from marvin.marvinLog import MarvinLog
 from codes import (
     SUCCESS,
     FAILED,
     EXCEPTION
 )
+from marvin.marvinLog import MarvinLog
+from marvinInit import MarvinInit
 
 
 class MarvinPlugin(Plugin):
-
     """
     Custom plugin for the cloudstackTestCases to be run using nose
     """
@@ -143,7 +143,7 @@ class MarvinPlugin(Plugin):
         self.__testName = test.__str__().split()[0]
         if not self.__testName:
             self.__testName = "test"
-        self.__testClient.identifier = '-'.\
+        self.__testClient.identifier = '-'. \
             join([self.__identifier, self.__testName])
         if self.__tcRunLogger:
             self.__tcRunLogger.name = test.__str__()
@@ -226,7 +226,8 @@ class MarvinPlugin(Plugin):
         endTime = time.time()
         if self.__startTime:
             totTime = int(endTime - self.__startTime)
-            self.__tcRunLogger.info("TestCaseName: %s; Time Taken: %s Seconds; StartTime: %s; EndTime: %s; Result: %s" % (
+            self.__tcRunLogger.info(
+                "TestCaseName: %s; Time Taken: %s Seconds; StartTime: %s; EndTime: %s; Result: %s" % (
                     self.__testName,
                     str(totTime),
                     str(time.ctime(self.__startTime)),

@@ -1,3 +1,7 @@
+import contextlib
+import logging
+import socket
+import time
 from paramiko import (
     BadHostKeyException,
     AuthenticationException,
@@ -7,11 +11,8 @@ from paramiko import (
     Transport,
     SFTPClient
 )
-import socket
-import time
+
 from cloudstackException import internalError
-import contextlib
-import logging
 from codes import (
     SUCCESS,
     FAILED,
@@ -21,7 +22,6 @@ from marvinLog import MarvinLog
 
 
 class SshClient(object):
-
     '''
     @Desc : SSH Library for Marvin.
     Facilitates SSH,SCP services to marvin users
@@ -90,7 +90,7 @@ class SshClient(object):
         while self.retryCnt >= 0:
             try:
                 self.logger.info("Trying SSH Connection to host %s on port %s as user %s. RetryCount: %s" %
-                                  (self.host, str(self.port), self.user, str(self.retryCnt)))
+                                 (self.host, str(self.port), self.user, str(self.retryCnt)))
                 if self.keyPairFiles is None:
                     self.ssh.connect(hostname=self.host,
                                      port=self.port,

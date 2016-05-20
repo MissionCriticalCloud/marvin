@@ -1,21 +1,18 @@
+import json
+import os
 import unittest
 from mock import patch
+from tempfile import mkstemp
 
+from lib.test_utils import MockApiClient
+from marvin.codes import SUCCESS
 from marvin.deployDataCenter import (
     DeployDataCenters,
     Application
 )
-from marvin.codes import SUCCESS
-
-from lib.test_utils import MockApiClient
-
-from tempfile import mkstemp
-import json
-import os
 
 
 class TestDeployDataCenters(unittest.TestCase):
-
     def test_create_object(self):
         test_client = MockApiClient()
         deploy_data_centers = DeployDataCenters(test_client, {})
@@ -24,7 +21,6 @@ class TestDeployDataCenters(unittest.TestCase):
 
 
 class TestApplication(unittest.TestCase):
-
     def test_create_object(self):
         application = Application()
 
@@ -59,7 +55,7 @@ class TestApplication(unittest.TestCase):
             self.assertContains(str(e), ' Invalid remove config')
 
     @patch('marvin.cloudstackTestClient.CSTestClient.createTestClient', return_value=SUCCESS)
-    @patch('marvin.deployDataCenter.DeployDataCenters.deploy',          return_value=SUCCESS)
+    @patch('marvin.deployDataCenter.DeployDataCenters.deploy', return_value=SUCCESS)
     def test_main_input_with_valid_config_file(self, mockTestClient, mockDeployDataCenters):
         path = self.__create_tmp_config_file()
         application = Application()
@@ -69,7 +65,7 @@ class TestApplication(unittest.TestCase):
         mockTestClient.assert_called_once_with()
         mockDeployDataCenters.assert_called_once_with()
 
-    @patch('marvin.cloudstackTestClient.CSTestClient.createTestClient',  return_value=SUCCESS)
+    @patch('marvin.cloudstackTestClient.CSTestClient.createTestClient', return_value=SUCCESS)
     @patch('marvin.deployDataCenter.DeleteDataCenters.removeDataCenter', return_value=SUCCESS)
     def test_main_remove_with_valid_config_file(self, mockTestClient, mockDeployDataCenters):
         path = self.__create_tmp_config_file()

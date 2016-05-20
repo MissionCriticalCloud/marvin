@@ -1,10 +1,10 @@
 import sys
 import traceback
-from marvin.codes import (INVALID_INPUT, EXCEPTION_OCCURRED)
+
+from marvin.codes import (EXCEPTION_OCCURRED)
 
 
 class CloudstackAPIException(Exception):
-
     def __init__(self, cmd="", result=""):
         self.errorMsg = "Execute cmd: %s failed, due to: %s" % (cmd, result)
 
@@ -13,7 +13,6 @@ class CloudstackAPIException(Exception):
 
 
 class InvalidParameterException(Exception):
-
     def __init__(self, msg=''):
         self.errorMsg = msg
 
@@ -22,7 +21,6 @@ class InvalidParameterException(Exception):
 
 
 class dbException(Exception):
-
     def __init__(self, msg=''):
         self.errorMsg = msg
 
@@ -31,7 +29,6 @@ class dbException(Exception):
 
 
 class internalError(Exception):
-
     def __init__(self, msg=''):
         self.errorMsg = msg
 
@@ -46,6 +43,7 @@ def GetDetailExceptionInfo(e):
     else:
         return EXCEPTION_OCCURRED
 
+
 def printException(e):
     if e is not None:
         exc_type, exc_value, exc_traceback = sys.exc_info()
@@ -53,8 +51,8 @@ def printException(e):
     else:
         return EXCEPTION_OCCURRED
 
-class CloudstackAclException():
 
+class CloudstackAclException():
     NO_PERMISSION_TO_OPERATE_DOMAIN = "does not have permission to operate within domain"
     UNABLE_TO_USE_NETWORK = "Unable to use network"
     NO_PERMISSION_TO_OPERATE_ACCOUNT = "does not have permission to operate with resource Acct"
@@ -63,16 +61,16 @@ class CloudstackAclException():
     NOT_AVAILABLE_IN_DOMAIN = "not available in domain"
 
     @staticmethod
-    def verifyMsginException(e,message):
+    def verifyMsginException(e, message):
         if message in str(e):
             return True
         else:
             return False
 
     @staticmethod
-    def verifyErrorCodeinException(e,errorCode):
+    def verifyErrorCodeinException(e, errorCode):
         errorString = " errorCode: " + errorCode
-        if  errorString in str(e):
+        if errorString in str(e):
             return True
         else:
             return False

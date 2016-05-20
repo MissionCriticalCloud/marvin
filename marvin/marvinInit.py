@@ -8,20 +8,20 @@ for starting it.
    3. Deploys the Data Center based upon input.
 
 '''
-from marvin.configGenerator import getSetupConfig
-from marvin.marvinLog import MarvinLog
-from marvin.deployDataCenter import DeployDataCenters
+import os
+
 from marvin.cloudstackTestClient import CSTestClient
-from marvin.codes import(
+from marvin.codes import (
     XEN_SERVER,
     SUCCESS,
     FAILED
 )
-import os
+from marvin.configGenerator import getSetupConfig
+from marvin.deployDataCenter import DeployDataCenters
+from marvin.marvinLog import MarvinLog
 
 
 class MarvinInit:
-
     def __init__(self, config_file, deploy_dc_flag=False, test_mod_name="deploydc", zone=None, hypervisor_type=None):
         self.__configFile = config_file
         self.__deployFlag = deploy_dc_flag
@@ -34,7 +34,6 @@ class MarvinInit:
         self.__zoneForTests = zone
         self.__parsedConfig = None
         self.__hypervisorType = hypervisor_type
-
 
     def __parseConfig(self):
         '''
@@ -118,7 +117,7 @@ class MarvinInit:
         try:
             self.__tcRunLogger.info("=== Marvin Init Started ===")
             if ((self.__parseConfig() != FAILED) and
-                    (self.__setHypervisorAndZoneInfo())and
+                    (self.__setHypervisorAndZoneInfo()) and
                     (self.__setTestDataPath() != FAILED) and
                     (self.__createTestClient() != FAILED) and
                     (self.__deployDC() != FAILED)):
@@ -129,7 +128,6 @@ class MarvinInit:
         except Exception as e:
             self.__tcRunLogger.exception("=== Marvin Init Failed with exception: %s ===" % e)
             return FAILED
-
 
     def __createTestClient(self):
         '''

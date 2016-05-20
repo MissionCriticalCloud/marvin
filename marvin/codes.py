@@ -91,8 +91,8 @@ RESOURCE_PRIMARY_STORAGE = 10
 RESOURCE_SECONDARY_STORAGE = 11
 KVM = "kvm"
 VMWARE = "vmware"
-ROOT_DOMAIN_ADMIN="root domain admin"
-CHILD_DOMAIN_ADMIN="child domain admin"
+ROOT_DOMAIN_ADMIN = "root domain admin"
+CHILD_DOMAIN_ADMIN = "child domain admin"
 
 '''
 Network states
