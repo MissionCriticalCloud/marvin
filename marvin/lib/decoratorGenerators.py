@@ -3,6 +3,7 @@
 
 from functools import wraps
 
+
 def skipTestIf(attribute):
     def decorator(test):
         @wraps(test)
@@ -14,5 +15,7 @@ def skipTestIf(attribute):
                     return test(self, *args, **kwargs)
             else:
                 return test(self, *args, **kwargs)
+
         return test_wrapper
+
     return decorator

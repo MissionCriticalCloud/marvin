@@ -1,27 +1,27 @@
 """Utilities functions
 """
 
-import marvin
-import os
-import time
-import string
-import random
-import imaplib
-import email
-import socket
-import urlparse
 import datetime
+import email
+import imaplib
+import random
+import socket
+import string
+import time
+import urlparse
 from platform import system
+
 from marvin.cloudstackException import printException
-from marvin.sshClient import SshClient
 from marvin.codes import (
-                          SUCCESS,
-                          FAIL,
-                          PASS,
-                          MATCH_NOT_FOUND,
-                          INVALID_INPUT,
-                          EMPTY_LIST,
-                          FAILED)
+    SUCCESS,
+    FAIL,
+    PASS,
+    MATCH_NOT_FOUND,
+    INVALID_INPUT,
+    EMPTY_LIST,
+    FAILED)
+from marvin.sshClient import SshClient
+
 
 def _configure_ssh_credentials(hypervisor):
     ssh_command = "ssh -i ~/.ssh/id_rsa.cloud -ostricthostkeychecking=no "
@@ -39,7 +39,7 @@ def _configure_timeout(hypervisor):
 
 
 def _execute_ssh_command(hostip, port, username, password, ssh_command):
-    #SSH to the machine
+    # SSH to the machine
     ssh = SshClient(hostip, port, username, password)
     # Ensure the SSH login is successful
     while True:
@@ -54,6 +54,7 @@ def _execute_ssh_command(hostip, port, username, password, ssh_command):
         time.sleep(5)
         timeout = timeout - 1
     return res
+
 
 def restart_mgmt_server(server):
     """Restarts the management server"""
@@ -139,7 +140,8 @@ def cleanup_resources(api_client, resources, logger=None):
         obj.delete(api_client)
 
 
-def is_server_ssh_ready(ipaddress, port, username, password, retries=20, retryinterv=30, timeout=10.0, keyPairFileLocation=None):
+def is_server_ssh_ready(ipaddress, port, username, password, retries=20, retryinterv=30, timeout=10.0,
+                        keyPairFileLocation=None):
     '''
     @Name: is_server_ssh_ready
     @Input: timeout: tcp connection timeout flag,
@@ -200,7 +202,7 @@ def get_process_status(hostip, port, username, password, linklocalip, command, h
 
     ssh_command = _configure_ssh_credentials(hypervisor)
 
-    ssh_command = ssh_command +\
+    ssh_command = ssh_command + \
                   "-oUserKnownHostsFile=/dev/null -p 3922 %s %s" % (
                       linklocalip,
                       command)
@@ -229,12 +231,9 @@ def xsplit(txt, seps):
     @return: list of split units
     """
     default_sep = seps[0]
-    for sep in seps[1:]: # we skip seps[0] because that's the default separator
+    for sep in seps[1:]:  # we skip seps[0] because that's the default separator
         txt = txt.replace(sep, default_sep)
     return [i.strip() for i in txt.split(default_sep)]
-
-
-
 
 
 def validateList(inp):
@@ -270,7 +269,8 @@ def validateList(inp):
         return ret
     return [PASS, inp[0], None]
 
-def verifyElementInList(inp, toverify, responsevar=None,  pos=0):
+
+def verifyElementInList(inp, toverify, responsevar=None, pos=0):
     '''
     @name: verifyElementInList
     @Description:
@@ -300,22 +300,23 @@ def verifyElementInList(inp, toverify, responsevar=None,  pos=0):
                                         MATCH_NOT_FOUND
     '''
     if toverify is None or toverify == '' \
-       or pos is None or pos < -1 or pos == '':
+            or pos is None or pos < -1 or pos == '':
         return [FAIL, INVALID_INPUT]
     out = validateList(inp)
     if out[0] == FAIL:
         return [FAIL, out[2]]
     if len(inp) > pos:
         if responsevar is None:
-                if inp[pos] == toverify:
-                    return [PASS, None]
+            if inp[pos] == toverify:
+                return [PASS, None]
         else:
-                if responsevar in inp[pos].__dict__ and getattr(inp[pos], responsevar) == toverify:
-                    return [PASS, None]
-                else:
-                    return [FAIL, MATCH_NOT_FOUND]
+            if responsevar in inp[pos].__dict__ and getattr(inp[pos], responsevar) == toverify:
+                return [PASS, None]
+            else:
+                return [FAIL, MATCH_NOT_FOUND]
     else:
         return [FAIL, MATCH_NOT_FOUND]
+
 
 def checkVolumeSize(ssh_handle=None,
                     volume_name="/dev/sda",
@@ -346,12 +347,11 @@ def checkVolumeSize(ssh_handle=None,
                 if volume_name in line:
                     parts = line.strip().split()
                     if str(parts[-2]) == str(size_to_verify):
-                        return [SUCCESS,str(parts[-2])]
-            return [FAILED,"Volume Not Found"]
+                        return [SUCCESS, str(parts[-2])]
+            return [FAILED, "Volume Not Found"]
     except Exception, e:
         printException(e)
-        return [FAILED,str(e)]
-
+        return [FAILED, str(e)]
 
 
 def validateState(apiclient, obj, state, timeout=600, interval=5):
@@ -362,14 +362,14 @@ def validateState(apiclient, obj, state, timeout=600, interval=5):
              @Reason: Reason for failure in case Result is FAIL
     """
 
-    returnValue = [FAIL, "%s state not trasited to %s, operation timed out" % (obj.__class__.__name__,state)]
+    returnValue = [FAIL, "%s state not trasited to %s, operation timed out" % (obj.__class__.__name__, state)]
 
     while timeout > 0:
         try:
             objects = obj.__class__.list(apiclient, id=obj.id)
             validationresult = validateList(objects)
             if validationresult[0] == FAIL:
-                raise Exception("%s list validation failed: %s" % (obj.__class__.__name__,validationresult[2]))
+                raise Exception("%s list validation failed: %s" % (obj.__class__.__name__, validationresult[2]))
             elif obj.state_check_function(objects, state):
                 returnValue = [PASS, None]
                 break

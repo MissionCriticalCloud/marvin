@@ -8,30 +8,30 @@ class DeleteDataCenters: Deletes a DataCenter based upon the dc cfg
                          configuration from DeployDataCenters post
                          its success
 """
-import configGenerator
-from marvinLog import MarvinLog
-from cloudstackException import InvalidParameterException
-from codes import (FAILED, SUCCESS)
-from lib.utils import random_gen
-from config.test_data import test_data
-from cloudstackTestClient import CSTestClient
-from cloudstackAPI import *
-
-import sys
 import os
 import pickle
-from time import sleep, strftime, localtime
+import sys
 from optparse import OptionParser
+from time import sleep, strftime, localtime
+
+import configGenerator
+from cloudstackException import InvalidParameterException
+from cloudstackTestClient import CSTestClient
+from codes import (FAILED, SUCCESS)
+from config.test_data import test_data
+from lib.utils import random_gen
+from marvin.cloudstackAPI import *
+from marvinLog import MarvinLog
 
 
 class DeployDataCenters(object):
-
     '''
     @Desc : Deploys the Data Center with information provided.
             Once the Deployment is successful, it will export
             the DataCenter settings to an obj file
             ( can be used if wanted to delete the created DC)
     '''
+
     def __init__(self, test_client, cfg):
         self.__test_client = test_client
         self.__config = cfg
@@ -125,7 +125,8 @@ class DeployDataCenters(object):
                 clusterresponse = self.__apiClient.addCluster(clustercmd)
                 if clusterresponse[0].id:
                     clusterId = clusterresponse[0].id
-                    self.__logger.debug("Cluster Name : %s Id : %s Created Successfully" % (str(cluster.clustername), str(clusterId)))
+                    self.__logger.debug(
+                        "Cluster Name : %s Id : %s Created Successfully" % (str(cluster.clustername), str(clusterId)))
                     self.__addToCleanUp("Cluster", clusterId)
                 self.addHosts(cluster.hosts, zoneId, podId, clusterId, cluster.hypervisor)
                 self.waitForHost(zoneId, clusterId)
@@ -251,9 +252,9 @@ class DeployDataCenters(object):
                 if secondarycmd.provider.lower() in ('s3', "swift", "smb"):
                     for key, value in vars(secondary.details).iteritems():
                         secondarycmd.details.append({
-                                                    'key': key,
-                                                    'value': value
-                                                    })
+                            'key': key,
+                            'value': value
+                        })
                 if secondarycmd.provider.lower() in ("nfs", "smb"):
                     secondarycmd.zoneid = zoneId
                 ret = self.__apiClient.addImageStore(secondarycmd)
@@ -278,9 +279,9 @@ class DeployDataCenters(object):
                 if cache.details:
                     for key, value in vars(cache.details).iteritems():
                         cachecmd.details.append({
-                                                'key': key,
-                                                'value': value
-                                                })
+                            'key': key,
+                            'value': value
+                        })
                 ret = self.__apiClient.createSecondaryStagingStore(cachecmd)
                 if ret.id:
                     self.__logger.info("=== Creating Secondary StagingStore Successful ===")
@@ -310,7 +311,8 @@ class DeployDataCenters(object):
                 networkcmdresponse = self.__apiClient.createNetwork(networkcmd)
                 if networkcmdresponse.id:
                     networkId = networkcmdresponse.id
-                    self.__logger.info("=== Creating Network Name : %s Id : %s Successful ===" % (str(network.name), str(networkId)))
+                    self.__logger.info(
+                        "=== Creating Network Name : %s Id : %s Successful ===" % (str(network.name), str(networkId)))
                     self.__addToCleanUp("Network", networkId)
                     return networkId
         except Exception as e:
@@ -325,7 +327,8 @@ class DeployDataCenters(object):
             phynet.isolationmethods = net.isolationmethods
             phynetwrk = self.__apiClient.createPhysicalNetwork(phynet)
             if phynetwrk.id:
-                self.__logger.info("=== Creating Physical Network Name : %s Id : %s Successful ===" % (str(phynet.name), str(phynetwrk.id)))
+                self.__logger.info("=== Creating Physical Network Name : %s Id : %s Successful ===" % (
+                    str(phynet.name), str(phynetwrk.id)))
                 self.__addToCleanUp("PhysicalNetwork", phynetwrk.id)
             self.addTrafficTypes(phynetwrk.id, net.traffictypes)
             return phynetwrk
@@ -348,7 +351,7 @@ class DeployDataCenters(object):
 
     def enableProvider(self, provider_id):
         try:
-            upnetprov =\
+            upnetprov = \
                 updateNetworkServiceProvider.updateNetworkServiceProviderCmd()
             upnetprov.id = provider_id
             upnetprov.state = "Enabled"
@@ -416,7 +419,8 @@ class DeployDataCenters(object):
                                 self.__logger.info("=== Add NiciraNvp Successful ===")
                                 self.__addToCleanUp("NiciraNvp", ret.id)
                             else:
-                                raise InvalidParameterException("Device %s doesn't match any know provider type" % device)
+                                raise InvalidParameterException(
+                                    "Device %s doesn't match any know provider type" % device)
                     self.enableProvider(result.id)
         except Exception as e:
             self.__logger.exception("=== List Network Service Providers Failed: %s ===" % e)
@@ -430,13 +434,13 @@ class DeployDataCenters(object):
             traffic_type = addTrafficType.addTrafficTypeCmd()
             traffic_type.physicalnetworkid = physical_network_id
             traffic_type.traffictype = traffictype.typ
-            traffic_type.kvmnetworklabel = traffictype.kvm\
+            traffic_type.kvmnetworklabel = traffictype.kvm \
                 if traffictype.kvm is not None else None
-            traffic_type.xennetworklabel = traffictype.xen\
+            traffic_type.xennetworklabel = traffictype.xen \
                 if traffictype.xen is not None else None
-            traffic_type.vmwarenetworklabel = traffictype.vmware\
+            traffic_type.vmwarenetworklabel = traffictype.vmware \
                 if traffictype.vmware is not None else None
-            traffic_type.simulatorlabel = traffictype.simulator\
+            traffic_type.simulatorlabel = traffictype.simulator \
                 if traffictype.simulator is not None else None
             ret = self.__apiClient.addTrafficType(traffic_type)
             if ret.id:
@@ -515,7 +519,7 @@ class DeployDataCenters(object):
                     self.configureProviders(phynetwrk, pnet.providers)
                     self.updatePhysicalNetwork(phynetwrk.id, "Enabled", vlan=pnet.vlan)
                 if zone.networktype == "Basic":
-                    listnetworkoffering =listNetworkOfferings.listNetworkOfferingsCmd()
+                    listnetworkoffering = listNetworkOfferings.listNetworkOfferingsCmd()
                     if len(filter(lambda x: x.typ == 'Public', zone.physical_networks[0].traffictypes)) > 0:
                         listnetworkoffering.name = "DefaultSharedNetscalerEIPandELBNetworkOffering"
                     else:
@@ -558,7 +562,7 @@ class DeployDataCenters(object):
                     networkcmdresponse = self.__apiClient.createNetwork(networkcmd)
                     if networkcmdresponse.id:
                         self.__addToCleanUp("Network", networkcmdresponse.id)
-                        self.__logger.debug("create Network Successful. NetworkId : %s "% str(networkcmdresponse.id))
+                        self.__logger.debug("create Network Successful. NetworkId : %s " % str(networkcmdresponse.id))
                     self.createPods(zone.pods, zoneId, networkcmdresponse.id)
                 '''Note: Swift needs cache storage first'''
                 self.createCacheStorages(zone.cacheStorages, zoneId)
@@ -607,7 +611,7 @@ class DeployDataCenters(object):
     def copyAttributesToCommand(self, source, command):
         map(lambda attr: setattr(command, attr, getattr(source, attr, None)),
             filter(lambda attr: not attr.startswith("__") and attr not in
-                   ["required", "isAsync"], dir(command)))
+                                                              ["required", "isAsync"], dir(command)))
 
     def configureS3(self, s3):
         try:
@@ -652,7 +656,6 @@ class DeployDataCenters(object):
 
 
 class DeleteDataCenters:
-
     '''
     @Desc : Deletes the Data Center using the settings provided.
             test_client :Client for deleting the DC.
@@ -664,6 +667,7 @@ class DeleteDataCenters:
             the dictionary of elements to delete.
             tc_run_logger: Logger to dump log messages.
     '''
+
     def __init__(self, test_client, cfg):
         self.__cfg = cfg
         self.__test_client = test_client
@@ -773,7 +777,6 @@ class DeleteDataCenters:
 
 
 class Application(object):
-
     def main(self, arguments):
         options = self.parse_args(arguments)
         self.validate_options(options)
@@ -795,7 +798,7 @@ class Application(object):
     def parse_args(self, arguments):
         usage_string = "usage: %prog [options]"
         parser = OptionParser(usage=usage_string)
-        parser.add_option('-i', '--input',  action='store', default=None, dest='input',  help='marvin config file')
+        parser.add_option('-i', '--input', action='store', default=None, dest='input', help='marvin config file')
         parser.add_option('-r', '--remove', action='store', default=None, dest='remove', help='marvin config file')
 
         (options, _) = parser.parse_args(args=arguments)

@@ -1,5 +1,6 @@
 import unittest
-from marvin.lib.utils import verifyElementInList
+
+from lib.utils import verifyElementInList
 from marvin.codes import PASS
 
 
@@ -12,8 +13,10 @@ def user(Name, DomainName, AcctType):
             cls.DomainName = DomainName
             cls.AcctType = AcctType
             orig_init(self, *args, **kws)
+
         cls.__init__ = __init__
         return cls
+
     return wrapper
 
 

@@ -1,48 +1,45 @@
 import unittest
 
-from test_utils import MockApiClient
-
-from lib.base import (
+from marvin.codes import (
+    FAIL,
+    PASS
+)
+from marvin.lib.base import (
     Host,
     NIC,
     Snapshot,
     StoragePool,
     VirtualMachine
 )
-from codes import (
-    FAIL,
-    PASS
-)
+from test_utils import MockApiClient
+
 
 class TestVirtualMachine(unittest.TestCase):
-
     def test_validateState_succeeds_before_retry_limit(self):
         retries = 2
         timeout = 3
         api_client = MockApiClient(retries, 'initial state', 'final state')
-        vm = VirtualMachine({'id': 'vm_id','nic': [NIC({'ipaddress': '192.168.0.100'})]}, {})
+        vm = VirtualMachine({'id': 'vm_id', 'nic': [NIC({'ipaddress': '192.168.0.100'})]}, {})
         state = vm.validateState(api_client, 'final state', timeout=timeout, interval=1)
 
         self.assertEqual(state, [PASS, None])
         self.assertEqual(retries, api_client.retry_counter)
-
 
     def test_validateState_succeeds_at_retry_limit(self):
         retries = 3
         timeout = 3
         api_client = MockApiClient(retries, 'initial state', 'final state')
-        vm = VirtualMachine({'id': 'vm_id','nic': [NIC({'ipaddress': '192.168.0.100'})]}, {})
+        vm = VirtualMachine({'id': 'vm_id', 'nic': [NIC({'ipaddress': '192.168.0.100'})]}, {})
         state = vm.validateState(api_client, 'final state', timeout=timeout, interval=1)
 
         self.assertEqual(state, [PASS, None])
         self.assertEqual(retries, api_client.retry_counter)
 
-
     def test_validateState_fails_after_retry_limit(self):
         retries = 3
         timeout = 2
         api_client = MockApiClient(retries, 'initial state', 'final state')
-        vm = VirtualMachine({'id': 'vm_id','nic': [NIC({'ipaddress': '192.168.0.100'})]}, {})
+        vm = VirtualMachine({'id': 'vm_id', 'nic': [NIC({'ipaddress': '192.168.0.100'})]}, {})
         state = vm.validateState(api_client, 'final state', timeout=timeout, interval=1)
 
         self.assertEqual(state, [FAIL, 'VirtualMachine state not trasited to final state, operation timed out'])
@@ -50,7 +47,6 @@ class TestVirtualMachine(unittest.TestCase):
 
 
 class TestSnapshot(unittest.TestCase):
-
     def test_validateState_succeeds_before_retry_limit(self):
         retries = 2
         timeout = 3
@@ -61,7 +57,6 @@ class TestSnapshot(unittest.TestCase):
         self.assertEqual(state, [PASS, None])
         self.assertEqual(retries, api_client.retry_counter)
 
-
     def test_validateState_succeeds_at_retry_limit(self):
         retries = 3
         timeout = 3
@@ -71,7 +66,6 @@ class TestSnapshot(unittest.TestCase):
 
         self.assertEqual(state, [PASS, None])
         self.assertEqual(retries, api_client.retry_counter)
-
 
     def test_validateState_fails_after_retry_limit(self):
         retries = 3
@@ -85,7 +79,6 @@ class TestSnapshot(unittest.TestCase):
 
 
 class TestHost(unittest.TestCase):
-
     def test_validateState_succeeds_before_retry_limit(self):
         retries = 2
         timeout = 3
@@ -96,7 +89,6 @@ class TestHost(unittest.TestCase):
         self.assertEqual(state, [PASS, None])
         self.assertEqual(retries, api_client.retry_counter)
 
-
     def test_validateState_succeeds_at_retry_limit(self):
         retries = 3
         timeout = 3
@@ -106,7 +98,6 @@ class TestHost(unittest.TestCase):
 
         self.assertEqual(state, [PASS, None])
         self.assertEqual(retries, api_client.retry_counter)
-
 
     def test_validateState_fails_after_retry_limit(self):
         retries = 3
@@ -115,11 +106,12 @@ class TestHost(unittest.TestCase):
         host = Host({'id': 'host_id'})
         state = host.validateState(api_client, ['final state', 'final state'], timeout=timeout, interval=1)
 
-        self.assertEqual(state, [FAIL, "Host state not trasited to %s, operation timed out" % ['final state', 'final state']])
+        self.assertEqual(state,
+                         [FAIL, "Host state not trasited to %s, operation timed out" % ['final state', 'final state']])
         self.assertEqual(retries, api_client.retry_counter)
 
-class TestStoragePool(unittest.TestCase):
 
+class TestStoragePool(unittest.TestCase):
     def test_validateState_succeeds_before_retry_limit(self):
         retries = 2
         timeout = 3
@@ -130,7 +122,6 @@ class TestStoragePool(unittest.TestCase):
         self.assertEqual(state, [PASS, None])
         self.assertEqual(retries, api_client.retry_counter)
 
-
     def test_validateState_succeeds_at_retry_limit(self):
         retries = 3
         timeout = 3
@@ -140,7 +131,6 @@ class TestStoragePool(unittest.TestCase):
 
         self.assertEqual(state, [PASS, None])
         self.assertEqual(retries, api_client.retry_counter)
-
 
     def test_validateState_fails_after_retry_limit(self):
         retries = 3
@@ -151,6 +141,7 @@ class TestStoragePool(unittest.TestCase):
 
         self.assertEqual(state, [FAIL, 'StoragePool state not trasited to final state, operation timed out'])
         self.assertEqual(retries, api_client.retry_counter)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,12 +1,9 @@
-import unittest
 import os
 import sys
-import logging
-from functools import partial
+import unittest
 
 
 class TestCaseExecuteEngine(object):
-
     def __init__(self, testclient, config, tc_logger=None,
                  debug_stream=sys.stdout):
         """

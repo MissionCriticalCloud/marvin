@@ -1,7 +1,7 @@
-from cloudstackConnection import CSConnection
+import copy
+
 from asyncJobMgr import asyncJobMgr
-from dbConnection import DbConnection
-from cloudstackAPI import *
+from cloudstackConnection import CSConnection
 from codes import (
     FAILED,
     PASS,
@@ -12,13 +12,14 @@ from codes import (
     XEN_SERVER
 )
 from configGenerator import ConfigManager
+from dbConnection import DbConnection
 from lib.utils import (random_gen, validateList)
-from cloudstackAPI.cloudstackAPIClient import CloudStackAPIClient
+from marvin.cloudstackAPI import *
+from marvin.cloudstackAPI.cloudstackAPIClient import CloudStackAPIClient
 from marvinLog import MarvinLog
-import copy
+
 
 class CSTestClient(object):
-
     '''
     @Desc  : CloudStackTestClient is encapsulated entity for creating and
          getting various clients viz., apiclient,
@@ -130,7 +131,7 @@ class CSTestClient(object):
                 list_user = listUsers.listUsersCmd()
                 list_user.account = "admin"
                 list_user_res = self.__apiClient.listUsers(list_user)
-                if list_user_res is None or\
+                if list_user_res is None or \
                         (validateList(list_user_res)[0] != PASS):
                     self.__logger.error("API Client Creation Failed")
                     return FAILED
@@ -308,8 +309,8 @@ class CSTestClient(object):
                 createAcctCmd = createAccount.createAccountCmd()
                 createAcctCmd.accounttype = acctType
                 createAcctCmd.domainid = domId
-                createAcctCmd.email = "test-" + random_gen()\
-                    + "@cloudstack.org"
+                createAcctCmd.email = "test-" + random_gen() \
+                                      + "@cloudstack.org"
                 createAcctCmd.firstname = UserName
                 createAcctCmd.lastname = UserName
                 createAcctCmd.password = 'password'
@@ -340,7 +341,7 @@ class CSTestClient(object):
                 mgmt_details.apiKey = apiKey
                 mgmt_details.securityKey = securityKey
 
-            newUserConnection =\
+            newUserConnection = \
                 CSConnection(mgmt_details,
                              self.__csConnection.asyncTimeout,
                              self.__csConnection.logger)

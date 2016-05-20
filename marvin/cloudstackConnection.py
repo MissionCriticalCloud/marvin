@@ -1,23 +1,23 @@
-import requests
-import urllib
 import base64
-import hmac
 import hashlib
-import time
-from cloudstackAPI import queryAsyncJobResult
-import jsonHelper
+import hmac
 import pprint
+import requests
+import time
+import urllib
+
+import jsonHelper
+from marvin.cloudstackAPI import queryAsyncJobResult
+from marvin.cloudstackException import InvalidParameterException
 from marvin.codes import (
     FAILED,
     JOB_FAILED,
     JOB_CANCELLED,
     JOB_SUCCEEDED
 )
-from marvin.cloudstackException import InvalidParameterException
 
 
 class CSConnection(object):
-
     '''
     @Desc: Connection Class to make API\Command calls to the
            CloudStack Management Server
@@ -45,11 +45,11 @@ class CSConnection(object):
         self.asyncTimeout = asyncTimeout
         self.auth = True
         if self.port == 8096 or \
-           (self.apiKey is None and self.securityKey is None):
+                (self.apiKey is None and self.securityKey is None):
             self.auth = False
         self.protocol = "https" if mgmtDet.useHttps == "True" else "http"
         self.httpsFlag = True if self.protocol == "https" else False
-        self.baseUrl = "%s://%s:%d/%s"\
+        self.baseUrl = "%s://%s:%d/%s" \
                        % (self.protocol, self.mgtSvr, self.port, self.path)
 
     def __copy__(self):
@@ -76,7 +76,7 @@ class CSConnection(object):
             async_response = FAILED
             self.logger.debug("=== Jobid: %s Started ===" % (str(jobid)))
             while timeout > 0:
-                async_response = self.\
+                async_response = self. \
                     marvinRequest(cmd, response_type=response_cmd)
                 if async_response != FAILED:
                     job_status = async_response.jobstatus
@@ -88,11 +88,11 @@ class CSConnection(object):
                 time.sleep(5)
                 timeout -= 5
                 self.logger.debug("=== JobId: %s is Still Processing, Will TimeOut in: %s ====" %
-                    (str(jobid), str(timeout)))
+                                  (str(jobid), str(timeout)))
             end_time = time.time()
             tot_time = int(start_time - end_time)
             self.logger.debug("=== Jobid: %s ; StartTime: %s ; EndTime: %s ; TotalTime: %s ===" %
-                (str(jobid), str(time.ctime(start_time)), str(time.ctime(end_time)), str(tot_time)))
+                              (str(jobid), str(time.ctime(start_time)), str(time.ctime(end_time)), str(tot_time)))
             return async_response
         except Exception as e:
             self.__lastError = e
@@ -121,7 +121,7 @@ class CSConnection(object):
                 [str.lower(r[0]),
                  str.lower(
                      urllib.quote_plus(str(r[1]))
-                ).replace("+", "%20")]
+                 ).replace("+", "%20")]
             ) for r in params]
         )
         signature = base64.encodestring(hmac.new(
