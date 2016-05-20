@@ -79,10 +79,10 @@ class CodeGenerator(object):
         self.cmdsName.append(self.cmd.name)
         self.code = '"""%s"""\n' % self.cmd.desc
         self.code += 'from baseCmd import *\n'
-        self.code += 'from baseResponse import *\n'
+        self.code += 'from baseResponse import *\n\n\n'
         self.code += "class %sCmd (baseCmd):\n" % self.cmd.name
         self.code += self.space
-        self.code += 'typeInfo = {}\n'
+        self.code += 'typeInfo = {}\n\n'
         self.code += self.space + "def __init__(self):\n"
 
         self.code += self.space + self.space
@@ -107,16 +107,16 @@ class CodeGenerator(object):
 
         self.code += self.space + self.space + "self.required = ["
         for require in self.required:
-            self.code += '"' + require + '",'
+            self.code += '"' + require + '", '
         self.code += "]\n"
         self.required = []
 
         """generate response code"""
         subItems = {}
-        self.code += self.newline
+        self.code += self.newline + self.newline
         self.code += 'class %sResponse (baseResponse):\n' % self.cmd.name
         self.code += self.space
-        self.code += 'typeInfo = {}\n'
+        self.code += 'typeInfo = {}\n\n'
         self.code += self.space + "def __init__(self):\n"
         if len(self.cmd.response) == 0:
             self.code += self.space + self.space + "pass"
