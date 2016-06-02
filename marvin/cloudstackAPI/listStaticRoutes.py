@@ -8,10 +8,13 @@ class listStaticRoutesCmd (baseCmd):
         """list resources by account. Must be used with the domainId parameter."""
         self.account = None
         self.typeInfo['account'] = 'string'
+        """list static routes by cidr"""
+        self.cidr = None
+        self.typeInfo['cidr'] = 'string'
         """list only resources belonging to the domain specified"""
         self.domainid = None
         self.typeInfo['domainid'] = 'uuid'
-        """list static routes by gateway id"""
+        """list static routes by gateway id (DEPRECATED!)"""
         self.gatewayid = None
         self.typeInfo['gatewayid'] = 'uuid'
         """list static route by id"""
@@ -26,6 +29,9 @@ class listStaticRoutesCmd (baseCmd):
         """If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false"""
         self.listall = None
         self.typeInfo['listall'] = 'boolean'
+        """list static routes by nexthop ip address"""
+        self.nexthop = None
+        self.typeInfo['nexthop'] = 'string'
         """"""
         self.page = None
         self.typeInfo['page'] = 'integer'
@@ -52,7 +58,7 @@ class listStaticRoutesResponse (baseResponse):
         """the account associated with the static route"""
         self.account = None
         self.typeInfo['account'] = 'string'
-        """static route CIDR"""
+        """The CIDR to route"""
         self.cidr = None
         self.typeInfo['cidr'] = 'string'
         """the domain associated with the static route"""
@@ -61,9 +67,9 @@ class listStaticRoutesResponse (baseResponse):
         """the ID of the domain associated with the static route"""
         self.domainid = None
         self.typeInfo['domainid'] = 'string'
-        """VPC gateway the route is created for"""
-        self.gatewayid = None
-        self.typeInfo['gatewayid'] = 'string'
+        """Gateway ip address the CIDR is routed to"""
+        self.nexthop = None
+        self.typeInfo['nexthop'] = 'string'
         """the project name of the static route"""
         self.project = None
         self.typeInfo['project'] = 'string'

@@ -5,15 +5,20 @@ class createStaticRouteCmd (baseCmd):
     typeInfo = {}
     def __init__(self):
         self.isAsync = "true"
-        """static route cidr"""
+        """The CIDR to create the static route for"""
         """Required"""
         self.cidr = None
         self.typeInfo['cidr'] = 'string'
-        """the gateway id we are creating static route for"""
-        """Required"""
+        """The private gateway id to get the ipaddress from (DEPRECATED!)."""
         self.gatewayid = None
         self.typeInfo['gatewayid'] = 'uuid'
-        self.required = ["cidr","gatewayid",]
+        """Ip address of the nexthop to route the CIDR to"""
+        self.nexthop = None
+        self.typeInfo['nexthop'] = 'string'
+        """The VPC id we are creating static route for."""
+        self.vpcid = None
+        self.typeInfo['vpcid'] = 'uuid'
+        self.required = ["cidr",]
 
 class createStaticRouteResponse (baseResponse):
     typeInfo = {}
@@ -24,7 +29,7 @@ class createStaticRouteResponse (baseResponse):
         """the account associated with the static route"""
         self.account = None
         self.typeInfo['account'] = 'string'
-        """static route CIDR"""
+        """The CIDR to route"""
         self.cidr = None
         self.typeInfo['cidr'] = 'string'
         """the domain associated with the static route"""
@@ -33,9 +38,9 @@ class createStaticRouteResponse (baseResponse):
         """the ID of the domain associated with the static route"""
         self.domainid = None
         self.typeInfo['domainid'] = 'string'
-        """VPC gateway the route is created for"""
-        self.gatewayid = None
-        self.typeInfo['gatewayid'] = 'string'
+        """Gateway ip address the CIDR is routed to"""
+        self.nexthop = None
+        self.typeInfo['nexthop'] = 'string'
         """the project name of the static route"""
         self.project = None
         self.typeInfo['project'] = 'string'
