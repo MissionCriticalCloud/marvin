@@ -8,7 +8,7 @@ from marvin.lib.utils import (
     validateState,
     key_maps_to_value
 )
-from test_utils import MockApiClient
+from mocks import MockApiClient
 
 
 class TestUtils(unittest.TestCase):
