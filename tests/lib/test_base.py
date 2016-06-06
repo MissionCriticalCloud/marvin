@@ -11,7 +11,7 @@ from marvin.lib.base import (
     StoragePool,
     VirtualMachine
 )
-from test_utils import MockApiClient
+from mocks import MockApiClient
 
 
 class TestVirtualMachine(unittest.TestCase):

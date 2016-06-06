@@ -1,10 +1,11 @@
 import json
 import os
 import unittest
-from mock import patch
 from tempfile import mkstemp
 
-from lib.test_utils import MockApiClient
+from mock import patch
+
+from lib.mocks import MockApiClient
 from marvin.codes import SUCCESS
 from marvin.deployDataCenter import (
     DeployDataCenters,
