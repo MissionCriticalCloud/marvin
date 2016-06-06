@@ -56,9 +56,6 @@ class updateAccountResponse (baseResponse):
         """id of the Domain the account belongs too"""
         self.domainid = None
         self.typeInfo['domainid'] = 'string'
-        """the list of acl groups that account belongs to"""
-        self.groups = None
-        self.typeInfo['groups'] = 'list'
         """the total number of public ip addresses available for this account to acquire"""
         self.ipavailable = None
         self.typeInfo['ipavailable'] = 'string'
