@@ -25,12 +25,12 @@ from marvinLog import MarvinLog
 
 
 class DeployDataCenters(object):
-    '''
+    """
     @Desc : Deploys the Data Center with information provided.
             Once the Deployment is successful, it will export
             the DataCenter settings to an obj file
             ( can be used if wanted to delete the created DC)
-    '''
+    """
 
     def __init__(self, test_client, cfg):
         self.__test_client = test_client
@@ -99,7 +99,7 @@ class DeployDataCenters(object):
                     self.__logger.info("=== Add Host Successful ===")
                     self.__addToCleanUp("Host", ret[0].id)
             except Exception as e:
-                failed_cnt = failed_cnt + 1
+                failed_cnt += 1
                 self.__logger.exception("=== Adding Host (%s) Failed: %s ===" % (str(host.url), e))
                 if failed_cnt == len(hosts):
                     self.__cleanAndExit()
@@ -108,9 +108,6 @@ class DeployDataCenters(object):
         try:
             if clusters is None:
                 return
-            if vmwareDc is not None:
-                vmwareDc.zoneid = zoneId
-                self.addVmWareDataCenter(vmwareDc)
 
             for cluster in clusters:
                 clustercmd = addCluster.addClusterCmd()
@@ -150,7 +147,7 @@ class DeployDataCenters(object):
                     if host.state != 'Up':
                         break
                 sleep(timeout)
-                retry = retry - 1
+                retry -= 1
         except Exception as e:
             self.__logger.exception("=== List Hosts Failed: %s ===" % e)
             self.__cleanAndExit()
@@ -333,7 +330,7 @@ class DeployDataCenters(object):
             self.addTrafficTypes(phynetwrk.id, net.traffictypes)
             return phynetwrk
         except Exception as e:
-            self.__logger.exception("=== Physical Network Creation Failed ===")
+            self.__logger.exception("=== Physical Network Creation Failed: %s ===" % e)
             self.__cleanAndExit()
 
     def updatePhysicalNetwork(self, networkid, state="Enabled", vlan=None):
@@ -346,7 +343,7 @@ class DeployDataCenters(object):
             ret = self.__apiClient.updatePhysicalNetwork(upnet)
             return ret
         except Exception as e:
-            self.__logger.exception("=== Update Physical Network Failed ===")
+            self.__logger.exception("=== Update Physical Network Failed: %s ===" % e)
             self.__cleanAndExit()
 
     def enableProvider(self, provider_id):
@@ -359,7 +356,7 @@ class DeployDataCenters(object):
             if ret.id:
                 self.__logger.info("=== Update Network Service Provider Successfull ===")
         except Exception as e:
-            self.__logger.exception("=== Update Network Service Provider Failed ===")
+            self.__logger.exception("=== Update Network Service Provider Failed: %s ===" % e)
             self.__cleanAndExit()
 
     def configureProviders(self, phynetwrk, providers):
@@ -540,7 +537,7 @@ class DeployDataCenters(object):
                 if isPureAdvancedZone:
                     self.createPods(zone.pods, zoneId)
                     self.createVlanIpRanges(zone.networktype, zone.ipranges, zoneId)
-                elif (zone.networktype == "Advanced" and zone.securitygroupenabled == "true"):
+                elif zone.networktype == "Advanced" and zone.securitygroupenabled == "true":
                     listnetworkoffering = listNetworkOfferings.listNetworkOfferingsCmd()
                     listnetworkoffering.name = "DefaultSharedNetworkOfferingWithSGService"
                     if zone.networkofferingname is not None:
@@ -580,17 +577,19 @@ class DeployDataCenters(object):
         except Exception as e:
             self.__logger.exception("=== Create Zones Failed: %e ===" % e)
 
-    def isEipElbZone(self, zone):
-        if (zone.networktype == "Basic"
-            and len(filter(lambda x: x.typ == 'Public', zone.physical_networks[0].traffictypes)) > 0):
+    @staticmethod
+    @staticmethod
+    def isEipElbZone():
+        if zone.networktype == "Basic" and len(
+                filter(lambda x: x.typ == 'Public', zone.physical_networks[0].traffictypes)) > 0:
             return True
         return False
 
     def setClient(self):
-        '''
+        """
         @Name : setClient
         @Desc : Sets the API Client retrieved from test client
-        '''
+        """
         self.__apiClient = self.__test_client.getApiClient()
 
     def updateConfiguration(self, globalCfg):
@@ -608,24 +607,10 @@ class DeployDataCenters(object):
             self.__logger.exception("=== Update Configuration Failed: %s ===" % e)
             self.__cleanAndExit()
 
-    def copyAttributesToCommand(self, source, command):
+    @staticmethod
+    def copyAttributesToCommand(source, command):
         map(lambda attr: setattr(command, attr, getattr(source, attr, None)),
-            filter(lambda attr: not attr.startswith("__") and attr not in
-                                                              ["required", "isAsync"], dir(command)))
-
-    def configureS3(self, s3):
-        try:
-            if s3 is None:
-                return
-            command = addS3.addS3Cmd()
-            self.copyAttributesToCommand(s3, command)
-            ret = self.__apiClient.addS3(command)
-            if ret.id:
-                self.__logger.info("=== AddS3 Successfull ===")
-                self.__addToCleanUp("s3", ret.id)
-        except Exception as e:
-            self.__logger.exception("=== AddS3 Failed: %s ===" % e)
-            self.__cleanAndExit()
+            filter(lambda attr: not attr.startswith("__") and attr not in ["required", "isAsync"], dir(command)))
 
     def deploy(self):
         try:
@@ -642,7 +627,6 @@ class DeployDataCenters(object):
             Step3 :Deploy the Zone
             '''
             self.createZones(self.__config.zones)
-            self.configureS3(self.__config.s3)
             '''
             Persist the Configuration to an external file post DC creation
             '''
@@ -656,7 +640,7 @@ class DeployDataCenters(object):
 
 
 class DeleteDataCenters:
-    '''
+    """
     @Desc : Deletes the Data Center using the settings provided.
             test_client :Client for deleting the DC.
             dc_cfg_file : obj file exported by DeployDataCenter
@@ -666,7 +650,7 @@ class DeleteDataCenters:
             dc_cfg: If dc_cfg_file, is not available, we can use
             the dictionary of elements to delete.
             tc_run_logger: Logger to dump log messages.
-    '''
+    """
 
     def __init__(self, test_client, cfg):
         self.__cfg = cfg
@@ -675,10 +659,10 @@ class DeleteDataCenters:
         self.__apiClient = None
 
     def __deleteCmds(self, cmd_name, cmd_obj):
-        '''
+        """
         @Name : __deleteCmds
         @Desc : Deletes the entities provided by cmd
-        '''
+        """
         if cmd_name.lower() == "deletehostcmd":
             cmd_obj.forcedestroylocalstorage = "true"
             cmd_obj.force = "true"
@@ -697,7 +681,7 @@ class DeleteDataCenters:
                 retries = 3
                 for i in xrange(retries):
                     list_host_resp = self.__apiClient.listHosts(list_host_cmd)
-                    if (list_host_resp) and (list_host_resp[0].resourcestate == 'Maintenance'):
+                    if list_host_resp and (list_host_resp[0].resourcestate == 'Maintenance'):
                         break
                     sleep(30)
         if cmd_name.lower() == "deletestoragepoolcmd":
@@ -711,7 +695,7 @@ class DeleteDataCenters:
                 retries = 3
                 for i in xrange(retries):
                     store_maint_resp = self.__apiClient.listStoragePools(list_store_cmd)
-                    if (store_maint_resp) and (store_maint_resp[0].state == 'Maintenance'):
+                    if store_maint_resp and (store_maint_resp[0].state == 'Maintenance'):
                         break
                     sleep(30)
         return cmd_obj
@@ -720,10 +704,10 @@ class DeleteDataCenters:
         self.__apiClient = self.__test_client.getApiClient()
 
     def __cleanEntries(self):
-        '''
+        """
         @Name : __cleanAndEntries
         @Description: Cleans up the created DC in order of creation
-        '''
+        """
         try:
             ret = FAILED
             if "order" in self.__cfg.keys() and len(self.__cfg["order"]):
@@ -738,7 +722,6 @@ class DeleteDataCenters:
                         del_mod = "delete" + type
                         del_cmd = getattr(globals()[del_mod], del_mod + "Cmd")
                         del_cmd_obj = del_cmd()
-                        del_cmd_resp = getattr(globals()[del_mod], del_mod + "Response")
                         del_cmd_obj.id = id
                         del_cmd_obj = self.__deleteCmds(del_mod + "Cmd", del_cmd_obj)
                         del_func = getattr(self.__apiClient, del_mod)
@@ -754,22 +737,16 @@ class DeleteDataCenters:
             return ret
 
     def removeDataCenter(self):
-        '''
+        """
         @Name : removeDataCenter
         @Desc : Removes the Data Center provided by Configuration
                 If Input dc file configuration is None, uses the cfg provided
                 else uses the dc file to get the configuration
-        '''
+        """
         try:
             self.__setClient()
             self.__logger.info("=== DeployDC: CleanUp Started ===")
-            ret = FAILED
-            if self.__cfgFile:
-                file_to_read = open(self.__cfgFile, 'r')
-                if file_to_read:
-                    self.__cfg = pickle.load(file_to_read)
-            if self.__cfg:
-                ret = self.__cleanEntries()
+            ret = self.__cleanEntries()
         except Exception as e:
             self.__logger.exception("=== DeployDC: CleanUp failed: %s ===" % e)
         finally:
@@ -795,7 +772,8 @@ class Application(object):
         if self.__options_for_remove_data_center_are_invalid(options):
             raise Exception("Invalid remove config file path: %s" % options.remove)
 
-    def parse_args(self, arguments):
+    @staticmethod
+    def parse_args(arguments):
         usage_string = "usage: %prog [options]"
         parser = OptionParser(usage=usage_string)
         parser.add_option('-i', '--input', action='store', default=None, dest='input', help='marvin config file')
@@ -805,7 +783,8 @@ class Application(object):
 
         return options
 
-    def create_test_client(self, configuration):
+    @staticmethod
+    def create_test_client(configuration):
         test_client = CSTestClient(configuration.mgtSvr[0], configuration.dbSvr)
         if test_client and test_client.createTestClient() == FAILED:
             raise Exception("TestClient Creation Failed")
@@ -839,16 +818,20 @@ class Application(object):
     def __options_for_remove_data_center_are_invalid(self, options):
         return self.__option_is_set(options.remove) and not self.__path_points_to_file(options.remove)
 
-    def __deploy_and_remove_data_center(self, options):
+    @staticmethod
+    def __deploy_and_remove_data_center(options):
         return options.input and options.remove
 
-    def __nothing_to_do(self, options):
+    @staticmethod
+    def __nothing_to_do(options):
         return options.input is None and options.remove is None
 
-    def __option_is_set(self, flag):
+    @staticmethod
+    def __option_is_set(flag):
         return flag is not None
 
-    def __path_points_to_file(self, path):
+    @staticmethod
+    def __path_points_to_file(path):
         return os.path.isfile(path)
 
 

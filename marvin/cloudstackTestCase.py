@@ -1,7 +1,8 @@
 import unittest
 
+from cloudstackTestClient import CSTestClient
+from codes import PASS
 from lib.utils import verifyElementInList
-from marvin.codes import PASS
 
 
 def user(Name, DomainName, AcctType):
@@ -21,10 +22,9 @@ def user(Name, DomainName, AcctType):
 
 
 class cloudstackTestCase(unittest.case.TestCase):
-    clstestclient = None
+    clstestclient = CSTestClient({}, {})
 
-    def assertElementInList(inp, toverify, responsevar=None, pos=0,
-                            assertmsg="TC Failed for reason"):
+    def assertElementInList(inp, toverify, responsevar=None, pos=0, assertmsg="TC Failed for reason"):
         '''
         @Name: assertElementInList
         @desc:Uses the utility function verifyElementInList and

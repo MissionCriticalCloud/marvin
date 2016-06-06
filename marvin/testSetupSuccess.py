@@ -1,14 +1,20 @@
 from time import sleep as delay
 
-from lib import Vcenter
-from lib import verifyVCenterPortGroups
-from marvin.cloudstackAPI import listSystemVms, listZones, listTemplates
-from marvin.cloudstackTestCase import cloudstackTestCase
-from marvin.codes import (PUBLIC_TRAFFIC,
-                          MANAGEMENT_TRAFFIC,
-                          STORAGE_TRAFFIC,
-                          PASS,
-                          VMWAREDVS)
+from cloudstackAPI import (
+    listSystemVms,
+    listZones,
+    listTemplates
+)
+from cloudstackTestCase import cloudstackTestCase
+from codes import (
+    PUBLIC_TRAFFIC,
+    MANAGEMENT_TRAFFIC,
+    STORAGE_TRAFFIC,
+    PASS,
+    VMWAREDVS
+)
+from lib.common import verifyVCenterPortGroups
+from lib.vcenter import Vcenter
 
 
 class TestSetupSuccess(cloudstackTestCase):
@@ -35,22 +41,18 @@ class TestSetupSuccess(cloudstackTestCase):
         for z in self.zones_list:
             retry = self.retry
             while retry != 0:
-                self.debug("looking for system VMs in zone: %s, %s" %
-                           (z.id, z.name))
+                self.debug("looking for system VMs in zone: %s, %s" % (z.id, z.name))
                 sysvms = listSystemVms.listSystemVmsCmd()
                 sysvms.zoneid = z.id
                 sysvms.state = 'Running'
                 sysvms_list = self.apiClient.listSystemVms(sysvms)
                 if sysvms_list is not None and len(sysvms_list) == 2:
                     assert len(sysvms_list) == 2
-                    self.debug("found %d system VMs running {%s}" %
-                               (len(sysvms_list), sysvms_list))
+                    self.debug("found %d system VMs running {%s}" % (len(sysvms_list), sysvms_list))
                     break
-                retry = retry - 1
+                retry -= 1
                 delay(60)  # wait a minute for retry
-            self.assertNotEqual(retry, 0,
-                                "system VMs not Running in zone %s" %
-                                z.name)
+            self.assertNotEqual(retry, 0, "system VMs not Running in zone %s" % z.name)
 
     def test_templateBuiltInReady(self):
         """
@@ -70,10 +72,9 @@ class TestSetupSuccess(cloudstackTestCase):
                                 if tmpl.templatetype == 'BUILTIN'
                                 and tmpl.isready]
                     if len(builtins) > 0:
-                        self.debug("Found %d builtins ready for use %s" %
-                                   (len(builtins), builtins))
+                        self.debug("Found %d builtins ready for use %s" % (len(builtins), builtins))
                         break
-                retry = retry - 1
+                retry -= 1
                 delay(60)  # wait a minute for retry
             self.assertNotEqual(retry, 0,
                                 "builtIn templates not ready in zone %s" %
