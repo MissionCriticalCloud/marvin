@@ -1,8 +1,11 @@
 """Creates a project"""
 from baseCmd import *
 from baseResponse import *
+
+
 class createProjectCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """display text of the project"""
@@ -19,10 +22,12 @@ class createProjectCmd (baseCmd):
         """domain ID of the account owning a project"""
         self.domainid = None
         self.typeInfo['domainid'] = 'uuid'
-        self.required = ["displaytext","name",]
+        self.required = ["displaytext", "name", ]
+
 
 class createProjectResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the project"""
         self.id = None

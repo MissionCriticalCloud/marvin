@@ -1,8 +1,11 @@
 """Lists all hypervisor capabilities."""
 from baseCmd import *
 from baseResponse import *
+
+
 class listHypervisorCapabilitiesCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the hypervisor for which to restrict the search"""
@@ -22,8 +25,10 @@ class listHypervisorCapabilitiesCmd (baseCmd):
         self.typeInfo['pagesize'] = 'integer'
         self.required = []
 
+
 class listHypervisorCapabilitiesResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the hypervisor capabilities row"""
         self.id = None

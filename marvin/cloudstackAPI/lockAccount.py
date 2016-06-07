@@ -1,8 +1,11 @@
 """This deprecated function used to locks an account. Look for the API DisableAccount instead"""
 from baseCmd import *
 from baseResponse import *
+
+
 class lockAccountCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """Locks the specified account."""
@@ -13,10 +16,12 @@ class lockAccountCmd (baseCmd):
         """Required"""
         self.domainid = None
         self.typeInfo['domainid'] = 'uuid'
-        self.required = ["account","domainid",]
+        self.required = ["account", "domainid", ]
+
 
 class lockAccountResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the account"""
         self.id = None

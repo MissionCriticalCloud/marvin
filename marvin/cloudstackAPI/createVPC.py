@@ -1,8 +1,11 @@
 """Creates a VPC"""
 from baseCmd import *
 from baseResponse import *
+
+
 class createVPCCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the cidr of the VPC. All VPC guest networks' cidrs should be within this CIDR"""
@@ -43,10 +46,12 @@ class createVPCCmd (baseCmd):
         """If set to false, the VPC won't start (VPC VR will not get allocated) until its first network gets implemented. True by default."""
         self.start = None
         self.typeInfo['start'] = 'boolean'
-        self.required = ["cidr","displaytext","name","vpcofferingid","zoneid",]
+        self.required = ["cidr", "displaytext", "name", "vpcofferingid", "zoneid", ]
+
 
 class createVPCResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the VPC"""
         self.id = None

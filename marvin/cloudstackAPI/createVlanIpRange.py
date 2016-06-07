@@ -1,8 +1,11 @@
 """Creates a VLAN IP range."""
 from baseCmd import *
 from baseResponse import *
+
+
 class createVlanIpRangeCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """account who will own the VLAN. If VLAN is Zone wide, this parameter should be ommited"""
@@ -58,8 +61,10 @@ class createVlanIpRangeCmd (baseCmd):
         self.typeInfo['zoneid'] = 'uuid'
         self.required = []
 
+
 class createVlanIpRangeResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the VLAN IP range"""
         self.id = None

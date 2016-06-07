@@ -1,8 +1,11 @@
 """Updates account information for the authenticated user"""
 from baseCmd import *
 from baseResponse import *
+
+
 class updateAccountCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """new name for the account"""
@@ -24,10 +27,12 @@ class updateAccountCmd (baseCmd):
         """Network domain for the account's networks; empty string will update domainName with NULL value"""
         self.networkdomain = None
         self.typeInfo['networkdomain'] = 'string'
-        self.required = ["newname",]
+        self.required = ["newname", ]
+
 
 class updateAccountResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the account"""
         self.id = None

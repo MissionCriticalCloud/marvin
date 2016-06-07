@@ -1,8 +1,11 @@
 """Updates the affinity/anti-affinity group associations of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect."""
 from baseCmd import *
 from baseResponse import *
+
+
 class updateVMAffinityGroupCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """The ID of the virtual machine"""
@@ -15,10 +18,12 @@ class updateVMAffinityGroupCmd (baseCmd):
         """comma separated list of affinity groups names that are going to be applied to the virtual machine. Should be passed only when vm is created from a zone with Basic Network support. Mutually exclusive with securitygroupids parameter"""
         self.affinitygroupnames = []
         self.typeInfo['affinitygroupnames'] = 'list'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class updateVMAffinityGroupResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the virtual machine"""
         self.id = None

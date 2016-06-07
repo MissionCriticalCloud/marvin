@@ -1,8 +1,11 @@
 """Lists dedicated guest vlan ranges"""
 from baseCmd import *
 from baseResponse import *
+
+
 class listDedicatedGuestVlanRangesCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the account with which the guest VLAN range is associated. Must be used with the domainId parameter."""
@@ -37,8 +40,10 @@ class listDedicatedGuestVlanRangesCmd (baseCmd):
         self.typeInfo['zoneid'] = 'uuid'
         self.required = []
 
+
 class listDedicatedGuestVlanRangesResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the guest VLAN range"""
         self.id = None

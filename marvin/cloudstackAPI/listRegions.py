@@ -1,8 +1,11 @@
 """Lists Regions"""
 from baseCmd import *
 from baseResponse import *
+
+
 class listRegionsCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """List Region by region ID."""
@@ -22,8 +25,10 @@ class listRegionsCmd (baseCmd):
         self.typeInfo['pagesize'] = 'integer'
         self.required = []
 
+
 class listRegionsResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the region"""
         self.id = None

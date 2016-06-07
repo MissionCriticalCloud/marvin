@@ -1,8 +1,11 @@
 """Updates a network offering."""
 from baseCmd import *
 from baseResponse import *
+
+
 class updateNetworkOfferingCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the availability of network offering. Default value is Required for Guest Virtual network offering; Optional for Guest Direct network offering"""
@@ -31,8 +34,10 @@ class updateNetworkOfferingCmd (baseCmd):
         self.typeInfo['state'] = 'string'
         self.required = []
 
+
 class updateNetworkOfferingResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the network offering"""
         self.id = None

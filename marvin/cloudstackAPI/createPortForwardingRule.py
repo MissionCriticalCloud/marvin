@@ -1,8 +1,11 @@
 """Creates a port forwarding rule"""
 from baseCmd import *
 from baseResponse import *
+
+
 class createPortForwardingRuleCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the IP address id of the port forwarding rule"""
@@ -46,10 +49,12 @@ class createPortForwardingRuleCmd (baseCmd):
         """VM guest nic secondary IP address for the port forwarding rule"""
         self.vmguestip = None
         self.typeInfo['vmguestip'] = 'string'
-        self.required = ["ipaddressid","privateport","protocol","publicport","virtualmachineid",]
+        self.required = ["ipaddressid", "privateport", "protocol", "publicport", "virtualmachineid", ]
+
 
 class createPortForwardingRuleResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the port forwarding rule"""
         self.id = None

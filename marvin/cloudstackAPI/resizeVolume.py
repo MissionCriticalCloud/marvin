@@ -1,8 +1,11 @@
 """Resizes a volume"""
 from baseCmd import *
 from baseResponse import *
+
+
 class resizeVolumeCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the disk volume"""
@@ -24,10 +27,12 @@ class resizeVolumeCmd (baseCmd):
         """New volume size in GB"""
         self.size = None
         self.typeInfo['size'] = 'long'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class resizeVolumeResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """ID of the disk volume"""
         self.id = None

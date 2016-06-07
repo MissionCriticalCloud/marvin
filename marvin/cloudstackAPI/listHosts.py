@@ -1,8 +1,11 @@
 """Lists hosts."""
 from baseCmd import *
 from baseResponse import *
+
+
 class listHostsCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """lists hosts existing in particular cluster"""
@@ -52,8 +55,10 @@ class listHostsCmd (baseCmd):
         self.typeInfo['zoneid'] = 'uuid'
         self.required = []
 
+
 class listHostsResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the host"""
         self.id = None

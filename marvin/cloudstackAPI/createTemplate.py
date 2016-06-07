@@ -1,8 +1,11 @@
 """Creates a template of a virtual machine. The virtual machine must be in a STOPPED state. A template created from this command is automatically designated as a private template visible to the account that created it."""
 from baseCmd import *
 from baseResponse import *
+
+
 class createTemplateCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the display text of the template. This is usually used for display purposes."""
@@ -56,10 +59,12 @@ class createTemplateCmd (baseCmd):
         """the ID of the disk volume the template is being created from. Either this parameter, or snapshotId has to be passed in"""
         self.volumeid = None
         self.typeInfo['volumeid'] = 'uuid'
-        self.required = ["displaytext","name","ostypeid",]
+        self.required = ["displaytext", "name", "ostypeid", ]
+
 
 class createTemplateResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the template ID"""
         self.id = None

@@ -1,18 +1,23 @@
 """Starts a router."""
 from baseCmd import *
 from baseResponse import *
+
+
 class startRouterCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the router"""
         """Required"""
         self.id = None
         self.typeInfo['id'] = 'uuid'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class startRouterResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the router"""
         self.id = None

@@ -1,8 +1,11 @@
 """Dedicates a guest vlan range to an account"""
 from baseCmd import *
 from baseResponse import *
+
+
 class dedicateGuestVlanRangeCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """account who will own the VLAN"""
@@ -24,10 +27,12 @@ class dedicateGuestVlanRangeCmd (baseCmd):
         """project who will own the VLAN"""
         self.projectid = None
         self.typeInfo['projectid'] = 'uuid'
-        self.required = ["account","domainid","physicalnetworkid","vlanrange",]
+        self.required = ["account", "domainid", "physicalnetworkid", "vlanrange", ]
+
 
 class dedicateGuestVlanRangeResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the guest VLAN range"""
         self.id = None

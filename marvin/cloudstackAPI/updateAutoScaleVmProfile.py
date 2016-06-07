@@ -1,8 +1,11 @@
 """Updates an existing autoscale vm profile."""
 from baseCmd import *
 from baseResponse import *
+
+
 class updateAutoScaleVmProfileCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the autoscale vm profile"""
@@ -27,10 +30,12 @@ class updateAutoScaleVmProfileCmd (baseCmd):
         """the template of the auto deployed virtual machine"""
         self.templateid = None
         self.typeInfo['templateid'] = 'uuid'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class updateAutoScaleVmProfileResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the autoscale vm profile ID"""
         self.id = None

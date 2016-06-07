@@ -1,8 +1,11 @@
 """Creates a private gateway"""
 from baseCmd import *
 from baseResponse import *
+
+
 class createPrivateGatewayCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the gateway of the Private gateway"""
@@ -37,10 +40,12 @@ class createPrivateGatewayCmd (baseCmd):
         """source NAT supported value. Default value false. If 'true' source NAT is enabled on the private gateway 'false': sourcenat is not supported"""
         self.sourcenatsupported = None
         self.typeInfo['sourcenatsupported'] = 'boolean'
-        self.required = ["gateway","ipaddress","netmask","vlan","vpcid",]
+        self.required = ["gateway", "ipaddress", "netmask", "vlan", "vpcid", ]
+
 
 class createPrivateGatewayResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the private gateway"""
         self.id = None

@@ -1,8 +1,11 @@
 """Lists all the system wide capacities."""
 from baseCmd import *
 from baseResponse import *
+
+
 class listCapacityCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """lists capacity by the Cluster ID"""
@@ -34,8 +37,10 @@ class listCapacityCmd (baseCmd):
         self.typeInfo['zoneid'] = 'uuid'
         self.required = []
 
+
 class listCapacityResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the total capacity available"""
         self.capacitytotal = None

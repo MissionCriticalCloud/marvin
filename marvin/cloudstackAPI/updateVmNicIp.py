@@ -1,8 +1,11 @@
 """Update the default Ip of a VM Nic"""
 from baseCmd import *
 from baseResponse import *
+
+
 class updateVmNicIpCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the nic to which you want to assign private IP"""
@@ -12,10 +15,12 @@ class updateVmNicIpCmd (baseCmd):
         """Secondary IP Address"""
         self.ipaddress = None
         self.typeInfo['ipaddress'] = 'string'
-        self.required = ["nicid",]
+        self.required = ["nicid", ]
+
 
 class updateVmNicIpResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the virtual machine"""
         self.id = None

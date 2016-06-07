@@ -1,18 +1,23 @@
 """Revert VM from a vmsnapshot."""
 from baseCmd import *
 from baseResponse import *
+
+
 class revertToVMSnapshotCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """The ID of the vm snapshot"""
         """Required"""
         self.vmsnapshotid = None
         self.typeInfo['vmsnapshotid'] = 'uuid'
-        self.required = ["vmsnapshotid",]
+        self.required = ["vmsnapshotid", ]
+
 
 class revertToVMSnapshotResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the virtual machine"""
         self.id = None

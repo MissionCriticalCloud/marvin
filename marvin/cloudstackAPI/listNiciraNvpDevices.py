@@ -1,8 +1,11 @@
 """Lists Nicira NVP devices"""
 from baseCmd import *
 from baseResponse import *
+
+
 class listNiciraNvpDevicesCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """List by keyword"""
@@ -22,8 +25,10 @@ class listNiciraNvpDevicesCmd (baseCmd):
         self.typeInfo['physicalnetworkid'] = 'uuid'
         self.required = []
 
+
 class listNiciraNvpDevicesResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the controller Ip address"""
         self.hostname = None

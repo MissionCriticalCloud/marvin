@@ -1,8 +1,11 @@
 """Updates a vm group"""
 from baseCmd import *
 from baseResponse import *
+
+
 class updateInstanceGroupCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """Instance group ID"""
@@ -12,10 +15,12 @@ class updateInstanceGroupCmd (baseCmd):
         """new instance group name"""
         self.name = None
         self.typeInfo['name'] = 'string'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class updateInstanceGroupResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the instance group"""
         self.id = None

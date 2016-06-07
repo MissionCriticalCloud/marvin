@@ -1,8 +1,11 @@
 """Lists remote access vpns"""
 from baseCmd import *
 from baseResponse import *
+
+
 class listRemoteAccessVpnsCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -43,8 +46,10 @@ class listRemoteAccessVpnsCmd (baseCmd):
         self.typeInfo['publicipid'] = 'uuid'
         self.required = []
 
+
 class listRemoteAccessVpnsResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the remote access vpn"""
         self.id = None

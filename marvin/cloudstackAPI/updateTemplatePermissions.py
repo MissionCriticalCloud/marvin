@@ -1,8 +1,11 @@
 """Updates a template visibility permissions. A public template is visible to all accounts within the same domain. A private template is visible only to the owner of the template. A priviledged template is a private template with account permissions added. Only accounts specified under the template permissions are visible to them."""
 from baseCmd import *
 from baseResponse import *
+
+
 class updateTemplatePermissionsCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the template ID"""
@@ -27,10 +30,12 @@ class updateTemplatePermissionsCmd (baseCmd):
         """a comma delimited list of projects. If specified, "op" parameter has to be passed in."""
         self.projectids = []
         self.typeInfo['projectids'] = 'list'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class updateTemplatePermissionsResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """any text associated with the success or failure"""
         self.displaytext = None

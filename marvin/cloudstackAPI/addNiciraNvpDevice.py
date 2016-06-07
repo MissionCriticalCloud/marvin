@@ -1,8 +1,11 @@
 """Adds a Nicira NVP device"""
 from baseCmd import *
 from baseResponse import *
+
+
 class addNiciraNvpDeviceCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """Hostname of ip address of the Nicira NVP Controller."""
@@ -28,10 +31,12 @@ class addNiciraNvpDeviceCmd (baseCmd):
         """The L3 Gateway Service UUID configured on the Nicira Controller"""
         self.l3gatewayserviceuuid = None
         self.typeInfo['l3gatewayserviceuuid'] = 'string'
-        self.required = ["hostname","password","physicalnetworkid","transportzoneuuid","username",]
+        self.required = ["hostname", "password", "physicalnetworkid", "transportzoneuuid", "username", ]
+
 
 class addNiciraNvpDeviceResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the controller Ip address"""
         self.hostname = None

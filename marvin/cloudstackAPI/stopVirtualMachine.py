@@ -1,8 +1,11 @@
 """Stops a virtual machine."""
 from baseCmd import *
 from baseResponse import *
+
+
 class stopVirtualMachineCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """The ID of the virtual machine"""
@@ -12,10 +15,12 @@ class stopVirtualMachineCmd (baseCmd):
         """Force stop the VM (vm is marked as Stopped even when command fails to be send to the backend).  The caller knows the VM is stopped."""
         self.forced = None
         self.typeInfo['forced'] = 'boolean'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class stopVirtualMachineResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the virtual machine"""
         self.id = None

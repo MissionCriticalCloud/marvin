@@ -1,18 +1,23 @@
 """List template visibility and all accounts that have permissions to view this template."""
 from baseCmd import *
 from baseResponse import *
+
+
 class listTemplatePermissionsCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the template ID"""
         """Required"""
         self.id = None
         self.typeInfo['id'] = 'uuid'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class listTemplatePermissionsResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the template ID"""
         self.id = None

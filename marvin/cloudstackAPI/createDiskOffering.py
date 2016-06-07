@@ -1,8 +1,11 @@
 """Creates a disk offering."""
 from baseCmd import *
 from baseResponse import *
+
+
 class createDiskOfferingCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """alternate display text of the disk offering"""
@@ -58,10 +61,12 @@ class createDiskOfferingCmd (baseCmd):
         """tags for the disk offering"""
         self.tags = None
         self.typeInfo['tags'] = 'string'
-        self.required = ["displaytext","name",]
+        self.required = ["displaytext", "name", ]
+
 
 class createDiskOfferingResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """unique ID of the disk offering"""
         self.id = None

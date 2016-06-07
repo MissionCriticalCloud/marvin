@@ -1,8 +1,11 @@
 """Migrate current NFS secondary storages to use object store."""
 from baseCmd import *
 from baseResponse import *
+
+
 class updateCloudToUseObjectStoreCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the image store provider name"""
@@ -18,10 +21,12 @@ class updateCloudToUseObjectStoreCmd (baseCmd):
         """the URL for the image store"""
         self.url = None
         self.typeInfo['url'] = 'string'
-        self.required = ["provider",]
+        self.required = ["provider", ]
+
 
 class updateCloudToUseObjectStoreResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the image store"""
         self.id = None

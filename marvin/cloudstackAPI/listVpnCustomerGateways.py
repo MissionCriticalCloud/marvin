@@ -1,8 +1,11 @@
 """Lists site to site vpn customer gateways"""
 from baseCmd import *
 from baseResponse import *
+
+
 class listVpnCustomerGatewaysCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -34,8 +37,10 @@ class listVpnCustomerGatewaysCmd (baseCmd):
         self.typeInfo['projectid'] = 'uuid'
         self.required = []
 
+
 class listVpnCustomerGatewaysResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the vpn gateway ID"""
         self.id = None

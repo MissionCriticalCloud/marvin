@@ -1,8 +1,11 @@
 """Updates a network serviceProvider of a physical network"""
 from baseCmd import *
 from baseResponse import *
+
+
 class updateNetworkServiceProviderCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """network service provider id"""
@@ -15,10 +18,12 @@ class updateNetworkServiceProviderCmd (baseCmd):
         """Enabled/Disabled/Shutdown the physical network service provider"""
         self.state = None
         self.typeInfo['state'] = 'string'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class updateNetworkServiceProviderResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """uuid of the network provider"""
         self.id = None

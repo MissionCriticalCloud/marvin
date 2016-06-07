@@ -1,18 +1,23 @@
 """List iso visibility and all accounts that have permissions to view this iso."""
 from baseCmd import *
 from baseResponse import *
+
+
 class listIsoPermissionsCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the template ID"""
         """Required"""
         self.id = None
         self.typeInfo['id'] = 'uuid'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class listIsoPermissionsResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the template ID"""
         self.id = None

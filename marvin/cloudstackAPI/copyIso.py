@@ -1,8 +1,11 @@
 """Copies an iso from one zone to another."""
 from baseCmd import *
 from baseResponse import *
+
+
 class copyIsoCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """Template ID."""
@@ -16,10 +19,12 @@ class copyIsoCmd (baseCmd):
         """ID of the zone the template is currently hosted on. If not specified and template is cross-zone, then we will sync this template to region wide image store."""
         self.sourcezoneid = None
         self.typeInfo['sourcezoneid'] = 'uuid'
-        self.required = ["id","destzoneid",]
+        self.required = ["id", "destzoneid", ]
+
 
 class copyIsoResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the template ID"""
         self.id = None

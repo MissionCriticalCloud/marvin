@@ -1,18 +1,23 @@
 """Cancels host maintenance."""
 from baseCmd import *
 from baseResponse import *
+
+
 class cancelHostMaintenanceCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the host ID"""
         """Required"""
         self.id = None
         self.typeInfo['id'] = 'uuid'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class cancelHostMaintenanceResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the host"""
         self.id = None

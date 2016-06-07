@@ -1,8 +1,11 @@
 """Updates network ACL list"""
 from baseCmd import *
 from baseResponse import *
+
+
 class updateNetworkACLListCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the network ACL"""
@@ -15,10 +18,12 @@ class updateNetworkACLListCmd (baseCmd):
         """an optional field, whether to the display the list to the end user or not"""
         self.fordisplay = None
         self.typeInfo['fordisplay'] = 'boolean'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class updateNetworkACLListResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """any text associated with the success or failure"""
         self.displaytext = None

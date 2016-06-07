@@ -1,18 +1,23 @@
 """Deletes a autoscale vm profile."""
 from baseCmd import *
 from baseResponse import *
+
+
 class deleteAutoScaleVmProfileCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the autoscale profile"""
         """Required"""
         self.id = None
         self.typeInfo['id'] = 'uuid'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class deleteAutoScaleVmProfileResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """any text associated with the success or failure"""
         self.displaytext = None

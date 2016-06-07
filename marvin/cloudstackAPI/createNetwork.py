@@ -1,8 +1,11 @@
 """Creates a network"""
 from baseCmd import *
 from baseResponse import *
+
+
 class createNetworkCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the display text of the network"""
@@ -81,10 +84,12 @@ class createNetworkCmd (baseCmd):
         """the VPC network belongs to"""
         self.vpcid = None
         self.typeInfo['vpcid'] = 'uuid'
-        self.required = ["displaytext","name","networkofferingid","zoneid",]
+        self.required = ["displaytext", "name", "networkofferingid", "zoneid", ]
+
 
 class createNetworkResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the network"""
         self.id = None

@@ -1,8 +1,11 @@
 """Deletes a keypair by name"""
 from baseCmd import *
 from baseResponse import *
+
+
 class deleteSSHKeyPairCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """Name of the keypair"""
@@ -18,10 +21,12 @@ class deleteSSHKeyPairCmd (baseCmd):
         """the project associated with keypair"""
         self.projectid = None
         self.typeInfo['projectid'] = 'uuid'
-        self.required = ["name",]
+        self.required = ["name", ]
+
 
 class deleteSSHKeyPairResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """any text associated with the success or failure"""
         self.displaytext = None

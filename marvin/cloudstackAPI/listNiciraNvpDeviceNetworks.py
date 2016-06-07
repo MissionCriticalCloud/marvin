@@ -1,8 +1,11 @@
 """lists network that are using a nicira nvp device"""
 from baseCmd import *
 from baseResponse import *
+
+
 class listNiciraNvpDeviceNetworksCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """nicira nvp device ID"""
@@ -18,10 +21,12 @@ class listNiciraNvpDeviceNetworksCmd (baseCmd):
         """"""
         self.pagesize = None
         self.typeInfo['pagesize'] = 'integer'
-        self.required = ["nvpdeviceid",]
+        self.required = ["nvpdeviceid", ]
+
 
 class listNiciraNvpDeviceNetworksResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the network"""
         self.id = None

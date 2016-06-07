@@ -1,8 +1,11 @@
 """Restore a VM to original template/ISO or new template/ISO"""
 from baseCmd import *
 from baseResponse import *
+
+
 class restoreVirtualMachineCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """Virtual Machine ID"""
@@ -12,10 +15,12 @@ class restoreVirtualMachineCmd (baseCmd):
         """an optional template Id to restore vm from the new template. This can be an ISO id in case of restore vm deployed using ISO"""
         self.templateid = None
         self.typeInfo['templateid'] = 'uuid'
-        self.required = ["virtualmachineid",]
+        self.required = ["virtualmachineid", ]
+
 
 class restoreVirtualMachineResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the virtual machine"""
         self.id = None

@@ -1,8 +1,11 @@
 """Removes vpn user"""
 from baseCmd import *
 from baseResponse import *
+
+
 class removeVpnUserCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """username for the vpn user"""
@@ -18,10 +21,12 @@ class removeVpnUserCmd (baseCmd):
         """remove vpn user from the project"""
         self.projectid = None
         self.typeInfo['projectid'] = 'uuid'
-        self.required = ["username",]
+        self.required = ["username", ]
+
 
 class removeVpnUserResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """any text associated with the success or failure"""
         self.displaytext = None

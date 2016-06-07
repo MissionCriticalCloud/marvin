@@ -1,18 +1,23 @@
 """Reconnects a host."""
 from baseCmd import *
 from baseResponse import *
+
+
 class reconnectHostCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the host ID"""
         """Required"""
         self.id = None
         self.typeInfo['id'] = 'uuid'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class reconnectHostResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the host"""
         self.id = None

@@ -1,8 +1,11 @@
 """Attaches an ISO to a virtual machine."""
 from baseCmd import *
 from baseResponse import *
+
+
 class attachIsoCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the ISO file"""
@@ -13,10 +16,12 @@ class attachIsoCmd (baseCmd):
         """Required"""
         self.virtualmachineid = None
         self.typeInfo['virtualmachineid'] = 'uuid'
-        self.required = ["id","virtualmachineid",]
+        self.required = ["id", "virtualmachineid", ]
+
 
 class attachIsoResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the virtual machine"""
         self.id = None

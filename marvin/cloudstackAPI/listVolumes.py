@@ -1,8 +1,11 @@
 """Lists all volumes."""
 from baseCmd import *
 from baseResponse import *
+
+
 class listVolumesCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -70,8 +73,10 @@ class listVolumesCmd (baseCmd):
         self.typeInfo['zoneid'] = 'uuid'
         self.required = []
 
+
 class listVolumesResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """ID of the disk volume"""
         self.id = None

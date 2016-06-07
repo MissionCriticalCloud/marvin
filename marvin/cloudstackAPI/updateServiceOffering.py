@@ -1,8 +1,11 @@
 """Updates a service offering."""
 from baseCmd import *
 from baseResponse import *
+
+
 class updateServiceOfferingCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the ID of the service offering to be updated"""
@@ -18,10 +21,12 @@ class updateServiceOfferingCmd (baseCmd):
         """sort key of the service offering, integer"""
         self.sortkey = None
         self.typeInfo['sortkey'] = 'integer'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class updateServiceOfferingResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the service offering"""
         self.id = None

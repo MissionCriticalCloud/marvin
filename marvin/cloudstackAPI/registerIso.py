@@ -1,8 +1,11 @@
 """Registers an existing ISO into the CloudStack Cloud."""
 from baseCmd import *
 from baseResponse import *
+
+
 class registerIsoCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the display text of the ISO. This is usually used for display purposes."""
@@ -54,10 +57,12 @@ class registerIsoCmd (baseCmd):
         """Register ISO for the project"""
         self.projectid = None
         self.typeInfo['projectid'] = 'uuid'
-        self.required = ["displaytext","name","url","zoneid",]
+        self.required = ["displaytext", "name", "url", "zoneid", ]
+
 
 class registerIsoResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the template ID"""
         self.id = None

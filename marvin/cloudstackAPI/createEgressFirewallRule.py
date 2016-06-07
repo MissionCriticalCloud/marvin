@@ -1,8 +1,11 @@
 """Creates a egress firewall rule for a given network"""
 from baseCmd import *
 from baseResponse import *
+
+
 class createEgressFirewallRuleCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the network id of the port forwarding rule"""
@@ -34,10 +37,12 @@ class createEgressFirewallRuleCmd (baseCmd):
         """type of firewallrule: system/user"""
         self.type = None
         self.typeInfo['type'] = 'string'
-        self.required = ["networkid","protocol",]
+        self.required = ["networkid", "protocol", ]
+
 
 class createEgressFirewallRuleResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the firewall rule"""
         self.id = None

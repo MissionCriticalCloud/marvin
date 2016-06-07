@@ -1,8 +1,11 @@
 """Updates ACL item with specified ID"""
 from baseCmd import *
 from baseResponse import *
+
+
 class updateNetworkACLItemCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the network ACL item"""
@@ -42,10 +45,12 @@ class updateNetworkACLItemCmd (baseCmd):
         """the traffic type for the ACL,can be Ingress or Egress, defaulted to Ingress if not specified"""
         self.traffictype = None
         self.typeInfo['traffictype'] = 'string'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class updateNetworkACLItemResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the ACL Item"""
         self.id = None

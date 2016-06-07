@@ -1,8 +1,11 @@
 """List the IP forwarding rules"""
 from baseCmd import *
 from baseResponse import *
+
+
 class listIpForwardingRulesCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -40,8 +43,10 @@ class listIpForwardingRulesCmd (baseCmd):
         self.typeInfo['virtualmachineid'] = 'uuid'
         self.required = []
 
+
 class listIpForwardingRulesResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the port forwarding rule"""
         self.id = None

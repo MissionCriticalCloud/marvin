@@ -1,8 +1,11 @@
 """Create a virtual router element."""
 from baseCmd import *
 from baseResponse import *
+
+
 class createVirtualRouterElementCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the network service provider ID of the virtual router element"""
@@ -12,10 +15,12 @@ class createVirtualRouterElementCmd (baseCmd):
         """The provider type. Supported types are VirtualRouter (default) and VPCVirtualRouter"""
         self.providertype = None
         self.typeInfo['providertype'] = 'uuid'
-        self.required = ["nspid",]
+        self.required = ["nspid", ]
+
 
 class createVirtualRouterElementResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the router"""
         self.id = None

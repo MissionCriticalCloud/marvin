@@ -1,8 +1,11 @@
 """Restarts a VPC"""
 from baseCmd import *
 from baseResponse import *
+
+
 class restartVPCCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the id of the VPC"""
@@ -15,10 +18,12 @@ class restartVPCCmd (baseCmd):
         """Turn a single VPC into a redundant one."""
         self.makeredundant = None
         self.typeInfo['makeredundant'] = 'boolean'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class restartVPCResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the VPC"""
         self.id = None

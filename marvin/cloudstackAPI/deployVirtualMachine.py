@@ -1,8 +1,11 @@
 """Creates and automatically starts a virtual machine based on a service offering, disk offering, and template."""
 from baseCmd import *
 from baseResponse import *
+
+
 class deployVirtualMachineCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the service offering for the virtual machine"""
@@ -98,10 +101,12 @@ class deployVirtualMachineCmd (baseCmd):
         """an optional binary data that can be sent to the virtual machine upon a successful deployment. This binary data must be base64 encoded before adding it to the request. Using HTTP GET (via querystring), you can send up to 2KB of data after base64 encoding. Using HTTP POST(via POST body), you can send up to 32K of data after base64 encoding."""
         self.userdata = None
         self.typeInfo['userdata'] = 'string'
-        self.required = ["serviceofferingid","templateid","zoneid",]
+        self.required = ["serviceofferingid", "templateid", "zoneid", ]
+
 
 class deployVirtualMachineResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the virtual machine"""
         self.id = None

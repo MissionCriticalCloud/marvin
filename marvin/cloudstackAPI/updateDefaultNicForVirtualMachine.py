@@ -1,8 +1,11 @@
 """Changes the default NIC on a VM"""
 from baseCmd import *
 from baseResponse import *
+
+
 class updateDefaultNicForVirtualMachineCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """NIC ID"""
@@ -13,10 +16,12 @@ class updateDefaultNicForVirtualMachineCmd (baseCmd):
         """Required"""
         self.virtualmachineid = None
         self.typeInfo['virtualmachineid'] = 'uuid'
-        self.required = ["nicid","virtualmachineid",]
+        self.required = ["nicid", "virtualmachineid", ]
+
 
 class updateDefaultNicForVirtualMachineResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the virtual machine"""
         self.id = None

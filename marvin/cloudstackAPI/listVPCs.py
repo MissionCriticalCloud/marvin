@@ -1,8 +1,11 @@
 """Lists VPCs"""
 from baseCmd import *
 from baseResponse import *
+
+
 class listVPCsCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -64,8 +67,10 @@ class listVPCsCmd (baseCmd):
         self.typeInfo['zoneid'] = 'uuid'
         self.required = []
 
+
 class listVPCsResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the VPC"""
         self.id = None

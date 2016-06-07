@@ -1,8 +1,11 @@
 """Updates load balancer stickiness policy"""
 from baseCmd import *
 from baseResponse import *
+
+
 class updateLBStickinessPolicyCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """id of lb stickiness policy"""
@@ -15,10 +18,12 @@ class updateLBStickinessPolicyCmd (baseCmd):
         """an optional field, whether to the display the policy to the end user or not"""
         self.fordisplay = None
         self.typeInfo['fordisplay'] = 'boolean'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class updateLBStickinessPolicyResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the account of the Stickiness policy"""
         self.account = None

@@ -1,8 +1,11 @@
 """Accepts or declines project invitation"""
 from baseCmd import *
 from baseResponse import *
+
+
 class updateProjectInvitationCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """id of the project to join"""
@@ -18,10 +21,12 @@ class updateProjectInvitationCmd (baseCmd):
         """list invitations for specified account; this parameter has to be specified with domainId"""
         self.token = None
         self.typeInfo['token'] = 'string'
-        self.required = ["projectid",]
+        self.required = ["projectid", ]
+
 
 class updateProjectInvitationResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """any text associated with the success or failure"""
         self.displaytext = None

@@ -1,18 +1,23 @@
 """Puts storage pool into maintenance state"""
 from baseCmd import *
 from baseResponse import *
+
+
 class enableStorageMaintenanceCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """Primary storage ID"""
         """Required"""
         self.id = None
         self.typeInfo['id'] = 'uuid'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class enableStorageMaintenanceResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the storage pool"""
         self.id = None

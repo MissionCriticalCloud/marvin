@@ -1,8 +1,11 @@
 """Upload a certificate to CloudStack"""
 from baseCmd import *
 from baseResponse import *
+
+
 class uploadSslCertCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """SSL certificate"""
@@ -28,10 +31,12 @@ class uploadSslCertCmd (baseCmd):
         """an optional project for the SSL certificate"""
         self.projectid = None
         self.typeInfo['projectid'] = 'uuid'
-        self.required = ["certificate","privatekey",]
+        self.required = ["certificate", "privatekey", ]
+
 
 class uploadSslCertResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """SSL certificate ID"""
         self.id = None

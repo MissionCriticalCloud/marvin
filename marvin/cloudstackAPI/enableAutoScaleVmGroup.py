@@ -1,18 +1,23 @@
 """Enables an AutoScale Vm Group"""
 from baseCmd import *
 from baseResponse import *
+
+
 class enableAutoScaleVmGroupCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the autoscale group"""
         """Required"""
         self.id = None
         self.typeInfo['id'] = 'uuid'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class enableAutoScaleVmGroupResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the autoscale vm group ID"""
         self.id = None

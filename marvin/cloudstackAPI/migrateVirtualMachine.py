@@ -1,8 +1,11 @@
 """Attempts Migration of a VM to a different host or Root volume of the vm to a different storage pool"""
 from baseCmd import *
 from baseResponse import *
+
+
 class migrateVirtualMachineCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the virtual machine"""
@@ -15,10 +18,12 @@ class migrateVirtualMachineCmd (baseCmd):
         """Destination storage pool ID to migrate VM volumes to. Required for migrating the root disk volume"""
         self.storageid = None
         self.typeInfo['storageid'] = 'uuid'
-        self.required = ["virtualmachineid",]
+        self.required = ["virtualmachineid", ]
+
 
 class migrateVirtualMachineResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the virtual machine"""
         self.id = None

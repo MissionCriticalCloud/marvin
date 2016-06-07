@@ -1,8 +1,11 @@
 """Lists physical networks"""
 from baseCmd import *
 from baseResponse import *
+
+
 class listPhysicalNetworksCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list physical network by id"""
@@ -25,8 +28,10 @@ class listPhysicalNetworksCmd (baseCmd):
         self.typeInfo['zoneid'] = 'uuid'
         self.required = []
 
+
 class listPhysicalNetworksResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the uuid of the physical network"""
         self.id = None

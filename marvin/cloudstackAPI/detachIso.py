@@ -1,18 +1,23 @@
 """Detaches any ISO file (if any) currently attached to a virtual machine."""
 from baseCmd import *
 from baseResponse import *
+
+
 class detachIsoCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """The ID of the virtual machine"""
         """Required"""
         self.virtualmachineid = None
         self.typeInfo['virtualmachineid'] = 'uuid'
-        self.required = ["virtualmachineid",]
+        self.required = ["virtualmachineid", ]
+
 
 class detachIsoResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the virtual machine"""
         self.id = None

@@ -1,8 +1,11 @@
 """Creates and automatically starts a virtual machine based on a service offering, disk offering, and template."""
 from baseCmd import *
 from baseResponse import *
+
+
 class createAutoScaleVmGroupCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the load balancer rule"""
@@ -35,10 +38,12 @@ class createAutoScaleVmGroupCmd (baseCmd):
         """the frequency at which the conditions have to be evaluated"""
         self.interval = None
         self.typeInfo['interval'] = 'integer'
-        self.required = ["lbruleid","maxmembers","minmembers","scaledownpolicyids","scaleuppolicyids","vmprofileid",]
+        self.required = ["lbruleid", "maxmembers", "minmembers", "scaledownpolicyids", "scaleuppolicyids", "vmprofileid", ]
+
 
 class createAutoScaleVmGroupResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the autoscale vm group ID"""
         self.id = None

@@ -1,8 +1,11 @@
 """Creates a vm group"""
 from baseCmd import *
 from baseResponse import *
+
+
 class createInstanceGroupCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the name of the instance group"""
@@ -18,10 +21,12 @@ class createInstanceGroupCmd (baseCmd):
         """The project of the instance group"""
         self.projectid = None
         self.typeInfo['projectid'] = 'uuid'
-        self.required = ["name",]
+        self.required = ["name", ]
+
 
 class createInstanceGroupResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the instance group"""
         self.id = None

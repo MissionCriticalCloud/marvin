@@ -1,8 +1,11 @@
 """Extracts an ISO"""
 from baseCmd import *
 from baseResponse import *
+
+
 class extractIsoCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the ISO file"""
@@ -19,10 +22,12 @@ class extractIsoCmd (baseCmd):
         """the ID of the zone where the ISO is originally located"""
         self.zoneid = None
         self.typeInfo['zoneid'] = 'uuid'
-        self.required = ["id","mode",]
+        self.required = ["id", "mode", ]
+
 
 class extractIsoResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of extracted object"""
         self.id = None

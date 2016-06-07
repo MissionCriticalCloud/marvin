@@ -1,8 +1,11 @@
 """Updates attributes of a template."""
 from baseCmd import *
 from baseResponse import *
+
+
 class updateTemplateCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the ID of the image file"""
@@ -42,10 +45,12 @@ class updateTemplateCmd (baseCmd):
         """sort key of the template, integer"""
         self.sortkey = None
         self.typeInfo['sortkey'] = 'integer'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class updateTemplateResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the template ID"""
         self.id = None

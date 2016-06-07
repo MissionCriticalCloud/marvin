@@ -1,8 +1,11 @@
 """Creates a load balancer"""
 from baseCmd import *
 from baseResponse import *
+
+
 class createLoadBalancerCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """load balancer algorithm (source, roundrobin, leastconn)"""
@@ -42,10 +45,12 @@ class createLoadBalancerCmd (baseCmd):
         """the source IP address the network traffic will be load balanced from"""
         self.sourceipaddress = None
         self.typeInfo['sourceipaddress'] = 'string'
-        self.required = ["algorithm","instanceport","name","networkid","scheme","sourceipaddressnetworkid","sourceport",]
+        self.required = ["algorithm", "instanceport", "name", "networkid", "scheme", "sourceipaddressnetworkid", "sourceport", ]
+
 
 class createLoadBalancerResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the Load Balancer ID"""
         self.id = None

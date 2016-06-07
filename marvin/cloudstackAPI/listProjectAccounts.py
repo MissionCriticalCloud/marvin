@@ -1,8 +1,11 @@
 """Lists project's accounts"""
 from baseCmd import *
 from baseResponse import *
+
+
 class listProjectAccountsCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """ID of the project"""
@@ -24,10 +27,12 @@ class listProjectAccountsCmd (baseCmd):
         """list accounts of the project by role"""
         self.role = None
         self.typeInfo['role'] = 'string'
-        self.required = ["projectid",]
+        self.required = ["projectid", ]
+
 
 class listProjectAccountsResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the project"""
         self.id = None

@@ -1,8 +1,11 @@
 """Lists all available networks."""
 from baseCmd import *
 from baseResponse import *
+
+
 class listNetworksCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -76,8 +79,10 @@ class listNetworksCmd (baseCmd):
         self.typeInfo['zoneid'] = 'uuid'
         self.required = []
 
+
 class listNetworksResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the network"""
         self.id = None

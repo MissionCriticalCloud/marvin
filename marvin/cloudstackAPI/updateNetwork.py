@@ -1,8 +1,11 @@
 """Updates a network"""
 from baseCmd import *
 from baseResponse import *
+
+
 class updateNetworkCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the network"""
@@ -33,10 +36,12 @@ class updateNetworkCmd (baseCmd):
         """network offering ID"""
         self.networkofferingid = None
         self.typeInfo['networkofferingid'] = 'uuid'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class updateNetworkResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the network"""
         self.id = None

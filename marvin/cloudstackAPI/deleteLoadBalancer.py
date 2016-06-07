@@ -1,18 +1,23 @@
 """Deletes a load balancer"""
 from baseCmd import *
 from baseResponse import *
+
+
 class deleteLoadBalancerCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the Load Balancer"""
         """Required"""
         self.id = None
         self.typeInfo['id'] = 'uuid'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class deleteLoadBalancerResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """any text associated with the success or failure"""
         self.displaytext = None

@@ -1,8 +1,11 @@
 """List registered keypairs"""
 from baseCmd import *
 from baseResponse import *
+
+
 class listSSHKeyPairsCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -37,8 +40,10 @@ class listSSHKeyPairsCmd (baseCmd):
         self.typeInfo['projectid'] = 'uuid'
         self.required = []
 
+
 class listSSHKeyPairsResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the owner of the keypair"""
         self.account = None

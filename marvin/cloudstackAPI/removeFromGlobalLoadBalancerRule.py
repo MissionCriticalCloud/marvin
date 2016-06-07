@@ -1,8 +1,11 @@
 """Removes a load balancer rule association with global load balancer rule"""
 from baseCmd import *
 from baseResponse import *
+
+
 class removeFromGlobalLoadBalancerRuleCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """The ID of the load balancer rule"""
@@ -13,10 +16,12 @@ class removeFromGlobalLoadBalancerRuleCmd (baseCmd):
         """Required"""
         self.loadbalancerrulelist = []
         self.typeInfo['loadbalancerrulelist'] = 'list'
-        self.required = ["id","loadbalancerrulelist",]
+        self.required = ["id", "loadbalancerrulelist", ]
+
 
 class removeFromGlobalLoadBalancerRuleResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """any text associated with the success or failure"""
         self.displaytext = None

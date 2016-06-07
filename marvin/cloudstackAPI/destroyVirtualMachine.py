@@ -1,8 +1,11 @@
 """Destroys a virtual machine. Once destroyed, only the administrator can recover it."""
 from baseCmd import *
 from baseResponse import *
+
+
 class destroyVirtualMachineCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """The ID of the virtual machine"""
@@ -12,10 +15,12 @@ class destroyVirtualMachineCmd (baseCmd):
         """If true is passed, the vm is expunged immediately. False by default."""
         self.expunge = None
         self.typeInfo['expunge'] = 'boolean'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class destroyVirtualMachineResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the virtual machine"""
         self.id = None

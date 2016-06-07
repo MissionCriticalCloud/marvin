@@ -1,8 +1,11 @@
 """Extracts volume"""
 from baseCmd import *
 from baseResponse import *
+
+
 class extractVolumeCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the volume"""
@@ -20,10 +23,12 @@ class extractVolumeCmd (baseCmd):
         """the url to which the volume would be extracted"""
         self.url = None
         self.typeInfo['url'] = 'string'
-        self.required = ["id","mode","zoneid",]
+        self.required = ["id", "mode", "zoneid", ]
+
 
 class extractVolumeResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of extracted object"""
         self.id = None

@@ -1,8 +1,11 @@
 """Reset site to site vpn connection"""
 from baseCmd import *
 from baseResponse import *
+
+
 class resetVpnConnectionCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """id of vpn connection"""
@@ -15,10 +18,12 @@ class resetVpnConnectionCmd (baseCmd):
         """an optional domainId for connection. If the account parameter is used, domainId must also be used."""
         self.domainid = None
         self.typeInfo['domainid'] = 'uuid'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class resetVpnConnectionResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the connection ID"""
         self.id = None

@@ -1,8 +1,11 @@
 """list portable IP ranges"""
 from baseCmd import *
 from baseResponse import *
+
+
 class listPortableIpRangesCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """Id of the portable ip range"""
@@ -22,8 +25,10 @@ class listPortableIpRangesCmd (baseCmd):
         self.typeInfo['regionid'] = 'integer'
         self.required = []
 
+
 class listPortableIpRangesResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """portable IP range ID"""
         self.id = None

@@ -1,8 +1,11 @@
 """Updates an IP address"""
 from baseCmd import *
 from baseResponse import *
+
+
 class updateIpAddressCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the public IP address to update"""
@@ -15,10 +18,12 @@ class updateIpAddressCmd (baseCmd):
         """an optional field, whether to the display the IP to the end user or not"""
         self.fordisplay = None
         self.typeInfo['fordisplay'] = 'boolean'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class updateIpAddressResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """public IP address id"""
         self.id = None

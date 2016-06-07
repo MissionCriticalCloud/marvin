@@ -1,8 +1,11 @@
 """Adds a Region"""
 from baseCmd import *
 from baseResponse import *
+
+
 class addRegionCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """Id of the Region"""
@@ -17,10 +20,12 @@ class addRegionCmd (baseCmd):
         """Required"""
         self.name = None
         self.typeInfo['name'] = 'string'
-        self.required = ["id","endpoint","name",]
+        self.required = ["id", "endpoint", "name", ]
+
 
 class addRegionResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the region"""
         self.id = None

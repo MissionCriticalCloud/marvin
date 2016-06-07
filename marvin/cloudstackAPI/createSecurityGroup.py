@@ -1,8 +1,11 @@
 """Creates a security group"""
 from baseCmd import *
 from baseResponse import *
+
+
 class createSecurityGroupCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """name of the security group"""
@@ -21,10 +24,12 @@ class createSecurityGroupCmd (baseCmd):
         """Create security group for project"""
         self.projectid = None
         self.typeInfo['projectid'] = 'uuid'
-        self.required = ["name",]
+        self.required = ["name", ]
+
 
 class createSecurityGroupResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the security group"""
         self.id = None

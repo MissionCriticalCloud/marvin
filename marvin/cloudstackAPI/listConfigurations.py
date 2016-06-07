@@ -1,8 +1,11 @@
 """Lists all configurations."""
 from baseCmd import *
 from baseResponse import *
+
+
 class listConfigurationsCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the ID of the Account to update the parameter value for corresponding account"""
@@ -34,8 +37,10 @@ class listConfigurationsCmd (baseCmd):
         self.typeInfo['zoneid'] = 'uuid'
         self.required = []
 
+
 class listConfigurationsResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the value of the configuration"""
         self.id = None

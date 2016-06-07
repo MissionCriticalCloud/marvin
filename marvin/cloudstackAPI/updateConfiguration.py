@@ -1,8 +1,11 @@
 """Updates a configuration."""
 from baseCmd import *
 from baseResponse import *
+
+
 class updateConfigurationCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the name of the configuration"""
@@ -24,10 +27,12 @@ class updateConfigurationCmd (baseCmd):
         """the ID of the Zone to update the parameter value for corresponding zone"""
         self.zoneid = None
         self.typeInfo['zoneid'] = 'uuid'
-        self.required = ["name",]
+        self.required = ["name", ]
+
 
 class updateConfigurationResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the value of the configuration"""
         self.id = None

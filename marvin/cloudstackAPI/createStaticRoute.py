@@ -1,8 +1,11 @@
 """Creates a static route"""
 from baseCmd import *
 from baseResponse import *
+
+
 class createStaticRouteCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """The CIDR to create the static route for"""
@@ -18,10 +21,12 @@ class createStaticRouteCmd (baseCmd):
         """The VPC id we are creating static route for."""
         self.vpcid = None
         self.typeInfo['vpcid'] = 'uuid'
-        self.required = ["cidr",]
+        self.required = ["cidr", ]
+
 
 class createStaticRouteResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of static route"""
         self.id = None

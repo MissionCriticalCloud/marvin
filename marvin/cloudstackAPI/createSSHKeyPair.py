@@ -1,8 +1,11 @@
 """Create a new keypair and returns the private key"""
 from baseCmd import *
 from baseResponse import *
+
+
 class createSSHKeyPairCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """Name of the keypair"""
@@ -18,10 +21,12 @@ class createSSHKeyPairCmd (baseCmd):
         """an optional project for the ssh key"""
         self.projectid = None
         self.typeInfo['projectid'] = 'uuid'
-        self.required = ["name",]
+        self.required = ["name", ]
+
 
 class createSSHKeyPairResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """Private key"""
         self.privatekey = None

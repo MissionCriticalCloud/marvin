@@ -1,8 +1,11 @@
 """Updates load balancer"""
 from baseCmd import *
 from baseResponse import *
+
+
 class updateLoadBalancerRuleCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the load balancer rule to update"""
@@ -24,10 +27,12 @@ class updateLoadBalancerRuleCmd (baseCmd):
         """the name of the load balancer rule"""
         self.name = None
         self.typeInfo['name'] = 'string'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class updateLoadBalancerRuleResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the load balancer rule ID"""
         self.id = None

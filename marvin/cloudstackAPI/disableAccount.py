@@ -1,8 +1,11 @@
 """Disables an account"""
 from baseCmd import *
 from baseResponse import *
+
+
 class disableAccountCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """If true, only lock the account; else disable the account"""
@@ -18,10 +21,12 @@ class disableAccountCmd (baseCmd):
         """Account id"""
         self.id = None
         self.typeInfo['id'] = 'uuid'
-        self.required = ["lock",]
+        self.required = ["lock", ]
+
 
 class disableAccountResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the account"""
         self.id = None

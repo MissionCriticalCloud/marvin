@@ -1,14 +1,19 @@
 """Lists capabilities"""
 from baseCmd import *
 from baseResponse import *
+
+
 class listCapabilitiesCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         self.required = []
 
+
 class listCapabilitiesResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """true if regular user is allowed to create projects"""
         self.allowusercreateprojects = None

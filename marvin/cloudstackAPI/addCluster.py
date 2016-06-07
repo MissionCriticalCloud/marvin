@@ -1,8 +1,11 @@
 """Adds a new cluster"""
 from baseCmd import *
 from baseResponse import *
+
+
 class addClusterCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the cluster name"""
@@ -61,10 +64,12 @@ class addClusterCmd (baseCmd):
         """the username for the VSM associated with this cluster"""
         self.vsmusername = None
         self.typeInfo['vsmusername'] = 'string'
-        self.required = ["clustername","clustertype","hypervisor","podid","zoneid",]
+        self.required = ["clustername", "clustertype", "hypervisor", "podid", "zoneid", ]
+
 
 class addClusterResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the cluster ID"""
         self.id = None

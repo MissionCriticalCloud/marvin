@@ -1,8 +1,11 @@
 """Updates a user account"""
 from baseCmd import *
 from baseResponse import *
+
+
 class updateUserCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """User uuid"""
@@ -33,10 +36,12 @@ class updateUserCmd (baseCmd):
         """The secret key for the user. Must be specified with userSecretKey"""
         self.usersecretkey = None
         self.typeInfo['usersecretkey'] = 'string'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class updateUserResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the user ID"""
         self.id = None

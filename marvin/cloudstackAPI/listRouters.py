@@ -1,8 +1,11 @@
 """List routers."""
 from baseCmd import *
 from baseResponse import *
+
+
 class listRoutersCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -64,8 +67,10 @@ class listRoutersCmd (baseCmd):
         self.typeInfo['zoneid'] = 'uuid'
         self.required = []
 
+
 class listRoutersResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the router"""
         self.id = None

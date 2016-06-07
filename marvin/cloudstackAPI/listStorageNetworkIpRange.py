@@ -1,8 +1,11 @@
 """List a storage network IP range."""
 from baseCmd import *
 from baseResponse import *
+
+
 class listStorageNetworkIpRangeCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """optional parameter. Storaget network IP range uuid, if specicied, using it to search the range."""
@@ -25,8 +28,10 @@ class listStorageNetworkIpRangeCmd (baseCmd):
         self.typeInfo['zoneid'] = 'uuid'
         self.required = []
 
+
 class listStorageNetworkIpRangeResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the uuid of storage network IP range."""
         self.id = None

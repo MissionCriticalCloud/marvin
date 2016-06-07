@@ -1,8 +1,11 @@
 """Creates a Zone."""
 from baseCmd import *
 from baseResponse import *
+
+
 class createZoneCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the first DNS for the Zone"""
@@ -51,10 +54,12 @@ class createZoneCmd (baseCmd):
         """true if network is security group enabled, false otherwise"""
         self.securitygroupenabled = None
         self.typeInfo['securitygroupenabled'] = 'boolean'
-        self.required = ["dns1","internaldns1","name","networktype",]
+        self.required = ["dns1", "internaldns1", "name", "networktype", ]
+
 
 class createZoneResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """Zone id"""
         self.id = None

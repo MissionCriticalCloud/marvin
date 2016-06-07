@@ -1,8 +1,11 @@
 """Creates a firewall rule for a given IP address"""
 from baseCmd import *
 from baseResponse import *
+
+
 class createFirewallRuleCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the IP address id of the port forwarding rule"""
@@ -34,10 +37,12 @@ class createFirewallRuleCmd (baseCmd):
         """type of firewallrule: system/user"""
         self.type = None
         self.typeInfo['type'] = 'string'
-        self.required = ["ipaddressid","protocol",]
+        self.required = ["ipaddressid", "protocol", ]
+
 
 class createFirewallRuleResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the firewall rule"""
         self.id = None

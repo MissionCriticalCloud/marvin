@@ -1,8 +1,11 @@
 """Updates a domain with a new name"""
 from baseCmd import *
 from baseResponse import *
+
+
 class updateDomainCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """ID of domain to update"""
@@ -15,10 +18,12 @@ class updateDomainCmd (baseCmd):
         """Network domain for the domain's networks; empty string will update domainName with NULL value"""
         self.networkdomain = None
         self.typeInfo['networkdomain'] = 'string'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class updateDomainResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the domain"""
         self.id = None

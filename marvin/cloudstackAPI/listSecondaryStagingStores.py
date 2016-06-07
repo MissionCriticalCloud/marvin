@@ -1,8 +1,11 @@
 """Lists secondary staging stores."""
 from baseCmd import *
 from baseResponse import *
+
+
 class listSecondaryStagingStoresCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the ID of the staging store"""
@@ -31,8 +34,10 @@ class listSecondaryStagingStoresCmd (baseCmd):
         self.typeInfo['zoneid'] = 'uuid'
         self.required = []
 
+
 class listSecondaryStagingStoresResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the image store"""
         self.id = None

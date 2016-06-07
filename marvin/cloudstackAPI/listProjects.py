@@ -1,8 +1,11 @@
 """Lists projects and provides detailed information for listed projects"""
 from baseCmd import *
 from baseResponse import *
+
+
 class listProjectsCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -43,8 +46,10 @@ class listProjectsCmd (baseCmd):
         self.typeInfo['tags'] = 'map'
         self.required = []
 
+
 class listProjectsResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the project"""
         self.id = None

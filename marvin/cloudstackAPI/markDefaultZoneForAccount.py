@@ -1,8 +1,11 @@
 """Marks a default zone for this account"""
 from baseCmd import *
 from baseResponse import *
+
+
 class markDefaultZoneForAccountCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """Name of the account that is to be marked."""
@@ -17,10 +20,12 @@ class markDefaultZoneForAccountCmd (baseCmd):
         """Required"""
         self.zoneid = None
         self.typeInfo['zoneid'] = 'uuid'
-        self.required = ["account","domainid","zoneid",]
+        self.required = ["account", "domainid", "zoneid", ]
+
 
 class markDefaultZoneForAccountResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the account"""
         self.id = None

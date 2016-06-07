@@ -1,8 +1,11 @@
 """Lists VPC offerings"""
 from baseCmd import *
 from baseResponse import *
+
+
 class listVPCOfferingsCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list VPC offerings by display text"""
@@ -34,8 +37,10 @@ class listVPCOfferingsCmd (baseCmd):
         self.typeInfo['supportedservices'] = 'list'
         self.required = []
 
+
 class listVPCOfferingsResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the vpc offering"""
         self.id = None

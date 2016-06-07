@@ -1,8 +1,11 @@
 """List network devices"""
 from baseCmd import *
 from baseResponse import *
+
+
 class listNetworkDeviceCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """List by keyword"""
@@ -22,8 +25,10 @@ class listNetworkDeviceCmd (baseCmd):
         self.typeInfo['pagesize'] = 'integer'
         self.required = []
 
+
 class listNetworkDeviceResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the network device"""
         self.id = None

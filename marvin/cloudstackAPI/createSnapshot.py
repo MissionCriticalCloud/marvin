@@ -1,8 +1,11 @@
 """Creates an instant snapshot of a volume."""
 from baseCmd import *
 from baseResponse import *
+
+
 class createSnapshotCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """The ID of the disk volume"""
@@ -24,10 +27,12 @@ class createSnapshotCmd (baseCmd):
         """quiesce vm if true"""
         self.quiescevm = None
         self.typeInfo['quiescevm'] = 'boolean'
-        self.required = ["volumeid",]
+        self.required = ["volumeid", ]
+
 
 class createSnapshotResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """ID of the snapshot"""
         self.id = None

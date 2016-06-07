@@ -1,8 +1,11 @@
 """Update site to site vpn customer gateway"""
 from baseCmd import *
 from baseResponse import *
+
+
 class updateVpnCustomerGatewayCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """id of customer gateway"""
@@ -50,10 +53,12 @@ class updateVpnCustomerGatewayCmd (baseCmd):
         """name of this customer gateway"""
         self.name = None
         self.typeInfo['name'] = 'string'
-        self.required = ["id","cidrlist","esppolicy","gateway","ikepolicy","ipsecpsk",]
+        self.required = ["id", "cidrlist", "esppolicy", "gateway", "ikepolicy", "ipsecpsk", ]
+
 
 class updateVpnCustomerGatewayResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the vpn gateway ID"""
         self.id = None

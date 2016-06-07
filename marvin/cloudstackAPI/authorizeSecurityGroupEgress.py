@@ -1,8 +1,11 @@
 """Authorizes a particular egress rule for this security group"""
 from baseCmd import *
 from baseResponse import *
+
+
 class authorizeSecurityGroupEgressCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """an optional account for the security group. Must be used with domainId."""
@@ -43,8 +46,10 @@ class authorizeSecurityGroupEgressCmd (baseCmd):
         self.typeInfo['usersecuritygrouplist'] = 'map'
         self.required = []
 
+
 class authorizeSecurityGroupEgressResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """account owning the security group rule"""
         self.account = None

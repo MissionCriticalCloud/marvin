@@ -1,8 +1,11 @@
 """Adds vpn users"""
 from baseCmd import *
 from baseResponse import *
+
+
 class addVpnUserCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """password for the username"""
@@ -22,10 +25,12 @@ class addVpnUserCmd (baseCmd):
         """add vpn user to the specific project"""
         self.projectid = None
         self.typeInfo['projectid'] = 'uuid'
-        self.required = ["password","username",]
+        self.required = ["password", "username", ]
+
 
 class addVpnUserResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the vpn userID"""
         self.id = None

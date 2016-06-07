@@ -1,8 +1,11 @@
 """Acquires and associates a public IP to an account."""
 from baseCmd import *
 from baseResponse import *
+
+
 class associateIpAddressCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the account to associate with this IP address"""
@@ -34,8 +37,10 @@ class associateIpAddressCmd (baseCmd):
         self.typeInfo['zoneid'] = 'uuid'
         self.required = []
 
+
 class associateIpAddressResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """public IP address id"""
         self.id = None

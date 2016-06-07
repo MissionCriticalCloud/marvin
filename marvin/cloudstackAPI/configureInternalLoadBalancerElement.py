@@ -1,8 +1,11 @@
 """Configures an Internal Load Balancer element."""
 from baseCmd import *
 from baseResponse import *
+
+
 class configureInternalLoadBalancerElementCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the internal lb provider"""
@@ -13,10 +16,12 @@ class configureInternalLoadBalancerElementCmd (baseCmd):
         """Required"""
         self.enabled = None
         self.typeInfo['enabled'] = 'boolean'
-        self.required = ["id","enabled",]
+        self.required = ["id", "enabled", ]
+
 
 class configureInternalLoadBalancerElementResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the internal load balancer element"""
         self.id = None

@@ -1,8 +1,11 @@
 """Creates a network ACL for the given VPC"""
 from baseCmd import *
 from baseResponse import *
+
+
 class createNetworkACLListCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """Name of the network ACL list"""
@@ -19,10 +22,12 @@ class createNetworkACLListCmd (baseCmd):
         """an optional field, whether to the display the list to the end user or not"""
         self.fordisplay = None
         self.typeInfo['fordisplay'] = 'boolean'
-        self.required = ["name","vpcid",]
+        self.required = ["name", "vpcid", ]
+
 
 class createNetworkACLListResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the ACL"""
         self.id = None

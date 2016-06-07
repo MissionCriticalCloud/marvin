@@ -1,8 +1,11 @@
 """Logs a user into the CloudStack. A successful login attempt will generate a JSESSIONID cookie value that can be passed in subsequent Query command calls until the "logout" command has been issued or the session has expired."""
 from baseCmd import *
 from baseResponse import *
+
+
 class loginCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """Hashed password (Default is MD5). If you wish to use any other hashing algorithm, you would need to write a custom authentication adapter See Docs section."""
@@ -19,10 +22,12 @@ class loginCmd (baseCmd):
         """The id of the domain that the user belongs to. If both domain and domainId are passed in, "domainId" parameter takes precendence"""
         self.domainId = None
         self.typeInfo['domainId'] = 'long'
-        self.required = ["password","username",]
+        self.required = ["password", "username", ]
+
 
 class loginResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the account name the user belongs to"""
         self.account = None

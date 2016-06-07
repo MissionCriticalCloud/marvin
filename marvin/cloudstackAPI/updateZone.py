@@ -1,8 +1,11 @@
 """Updates a Zone."""
 from baseCmd import *
 from baseResponse import *
+
+
 class updateZoneCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the ID of the Zone"""
@@ -54,10 +57,12 @@ class updateZoneCmd (baseCmd):
         """the name of the Zone"""
         self.name = None
         self.typeInfo['name'] = 'string'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class updateZoneResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """Zone id"""
         self.id = None

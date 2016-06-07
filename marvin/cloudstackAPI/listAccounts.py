@@ -1,8 +1,11 @@
 """Lists accounts and provides detailed account information for listed accounts"""
 from baseCmd import *
 from baseResponse import *
+
+
 class listAccountsCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list accounts by account type. Valid account types are 1 (admin), 2 (domain-admin), and 0 (user)."""
@@ -40,8 +43,10 @@ class listAccountsCmd (baseCmd):
         self.typeInfo['state'] = 'string'
         self.required = []
 
+
 class listAccountsResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the account"""
         self.id = None

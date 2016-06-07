@@ -1,8 +1,11 @@
 """Lists all network services provided by CloudStack or for the given Provider."""
 from baseCmd import *
 from baseResponse import *
+
+
 class listSupportedNetworkServicesCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """List by keyword"""
@@ -22,8 +25,10 @@ class listSupportedNetworkServicesCmd (baseCmd):
         self.typeInfo['service'] = 'string'
         self.required = []
 
+
 class listSupportedNetworkServicesResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the service name"""
         self.name = None

@@ -1,8 +1,11 @@
 """Updates egress firewall rule"""
 from baseCmd import *
 from baseResponse import *
+
+
 class updateEgressFirewallRuleCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the egress firewall rule"""
@@ -15,10 +18,12 @@ class updateEgressFirewallRuleCmd (baseCmd):
         """an optional field, whether to the display the rule to the end user or not"""
         self.fordisplay = None
         self.typeInfo['fordisplay'] = 'boolean'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class updateEgressFirewallRuleResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the firewall rule"""
         self.id = None

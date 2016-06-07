@@ -1,8 +1,11 @@
 """Updates properties of a virtual machine. The VM has to be stopped and restarted for the new properties to take effect. UpdateVirtualMachine does not first check whether the VM is stopped. Therefore, stop the VM manually before issuing this call."""
 from baseCmd import *
 from baseResponse import *
+
+
 class updateVirtualMachineCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """The ID of the virtual machine"""
@@ -42,10 +45,12 @@ class updateVirtualMachineCmd (baseCmd):
         """an optional binary data that can be sent to the virtual machine upon a successful deployment. This binary data must be base64 encoded before adding it to the request. Using HTTP GET (via querystring), you can send up to 2KB of data after base64 encoding. Using HTTP POST(via POST body), you can send up to 32K of data after base64 encoding."""
         self.userdata = None
         self.typeInfo['userdata'] = 'string'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class updateVirtualMachineResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the virtual machine"""
         self.id = None

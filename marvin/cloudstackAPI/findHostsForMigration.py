@@ -1,8 +1,11 @@
 """Find hosts suitable for migrating a virtual machine."""
 from baseCmd import *
 from baseResponse import *
+
+
 class findHostsForMigrationCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """find hosts to which this VM can be migrated and flag the hosts with enough CPU/RAM to host the VM"""
@@ -18,10 +21,12 @@ class findHostsForMigrationCmd (baseCmd):
         """"""
         self.pagesize = None
         self.typeInfo['pagesize'] = 'integer'
-        self.required = ["virtualmachineid",]
+        self.required = ["virtualmachineid", ]
+
 
 class findHostsForMigrationResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the host"""
         self.id = None

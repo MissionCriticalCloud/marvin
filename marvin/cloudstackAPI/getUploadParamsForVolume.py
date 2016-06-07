@@ -1,8 +1,11 @@
 """Upload a data disk to the cloudstack cloud."""
 from baseCmd import *
 from baseResponse import *
+
+
 class getUploadParamsForVolumeCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the format for the volume/template. Possible values include QCOW2, OVA, and VHD."""
@@ -35,10 +38,12 @@ class getUploadParamsForVolumeCmd (baseCmd):
         """Upload volume/template for the project"""
         self.projectid = None
         self.typeInfo['projectid'] = 'uuid'
-        self.required = ["format","name","zoneid",]
+        self.required = ["format", "name", "zoneid", ]
+
 
 class getUploadParamsForVolumeResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the template/volume ID"""
         self.id = None

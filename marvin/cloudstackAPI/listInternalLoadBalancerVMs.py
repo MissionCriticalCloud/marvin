@@ -1,8 +1,11 @@
 """List internal LB VMs."""
 from baseCmd import *
 from baseResponse import *
+
+
 class listInternalLoadBalancerVMsCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -58,8 +61,10 @@ class listInternalLoadBalancerVMsCmd (baseCmd):
         self.typeInfo['zoneid'] = 'uuid'
         self.required = []
 
+
 class listInternalLoadBalancerVMsResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the router"""
         self.id = None

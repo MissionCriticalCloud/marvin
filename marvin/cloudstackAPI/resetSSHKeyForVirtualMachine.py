@@ -1,8 +1,11 @@
 """Resets the SSH Key for virtual machine. The virtual machine must be in a "Stopped" state. [async]"""
 from baseCmd import *
 from baseResponse import *
+
+
 class resetSSHKeyForVirtualMachineCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """The ID of the virtual machine"""
@@ -22,10 +25,12 @@ class resetSSHKeyForVirtualMachineCmd (baseCmd):
         """an optional project for the ssh key"""
         self.projectid = None
         self.typeInfo['projectid'] = 'uuid'
-        self.required = ["id","keypair",]
+        self.required = ["id", "keypair", ]
+
 
 class resetSSHKeyForVirtualMachineResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the virtual machine"""
         self.id = None

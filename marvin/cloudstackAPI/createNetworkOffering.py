@@ -1,8 +1,11 @@
 """Creates a network offering."""
 from baseCmd import *
 from baseResponse import *
+
+
 class createNetworkOfferingCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the display text of the network offering"""
@@ -67,10 +70,12 @@ class createNetworkOfferingCmd (baseCmd):
         """the tags for the network offering."""
         self.tags = None
         self.typeInfo['tags'] = 'string'
-        self.required = ["displaytext","guestiptype","name","supportedservices","traffictype",]
+        self.required = ["displaytext", "guestiptype", "name", "supportedservices", "traffictype", ]
+
 
 class createNetworkOfferingResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the network offering"""
         self.id = None

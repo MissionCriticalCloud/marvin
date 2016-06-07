@@ -1,8 +1,11 @@
 """upload an existing template into the CloudStack cloud."""
 from baseCmd import *
 from baseResponse import *
+
+
 class getUploadParamsForTemplateCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the display text of the template. This is usually used for display purposes."""
@@ -74,10 +77,12 @@ class getUploadParamsForTemplateCmd (baseCmd):
         """the tag for this template."""
         self.templatetag = None
         self.typeInfo['templatetag'] = 'string'
-        self.required = ["displaytext","format","hypervisor","name","ostypeid","zoneid",]
+        self.required = ["displaytext", "format", "hypervisor", "name", "ostypeid", "zoneid", ]
+
 
 class getUploadParamsForTemplateResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the template/volume ID"""
         self.id = None

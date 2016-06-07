@@ -1,8 +1,11 @@
 """Updates the snapshot policy."""
 from baseCmd import *
 from baseResponse import *
+
+
 class updateSnapshotPolicyCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only"""
@@ -16,8 +19,10 @@ class updateSnapshotPolicyCmd (baseCmd):
         self.typeInfo['id'] = 'uuid'
         self.required = []
 
+
 class updateSnapshotPolicyResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the snapshot policy"""
         self.id = None

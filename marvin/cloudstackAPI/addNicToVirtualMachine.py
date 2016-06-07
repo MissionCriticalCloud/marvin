@@ -1,8 +1,11 @@
 """Adds VM to specified network by creating a NIC"""
 from baseCmd import *
 from baseResponse import *
+
+
 class addNicToVirtualMachineCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """Network ID"""
@@ -16,10 +19,12 @@ class addNicToVirtualMachineCmd (baseCmd):
         """IP Address for the new network"""
         self.ipaddress = None
         self.typeInfo['ipaddress'] = 'string'
-        self.required = ["networkid","virtualmachineid",]
+        self.required = ["networkid", "virtualmachineid", ]
+
 
 class addNicToVirtualMachineResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the virtual machine"""
         self.id = None

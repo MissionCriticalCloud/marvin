@@ -1,8 +1,11 @@
 """Creates a load balancer stickiness policy"""
 from baseCmd import *
 from baseResponse import *
+
+
 class createLBStickinessPolicyCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the load balancer rule"""
@@ -26,10 +29,12 @@ class createLBStickinessPolicyCmd (baseCmd):
         """param list. Example: param[0].name=cookiename&param[0].value=LBCookie"""
         self.param = []
         self.typeInfo['param'] = 'map'
-        self.required = ["lbruleid","methodname","name",]
+        self.required = ["lbruleid", "methodname", "name", ]
+
 
 class createLBStickinessPolicyResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the account of the Stickiness policy"""
         self.account = None

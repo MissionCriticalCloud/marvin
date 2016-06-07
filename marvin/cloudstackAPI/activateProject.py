@@ -1,18 +1,23 @@
 """Activates a project"""
 from baseCmd import *
 from baseResponse import *
+
+
 class activateProjectCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """id of the project to be modified"""
         """Required"""
         self.id = None
         self.typeInfo['id'] = 'uuid'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class activateProjectResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the project"""
         self.id = None

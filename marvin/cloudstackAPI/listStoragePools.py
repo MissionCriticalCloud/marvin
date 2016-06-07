@@ -1,8 +1,11 @@
 """Lists storage pools."""
 from baseCmd import *
 from baseResponse import *
+
+
 class listStoragePoolsCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list storage pools belongig to the specific cluster"""
@@ -40,8 +43,10 @@ class listStoragePoolsCmd (baseCmd):
         self.typeInfo['zoneid'] = 'uuid'
         self.required = []
 
+
 class listStoragePoolsResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the storage pool"""
         self.id = None

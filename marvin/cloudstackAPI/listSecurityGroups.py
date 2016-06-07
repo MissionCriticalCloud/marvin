@@ -1,8 +1,11 @@
 """Lists security groups"""
 from baseCmd import *
 from baseResponse import *
+
+
 class listSecurityGroupsCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -43,8 +46,10 @@ class listSecurityGroupsCmd (baseCmd):
         self.typeInfo['virtualmachineid'] = 'uuid'
         self.required = []
 
+
 class listSecurityGroupsResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the security group"""
         self.id = None

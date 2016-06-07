@@ -1,8 +1,11 @@
 """Lists clusters."""
 from baseCmd import *
 from baseResponse import *
+
+
 class listClustersCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """lists clusters by allocation state"""
@@ -43,8 +46,10 @@ class listClustersCmd (baseCmd):
         self.typeInfo['zoneid'] = 'uuid'
         self.required = []
 
+
 class listClustersResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the cluster ID"""
         self.id = None

@@ -1,8 +1,11 @@
 """Adds detail for the Resource."""
 from baseCmd import *
 from baseResponse import *
+
+
 class addResourceDetailCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """Map of (key/value pairs)"""
@@ -20,10 +23,12 @@ class addResourceDetailCmd (baseCmd):
         """pass false if you want this detail to be disabled for the regular user. True by default"""
         self.fordisplay = None
         self.typeInfo['fordisplay'] = 'boolean'
-        self.required = ["details","resourceid","resourcetype",]
+        self.required = ["details", "resourceid", "resourcetype", ]
+
 
 class addResourceDetailResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """any text associated with the success or failure"""
         self.displaytext = None

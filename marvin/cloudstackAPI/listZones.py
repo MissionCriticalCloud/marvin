@@ -1,8 +1,11 @@
 """Lists zones"""
 from baseCmd import *
 from baseResponse import *
+
+
 class listZonesCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """true if you want to retrieve all available Zones. False if you only want to return the Zones from which you have at least one VM. Default is false."""
@@ -37,8 +40,10 @@ class listZonesCmd (baseCmd):
         self.typeInfo['tags'] = 'map'
         self.required = []
 
+
 class listZonesResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """Zone id"""
         self.id = None

@@ -1,8 +1,11 @@
 """Changes the service offering for a virtual machine. The virtual machine must be in a "Stopped" state for this command to take effect."""
 from baseCmd import *
 from baseResponse import *
+
+
 class changeServiceForVirtualMachineCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """The ID of the virtual machine"""
@@ -16,10 +19,12 @@ class changeServiceForVirtualMachineCmd (baseCmd):
         """name value pairs of custom parameters for cpu, memory and cpunumber. example details[i].name=value"""
         self.details = []
         self.typeInfo['details'] = 'map'
-        self.required = ["id","serviceofferingid",]
+        self.required = ["id", "serviceofferingid", ]
+
 
 class changeServiceForVirtualMachineResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the virtual machine"""
         self.id = None

@@ -1,18 +1,23 @@
 """Suspends a project"""
 from baseCmd import *
 from baseResponse import *
+
+
 class suspendProjectCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """id of the project to be suspended"""
         """Required"""
         self.id = None
         self.typeInfo['id'] = 'uuid'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class suspendProjectResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the project"""
         self.id = None

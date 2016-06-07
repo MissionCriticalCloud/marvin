@@ -1,8 +1,11 @@
 """Adds traffic type to a physical network"""
 from baseCmd import *
 from baseResponse import *
+
+
 class addTrafficTypeCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the Physical Network ID"""
@@ -28,10 +31,12 @@ class addTrafficTypeCmd (baseCmd):
         """The network name label of the physical device dedicated to this traffic on a XenServer host"""
         self.xennetworklabel = None
         self.typeInfo['xennetworklabel'] = 'string'
-        self.required = ["physicalnetworkid","traffictype",]
+        self.required = ["physicalnetworkid", "traffictype", ]
+
 
 class addTrafficTypeResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """id of the network provider"""
         self.id = None

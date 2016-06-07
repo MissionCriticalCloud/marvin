@@ -1,8 +1,11 @@
 """Lists traffic types of a given physical network."""
 from baseCmd import *
 from baseResponse import *
+
+
 class listTrafficTypesCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the Physical Network ID"""
@@ -18,10 +21,12 @@ class listTrafficTypesCmd (baseCmd):
         """"""
         self.pagesize = None
         self.typeInfo['pagesize'] = 'integer'
-        self.required = ["physicalnetworkid",]
+        self.required = ["physicalnetworkid", ]
+
 
 class listTrafficTypesResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """uuid of the network provider"""
         self.id = None

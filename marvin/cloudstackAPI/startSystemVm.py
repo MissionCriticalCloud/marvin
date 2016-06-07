@@ -1,18 +1,23 @@
 """Starts a system virtual machine."""
 from baseCmd import *
 from baseResponse import *
+
+
 class startSystemVmCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """The ID of the system virtual machine"""
         """Required"""
         self.id = None
         self.typeInfo['id'] = 'uuid'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class startSystemVmResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the system VM"""
         self.id = None

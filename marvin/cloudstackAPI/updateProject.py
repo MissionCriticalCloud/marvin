@@ -1,8 +1,11 @@
 """Updates a project"""
 from baseCmd import *
 from baseResponse import *
+
+
 class updateProjectCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """id of the project to be modified"""
@@ -15,10 +18,12 @@ class updateProjectCmd (baseCmd):
         """display text of the project"""
         self.displaytext = None
         self.typeInfo['displaytext'] = 'string'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class updateProjectResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the project"""
         self.id = None

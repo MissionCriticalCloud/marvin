@@ -1,8 +1,11 @@
 """Stops a router."""
 from baseCmd import *
 from baseResponse import *
+
+
 class stopRouterCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the router"""
@@ -12,10 +15,12 @@ class stopRouterCmd (baseCmd):
         """Force stop the VM. The caller knows the VM is stopped."""
         self.forced = None
         self.typeInfo['forced'] = 'boolean'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class stopRouterResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the router"""
         self.id = None

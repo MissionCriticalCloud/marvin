@@ -1,8 +1,11 @@
 """Lists vm groups"""
 from baseCmd import *
 from baseResponse import *
+
+
 class listInstanceGroupsCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -37,8 +40,10 @@ class listInstanceGroupsCmd (baseCmd):
         self.typeInfo['projectid'] = 'uuid'
         self.required = []
 
+
 class listInstanceGroupsResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the instance group"""
         self.id = None

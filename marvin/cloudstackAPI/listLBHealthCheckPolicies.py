@@ -1,8 +1,11 @@
 """Lists load balancer health check policies."""
 from baseCmd import *
 from baseResponse import *
+
+
 class listLBHealthCheckPoliciesCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by display flag; only ROOT admin is eligible to pass this parameter"""
@@ -25,8 +28,10 @@ class listLBHealthCheckPoliciesCmd (baseCmd):
         self.typeInfo['pagesize'] = 'integer'
         self.required = []
 
+
 class listLBHealthCheckPoliciesResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the account of the HealthCheck policy"""
         self.account = None

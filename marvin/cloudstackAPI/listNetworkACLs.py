@@ -1,8 +1,11 @@
 """Lists all network ACL items"""
 from baseCmd import *
 from baseResponse import *
+
+
 class listNetworkACLsCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -55,8 +58,10 @@ class listNetworkACLsCmd (baseCmd):
         self.typeInfo['traffictype'] = 'string'
         self.required = []
 
+
 class listNetworkACLsResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the ACL Item"""
         self.id = None

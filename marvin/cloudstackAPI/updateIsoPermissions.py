@@ -1,8 +1,11 @@
 """Updates ISO permissions"""
 from baseCmd import *
 from baseResponse import *
+
+
 class updateIsoPermissionsCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the template ID"""
@@ -27,10 +30,12 @@ class updateIsoPermissionsCmd (baseCmd):
         """a comma delimited list of projects. If specified, "op" parameter has to be passed in."""
         self.projectids = []
         self.typeInfo['projectids'] = 'list'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class updateIsoPermissionsResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """any text associated with the success or failure"""
         self.displaytext = None

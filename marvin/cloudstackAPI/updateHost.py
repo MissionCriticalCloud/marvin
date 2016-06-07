@@ -1,8 +1,11 @@
 """Updates a host."""
 from baseCmd import *
 from baseResponse import *
+
+
 class updateHostCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the ID of the host to update"""
@@ -21,10 +24,12 @@ class updateHostCmd (baseCmd):
         """the new uri for the secondary storage: nfs://host/path"""
         self.url = None
         self.typeInfo['url'] = 'string'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class updateHostResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the host"""
         self.id = None

@@ -1,8 +1,11 @@
 """Updates VPC offering"""
 from baseCmd import *
 from baseResponse import *
+
+
 class updateVPCOfferingCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the id of the VPC offering"""
@@ -18,10 +21,12 @@ class updateVPCOfferingCmd (baseCmd):
         """update state for the VPC offering; supported states - Enabled/Disabled"""
         self.state = None
         self.typeInfo['state'] = 'string'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class updateVPCOfferingResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the vpc offering"""
         self.id = None

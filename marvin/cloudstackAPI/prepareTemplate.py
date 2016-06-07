@@ -1,8 +1,11 @@
 """load template into primary storage"""
 from baseCmd import *
 from baseResponse import *
+
+
 class prepareTemplateCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """template ID of the template to be prepared in primary storage(s)."""
@@ -16,10 +19,12 @@ class prepareTemplateCmd (baseCmd):
         """storage pool ID of the primary storage pool to which the template should be prepared. If it is not provided the template is prepared on all the available primary storage pools."""
         self.storageid = None
         self.typeInfo['storageid'] = 'uuid'
-        self.required = ["templateid","zoneid",]
+        self.required = ["templateid", "zoneid", ]
+
 
 class prepareTemplateResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the template ID"""
         self.id = None

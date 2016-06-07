@@ -1,8 +1,11 @@
 """Lists image stores."""
 from baseCmd import *
 from baseResponse import *
+
+
 class listImageStoresCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the ID of the storage pool"""
@@ -31,8 +34,10 @@ class listImageStoresCmd (baseCmd):
         self.typeInfo['zoneid'] = 'uuid'
         self.required = []
 
+
 class listImageStoresResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the image store"""
         self.id = None

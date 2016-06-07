@@ -1,8 +1,11 @@
 """Starts a virtual machine."""
 from baseCmd import *
 from baseResponse import *
+
+
 class startVirtualMachineCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """The ID of the virtual machine"""
@@ -15,10 +18,12 @@ class startVirtualMachineCmd (baseCmd):
         """destination Host ID to deploy the VM to - parameter available for root admin only"""
         self.hostid = None
         self.typeInfo['hostid'] = 'uuid'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class startVirtualMachineResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the virtual machine"""
         self.id = None

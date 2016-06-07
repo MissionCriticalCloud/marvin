@@ -1,8 +1,11 @@
 """Creates a snapshot policy for the account."""
 from baseCmd import *
 from baseResponse import *
+
+
 class createSnapshotPolicyCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """valid values are HOURLY, DAILY, WEEKLY, and MONTHLY"""
@@ -28,10 +31,12 @@ class createSnapshotPolicyCmd (baseCmd):
         """an optional field, whether to the display the policy to the end user or not"""
         self.fordisplay = None
         self.typeInfo['fordisplay'] = 'boolean'
-        self.required = ["intervaltype","maxsnaps","schedule","timezone","volumeid",]
+        self.required = ["intervaltype", "maxsnaps", "schedule", "timezone", "volumeid", ]
+
 
 class createSnapshotPolicyResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the snapshot policy"""
         self.id = None

@@ -1,8 +1,11 @@
 """Lists load balancers"""
 from baseCmd import *
 from baseResponse import *
+
+
 class listLoadBalancersCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -55,8 +58,10 @@ class listLoadBalancersCmd (baseCmd):
         self.typeInfo['tags'] = 'map'
         self.required = []
 
+
 class listLoadBalancersResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the Load Balancer ID"""
         self.id = None

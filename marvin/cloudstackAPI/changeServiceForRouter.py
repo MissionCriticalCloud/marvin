@@ -1,8 +1,11 @@
 """Upgrades domain router to a new service offering"""
 from baseCmd import *
 from baseResponse import *
+
+
 class changeServiceForRouterCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """The ID of the router"""
@@ -13,10 +16,12 @@ class changeServiceForRouterCmd (baseCmd):
         """Required"""
         self.serviceofferingid = None
         self.typeInfo['serviceofferingid'] = 'uuid'
-        self.required = ["id","serviceofferingid",]
+        self.required = ["id", "serviceofferingid", ]
+
 
 class changeServiceForRouterResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the router"""
         self.id = None

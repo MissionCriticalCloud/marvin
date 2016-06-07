@@ -1,8 +1,11 @@
 """Creates site to site vpn customer gateway"""
 from baseCmd import *
 from baseResponse import *
+
+
 class createVpnCustomerGatewayCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """guest cidr list of the customer gateway"""
@@ -49,10 +52,12 @@ class createVpnCustomerGatewayCmd (baseCmd):
         """create site-to-site VPN customer gateway for the project"""
         self.projectid = None
         self.typeInfo['projectid'] = 'uuid'
-        self.required = ["cidrlist","esppolicy","gateway","ikepolicy","ipsecpsk",]
+        self.required = ["cidrlist", "esppolicy", "gateway", "ikepolicy", "ipsecpsk", ]
+
 
 class createVpnCustomerGatewayResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the vpn gateway ID"""
         self.id = None

@@ -1,8 +1,11 @@
 """List Conditions for the specific user"""
 from baseCmd import *
 from baseResponse import *
+
+
 class listConditionsCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -37,8 +40,10 @@ class listConditionsCmd (baseCmd):
         self.typeInfo['policyid'] = 'uuid'
         self.required = []
 
+
 class listConditionsResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the Condition"""
         self.id = None

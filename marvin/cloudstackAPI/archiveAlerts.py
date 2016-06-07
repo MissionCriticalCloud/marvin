@@ -1,8 +1,11 @@
 """Archive one or more alerts."""
 from baseCmd import *
 from baseResponse import *
+
+
 class archiveAlertsCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """end date range to archive alerts (including) this date (use format "yyyy-MM-dd" or the new format "yyyy-MM-ddThh:mm:ss")"""
@@ -19,8 +22,10 @@ class archiveAlertsCmd (baseCmd):
         self.typeInfo['type'] = 'string'
         self.required = []
 
+
 class archiveAlertsResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """any text associated with the success or failure"""
         self.displaytext = None

@@ -1,8 +1,11 @@
 """Registers an existing template into the CloudStack cloud."""
 from baseCmd import *
 from baseResponse import *
+
+
 class registerTemplateCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the display text of the template. This is usually used for display purposes."""
@@ -78,10 +81,12 @@ class registerTemplateCmd (baseCmd):
         """the tag for this template."""
         self.templatetag = None
         self.typeInfo['templatetag'] = 'string'
-        self.required = ["displaytext","format","hypervisor","name","ostypeid","url","zoneid",]
+        self.required = ["displaytext", "format", "hypervisor", "name", "ostypeid", "url", "zoneid", ]
+
 
 class registerTemplateResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the template ID"""
         self.id = None

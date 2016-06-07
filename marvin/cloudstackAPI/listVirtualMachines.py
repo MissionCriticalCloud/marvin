@@ -1,8 +1,11 @@
 """List the virtual machines owned by the account."""
 from baseCmd import *
 from baseResponse import *
+
+
 class listVirtualMachinesCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list resources by account. Must be used with the domainId parameter."""
@@ -106,8 +109,10 @@ class listVirtualMachinesCmd (baseCmd):
         self.typeInfo['zoneid'] = 'uuid'
         self.required = []
 
+
 class listVirtualMachinesResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the virtual machine"""
         self.id = None

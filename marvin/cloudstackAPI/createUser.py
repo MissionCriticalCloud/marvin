@@ -1,8 +1,11 @@
 """Creates a user for an account that already exists"""
 from baseCmd import *
 from baseResponse import *
+
+
 class createUserCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """Creates the user under the specified account. If no account is specified, the username will be used as the account name."""
@@ -38,10 +41,12 @@ class createUserCmd (baseCmd):
         """User UUID, required for adding account from external provisioning system"""
         self.userid = None
         self.typeInfo['userid'] = 'string'
-        self.required = ["account","email","firstname","lastname","password","username",]
+        self.required = ["account", "email", "firstname", "lastname", "password", "username", ]
+
 
 class createUserResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the user ID"""
         self.id = None

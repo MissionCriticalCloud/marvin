@@ -1,18 +1,23 @@
 """Retrieves the current status of asynchronous job."""
 from baseCmd import *
 from baseResponse import *
+
+
 class queryAsyncJobResultCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the ID of the asychronous job"""
         """Required"""
         self.jobid = None
         self.typeInfo['jobid'] = 'uuid'
-        self.required = ["jobid",]
+        self.required = ["jobid", ]
+
 
 class queryAsyncJobResultResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the account that executed the async command"""
         self.accountid = None

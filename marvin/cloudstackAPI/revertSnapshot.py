@@ -1,18 +1,23 @@
 """revert a volume snapshot."""
 from baseCmd import *
 from baseResponse import *
+
+
 class revertSnapshotCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """The ID of the snapshot"""
         """Required"""
         self.id = None
         self.typeInfo['id'] = 'uuid'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class revertSnapshotResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """ID of the snapshot"""
         self.id = None

@@ -1,8 +1,11 @@
 """Lists all alerts."""
 from baseCmd import *
 from baseResponse import *
+
+
 class listAlertsCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the ID of the alert"""
@@ -25,8 +28,10 @@ class listAlertsCmd (baseCmd):
         self.typeInfo['type'] = 'string'
         self.required = []
 
+
 class listAlertsResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the alert"""
         self.id = None

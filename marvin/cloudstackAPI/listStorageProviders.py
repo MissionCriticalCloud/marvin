@@ -1,8 +1,11 @@
 """Lists storage providers."""
 from baseCmd import *
 from baseResponse import *
+
+
 class listStorageProvidersCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the type of storage provider: either primary or image"""
@@ -18,10 +21,12 @@ class listStorageProvidersCmd (baseCmd):
         """"""
         self.pagesize = None
         self.typeInfo['pagesize'] = 'integer'
-        self.required = ["type",]
+        self.required = ["type", ]
+
 
 class listStorageProvidersResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the name of the storage provider"""
         self.name = None

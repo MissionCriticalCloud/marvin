@@ -1,8 +1,11 @@
 """Deletes security group"""
 from baseCmd import *
 from baseResponse import *
+
+
 class deleteSecurityGroupCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the account of the security group. Must be specified with domain ID"""
@@ -22,8 +25,10 @@ class deleteSecurityGroupCmd (baseCmd):
         self.typeInfo['projectid'] = 'uuid'
         self.required = []
 
+
 class deleteSecurityGroupResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """any text associated with the success or failure"""
         self.displaytext = None

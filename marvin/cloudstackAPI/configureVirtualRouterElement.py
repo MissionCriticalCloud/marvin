@@ -1,8 +1,11 @@
 """Configures a virtual router element."""
 from baseCmd import *
 from baseResponse import *
+
+
 class configureVirtualRouterElementCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """the ID of the virtual router provider"""
@@ -13,10 +16,12 @@ class configureVirtualRouterElementCmd (baseCmd):
         """Required"""
         self.enabled = None
         self.typeInfo['enabled'] = 'boolean'
-        self.required = ["id","enabled",]
+        self.required = ["id", "enabled", ]
+
 
 class configureVirtualRouterElementResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the router"""
         self.id = None

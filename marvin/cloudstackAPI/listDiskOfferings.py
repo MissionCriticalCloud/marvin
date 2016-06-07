@@ -1,8 +1,11 @@
 """Lists all available disk offerings."""
 from baseCmd import *
 from baseResponse import *
+
+
 class listDiskOfferingsCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """list only resources belonging to the domain specified"""
@@ -31,8 +34,10 @@ class listDiskOfferingsCmd (baseCmd):
         self.typeInfo['pagesize'] = 'integer'
         self.required = []
 
+
 class listDiskOfferingsResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """unique ID of the disk offering"""
         self.id = None

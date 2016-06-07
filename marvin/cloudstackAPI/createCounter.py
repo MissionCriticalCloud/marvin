@@ -1,8 +1,11 @@
 """Adds metric counter"""
 from baseCmd import *
 from baseResponse import *
+
+
 class createCounterCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """Name of the counter."""
@@ -17,10 +20,12 @@ class createCounterCmd (baseCmd):
         """Required"""
         self.value = None
         self.typeInfo['value'] = 'string'
-        self.required = ["name","source","value",]
+        self.required = ["name", "source", "value", ]
+
 
 class createCounterResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the Counter"""
         self.id = None

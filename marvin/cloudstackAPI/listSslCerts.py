@@ -1,8 +1,11 @@
 """Lists SSL certificates"""
 from baseCmd import *
 from baseResponse import *
+
+
 class listSslCertsCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """Account ID"""
@@ -19,8 +22,10 @@ class listSslCertsCmd (baseCmd):
         self.typeInfo['projectid'] = 'uuid'
         self.required = []
 
+
 class listSslCertsResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """SSL certificate ID"""
         self.id = None

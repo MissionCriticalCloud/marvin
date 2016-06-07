@@ -1,8 +1,11 @@
 """List the counters"""
 from baseCmd import *
 from baseResponse import *
+
+
 class listCountersCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """ID of the Counter."""
@@ -25,8 +28,10 @@ class listCountersCmd (baseCmd):
         self.typeInfo['source'] = 'string'
         self.required = []
 
+
 class listCountersResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the id of the Counter"""
         self.id = None

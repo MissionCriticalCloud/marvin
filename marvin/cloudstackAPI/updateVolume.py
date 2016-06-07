@@ -1,8 +1,11 @@
 """Updates the volume."""
 from baseCmd import *
 from baseResponse import *
+
+
 class updateVolumeCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """The chain info of the volume"""
@@ -28,8 +31,10 @@ class updateVolumeCmd (baseCmd):
         self.typeInfo['storageid'] = 'uuid'
         self.required = []
 
+
 class updateVolumeResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """ID of the disk volume"""
         self.id = None

@@ -1,18 +1,23 @@
 """Locks a user account"""
 from baseCmd import *
 from baseResponse import *
+
+
 class lockUserCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """Locks user by user ID."""
         """Required"""
         self.id = None
         self.typeInfo['id'] = 'uuid'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class lockUserResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the user ID"""
         self.id = None

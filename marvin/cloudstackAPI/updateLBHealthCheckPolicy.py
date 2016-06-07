@@ -1,8 +1,11 @@
 """Updates load balancer health check policy"""
 from baseCmd import *
 from baseResponse import *
+
+
 class updateLBHealthCheckPolicyCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """ID of load balancer health check policy"""
@@ -15,10 +18,12 @@ class updateLBHealthCheckPolicyCmd (baseCmd):
         """an optional field, whether to the display the policy to the end user or not"""
         self.fordisplay = None
         self.typeInfo['fordisplay'] = 'boolean'
-        self.required = ["id",]
+        self.required = ["id", ]
+
 
 class updateLBHealthCheckPolicyResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the account of the HealthCheck policy"""
         self.account = None

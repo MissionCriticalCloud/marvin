@@ -1,8 +1,11 @@
 """create secondary staging store."""
 from baseCmd import *
 from baseResponse import *
+
+
 class createSecondaryStagingStoreCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """the URL for the staging store"""
@@ -21,10 +24,12 @@ class createSecondaryStagingStoreCmd (baseCmd):
         """the Zone ID for the staging store"""
         self.zoneid = None
         self.typeInfo['zoneid'] = 'uuid'
-        self.required = ["url",]
+        self.required = ["url", ]
+
 
 class createSecondaryStagingStoreResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the image store"""
         self.id = None

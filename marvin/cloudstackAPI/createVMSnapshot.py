@@ -1,8 +1,11 @@
 """Creates snapshot for a vm."""
 from baseCmd import *
 from baseResponse import *
+
+
 class createVMSnapshotCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "true"
         """The ID of the vm"""
@@ -21,10 +24,12 @@ class createVMSnapshotCmd (baseCmd):
         """snapshot memory if true"""
         self.snapshotmemory = None
         self.typeInfo['snapshotmemory'] = 'boolean'
-        self.required = ["virtualmachineid",]
+        self.required = ["virtualmachineid", ]
+
 
 class createVMSnapshotResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the vm snapshot"""
         self.id = None

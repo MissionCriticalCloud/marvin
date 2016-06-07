@@ -1,8 +1,11 @@
 """Adds S3 Image Store"""
 from baseCmd import *
 from baseResponse import *
+
+
 class addImageStoreS3Cmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """S3 access key"""
@@ -42,10 +45,12 @@ class addImageStoreS3Cmd (baseCmd):
         """Whether TCP keep-alive is used"""
         self.usetcpkeepalive = None
         self.typeInfo['usetcpkeepalive'] = 'boolean'
-        self.required = ["accesskey","bucket","endpoint","secretkey",]
+        self.required = ["accesskey", "bucket", "endpoint", "secretkey", ]
+
 
 class addImageStoreS3Response (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the image store"""
         self.id = None

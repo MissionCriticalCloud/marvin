@@ -1,8 +1,11 @@
 """Adds a new host."""
 from baseCmd import *
 from baseResponse import *
+
+
 class addHostCmd (baseCmd):
     typeInfo = {}
+
     def __init__(self):
         self.isAsync = "false"
         """hypervisor type of the host"""
@@ -41,10 +44,12 @@ class addHostCmd (baseCmd):
         """list of tags to be added to the host"""
         self.hosttags = []
         self.typeInfo['hosttags'] = 'list'
-        self.required = ["hypervisor","password","podid","url","username","zoneid",]
+        self.required = ["hypervisor", "password", "podid", "url", "username", "zoneid", ]
+
 
 class addHostResponse (baseResponse):
     typeInfo = {}
+
     def __init__(self):
         """the ID of the host"""
         self.id = None
