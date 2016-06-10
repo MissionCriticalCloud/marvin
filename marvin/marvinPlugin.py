@@ -1,8 +1,9 @@
-import nose.core
 import os
 import time
-from nose.plugins.base import Plugin
 from sys import stdout, exit
+
+import nose.core
+from nose.plugins.base import Plugin
 
 from cloudstackTestCase import cloudstackTestCase
 from codes import (
@@ -168,7 +169,7 @@ class MarvinPlugin(Plugin):
         Adds the Success Messages to logs
         '''
         self.printMsg(SUCCESS, self.__testName, "Test Case Passed")
-        self.__testresult = SUCCESS
+        self.__testResult = SUCCESS
 
     def handleError(self, test, err):
         '''
