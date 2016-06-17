@@ -17,7 +17,7 @@ class listHostsCmd (baseCmd):
         """if true, list only hosts dedicated to HA"""
         self.hahost = None
         self.typeInfo['hahost'] = 'boolean'
-        """hypervisor type of host: XenServer,KVM,BareMetal"""
+        """hypervisor type of host: XenServer,KVM"""
         self.hypervisor = None
         self.typeInfo['hypervisor'] = 'string'
         """the id of the host"""

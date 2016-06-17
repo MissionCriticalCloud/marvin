@@ -16,7 +16,7 @@ class addClusterCmd (baseCmd):
         """Required"""
         self.clustertype = None
         self.typeInfo['clustertype'] = 'string'
-        """hypervisor type of the cluster: XenServer,KVM,BareMetal,Ovm3"""
+        """hypervisor type of the cluster: XenServer,KVM,Ovm3"""
         """Required"""
         self.hypervisor = None
         self.typeInfo['hypervisor'] = 'string'

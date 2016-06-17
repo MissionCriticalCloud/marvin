@@ -50,10 +50,10 @@ class createTemplateCmd (baseCmd):
         """the tag for this template."""
         self.templatetag = None
         self.typeInfo['templatetag'] = 'string'
-        """Optional, only for baremetal hypervisor. The directory name where template stored on CIFS server"""
+        """DEPRECATED SINCE 5.1.0: Optional, only for baremetal hypervisor. The directory name where template stored on CIFS server"""
         self.url = None
         self.typeInfo['url'] = 'string'
-        """Optional, VM ID. If this presents, it is going to create a baremetal template for VM this ID refers to. This is only for VM whose hypervisor type is BareMetal"""
+        """DEPRECATED SINCE 5.1.0: Optional, VM ID. If this presents, it is going to create a baremetal template for VM this ID refers to. This is only for VM whose hypervisor type is BareMetal"""
         self.virtualmachineid = None
         self.typeInfo['virtualmachineid'] = 'uuid'
         """the ID of the disk volume the template is being created from. Either this parameter, or snapshotId has to be passed in"""

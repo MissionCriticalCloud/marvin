@@ -14,7 +14,7 @@ class listNetworkDeviceCmd (baseCmd):
         """parameters for network device"""
         self.networkdeviceparameterlist = []
         self.typeInfo['networkdeviceparameterlist'] = 'map'
-        """Network device type, now supports ExternalDhcp, PxeServer, JuniperSRXFirewall, PaloAltoFirewall"""
+        """Network device type, now supports ExternalDhcp, JuniperSRXFirewall, PaloAltoFirewall"""
         self.networkdevicetype = None
         self.typeInfo['networkdevicetype'] = 'string'
         """"""
