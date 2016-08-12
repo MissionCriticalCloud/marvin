@@ -38,3 +38,7 @@ loggers:
     level: INFO
     handlers: [console, file_run_info]
     propagate: yes
+  test:
+    level: INFO
+    handlers: [console, file_run_info]
+    propagate: yes
