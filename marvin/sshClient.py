@@ -33,8 +33,7 @@ class SshClient(object):
             timeout : Applies while executing command
     '''
 
-    def __init__(self, host, port, user, passwd, retries=60, delay=10,
-                 log_lvl=logging.INFO, keyPairFiles=None, timeout=10.0):
+    def __init__(self, host, port, user, passwd, retries=60, delay=10, log_lvl=logging.INFO, keyPairFiles=None, timeout=10.0):
         self.host = None
         self.port = 22
         self.user = user
@@ -75,7 +74,7 @@ class SshClient(object):
         else:
             for strOut in output:
                 results.append(strOut.rstrip())
-        self.logger.info("Executing command via host %s: %s Output: %s" % (str(self.host), command, results))
+        self.logger.debug("Executing command via host %s: %s Output: %s" % (str(self.host), command, results))
         return results
 
     def createConnection(self):
@@ -89,7 +88,7 @@ class SshClient(object):
         ret = FAILED
         while self.retryCnt >= 0:
             try:
-                self.logger.info("Trying SSH Connection to host %s on port %s as user %s. RetryCount: %s" %
+                self.logger.debug("Trying SSH Connection to host %s on port %s as user %s. RetryCount: %s" %
                                  (self.host, str(self.port), self.user, str(self.retryCnt)))
                 if self.keyPairFiles is None:
                     self.ssh.connect(hostname=self.host,
@@ -106,7 +105,7 @@ class SshClient(object):
                                      timeout=self.timeout,
                                      look_for_keys=False
                                      )
-                self.logger.info("Connection to host %s on port %s is SUCCESSFUL" % (str(self.host), str(self.port)))
+                self.logger.debug("Connection to host %s on port %s is SUCCESSFUL" % (str(self.host), str(self.port)))
                 ret = SUCCESS
                 break
             except BadHostKeyException as e:
@@ -154,7 +153,7 @@ class SshClient(object):
         except Exception as e:
             self.logger.exception("Failed to run command: %s" % e)
         finally:
-            self.logger.info("Connection to host %s on port %s is SUCCESSFUL" % (str(self.host), command))
+            self.logger.debug("Connection to host %s on port %s is SUCCESSFUL" % (str(self.host), command))
             return ret
 
     def scp(self, srcFile, destPath):
