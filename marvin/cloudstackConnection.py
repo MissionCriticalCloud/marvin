@@ -184,11 +184,11 @@ class CSConnection(object):
             if self.protocol in ["http", "https"]:
                 command_name = self.pretty_printer.pformat(command)
                 self.logger.debug("======= Sending %s Cmd : %s =======" % (method, command_name))
-                if command_name != 'queryAsyncJobResult':
+                if 'queryAsyncJobResult' in command_name:
                     self.logger.debug("Payload: %s" % str(payload))
                 if method == 'POST':
                     return self.__sendPostReqToCS(self.baseUrl, payload)
-                if method == "GET":
+                if method == 'GET':
                     return self.__sendGetReqToCS(self.baseUrl, payload)
             else:
                 self.logger.exception("__sendCmdToCS: Invalid Protocol")
@@ -270,12 +270,12 @@ class CSConnection(object):
             else return response as it is
             '''
             if is_async == "false":
-                self.logger.debug("Response :\n%s" % self.pretty_printer.pformat(ret))
+                self.logger.debug("Response: %s" % self.pretty_printer.pformat(ret))
                 return ret
             else:
                 response = self.__poll(ret.jobid, response_cls)
                 if response == FAILED:
-                    self.logger.debug("Response :\n%s" % self.pretty_printer.pformat(response))
+                    self.logger.debug("Response: %s" % self.pretty_printer.pformat(response))
                     return FAILED
                 else:
                     self.logger.debug("Omitting response from queryAsyncJobResult, but jobresult is: %s" % response.jobresult)
