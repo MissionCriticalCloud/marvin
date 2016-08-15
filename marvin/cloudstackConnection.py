@@ -184,7 +184,7 @@ class CSConnection(object):
             if self.protocol in ["http", "https"]:
                 command_name = self.pretty_printer.pformat(command)
                 self.logger.debug("======= Sending %s Cmd : %s =======" % (method, command_name))
-                if 'queryAsyncJobResult' in command_name:
+                if 'queryAsyncJobResult' not in command_name:
                     self.logger.debug("Payload: %s" % str(payload))
                 if method == 'POST':
                     return self.__sendPostReqToCS(self.baseUrl, payload)
