@@ -1270,27 +1270,24 @@ class Template:
             if isinstance(template_response, list):
 
                 template = template_response[0]
-                # If template is ready,
-                # template.status = Download Complete
-                # Downloading - x% Downloaded
-                # Error - Any other string
                 if template.status == 'Download Complete':
                     break
 
                 elif 'Downloaded' in template.status:
                     time.sleep(interval)
 
+                elif not template.status.strip(): # status is empty string
+                    time.sleep(interval)
+
                 elif 'Installing' not in template.status:
-                    raise Exception(
-                        "Error in downloading template: status - %s" %
-                        template.status)
+                    raise Exception("Error in downloading template: status - %s" % template.status)
 
             elif timeout == 0:
                 break
 
             else:
                 time.sleep(interval)
-                timeout = timeout - interval
+                timeout -= interval
         return
 
     def updatePermissions(self, apiclient, **kwargs):
