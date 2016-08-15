@@ -1255,7 +1255,7 @@ class Template:
             cmd.zoneid = zoneid
         apiclient.deleteTemplate(cmd)
 
-    def download(self, apiclient, timeout=5, interval=60):
+    def download(self, apiclient, timeout=300, interval=60):
         """Download Template"""
         # Sleep to ensure template is in proper state before download
         time.sleep(interval)
