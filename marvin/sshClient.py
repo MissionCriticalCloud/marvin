@@ -109,15 +109,15 @@ class SshClient(object):
                 ret = SUCCESS
                 break
             except BadHostKeyException as e:
-                self.logger.exception("Failed to create connection: %s" % e)
+                self.logger.debug("Failed to create connection: %s" % e)
             except AuthenticationException as e:
-                self.logger.exception("Failed to create connection: %s" % e)
+                self.logger.debug("Failed to create connection: %s" % e)
             except SSHException as e:
-                self.logger.exception("Failed to create connection: %s" % e)
+                self.logger.debug("Failed to create connection: %s" % e)
             except socket.error as e:
-                self.logger.exception("Failed to create connection: %s" % e)
+                self.logger.debug("Failed to create connection: %s" % e)
             except Exception as e:
-                self.logger.exception("Failed to create connection: %s" % e)
+                self.logger.debug("Failed to create connection: %s" % e)
             finally:
                 if self.retryCnt == 0 or ret == SUCCESS:
                     break
@@ -141,7 +141,6 @@ class SshClient(object):
         if command is None or command == '':
             return ret
         try:
-            status_check = 1
             stdin, stdout, stderr = self.ssh.exec_command(command, timeout=self.timeout)
             if stdout is not None:
                 status_check = stdout.channel.recv_exit_status()
@@ -151,7 +150,7 @@ class SshClient(object):
                 if stderr is not None:
                     ret["stderr"] = stderr.readlines()
         except Exception as e:
-            self.logger.exception("Failed to run command: %s" % e)
+            self.logger.debug("Failed to run command: %s" % e)
         finally:
             self.logger.debug("Connection to host %s on port %s is SUCCESSFUL" % (str(self.host), command))
             return ret
