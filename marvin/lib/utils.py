@@ -132,7 +132,7 @@ def random_gen(id=None, size=6, chars=string.ascii_uppercase + string.digits):
 
 def cleanup_resources(api_client, resources, logger=None):
     if logger is not None:
-        logger.debug("Cleaing up all resources: %s" % resources)
+        logger.debug("Cleaning up all resources: %s" % resources)
     """Delete resources"""
     for obj in resources:
         if logger is not None:
