@@ -76,12 +76,10 @@ class CSConnection(object):
             async_response = FAILED
             self.logger.debug("=== Jobid: %s Started ===" % (str(jobid)))
             while timeout > 0:
-                async_response = self. \
-                    marvinRequest(cmd, response_type=response_cmd)
+                async_response = self.marvinRequest(cmd, response_type=response_cmd)
                 if async_response != FAILED:
                     job_status = async_response.jobstatus
-                    if job_status in [JOB_CANCELLED,
-                                      JOB_SUCCEEDED]:
+                    if job_status in [JOB_CANCELLED, JOB_SUCCEEDED]:
                         break
                     elif job_status == JOB_FAILED:
                         raise Exception("Job failed: %s" % async_response)
@@ -184,12 +182,13 @@ class CSConnection(object):
             # Verify whether protocol is "http" or "https", then send the
             # request
             if self.protocol in ["http", "https"]:
-                self.logger.debug("Payload: %s" % str(payload))
+                command_name = self.pretty_printer.pformat(command)
+                self.logger.debug("======= Sending %s Cmd : %s =======" % (method, command_name))
+                if command_name != 'queryAsyncJobResult':
+                    self.logger.debug("Payload: %s" % str(payload))
                 if method == 'POST':
-                    self.logger.debug("======= Sending POST Cmd : %s =======" % self.pretty_printer.pformat(command))
                     return self.__sendPostReqToCS(self.baseUrl, payload)
                 if method == "GET":
-                    self.logger.debug("======= Sending GET Cmd : %s =======" % self.pretty_printer.pformat(command))
                     return self.__sendGetReqToCS(self.baseUrl, payload)
             else:
                 self.logger.exception("__sendCmdToCS: Invalid Protocol")
@@ -275,8 +274,12 @@ class CSConnection(object):
                 return ret
             else:
                 response = self.__poll(ret.jobid, response_cls)
-                self.logger.debug("Response :\n%s" % self.pretty_printer.pformat(response))
-                return response.jobresult if response != FAILED else FAILED
+                if response == FAILED:
+                    self.logger.debug("Response :\n%s" % self.pretty_printer.pformat(response))
+                    return FAILED
+                else:
+                    self.logger.debug("Omitting response from queryAsyncJobResult, but jobresult is: %s" % response.jobresult)
+                    return response.jobresult
         except Exception as e:
             self.__lastError = e
             self.logger.exception("Exception: %s" % e)
