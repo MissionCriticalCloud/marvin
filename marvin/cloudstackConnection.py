@@ -278,7 +278,7 @@ class CSConnection(object):
                     self.logger.debug("Response: %s" % self.pretty_printer.pformat(response))
                     return FAILED
                 else:
-                    self.logger.debug("Omitting response from queryAsyncJobResult, but jobresult is: %s" % response.jobresult)
+                    self.logger.debug("Job command is %s and result is %s" % (response.cmd, response.jobresult))
                     return response.jobresult
         except Exception as e:
             self.__lastError = e
