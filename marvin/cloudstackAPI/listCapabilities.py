@@ -33,6 +33,9 @@ class listCapabilitiesResponse (baseResponse):
         """version of the cloud stack"""
         self.cloudstackversion = None
         self.typeInfo['cloudstackversion'] = 'string'
+        """Cosmic or not"""
+        self.cosmic = None
+        self.typeInfo['cosmic'] = 'boolean'
         """maximum size that can be specified when create disk from disk offering with custom size"""
         self.customdiskofferingmaxsize = None
         self.typeInfo['customdiskofferingmaxsize'] = 'long'
