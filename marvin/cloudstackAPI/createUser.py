@@ -12,6 +12,10 @@ class createUserCmd (baseCmd):
         """Required"""
         self.account = None
         self.typeInfo['account'] = 'string'
+        """Creates the user under the specified domain. Has to be accompanied with the account parameter"""
+        """Required"""
+        self.domainid = None
+        self.typeInfo['domainid'] = 'uuid'
         """email"""
         """Required"""
         self.email = None
@@ -32,16 +36,13 @@ class createUserCmd (baseCmd):
         """Required"""
         self.username = None
         self.typeInfo['username'] = 'string'
-        """Creates the user under the specified domain. Has to be accompanied with the account parameter"""
-        self.domainid = None
-        self.typeInfo['domainid'] = 'uuid'
         """Specifies a timezone for this command. For more information on the timezone parameter, see Time Zone Format."""
         self.timezone = None
         self.typeInfo['timezone'] = 'string'
         """User UUID, required for adding account from external provisioning system"""
         self.userid = None
         self.typeInfo['userid'] = 'string'
-        self.required = ["account", "email", "firstname", "lastname", "password", "username", ]
+        self.required = ["account", "domainid", "email", "firstname", "lastname", "password", "username", ]
 
 
 class createUserResponse (baseResponse):
