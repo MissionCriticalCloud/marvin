@@ -1,4 +1,4 @@
-"""Adds a network device of one of the following types: ExternalDhcp, ExternalFirewall, ExternalLoadBalancer"""
+"""Adds a network device of one of the following types: ExternalDhcp, ExternalLoadBalancer"""
 from baseCmd import *
 from baseResponse import *
 
