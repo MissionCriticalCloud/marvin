@@ -58,9 +58,6 @@ class updateClusterResponse (baseResponse):
         """the cluster name"""
         self.name = None
         self.typeInfo['name'] = 'string'
-        """Ovm3 VIP to use for pooling and/or clustering"""
-        self.ovm3vip = None
-        self.typeInfo['ovm3vip'] = 'string'
         """the Pod ID of the cluster"""
         self.podid = None
         self.typeInfo['podid'] = 'string'

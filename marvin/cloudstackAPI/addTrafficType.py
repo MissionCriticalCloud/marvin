@@ -22,9 +22,6 @@ class addTrafficTypeCmd (baseCmd):
         """The network name label of the physical device dedicated to this traffic on a KVM host"""
         self.kvmnetworklabel = None
         self.typeInfo['kvmnetworklabel'] = 'string'
-        """The network name of the physical device dedicated to this traffic on an OVM3 host"""
-        self.ovm3networklabel = None
-        self.typeInfo['ovm3networklabel'] = 'string'
         """The VLAN id to be used for Management traffic by the host"""
         self.vlan = None
         self.typeInfo['vlan'] = 'string'
@@ -44,9 +41,6 @@ class addTrafficTypeResponse (baseResponse):
         """The network name label of the physical device dedicated to this traffic on a KVM host"""
         self.kvmnetworklabel = None
         self.typeInfo['kvmnetworklabel'] = 'string'
-        """The network name of the physical device dedicated to this traffic on an OVM3 host"""
-        self.ovm3networklabel = None
-        self.typeInfo['ovm3networklabel'] = 'string'
         """the physical network this belongs to"""
         self.physicalnetworkid = None
         self.typeInfo['physicalnetworkid'] = 'string'

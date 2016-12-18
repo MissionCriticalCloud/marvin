@@ -15,9 +15,6 @@ class updateTrafficTypeCmd (baseCmd):
         """The network name label of the physical device dedicated to this traffic on a KVM host"""
         self.kvmnetworklabel = None
         self.typeInfo['kvmnetworklabel'] = 'string'
-        """The network name of the physical device dedicated to this traffic on an OVM3 host"""
-        self.ovm3networklabel = None
-        self.typeInfo['ovm3networklabel'] = 'string'
         """The network name label of the physical device dedicated to this traffic on a XenServer host"""
         self.xennetworklabel = None
         self.typeInfo['xennetworklabel'] = 'string'
@@ -34,9 +31,6 @@ class updateTrafficTypeResponse (baseResponse):
         """The network name label of the physical device dedicated to this traffic on a KVM host"""
         self.kvmnetworklabel = None
         self.typeInfo['kvmnetworklabel'] = 'string'
-        """The network name of the physical device dedicated to this traffic on an OVM3 host"""
-        self.ovm3networklabel = None
-        self.typeInfo['ovm3networklabel'] = 'string'
         """the physical network this belongs to"""
         self.physicalnetworkid = None
         self.typeInfo['physicalnetworkid'] = 'string'

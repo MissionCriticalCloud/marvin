@@ -16,7 +16,7 @@ class addClusterCmd (baseCmd):
         """Required"""
         self.clustertype = None
         self.typeInfo['clustertype'] = 'string'
-        """hypervisor type of the cluster: XenServer,KVM,Ovm3"""
+        """hypervisor type of the cluster: XenServer,KVM"""
         """Required"""
         self.hypervisor = None
         self.typeInfo['hypervisor'] = 'string'
@@ -31,39 +31,15 @@ class addClusterCmd (baseCmd):
         """Allocation state of this cluster for allocation of new resources"""
         self.allocationstate = None
         self.typeInfo['allocationstate'] = 'string'
-        """Name of virtual switch used for guest traffic in the cluster. This would override zone wide traffic label setting."""
-        self.guestvswitchname = None
-        self.typeInfo['guestvswitchname'] = 'string'
-        """Ovm3 native OCFS2 clustering enabled for cluster"""
-        self.ovm3cluster = None
-        self.typeInfo['ovm3cluster'] = 'string'
-        """Ovm3 native pooling enabled for cluster"""
-        self.ovm3pool = None
-        self.typeInfo['ovm3pool'] = 'string'
-        """Ovm3 vip to use for pool (and cluster)"""
-        self.ovm3vip = None
-        self.typeInfo['ovm3vip'] = 'string'
         """the password for the host"""
         self.password = None
         self.typeInfo['password'] = 'string'
-        """Name of virtual switch used for public traffic in the cluster.  This would override zone wide traffic label setting."""
-        self.publicvswitchname = None
-        self.typeInfo['publicvswitchname'] = 'string'
         """the URL"""
         self.url = None
         self.typeInfo['url'] = 'string'
         """the username for the cluster"""
         self.username = None
         self.typeInfo['username'] = 'string'
-        """the ipaddress of the VSM associated with this cluster"""
-        self.vsmipaddress = None
-        self.typeInfo['vsmipaddress'] = 'string'
-        """the password for the VSM associated with this cluster"""
-        self.vsmpassword = None
-        self.typeInfo['vsmpassword'] = 'string'
-        """the username for the VSM associated with this cluster"""
-        self.vsmusername = None
-        self.typeInfo['vsmusername'] = 'string'
         self.required = ["clustername", "clustertype", "hypervisor", "podid", "zoneid", ]
 
 
@@ -95,9 +71,6 @@ class addClusterResponse (baseResponse):
         """the cluster name"""
         self.name = None
         self.typeInfo['name'] = 'string'
-        """Ovm3 VIP to use for pooling and/or clustering"""
-        self.ovm3vip = None
-        self.typeInfo['ovm3vip'] = 'string'
         """the Pod ID of the cluster"""
         self.podid = None
         self.typeInfo['podid'] = 'string'
