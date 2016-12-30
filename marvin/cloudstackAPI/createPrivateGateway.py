@@ -8,14 +8,22 @@ class createPrivateGatewayCmd (baseCmd):
 
     def __init__(self):
         self.isAsync = "true"
+        """the gateway of the Private gateway"""
+        """Required"""
+        self.gateway = None
+        self.typeInfo['gateway'] = 'string'
         """the IP address of the Private gateaway"""
         """Required"""
         self.ipaddress = None
         self.typeInfo['ipaddress'] = 'string'
-        """the uuid of the private network to use for the private gateway"""
+        """the netmask of the Private gateway"""
         """Required"""
-        self.networkid = None
-        self.typeInfo['networkid'] = 'uuid'
+        self.netmask = None
+        self.typeInfo['netmask'] = 'string'
+        """the network implementation uri for the private gateway"""
+        """Required"""
+        self.vlan = None
+        self.typeInfo['vlan'] = 'string'
         """the VPC network belongs to"""
         """Required"""
         self.vpcid = None
@@ -23,16 +31,16 @@ class createPrivateGatewayCmd (baseCmd):
         """the ID of the network ACL"""
         self.aclid = None
         self.typeInfo['aclid'] = 'uuid'
-        """the gateway of the Private gateway (DEPRECATED!)."""
-        self.gateway = None
-        self.typeInfo['gateway'] = 'string'
-        """the netmask of the Private gateway (DEPRECATED!)."""
-        self.netmask = None
-        self.typeInfo['netmask'] = 'string'
+        """the uuid of the network offering to use for the private gateways network connection"""
+        self.networkofferingid = None
+        self.typeInfo['networkofferingid'] = 'uuid'
+        """the Physical Network ID the network belongs to"""
+        self.physicalnetworkid = None
+        self.typeInfo['physicalnetworkid'] = 'uuid'
         """source NAT supported value. Default value false. If 'true' source NAT is enabled on the private gateway 'false': sourcenat is not supported"""
         self.sourcenatsupported = None
         self.typeInfo['sourcenatsupported'] = 'boolean'
-        self.required = ["ipaddress", "networkid", "vpcid", ]
+        self.required = ["gateway", "ipaddress", "netmask", "vlan", "vpcid", ]
 
 
 class createPrivateGatewayResponse (baseResponse):
@@ -48,24 +56,24 @@ class createPrivateGatewayResponse (baseResponse):
         """ACL Id set for private gateway"""
         self.aclid = None
         self.typeInfo['aclid'] = 'string'
-        """the CIDR of the private network"""
-        self.cidr = None
-        self.typeInfo['cidr'] = 'string'
         """the domain associated with the private gateway"""
         self.domain = None
         self.typeInfo['domain'] = 'string'
         """the ID of the domain associated with the private gateway"""
         self.domainid = None
         self.typeInfo['domainid'] = 'string'
+        """the gateway"""
+        self.gateway = None
+        self.typeInfo['gateway'] = 'string'
         """the private gateway's ip address"""
         self.ipaddress = None
         self.typeInfo['ipaddress'] = 'string'
-        """the network id"""
-        self.networkid = None
-        self.typeInfo['networkid'] = 'string'
-        """the network name"""
-        self.networkname = None
-        self.typeInfo['networkname'] = 'string'
+        """the private gateway's netmask"""
+        self.netmask = None
+        self.typeInfo['netmask'] = 'string'
+        """the physical network id"""
+        self.physicalnetworkid = None
+        self.typeInfo['physicalnetworkid'] = 'string'
         """the project name of the private gateway"""
         self.project = None
         self.typeInfo['project'] = 'string'
