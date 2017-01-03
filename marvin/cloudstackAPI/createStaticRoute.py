@@ -12,16 +12,18 @@ class createStaticRouteCmd (baseCmd):
         """Required"""
         self.cidr = None
         self.typeInfo['cidr'] = 'string'
-        """The private gateway id to get the ipaddress from (DEPRECATED!)."""
-        self.gatewayid = None
-        self.typeInfo['gatewayid'] = 'uuid'
-        """Ip address of the nexthop to route the CIDR to"""
+        """IP address of the nexthop to route the CIDR to"""
+        """Required"""
         self.nexthop = None
         self.typeInfo['nexthop'] = 'string'
         """The VPC id we are creating static route for."""
+        """Required"""
         self.vpcid = None
         self.typeInfo['vpcid'] = 'uuid'
-        self.required = ["cidr", ]
+        """The private gateway id to get the ipaddress from (DEPRECATED!)."""
+        self.gatewayid = None
+        self.typeInfo['gatewayid'] = 'uuid'
+        self.required = ["cidr", "nexthop", "vpcid", ]
 
 
 class createStaticRouteResponse (baseResponse):
