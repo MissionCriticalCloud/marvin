@@ -14,10 +14,10 @@ class listPrivateGatewaysCmd (baseCmd):
         """list only resources belonging to the domain specified"""
         self.domainid = None
         self.typeInfo['domainid'] = 'uuid'
-        """list private gateway by id"""
+        """list private gateway by IP"""
         self.id = None
         self.typeInfo['id'] = 'uuid'
-        """list gateways by ip address"""
+        """list gateways by IP address"""
         self.ipaddress = None
         self.typeInfo['ipaddress'] = 'string'
         """defaults to false, but if true, lists all resources from the parent specified by the domainId till leaves."""
@@ -29,6 +29,9 @@ class listPrivateGatewaysCmd (baseCmd):
         """If set to false, list only resources belonging to the command's caller; if set to true - list resources that the caller is authorized to see. Default value is false"""
         self.listall = None
         self.typeInfo['listall'] = 'boolean'
+        """list gateways by network ID"""
+        self.networkid = None
+        self.typeInfo['networkid'] = 'string'
         """"""
         self.page = None
         self.typeInfo['page'] = 'integer'
@@ -41,10 +44,7 @@ class listPrivateGatewaysCmd (baseCmd):
         """list gateways by state"""
         self.state = None
         self.typeInfo['state'] = 'string'
-        """list gateways by vlan"""
-        self.vlan = None
-        self.typeInfo['vlan'] = 'string'
-        """list gateways by vpc"""
+        """list gateways by VPC"""
         self.vpcid = None
         self.typeInfo['vpcid'] = 'uuid'
         self.required = []
@@ -63,24 +63,24 @@ class listPrivateGatewaysResponse (baseResponse):
         """ACL Id set for private gateway"""
         self.aclid = None
         self.typeInfo['aclid'] = 'string'
+        """the CIDR of the private network"""
+        self.cidr = None
+        self.typeInfo['cidr'] = 'string'
         """the domain associated with the private gateway"""
         self.domain = None
         self.typeInfo['domain'] = 'string'
         """the ID of the domain associated with the private gateway"""
         self.domainid = None
         self.typeInfo['domainid'] = 'string'
-        """the gateway"""
-        self.gateway = None
-        self.typeInfo['gateway'] = 'string'
         """the private gateway's ip address"""
         self.ipaddress = None
         self.typeInfo['ipaddress'] = 'string'
-        """the private gateway's netmask"""
-        self.netmask = None
-        self.typeInfo['netmask'] = 'string'
-        """the physical network id"""
-        self.physicalnetworkid = None
-        self.typeInfo['physicalnetworkid'] = 'string'
+        """the network id"""
+        self.networkid = None
+        self.typeInfo['networkid'] = 'string'
+        """the network name"""
+        self.networkname = None
+        self.typeInfo['networkname'] = 'string'
         """the project name of the private gateway"""
         self.project = None
         self.typeInfo['project'] = 'string'
