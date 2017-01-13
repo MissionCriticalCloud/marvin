@@ -33,6 +33,9 @@ class createNetworkCmd (baseCmd):
         """Access control type; supported values are account and domain. In 3.0 all shared networks should have aclType=Domain, and all isolated networks - Account. Account means that only the account owner can use the network, domain - all accounts in the domain can use the network"""
         self.acltype = None
         self.typeInfo['acltype'] = 'string'
+        """the CIDR of the network."""
+        self.cidr = None
+        self.typeInfo['cidr'] = 'string'
         """an optional field, whether to the display the network to the end user or not."""
         self.displaynetwork = None
         self.typeInfo['displaynetwork'] = 'boolean'
@@ -45,7 +48,7 @@ class createNetworkCmd (baseCmd):
         """the ending IPv6 address in the IPv6 network range"""
         self.endipv6 = None
         self.typeInfo['endipv6'] = 'string'
-        """the gateway of the network. Required for shared networks and isolated networks when it belongs to VPC"""
+        """the gateway of the network. for shared networks and isolated networks when it belongs to VPC"""
         self.gateway = None
         self.typeInfo['gateway'] = 'string'
         """the CIDR of IPv6 network, must be at least /64"""
@@ -57,7 +60,7 @@ class createNetworkCmd (baseCmd):
         """the isolated private VLAN for this network"""
         self.isolatedpvlan = None
         self.typeInfo['isolatedpvlan'] = 'string'
-        """the netmask of the network. Required for shared networks and isolated networks when it belongs to VPC"""
+        """the netmask of the network. for shared networks and isolated networks when it belongs to VPC"""
         self.netmask = None
         self.typeInfo['netmask'] = 'string'
         """network domain"""
