@@ -81,7 +81,7 @@ class createNetworkCmd (baseCmd):
         """Defines whether to allow subdomains to use networks dedicated to their parent domain(s). Should be used with aclType=Domain, defaulted to allow.subdomain.network.access global config if not specified"""
         self.subdomainaccess = None
         self.typeInfo['subdomainaccess'] = 'boolean'
-        """the ID or VID of the network"""
+        """The VLAN of the network"""
         self.vlan = None
         self.typeInfo['vlan'] = 'string'
         """the VPC network belongs to"""
