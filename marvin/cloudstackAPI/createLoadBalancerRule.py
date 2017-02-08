@@ -30,6 +30,9 @@ class createLoadBalancerRuleCmd (baseCmd):
         """the CIDR list to forward traffic from"""
         self.cidrlist = []
         self.typeInfo['cidrlist'] = 'list'
+        """the HAProxy client_timeout setting for this load balancing rule (in ms)."""
+        self.clienttimeout = None
+        self.typeInfo['clienttimeout'] = 'integer'
         """the description of the load balancer rule"""
         self.description = None
         self.typeInfo['description'] = 'string'
@@ -51,6 +54,9 @@ class createLoadBalancerRuleCmd (baseCmd):
         """public IP address ID from where the network traffic will be load balanced from"""
         self.publicipid = None
         self.typeInfo['publicipid'] = 'uuid'
+        """the HAProxy server_timeout setting for this load balancing rule (in ms)."""
+        self.servertimeout = None
+        self.typeInfo['servertimeout'] = 'integer'
         """zone where the load balancer is going to be created. This parameter is required when LB service provider is ElasticLoadBalancerVm"""
         self.zoneid = None
         self.typeInfo['zoneid'] = 'uuid'
@@ -73,6 +79,9 @@ class createLoadBalancerRuleResponse (baseResponse):
         """the cidr list to forward traffic from"""
         self.cidrlist = None
         self.typeInfo['cidrlist'] = 'string'
+        """the HAProxy client_timeout setting for this load balancing rule."""
+        self.clienttimeout = None
+        self.typeInfo['clienttimeout'] = 'integer'
         """the description of the load balancer"""
         self.description = None
         self.typeInfo['description'] = 'string'
@@ -112,6 +121,9 @@ class createLoadBalancerRuleResponse (baseResponse):
         """the public port"""
         self.publicport = None
         self.typeInfo['publicport'] = 'string'
+        """the HAProxy server_timeout setting for this load balancing rule."""
+        self.servertimeout = None
+        self.typeInfo['servertimeout'] = 'integer'
         """the state of the rule"""
         self.state = None
         self.typeInfo['state'] = 'string'

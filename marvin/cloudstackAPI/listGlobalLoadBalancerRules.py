@@ -123,6 +123,8 @@ class loadbalancerrule:
         self.algorithm = None
         """"the cidr list to forward traffic from"""
         self.cidrlist = None
+        """"the HAProxy client_timeout setting for this load balancing rule."""
+        self.clienttimeout = None
         """"the description of the load balancer"""
         self.description = None
         """"the domain of the load balancer rule"""
@@ -149,6 +151,8 @@ class loadbalancerrule:
         self.publicipid = None
         """"the public port"""
         self.publicport = None
+        """"the HAProxy server_timeout setting for this load balancing rule."""
+        self.servertimeout = None
         """"the state of the rule"""
         self.state = None
         """"the id of the zone the rule belongs to"""

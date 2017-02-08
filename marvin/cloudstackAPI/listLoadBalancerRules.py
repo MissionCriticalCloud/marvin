@@ -75,6 +75,9 @@ class listLoadBalancerRulesResponse (baseResponse):
         """the cidr list to forward traffic from"""
         self.cidrlist = None
         self.typeInfo['cidrlist'] = 'string'
+        """the HAProxy client_timeout setting for this load balancing rule."""
+        self.clienttimeout = None
+        self.typeInfo['clienttimeout'] = 'integer'
         """the description of the load balancer"""
         self.description = None
         self.typeInfo['description'] = 'string'
@@ -114,6 +117,9 @@ class listLoadBalancerRulesResponse (baseResponse):
         """the public port"""
         self.publicport = None
         self.typeInfo['publicport'] = 'string'
+        """the HAProxy server_timeout setting for this load balancing rule."""
+        self.servertimeout = None
+        self.typeInfo['servertimeout'] = 'integer'
         """the state of the rule"""
         self.state = None
         self.typeInfo['state'] = 'string'

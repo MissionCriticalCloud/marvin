@@ -15,6 +15,9 @@ class updateLoadBalancerRuleCmd (baseCmd):
         """load balancer algorithm (source, roundrobin, leastconn)"""
         self.algorithm = None
         self.typeInfo['algorithm'] = 'string'
+        """the HAProxy client_timeout setting for this load balancing rule (in ms)."""
+        self.clienttimeout = None
+        self.typeInfo['clienttimeout'] = 'integer'
         """an optional field, in case you want to set a custom id to the resource. Allowed to Root Admins only"""
         self.customid = None
         self.typeInfo['customid'] = 'string'
@@ -27,6 +30,9 @@ class updateLoadBalancerRuleCmd (baseCmd):
         """the name of the load balancer rule"""
         self.name = None
         self.typeInfo['name'] = 'string'
+        """the HAProxy server_timeout setting for this load balancing rule (in ms)."""
+        self.servertimeout = None
+        self.typeInfo['servertimeout'] = 'integer'
         self.required = ["id", ]
 
 
@@ -46,6 +52,9 @@ class updateLoadBalancerRuleResponse (baseResponse):
         """the cidr list to forward traffic from"""
         self.cidrlist = None
         self.typeInfo['cidrlist'] = 'string'
+        """the HAProxy client_timeout setting for this load balancing rule."""
+        self.clienttimeout = None
+        self.typeInfo['clienttimeout'] = 'integer'
         """the description of the load balancer"""
         self.description = None
         self.typeInfo['description'] = 'string'
@@ -85,6 +94,9 @@ class updateLoadBalancerRuleResponse (baseResponse):
         """the public port"""
         self.publicport = None
         self.typeInfo['publicport'] = 'string'
+        """the HAProxy server_timeout setting for this load balancing rule."""
+        self.servertimeout = None
+        self.typeInfo['servertimeout'] = 'integer'
         """the state of the rule"""
         self.state = None
         self.typeInfo['state'] = 'string'

@@ -24,6 +24,12 @@ class updateNetworkCmd (baseCmd):
         """the new display text for the network"""
         self.displaytext = None
         self.typeInfo['displaytext'] = 'string'
+        """The first DNS server of the network"""
+        self.dns1 = None
+        self.typeInfo['dns1'] = 'string'
+        """The second DNS server of the network"""
+        self.dns2 = None
+        self.typeInfo['dns2'] = 'string'
         """CIDR for guest VMs, CloudStack allocates IPs to guest VMs only from this CIDR"""
         self.guestvmcidr = None
         self.typeInfo['guestvmcidr'] = 'string'

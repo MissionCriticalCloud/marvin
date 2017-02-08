@@ -39,6 +39,12 @@ class createNetworkCmd (baseCmd):
         """an optional field, whether to the display the network to the end user or not."""
         self.displaynetwork = None
         self.typeInfo['displaynetwork'] = 'boolean'
+        """The first DNS server of the network"""
+        self.dns1 = None
+        self.typeInfo['dns1'] = 'string'
+        """The second DNS server of the network"""
+        self.dns2 = None
+        self.typeInfo['dns2'] = 'string'
         """domain ID of the account owning a network"""
         self.domainid = None
         self.typeInfo['domainid'] = 'uuid'
