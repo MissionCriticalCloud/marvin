@@ -18,6 +18,9 @@ class replaceNetworkACLListCmd (baseCmd):
         """the ID of the network"""
         self.networkid = None
         self.typeInfo['networkid'] = 'uuid'
+        """the ID of the public ip"""
+        self.publicipid = None
+        self.typeInfo['publicipid'] = 'uuid'
         self.required = ["aclid", ]
 
 

@@ -28,6 +28,9 @@ class restartNetworkResponse (baseResponse):
         """the account the public IP address is associated with"""
         self.account = None
         self.typeInfo['account'] = 'string'
+        """the ID of the ACL applied to this IP"""
+        self.aclid = None
+        self.typeInfo['aclid'] = 'string'
         """date the public IP address was acquired"""
         self.allocated = None
         self.typeInfo['allocated'] = 'date'
