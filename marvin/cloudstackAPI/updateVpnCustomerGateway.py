@@ -12,10 +12,10 @@ class updateVpnCustomerGatewayCmd (baseCmd):
         """Required"""
         self.id = None
         self.typeInfo['id'] = 'uuid'
-        """guest cidr of the customer gateway"""
+        """guest cidr list of the customer gateway"""
         """Required"""
-        self.cidrlist = None
-        self.typeInfo['cidrlist'] = 'string'
+        self.cidrlist = []
+        self.typeInfo['cidrlist'] = 'list'
         """ESP policy of the customer gateway"""
         """Required"""
         self.esppolicy = None

@@ -10,8 +10,8 @@ class createVpnCustomerGatewayCmd (baseCmd):
         self.isAsync = "true"
         """guest cidr list of the customer gateway"""
         """Required"""
-        self.cidrlist = None
-        self.typeInfo['cidrlist'] = 'string'
+        self.cidrlist = []
+        self.typeInfo['cidrlist'] = 'list'
         """ESP policy of the customer gateway"""
         """Required"""
         self.esppolicy = None
