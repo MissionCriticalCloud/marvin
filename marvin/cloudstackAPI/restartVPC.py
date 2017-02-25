@@ -12,10 +12,10 @@ class restartVPCCmd (baseCmd):
         """Required"""
         self.id = None
         self.typeInfo['id'] = 'uuid'
-        """If cleanup old network elements"""
+        """Cleanup old network elements (defaults to true)"""
         self.cleanup = None
         self.typeInfo['cleanup'] = 'boolean'
-        """Turn a single VPC into a redundant one."""
+        """Turn a single VPC into a redundant one (defaults to false)."""
         self.makeredundant = None
         self.typeInfo['makeredundant'] = 'boolean'
         self.required = ["id", ]
