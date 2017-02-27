@@ -104,9 +104,15 @@ class createVPCResponse (baseResponse):
         """state of the VPC. Can be Inactive/Enabled"""
         self.state = None
         self.typeInfo['state'] = 'string'
+        """display text of the vpc offering the vpc is created from"""
+        self.vpcofferingdisplaytext = None
+        self.typeInfo['vpcofferingdisplaytext'] = 'string'
         """vpc offering id the VPC is created from"""
         self.vpcofferingid = None
         self.typeInfo['vpcofferingid'] = 'string'
+        """name of the vpc offering the vpc is created from"""
+        self.vpcofferingname = None
+        self.typeInfo['vpcofferingname'] = 'string'
         """zone id of the vpc"""
         self.zoneid = None
         self.typeInfo['zoneid'] = 'string'
