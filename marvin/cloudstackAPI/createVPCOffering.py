@@ -20,6 +20,9 @@ class createVPCOfferingCmd (baseCmd):
         """Required"""
         self.supportedservices = []
         self.typeInfo['supportedservices'] = 'list'
+        """the ID of the service offering for the second VPC router appliance (in case of redundancy)"""
+        self.secondaryserviceofferingid = None
+        self.typeInfo['secondaryserviceofferingid'] = 'uuid'
         """desired service capabilities as part of vpc offering"""
         self.servicecapabilitylist = []
         self.typeInfo['servicecapabilitylist'] = 'map'
@@ -54,6 +57,18 @@ class createVPCOfferingResponse (baseResponse):
         """the name of the vpc offering"""
         self.name = None
         self.typeInfo['name'] = 'string'
+        """The secondary system compute offering id used for the virtual router"""
+        self.secondaryserviceofferingid = None
+        self.typeInfo['secondaryserviceofferingid'] = 'string'
+        """The secondary system compute offering name used for the virtual router"""
+        self.secondaryserviceofferingname = None
+        self.typeInfo['secondaryserviceofferingname'] = 'string'
+        """The primary system compute offering id used for the virtual router"""
+        self.serviceofferingid = None
+        self.typeInfo['serviceofferingid'] = 'string'
+        """The primary system compute offering name used for the virtual router"""
+        self.serviceofferingname = None
+        self.typeInfo['serviceofferingname'] = 'string'
         """state of the vpc offering. Can be Disabled/Enabled"""
         self.state = None
         self.typeInfo['state'] = 'string'

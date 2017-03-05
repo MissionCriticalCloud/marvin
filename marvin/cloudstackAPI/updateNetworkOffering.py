@@ -81,9 +81,18 @@ class updateNetworkOfferingResponse (baseResponse):
         """data transfer rate in megabits per second allowed."""
         self.networkrate = None
         self.typeInfo['networkrate'] = 'integer'
+        """the ID of the secondary service offering used by virtual router provider"""
+        self.secondaryserviceofferingid = None
+        self.typeInfo['secondaryserviceofferingid'] = 'string'
+        """the name of the secondary service offering used by virtual router provider"""
+        self.secondaryserviceofferingname = None
+        self.typeInfo['secondaryserviceofferingname'] = 'string'
         """the ID of the service offering used by virtual router provider"""
         self.serviceofferingid = None
         self.typeInfo['serviceofferingid'] = 'string'
+        """the name of the service offering used by virtual router provider"""
+        self.serviceofferingname = None
+        self.typeInfo['serviceofferingname'] = 'string'
         """true if network offering supports specifying ip ranges, false otherwise"""
         self.specifyipranges = None
         self.typeInfo['specifyipranges'] = 'boolean'
