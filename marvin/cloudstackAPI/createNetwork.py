@@ -63,6 +63,9 @@ class createNetworkCmd (baseCmd):
         """the gateway of the IPv6 network. Required for Shared networks"""
         self.ip6gateway = None
         self.typeInfo['ip6gateway'] = 'string'
+        """IP exclusion list for private networks"""
+        self.ipexclusionlist = None
+        self.typeInfo['ipexclusionlist'] = 'string'
         """the isolated private VLAN for this network"""
         self.isolatedpvlan = None
         self.typeInfo['isolatedpvlan'] = 'string'
@@ -151,6 +154,9 @@ class createNetworkResponse (baseResponse):
         """the gateway of IPv6 network"""
         self.ip6gateway = None
         self.typeInfo['ip6gateway'] = 'string'
+        """list of ip addresses and/or ranges of addresses to be excluded from the network for assignment"""
+        self.ipexclusionlist = None
+        self.typeInfo['ipexclusionlist'] = 'string'
         """true if network is default, false otherwise"""
         self.isdefault = None
         self.typeInfo['isdefault'] = 'boolean'

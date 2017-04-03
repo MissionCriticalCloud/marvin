@@ -33,6 +33,9 @@ class updateNetworkCmd (baseCmd):
         """CIDR for guest VMs, CloudStack allocates IPs to guest VMs only from this CIDR"""
         self.guestvmcidr = None
         self.typeInfo['guestvmcidr'] = 'string'
+        """IP exclusion list for private networks"""
+        self.ipexclusionlist = None
+        self.typeInfo['ipexclusionlist'] = 'string'
         """the new name for the network"""
         self.name = None
         self.typeInfo['name'] = 'string'
@@ -100,6 +103,9 @@ class updateNetworkResponse (baseResponse):
         """the gateway of IPv6 network"""
         self.ip6gateway = None
         self.typeInfo['ip6gateway'] = 'string'
+        """list of ip addresses and/or ranges of addresses to be excluded from the network for assignment"""
+        self.ipexclusionlist = None
+        self.typeInfo['ipexclusionlist'] = 'string'
         """true if network is default, false otherwise"""
         self.isdefault = None
         self.typeInfo['isdefault'] = 'boolean'

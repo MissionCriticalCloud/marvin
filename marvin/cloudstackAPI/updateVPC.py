@@ -247,6 +247,8 @@ class network:
         self.ip6cidr = None
         """"the gateway of IPv6 network"""
         self.ip6gateway = None
+        """"list of ip addresses and/or ranges of addresses to be excluded from the network for assignment"""
+        self.ipexclusionlist = None
         """"true if network is default, false otherwise"""
         self.isdefault = None
         """"list networks that are persistent"""

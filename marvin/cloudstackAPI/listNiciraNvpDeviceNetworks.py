@@ -79,6 +79,9 @@ class listNiciraNvpDeviceNetworksResponse (baseResponse):
         """the gateway of IPv6 network"""
         self.ip6gateway = None
         self.typeInfo['ip6gateway'] = 'string'
+        """list of ip addresses and/or ranges of addresses to be excluded from the network for assignment"""
+        self.ipexclusionlist = None
+        self.typeInfo['ipexclusionlist'] = 'string'
         """true if network is default, false otherwise"""
         self.isdefault = None
         self.typeInfo['isdefault'] = 'boolean'
